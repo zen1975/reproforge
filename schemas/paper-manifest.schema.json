@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reproforge.dev/schemas/paper-manifest.schema.json",
+  "title": "ReproForge Paper Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "paper", "reproduction", "external_assets", "claims"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "paper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "canonical_url", "authors", "license_status"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "canonical_url": {"type": "string", "format": "uri"},
+        "arxiv_id": {"type": ["string", "null"]},
+        "authors": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "license": {"type": ["string", "null"]},
+        "license_status": {"enum": ["VERIFIED", "UNKNOWN", "RESTRICTED"]}
+      }
+    },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["implementation_type", "official_code_used"],
+      "properties": {
+        "implementation_type": {"enum": ["INDEPENDENT", "DERIVED", "OFFICIAL_AUDIT"]},
+        "official_code_used": {"type": "boolean"},
+        "notes": {"type": "string"}
+      }
+    },
+    "external_assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "name", "source", "license_status", "redistributed"],
+        "properties": {
+          "kind": {"enum": ["CODE", "DATASET", "MODEL", "WEIGHTS", "OTHER"]},
+          "name": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1},
+          "license": {"type": ["string", "null"]},
+          "license_status": {"enum": ["VERIFIED", "UNKNOWN", "RESTRICTED"]},
+          "redistributed": {"type": "boolean"}
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "statement", "acceptance_criteria"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+          "statement": {"type": "string", "minLength": 1},
+          "acceptance_criteria": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

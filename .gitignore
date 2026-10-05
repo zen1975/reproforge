@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# Research outputs
+artifacts/
+runs/
+evidence/private/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+
+# Local data
+/data/
+/datasets/
+/models/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

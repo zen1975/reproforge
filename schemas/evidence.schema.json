@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reproforge.dev/schemas/evidence.schema.json",
+  "title": "ReproForge Evidence Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "run_id", "artifact_hashes", "verdict"],
+  "properties": {
+    "claim_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "artifact_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
+    "metrics": {"type": "object"},
+    "verdict": {"enum": ["PASS", "PARTIAL", "FAIL", "INCONCLUSIVE"]},
+    "notes": {"type": "string"}
+  }
+}

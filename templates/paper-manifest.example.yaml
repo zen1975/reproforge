@@ -1,0 +1,22 @@
+schema_version: "0.1"
+
+paper:
+  title: "Example research paper"
+  canonical_url: "https://example.org/paper"
+  arxiv_id: null
+  authors:
+    - "Example Author"
+  license: null
+  license_status: UNKNOWN
+
+reproduction:
+  implementation_type: INDEPENDENT
+  official_code_used: false
+  notes: "Template only. Replace every example value before a real study."
+
+external_assets: []
+
+claims:
+  - id: claim-001
+    statement: "A precisely stated empirical or computational claim from the paper."
+    acceptance_criteria: "Define a measurable threshold before running the experiment."
