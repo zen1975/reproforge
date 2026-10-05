@@ -1,4 +1,55 @@
 {
   "schema_version": "1.0.0",
-  "capabilities": []
+  "capabilities": [
+    {
+      "id": "agent.approval-token-dispatch-binding",
+      "version": "0.1.0",
+      "name": "Approval Token Dispatch Binding",
+      "summary": "Experimental capability contract for binding an agent tool invocation to authenticated dispatch context with a keyed approval token.",
+      "status": "experimental",
+      "task_classes": [
+        "agent-tool-authorization",
+        "tool-call-mediation",
+        "capability-security"
+      ],
+      "interface": {
+        "inputs": {
+          "principal": "string",
+          "agent_id": "string",
+          "session_id": "string",
+          "tool": "string",
+          "arguments": "object",
+          "scope": "object",
+          "expiry": "integer"
+        },
+        "outputs": {
+          "approval_token": "string",
+          "bound_fields": "array[string]"
+        }
+      },
+      "runtime": {
+        "kind": "python",
+        "entrypoint": "TBD",
+        "deterministic": true,
+        "requirements": []
+      },
+      "evidence": {
+        "reproduction_status": "NOT_RUN",
+        "studies": [
+          "studies/arxiv-2610.03213"
+        ],
+        "evidence_paths": []
+      },
+      "implementation": {
+        "path": "capabilities/agent.approval-token-dispatch-binding/README.md",
+        "license": "Apache-2.0"
+      },
+      "adapters": [
+        {"kind": "python"},
+        {"kind": "agent-tool"},
+        {"kind": "mcp"},
+        {"kind": "cloudflare-worker"}
+      ]
+    }
+  ]
 }
