@@ -16,18 +16,15 @@ paper:
 reproduction:
   implementation_type: "INDEPENDENT"
   official_code_used: false
-  notes: "Initial intake from arXiv metadata and abstract-level claims only. Full-text protocol extraction and reproduction have not yet been run. No author code, dataset, model, or paper asset is redistributed."
+  notes: "Corrected intake. Verified public abstract describes SLM-based per-call task-tool relevance classification, a novel multi-tool dataset spanning distinct MCP servers, and optimization via prompt optimization, supervised fine-tuning, and GRPO. Full-text metric extraction and paper-method reproduction remain NOT_RUN. No author code, dataset, model, weights, PDF, or figures are redistributed."
 external_assets: []
 claims:
-  - id: "C1-delegation-laundering"
-    statement: "A keyed approval-token mechanism bound to dispatch context can eliminate delegation laundering in the reported paired replay evaluation."
-    acceptance_criteria: "Independent reproduction observes zero successful delegation-laundering cases under a protocol materially equivalent to the paper's paired before/after replay design."
-  - id: "C2-temporal-laundering"
-    statement: "The approval-token mechanism can eliminate the paper's seeded session-identity-mismatch construction for temporal laundering."
-    acceptance_criteria: "Independent reproduction observes zero successful seeded temporal-laundering cases and records the same dispatch fields needed to distinguish the mismatch."
-  - id: "C3-scope-limit"
-    statement: "A field-bound approval token does not by itself prevent scope laundering when the recorded dispatch fields remain unchanged."
-    acceptance_criteria: "Independent reproduction demonstrates at least one scope-laundering construction that remains indistinguishable to the field-only verifier while preserving the recorded dispatch fields."
-  - id: "C4-argument-limit"
-    statement: "A field-bound approval token does not necessarily reduce argument laundering when the relevant divergence occurs below the observable dispatch boundary."
-    acceptance_criteria: "Independent reproduction demonstrates an argument-laundering construction that passes the field-only verifier because the verifier lacks the lower-level provenance required to distinguish it."
+  - id: "C1-task-tool-relevance"
+    statement: "The study investigates a Small Language Model as a per-call classifier that evaluates a selected tool independently against an assigned task and emits a relevance signal for downstream enforcement."
+    acceptance_criteria: "Full reproduction must implement a task-tool relevance classifier with the same input/output semantics established by the paper and evaluate it using the paper's reported protocol and metrics."
+  - id: "C2-multi-tool-mcp-dataset"
+    statement: "The study uses a novel dataset containing multi-tool tasks whose required tools span distinct Model Context Protocol servers."
+    acceptance_criteria: "Full reproduction must reconstruct or independently create a protocol-equivalent multi-tool, multi-MCP evaluation set and document any unavoidable differences from the paper dataset."
+  - id: "C3-specialization-methods"
+    statement: "The study applies prompt optimization, supervised fine-tuning, and GRPO to optimize or specialize Small Language Models for task-tool relevance classification."
+    acceptance_criteria: "Full reproduction must separately evaluate the applicable prompt-optimized, supervised-fine-tuned, and GRPO variants using exact or protocol-equivalent settings extracted from the full paper."
