@@ -2,34 +2,31 @@
   "schema_version": "1.0.0",
   "capabilities": [
     {
-      "id": "agent.approval-token-dispatch-binding",
+      "id": "agent.task-tool-relevance-classifier",
       "version": "0.1.0",
-      "name": "Approval Token Dispatch Binding",
-      "summary": "Experimental capability contract for binding an agent tool invocation to authenticated dispatch context with a keyed approval token.",
+      "name": "Task-Tool Relevance Classifier",
+      "summary": "Experimental provider-neutral capability for scoring whether a candidate tool is relevant to an assigned task before execution.",
       "status": "experimental",
       "task_classes": [
-        "agent-tool-authorization",
-        "tool-call-mediation",
-        "capability-security"
+        "agent-tool-oversight",
+        "task-tool-matching",
+        "tool-call-mediation"
       ],
       "interface": {
         "inputs": {
-          "principal": "string",
-          "agent_id": "string",
-          "session_id": "string",
-          "tool": "string",
-          "arguments": "object",
-          "scope": "object",
-          "expiry": "integer"
+          "task": "string",
+          "tool_name": "string",
+          "tool_description": "string"
         },
         "outputs": {
-          "approval_token": "string",
-          "bound_fields": "array[string]"
+          "relevance_score": "number",
+          "relevant": "boolean",
+          "method": "string"
         }
       },
       "runtime": {
         "kind": "python",
-        "entrypoint": "TBD",
+        "entrypoint": "capabilities/agent.task-tool-relevance-classifier/classifier.py:classify",
         "deterministic": true,
         "requirements": []
       },
@@ -38,10 +35,12 @@
         "studies": [
           "studies/arxiv-2610.03213"
         ],
-        "evidence_paths": []
+        "evidence_paths": [
+          "studies/arxiv-2610.03213/fixtures/synthetic_cases.json"
+        ]
       },
       "implementation": {
-        "path": "capabilities/agent.approval-token-dispatch-binding/README.md",
+        "path": "capabilities/agent.task-tool-relevance-classifier/classifier.py",
         "license": "Apache-2.0"
       },
       "adapters": [
