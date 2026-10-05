@@ -4,7 +4,6 @@ from reproforge.hashing import sha256_object
 from reproforge.validation import load_document, validate_document
 from reproforge.verdict import Verdict, aggregate_verdict
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
