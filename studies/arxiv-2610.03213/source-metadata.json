@@ -1,0 +1,20 @@
+{
+  "source_url": "https://arxiv-troller.com/?q=paper%3A+2609.39450",
+  "source_kind": "secondary_mirror",
+  "authoritative": false,
+  "captured_at": "2026-10-05",
+  "arxiv_id": "2610.03213",
+  "canonical_url": "https://arxiv.org/abs/2610.03213",
+  "title": "Toward SLM-based agentic task-tool intent matching",
+  "authors": [
+    "Chiara Troiani",
+    "Arash Salarian",
+    "Majed El Helou",
+    "Benjamin Ryder",
+    "Jean Diaconu",
+    "Hervé Muyal",
+    "Marcelo Yannuzzi"
+  ],
+  "abstract": "Tool-equipped AI agents use tool calls to access data and act on external systems. The study investigates Small Language Models as task-tool relevance classifiers that independently evaluate selected tools against an assigned task, using a multi-tool dataset spanning distinct MCP servers and specialization through prompt optimization, supervised fine-tuning, and GRPO.",
+  "notes": "Captured from a secondary mirror because direct arXiv retrieval was unavailable in the current intake session. This record is sufficient for identity matching but MUST NOT satisfy the authoritative-source gate."
+}
