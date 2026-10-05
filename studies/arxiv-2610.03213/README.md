@@ -2,46 +2,36 @@
 
 **Paper:** Toward SLM-based agentic task-tool intent matching  
 **arXiv:** https://arxiv.org/abs/2610.03213  
-**Status:** INTAKE COMPLETE / REPRODUCTION NOT RUN
+**Status:** INTAKE CORRECTED / BASELINE HARNESS ACTIVE / PAPER REPRODUCTION NOT RUN
 
-## Why this paper
+## Verified abstract-level scope
 
-This paper is a good first ReproForge study because it targets a reusable systems problem: low-latency oversight of agent tool calls. Its Approval Token idea is potentially portable across coding agents, MCP-style tools, HTTP tools, workers, and other agent runtimes.
+The public abstract describes a Small Language Model (SLM) acting as a task-tool relevance classifier. Each selected tool is evaluated independently against the assigned task and produces a relevance signal for downstream enforcement. The study also describes a novel multi-tool dataset whose required tools span distinct MCP servers, and specialization through prompt optimization, supervised fine-tuning, and GRPO.
 
-## Intake boundary
+## Correction record
 
-This directory currently contains only independently written metadata, paraphrased claims, and a reproduction plan derived from public paper metadata/abstract-level information.
+The initial intake incorrectly associated this arXiv ID with an Approval Token / laundering-defense paper because a search aggregation result mixed neighboring paper summaries. That mapping was wrong and has been removed. This study now contains only claims supported by the verified public abstract.
 
-It does **not** contain:
+## ReproForge boundary
 
-- the paper PDF or copied figures,
-- author source code,
-- datasets,
-- model weights,
-- prompts or experiment artifacts copied from the authors.
-
-The paper/license status is currently `UNKNOWN`, therefore ReproForge's fail-closed policy applies to redistribution of third-party assets.
+This repository does not redistribute the paper PDF, figures, author code, author dataset, model weights, or copied prompts. Paper and external-asset licensing remain fail-closed until individually verified.
 
 ## Candidate capability
 
-The first candidate extracted from this study is:
+`agent.task-tool-relevance-classifier`
 
-`agent.approval-token-dispatch-binding`
+The capability remains `experimental` and its paper reproduction status remains `NOT_RUN` until full-text protocol extraction provides exact models, datasets, prompts, training settings, baselines, metrics, and reported results.
 
-The candidate is intentionally registered as `experimental` with reproduction status `NOT_RUN`. It must not be treated as verified until the full study protocol is reconstructed and the claims in `manifest.yaml` are independently tested.
+## What is implemented now
 
-## Planned reproduction path
+ReproForge includes a small independent deterministic lexical baseline and synthetic multi-tool fixtures. Their purpose is to exercise the end-to-end study → capability → evidence pipeline and establish a reference floor. They are **not** presented as a reproduction of the paper's SLM, SFT, or GRPO results.
 
-1. Review the complete paper and extract the exact observable fields, threat classes, replay construction, model/runtime assumptions, and statistics.
-2. Reconstruct a provider-neutral dispatch record.
-3. Implement an independent keyed approval-token issuer/verifier.
-4. Build deterministic fixtures for delegation, temporal, scope, and argument laundering.
-5. Reproduce the positive and negative claims separately.
-6. Preserve raw fixtures, environment hashes, test outputs, and verdict evidence.
-7. Promote the capability only if its contract is supported by evidence.
+## Full reproduction gate
+
+Before promotion to `verified`, the study must obtain and audit the full paper, extract the exact experimental protocol, reproduce at least the reported inference classifier evaluation, preserve raw evidence and environment metadata, and compare independent results against the paper's declared metrics.
 
 ## Current verdict
 
-`NOT_RUN`
+`NOT_RUN` for paper reproduction.
 
-No result from the original paper is claimed as independently reproduced by ReproForge yet.
+The local deterministic baseline may pass its own synthetic fixtures without changing that scientific verdict.
