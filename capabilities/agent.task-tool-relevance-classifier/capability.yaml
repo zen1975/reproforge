@@ -1,0 +1,37 @@
+id: "agent.task-tool-relevance-classifier"
+version: "0.1.0"
+name: "Task-Tool Relevance Classifier"
+summary: "Experimental provider-neutral capability for scoring whether a candidate tool is relevant to an assigned task before execution."
+status: "experimental"
+task_classes:
+  - "agent-tool-oversight"
+  - "task-tool-matching"
+  - "tool-call-mediation"
+interface:
+  inputs:
+    task: "string"
+    tool_name: "string"
+    tool_description: "string"
+  outputs:
+    relevance_score: "number"
+    relevant: "boolean"
+    method: "string"
+runtime:
+  kind: "python"
+  entrypoint: "capabilities/agent.task-tool-relevance-classifier/classifier.py:classify"
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: "NOT_RUN"
+  studies:
+    - "studies/arxiv-2610.03213"
+  evidence_paths:
+    - "studies/arxiv-2610.03213/fixtures/synthetic_cases.json"
+implementation:
+  path: "capabilities/agent.task-tool-relevance-classifier/classifier.py"
+  license: "Apache-2.0"
+adapters:
+  - kind: "python"
+  - kind: "agent-tool"
+  - kind: "mcp"
+  - kind: "cloudflare-worker"
