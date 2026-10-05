@@ -1,0 +1,35 @@
+id: example.echo
+version: 0.1.0
+name: Example Echo Capability
+summary: Minimal example showing the ReproForge capability contract.
+status: experimental
+task_classes:
+  - demonstration
+interface:
+  inputs:
+    type: object
+    required: [text]
+    properties:
+      text:
+        type: string
+  outputs:
+    type: object
+    required: [text]
+    properties:
+      text:
+        type: string
+runtime:
+  kind: python
+  entrypoint: reproforge.examples:echo
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: NOT_RUN
+  studies: []
+  evidence_paths: []
+implementation:
+  path: capabilities/example.echo/
+  license: Apache-2.0
+adapters:
+  - kind: python
+    entrypoint: reproforge.examples:echo

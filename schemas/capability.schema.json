@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reproforge.dev/schemas/capability.schema.json",
+  "title": "ReproForge Capability",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "version", "name", "summary", "status", "interface", "runtime", "evidence", "implementation"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"},
+    "name": {"type": "string", "minLength": 1},
+    "summary": {"type": "string", "minLength": 1},
+    "status": {"enum": ["experimental", "verified", "deprecated"]},
+    "task_classes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []},
+    "interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs", "outputs"],
+      "properties": {
+        "inputs": {"type": "object"},
+        "outputs": {"type": "object"}
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "deterministic"],
+      "properties": {
+        "kind": {"enum": ["python", "container", "worker", "external"]},
+        "entrypoint": {"type": "string"},
+        "deterministic": {"type": "boolean"},
+        "requirements": {"type": "array", "items": {"type": "string"}, "default": []}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reproduction_status", "studies"],
+      "properties": {
+        "reproduction_status": {"enum": ["PASS", "PARTIAL", "FAIL", "INCONCLUSIVE", "NOT_RUN"]},
+        "studies": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "evidence_paths": {"type": "array", "items": {"type": "string"}, "uniqueItems": true, "default": []}
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "license": {"type": "string"}
+      }
+    },
+    "adapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind"],
+        "properties": {
+          "kind": {"enum": ["python", "cli", "http", "mcp", "agent-tool", "cloudflare-worker", "other"]},
+          "entrypoint": {"type": "string"}
+        }
+      },
+      "default": []
+    }
+  }
+}
