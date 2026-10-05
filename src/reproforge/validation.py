@@ -18,7 +18,7 @@ def load_document(path: str | Path) -> dict[str, Any]:
         else:
             data = json.load(handle)
     if not isinstance(data, dict):
-        raise ValueError("document root must be an object")
+        raise TypeError("document root must be an object")
     return data
 
 
