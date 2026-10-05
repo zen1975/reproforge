@@ -1,0 +1,47 @@
+{
+  "purpose": "Independent synthetic fixtures for exercising the ReproForge pipeline. Not author data and not paper reproduction evidence.",
+  "cases": [
+    {
+      "id": "calendar-positive",
+      "task": "create a calendar event for tomorrow",
+      "tool_name": "calendar_create_event",
+      "tool_description": "create calendar event with title date and time",
+      "expected_relevant": true
+    },
+    {
+      "id": "calendar-negative",
+      "task": "create a calendar event for tomorrow",
+      "tool_name": "weather_forecast",
+      "tool_description": "get weather forecast for a city and date",
+      "expected_relevant": false
+    },
+    {
+      "id": "email-positive",
+      "task": "send email to the project team",
+      "tool_name": "email_send",
+      "tool_description": "send email message to recipients",
+      "expected_relevant": true
+    },
+    {
+      "id": "email-negative",
+      "task": "send email to the project team",
+      "tool_name": "database_query",
+      "tool_description": "query database tables using structured filters",
+      "expected_relevant": false
+    },
+    {
+      "id": "file-positive",
+      "task": "read the quarterly report file",
+      "tool_name": "file_read",
+      "tool_description": "read file contents from a path",
+      "expected_relevant": true
+    },
+    {
+      "id": "file-negative",
+      "task": "read the quarterly report file",
+      "tool_name": "email_send",
+      "tool_description": "send email message to recipients",
+      "expected_relevant": false
+    }
+  ]
+}
