@@ -34,11 +34,12 @@ def test_first_ingested_study_manifest_validates():
     assert validate_document(manifest, schema) == []
     assert manifest["paper"]["arxiv_id"] == "2610.03213"
     assert manifest["paper"]["license_status"] == "UNKNOWN"
+    assert manifest["claims"][0]["id"] == "C1-task-tool-relevance"
 
 
 def test_first_paper_derived_capability_validates_and_stays_unverified():
     capability = load_capability(
-        ROOT / "capabilities" / "agent.approval-token-dispatch-binding" / "capability.yaml",
+        ROOT / "capabilities" / "agent.task-tool-relevance-classifier" / "capability.yaml",
         ROOT / "schemas" / "capability.schema.json",
     )
     assert capability["status"] == "experimental"
@@ -48,7 +49,7 @@ def test_first_paper_derived_capability_validates_and_stays_unverified():
     descriptor = next(
         item
         for item in registry["capabilities"]
-        if item["id"] == "agent.approval-token-dispatch-binding"
+        if item["id"] == "agent.task-tool-relevance-classifier"
     )
     schema = load_document(ROOT / "schemas" / "capability.schema.json")
     assert validate_document(descriptor, schema) == []
