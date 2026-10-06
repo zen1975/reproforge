@@ -36,6 +36,7 @@ jobs:
       - name: Run Gemma 3 1B Base protocol sample
         if: steps.access.outputs.available == 'true'
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/run_gemma3_1b_base.py             | tee gemma3_1b_base_result.json
       - uses: actions/upload-artifact@v4
         with:
