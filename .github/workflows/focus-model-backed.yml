@@ -1,0 +1,35 @@
+name: FOCUS model-backed analogue
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2609.37590/experiments/run_model_backed_analogue.py"
+      - "capabilities/agent.decision-preserving-context-compressor/parser.py"
+      - ".github/workflows/focus-model-backed.yml"
+
+jobs:
+  analogue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install inference dependencies
+        run: python -m pip install "transformers==5.18.0" "torch==2.14.1"
+      - name: Run lightweight stochastic draft analogue
+        run: |
+          set -o pipefail
+          python studies/arxiv-2609.37590/experiments/run_model_backed_analogue.py \
+            --model-id HuggingFaceTB/SmolLM2-135M-Instruct \
+            --rollouts 3 \
+            --temperature 0.7 \
+            --max-new-tokens 96 \
+            | tee focus_smollm_draft_analogue_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: focus-smollm-draft-analogue-v1
+          path: focus_smollm_draft_analogue_v1.result.json
+          retention-days: 7
