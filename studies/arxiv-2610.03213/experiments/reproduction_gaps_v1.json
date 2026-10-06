@@ -1,0 +1,32 @@
+{
+  "study": "arxiv-2610.03213",
+  "status": "OPEN_REPRODUCTION_GAPS",
+  "author_repository": {
+    "paper_url": "https://github.com/outshift-open/outshift-casa-slm",
+    "checked_at": "2026-10-06",
+    "github_api_status": "404_NOT_FOUND",
+    "impact": "Author code/data could not be inspected or reused."
+  },
+  "gemma_access": {
+    "official_model": "google/gemma-3-1b-it",
+    "requires_google_terms_acceptance": true,
+    "github_actions_hf_token_configured": false,
+    "workflow_run_id": 37424070232,
+    "artifact_id": 11394053527,
+    "artifact_sha256": "1218be9bd60712d190537a5e75bb68775816f76b1fb69b013a40d5b13cf2034b",
+    "status": "BLOCKED_MODEL_ACCESS"
+  },
+  "paper_details_not_published": [
+    "Exact seed prompt text used before/after GEPA",
+    "Exact fixed vLLM decoding configuration",
+    "GRPO reward scalar weights",
+    "GRPO mixture ratios across single-tool, same-MCP multi-tool, and cross-MCP multi-tool examples",
+    "Exact author dataset rows and curation records unless author repository becomes available"
+  ],
+  "resource_gap": {
+    "paper_hardware": "single H100 GPU",
+    "current_github_runner": "standard CPU GitHub-hosted runner",
+    "impact": "Exact bf16 LoRA SFT and 16-sample-per-prompt GRPO are not computationally equivalent on the current runner."
+  },
+  "policy": "Unknown values remain unknown. ReproForge does not fill unpublished coefficients, prompts, mixture ratios, or decoding settings with guesses."
+}
