@@ -1,0 +1,34 @@
+schema_version: "0.1"
+paper:
+  title: "FOCUS: Training-Free Decision-Preserving Context Compression for LLM Agents"
+  canonical_url: "https://arxiv.org/abs/2609.37590"
+  arxiv_id: "2609.37590"
+  authors:
+    - "Shantanu Dixit"
+    - "Anson Bastos"
+    - "Xuchao Zhang"
+    - "Chetan Bansal"
+    - "Saravan Rajmohan"
+  license: "CC BY 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "ReproForge implements the published Algorithm 1 structure independently from the paper description. No official implementation was identified during the 2026-10-07 source review. The initial evidence uses frozen synthetic dependency rollouts and does not claim reproduction of paper benchmark results or LLM-generated rollout quality."
+external_assets:
+  - kind: "OTHER"
+    name: "arXiv paper and appendix"
+    source: "https://arxiv.org/pdf/2609.37590"
+    license: "CC BY 4.0"
+    license_status: "VERIFIED"
+    redistributed: false
+claims:
+  - id: "C1-decision-preserving-span-selection"
+    statement: "FOCUS retains history spans according to their forward-looking dependency frequency across stochastic plan rollouts rather than past-text redundancy."
+    acceptance_criteria: "Mechanism verification requires an executable span selector that computes citation-frequency utility over N rollouts, applies threshold tau, preserves whole spans, and returns deterministic retained/dropped sets for fixed rollout inputs."
+  - id: "C2-defensive-rescue"
+    statement: "Defensive verification can rescue low-citation spans whose deletion risks repeated mistakes or loss of causal state."
+    acceptance_criteria: "Mechanism verification requires low-citation spans to remain dropped without rescue but be retained when explicitly flagged by the defensive verifier, without removing any utility-retained span."
+  - id: "C3-protocol-shape"
+    statement: "The default paper configuration uses N=3 plan rollouts, tau=0.3 utility thresholding, and benchmark-specific memory-trigger budgets, with stochastic draft planning and defensive verification."
+    acceptance_criteria: "Protocol verification requires a frozen configuration and executable protocol-equivalent harness that preserves the published N/tau/default trigger semantics while clearly separating synthetic or analogue rollouts from paper benchmark reproduction."
