@@ -1,0 +1,16 @@
+{
+  "claim_id": "C1-task-tool-relevance",
+  "run_id": "specialized-runtime-export-v1",
+  "artifact_hashes": {
+    "trained_model": "sha256:9c240428478633cc82c031016b3250a38c1f6346afaf281de275eed5ac91261b",
+    "workflow_artifact_zip": "sha256:2d203c1207352fc01ade7a5e7aa96edda800f0dabac48b2db3299a9ddcfded98"
+  },
+  "metrics": {
+    "smoke_count": 4,
+    "smoke_pass_rate": 1,
+    "checkpoint_size_bytes": 83444858,
+    "threshold": 1.2315812706947327
+  },
+  "verdict": "PARTIAL",
+  "notes": "Operational packaging evidence: train, export, local-only reload, and model-backed classify contract all succeeded. Artifact retention is one day; reproducible scripts and hashes remain in-repo. This is not paper-model reproduction."
+}
