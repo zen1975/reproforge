@@ -1,0 +1,48 @@
+{
+  "audit_id": "official-episode-summary-audit-v1",
+  "official_repository": "bennidict23/judged-useless-queried-anyway",
+  "official_commit": "2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8",
+  "github_actions_run": 37504064896,
+  "artifact_id": 11430373942,
+  "artifact_digest": "sha256:442d132dd1592532e8e8293d412c0328a04b9e8e3e1dd772a00adeff1e366f47",
+  "cells_audited": 43,
+  "mean6_exact_matches": 43,
+  "answer_summary_cells": 43,
+  "answer_summary_exact_matches": 43,
+  "all_exact_match": true,
+  "representative": {
+    "test300/qwen3-8b__unaided": {
+      "mean6": 0.4477777777777778,
+      "answer_after_5_useless": {
+        "reached": 292,
+        "answered": 1,
+        "rate": 0.003424657534246575
+      }
+    },
+    "test300/qwen3-8b__enforced_rule": {
+      "mean6": 0.4738888888888889,
+      "answer_after_5_useless": {
+        "reached": 291,
+        "answered": 276,
+        "rate": 0.9484536082474226
+      }
+    },
+    "fresh300/qwen3-8b__unaided": {
+      "mean6": 0.4216666666666667,
+      "answer_after_5_useless": {
+        "reached": 289,
+        "answered": 0,
+        "rate": 0
+      }
+    },
+    "fresh300/qwen3-8b__enforced_rule": {
+      "mean6": 0.4577777777777778,
+      "answer_after_5_useless": {
+        "reached": 289,
+        "answered": 276,
+        "rate": 0.9550173010380623
+      }
+    }
+  },
+  "boundary": "OFFICIAL_AUDIT of released CC BY 4.0 episode summaries. mean6 is checked against stored paper_values and answer-after-five against the pinned official toolkit. Original model episodes are not regenerated."
+}
