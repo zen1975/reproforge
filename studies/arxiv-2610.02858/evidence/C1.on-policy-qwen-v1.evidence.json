@@ -1,0 +1,15 @@
+{
+  "claim_id": "C1-harness-action-contrast",
+  "run_id": "had-on-policy-paired-teacher-qwen-v1",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:9a2749e89097f287b62940869f5c97ce06e760a606ee318ba1a0237909fd0405"
+  },
+  "metrics": {
+    "student_visited_states": 3,
+    "active_contrasts": 0,
+    "valid_active_contrasts": 0,
+    "contrast_rate": 0
+  },
+  "verdict": "PARTIAL",
+  "notes": "Real Qwen2.5-0.5B student state visitation plus same Qwen2.5-1.5B teacher with/without-harness scoring executed successfully. No teacher action changed because the harness information was redundant with obvious state semantics. Preserved as negative evidence defining the condition needed for useful HAD pairs."
+}
