@@ -1,0 +1,17 @@
+{
+  "experiment_id": "had-qwen0.5b-smoke-v2-comparison",
+  "held_out_examples": 4,
+  "distill_only": {
+    "accuracy_before": 0.75,
+    "accuracy_after": 0.75,
+    "mean_margin_change": -0.0026323795318603516
+  },
+  "had": {
+    "accuracy_before": 0.75,
+    "accuracy_after": 0.75,
+    "mean_margin_change": 0.003468811511993408
+  },
+  "margin_change_difference": 0.00610119104385376,
+  "performance_claim": "NONE",
+  "conclusion": "Both paths executed successfully. HAD exercised real action-only pairwise gradients, per-update rho=0.5 gradient balancing, and a masked invalid preference with zero preference gradient/lambda. Accuracy did not improve in either six-step smoke; the HAD margin moved slightly upward while distillation-only moved slightly downward, but this tiny synthetic result is not treated as efficacy evidence."
+}
