@@ -1,0 +1,23 @@
+{
+  "benchmark_id": "serializer-late-failure-stress-v1",
+  "case_count": 10,
+  "tiered_waterfall": {
+    "budget_compliance_rate": 1.0,
+    "mean_error_step_allocation": 700.0,
+    "mean_warning_step_allocation": 700.0,
+    "error_full_retention_rate": 1.0,
+    "warning_full_retention_rate": 1.0
+  },
+  "naive_head_truncation": {
+    "budget_compliance_rate": 1.0,
+    "mean_error_step_allocation": 210.0,
+    "mean_warning_step_allocation": 280.0,
+    "error_full_retention_rate": 0.3,
+    "warning_full_retention_rate": 0.4
+  },
+  "derived": {
+    "error_allocation_multiplier_vs_head": 3.3333333333333335,
+    "warning_allocation_multiplier_vs_head": 2.5
+  },
+  "interpretation": "On this deliberately late-failure synthetic stress benchmark, tiered allocation preserves the full configured error/warning outputs while naive head truncation increasingly drops later critical steps. This validates the allocation kernel behavior only; it does not reproduce LiteTrajEval localization, judge quality, cost, or runtime claims."
+}
