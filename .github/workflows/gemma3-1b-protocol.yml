@@ -1,0 +1,47 @@
+name: Gemma 3 1B protocol reproduction
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.03213/experiments/generate_protocol_equivalent_mcp.py"
+      - "studies/arxiv-2610.03213/experiments/run_gemma3_1b_base.py"
+      - ".github/workflows/gemma3-1b-protocol.yml"
+
+jobs:
+  gemma-base:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate protocol-equivalent data
+        run: python studies/arxiv-2610.03213/experiments/generate_protocol_equivalent_mcp.py
+      - name: Check official Gemma access
+        id: access
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo '{"status":"BLOCKED_MODEL_ACCESS","reason":"HF_TOKEN secret is not configured; official Gemma requires accepted Google usage terms."}' | tee gemma_access.json
+          else
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install inference dependencies
+        if: steps.access.outputs.available == 'true'
+        run: python -m pip install "transformers==5.18.0" "torch==2.14.1" "accelerate>=1,<2"
+      - name: Run Gemma 3 1B Base protocol sample
+        if: steps.access.outputs.available == 'true'
+        run: |
+          python studies/arxiv-2610.03213/experiments/run_gemma3_1b_base.py             | tee gemma3_1b_base_result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gemma3-1b-protocol-result
+          path: |
+            gemma_access.json
+            gemma3_1b_base_result.json
+          if-no-files-found: ignore
+          retention-days: 7
