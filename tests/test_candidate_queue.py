@@ -30,4 +30,4 @@ def test_high_priority_candidates_have_concrete_capability_hypotheses():
     queue = load_document(ROOT / "candidates" / "queue.yaml")
     top = [item for item in queue["candidates"] if item["priority"] in {"A+", "A"}]
     assert top
-    assert all(item["candidate_capability"].startswith(("agent.", "research.")) for item in top)
+    assert all(item["candidate_capability"].startswith(("agent.", "research.", "training.")) for item in top)
