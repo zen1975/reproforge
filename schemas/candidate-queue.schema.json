@@ -4,16 +4,31 @@
   "title": "ReproForge Candidate Queue",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "screening_window", "candidates"],
+  "required": [
+    "schema_version",
+    "screening_window",
+    "candidates"
+  ],
   "properties": {
-    "schema_version": {"type": "string"},
+    "schema_version": {
+      "type": "string"
+    },
     "screening_window": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["from", "to"],
+      "required": [
+        "from",
+        "to"
+      ],
       "properties": {
-        "from": {"type": "string", "format": "date"},
-        "to": {"type": "string", "format": "date"}
+        "from": {
+          "type": "string",
+          "format": "date"
+        },
+        "to": {
+          "type": "string",
+          "format": "date"
+        }
       }
     },
     "candidates": {
@@ -22,20 +37,61 @@
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "arxiv_id", "title", "submitted_on", "source_url",
-          "source_verified", "priority", "candidate_capability",
-          "why_reusable", "free_light_fit", "next_gate", "status"
+          "arxiv_id",
+          "title",
+          "submitted_on",
+          "source_url",
+          "source_verified",
+          "priority",
+          "candidate_capability",
+          "why_reusable",
+          "free_light_fit",
+          "next_gate",
+          "status"
         ],
         "properties": {
-          "arxiv_id": {"type": "string", "pattern": "^[0-9]{4}\.[0-9]{5}$"},
-          "title": {"type": "string", "minLength": 1},
-          "submitted_on": {"type": "string", "format": "date"},
-          "source_url": {"type": "string", "format": "uri"},
-          "source_verified": {"type": "boolean"},
-          "priority": {"enum": ["A+", "A", "A-", "B"]},
-          "candidate_capability": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
-          "why_reusable": {"type": "string", "minLength": 1},
-          "free_light_fit": {"enum": ["high", "medium", "low"]},
+          "arxiv_id": {
+            "type": "string",
+            "pattern": "^[0-9]{4}\\.[0-9]{5}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "submitted_on": {
+            "type": "string",
+            "format": "date"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "source_verified": {
+            "type": "boolean"
+          },
+          "priority": {
+            "enum": [
+              "A+",
+              "A",
+              "A-",
+              "B"
+            ]
+          },
+          "candidate_capability": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "why_reusable": {
+            "type": "string",
+            "minLength": 1
+          },
+          "free_light_fit": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
           "next_gate": {
             "enum": [
               "PDF_PROTOCOL_REVIEW",
@@ -53,7 +109,9 @@
               "REJECTED"
             ]
           },
-          "notes": {"type": "string"}
+          "notes": {
+            "type": "string"
+          }
         }
       }
     }
