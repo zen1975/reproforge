@@ -2,6 +2,11 @@ name: Export specialized task-tool runtime
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - "capabilities/agent.task-tool-relevance-classifier/semantic_classifier.py"
+      - "studies/arxiv-2610.03213/experiments/export_specialized_runtime.py"
+      - ".github/workflows/task-tool-export-runtime.yml"
 
 jobs:
   export-runtime:
