@@ -79,10 +79,13 @@ def _make_pool(pool_name, servers, groups_per_n=80):
                 t=_tool(s,wrong)
                 rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"wrong","task":task,"label":0})
 
-            # Null candidates: servers outside represented set, but inside pool.
+            # Null candidates: tools come only from servers outside R(q), but remain
+            # inside the same pool. Null tools must be distinct; their servers need
+            # not be distinct. This is necessary for N=3 in a four-server held-out
+            # pool, where only one server may remain outside R(q).
             outside=[s for s in servers if s not in chosen]
-            for s in rng.sample(outside,n):
-                t=_tool(s,rng.randrange(3))
+            null_catalog=[_tool(s,idx) for s in outside for idx in range(3)]
+            for t in rng.sample(null_catalog,n):
                 rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"null","task":task,"label":0})
     return rows
 
