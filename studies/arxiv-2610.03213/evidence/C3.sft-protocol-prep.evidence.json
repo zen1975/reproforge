@@ -1,0 +1,17 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "independent-sft-protocol-v1",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:dd0ec779fda3e2381d394d858b92c4fe7558ee62c7d770d55a8846e8da0b2895"
+  },
+  "metrics": {
+    "train_count": 4404,
+    "validation_count": 1136,
+    "train_positive": 2202,
+    "train_negative": 2202,
+    "validation_positive": 568,
+    "validation_negative": 568
+  },
+  "verdict": "PARTIAL",
+  "notes": "Matches the paper's published SFT train/validation counts, binary class balance, and structured target shape using independent synthetic data. It does not reproduce the ASTRA dataset or unpublished prompt text."
+}
