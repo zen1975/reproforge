@@ -1,0 +1,23 @@
+{
+  "run_id": "lora-sft-harness-smoke-v1",
+  "github_actions_run": 37424465884,
+  "github_actions_job": 112140871263,
+  "artifact_id": 11394336194,
+  "artifact_zip_sha256": "25f10307952b1eae695a0137a240cf552e05b1047896e8a43b8a8f84060e61ae",
+  "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "model_license": "Apache-2.0",
+  "examples": 16,
+  "optimizer_steps": 2,
+  "lora_r": 32,
+  "lora_alpha": 64,
+  "learning_rate_peak": 0.00019,
+  "warmup_fraction": 0.1,
+  "first_loss": 3.0556252002716064,
+  "last_loss": 2.4013161659240723,
+  "trainable_parameters": 9768960,
+  "total_parameters": 144283968,
+  "trainable_fraction": 0.06770648281588706,
+  "response_only_prompt_masking": true,
+  "status": "HARNESS_EXECUTED",
+  "boundary": "Training-path smoke only. Surrogate 135M model, 16 examples, 2 steps, float32 CPU. Not Gemma 3 and not paper SFT reproduction."
+}
