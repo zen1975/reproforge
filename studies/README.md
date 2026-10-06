@@ -6,6 +6,7 @@ Recommended layout:
 
 ```text
 studies/<study-id>/
+├── AGENTS.md
 ├── manifest.yaml
 ├── status.yaml
 ├── HANDOFF.md
@@ -15,11 +16,12 @@ studies/<study-id>/
 └── report.md
 ```
 
-`status.yaml` is the machine-readable current state. `HANDOFF.md` is the human continuation contract.
+`AGENTS.md` is the local-agent operating guide for lightweight, local/heavy, and real-implementation work. `status.yaml` is the machine-readable current state. `HANDOFF.md` is the human continuation contract.
 
 Before changing a study:
 
 ```bash
+cat studies/<study-id>/AGENTS.md
 reproforge study-status studies/<study-id>
 ```
 
