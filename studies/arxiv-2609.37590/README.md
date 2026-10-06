@@ -46,6 +46,14 @@ It does **not** claim to reproduce:
 
 The failure-mode case is intentionally negative evidence: generalized future plans may cite a procedure while failing to cite individual entity spans, causing those entity-specific facts to be pruned.
 
+## Model-backed negative evidence
+
+A first real-model analogue used `HuggingFaceTB/SmolLM2-135M-Instruct` with three stochastic rollouts at temperature 0.7. The tiny model did not emit the required `Depends on: [...]` citation format in any rollout (0/3). Instead it continued a trajectory-like history.
+
+This exposed an important runtime boundary: a dependency-frequency compressor is only as reliable as the draft model's structured dependency output. ReproForge therefore changed the parser to **fail closed** when no dependency citation lines are present rather than treating an empty dependency set as valid.
+
+The failed tiny-model run is preserved as negative evidence and is not counted as protocol success.
+
 ## Next gate
 
 Add a strict draft-output parser and a provider-neutral rollout adapter contract, then execute a lightweight model-backed analogue without tuning on the frozen synthetic cases. Only after that should the study be considered for `PROTOCOL_VERIFIED` or `HEAVY_COMPUTE_READY`.
