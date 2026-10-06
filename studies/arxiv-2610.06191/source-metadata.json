@@ -1,0 +1,20 @@
+{
+  "source_url": "https://arxiv.org/abs/2610.06191",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-07",
+  "arxiv_id": "2610.06191",
+  "canonical_url": "https://arxiv.org/abs/2610.06191",
+  "title": "Judged Useless, Queried Anyway: Tool-Using Agents Rarely Turn Their Own Evidence Judgments into Stopping Decisions",
+  "authors": [
+    "Chubin Zhang",
+    "Zhenglin Wan",
+    "Xingrui Yu",
+    "Jingxuan Wu",
+    "Yaxin Zhou",
+    "Ivor Tsang",
+    "Bo An"
+  ],
+  "abstract": "The paper separates how tool-using agents judge evidence from what they do with those judgments under controlled source failures. Across seven tested agents, failing-source results are usually judged useless while stopping often does not follow those judgments. A harness-enforced rule that forces answering after five consecutive useless judgments makes stopping evidence-responsive and improves failing-source behavior.",
+  "notes": "Authoritative arXiv page and 37-page PDF inspected on 2026-10-07. Paper license is CC BY 4.0. Official GitHub repository is public and MIT-licensed; released episode data is documented as CC BY 4.0. Initial ReproForge mechanism work does not redistribute author artifacts."
+}
