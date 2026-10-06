@@ -23,6 +23,7 @@ jobs:
         run: python studies/arxiv-2610.03213/experiments/generate_task_tool_sft_dataset.py
       - name: Train export reload and smoke test
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/export_specialized_runtime.py             | tee specialized_runtime_export_result.json
       - uses: actions/upload-artifact@v4
         with:
