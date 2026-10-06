@@ -1,0 +1,21 @@
+{
+  "experiment_id": "had-on-policy-paired-teacher-qwen-v1",
+  "seed": 261002858,
+  "student_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "teacher_model": "Qwen/Qwen2.5-1.5B-Instruct",
+  "environment": "reproforge-had-toy-interactive-v1",
+  "student_visited_states": 3,
+  "active_contrasts": 0,
+  "valid_active_contrasts": 0,
+  "contrast_rate": 0,
+  "valid_active_rate": 0,
+  "uses_task_reward": false,
+  "uses_success_label_for_pair_construction": false,
+  "uses_future_information_for_validity": false,
+  "workflow_run": 37517542252,
+  "artifact_id": 11437269583,
+  "artifact_digest": "sha256:9a2749e89097f287b62940869f5c97ce06e760a606ee318ba1a0237909fd0405",
+  "finding": "The real 0.5B student visited three states and the same 1.5B teacher was evaluated with and without harness records at each state. The chosen teacher action did not change on any state, so HAD generated no active preference signal.",
+  "implication": "HAD data generation must deliberately include states where harness-only information can alter the teacher decision; merely exposing redundant harness records is insufficient.",
+  "boundary": "Negative signal-generation evidence on a synthetic environment; not a paper benchmark result."
+}
