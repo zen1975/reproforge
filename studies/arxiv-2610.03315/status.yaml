@@ -12,4 +12,4 @@ frozen_evaluations:
   - "serializer-late-failure-stress-v1"
 entrypoints:
   - "studies/arxiv-2610.03315/experiments/run_serializer_stress.py"
-updated_at: 2026-10-06
+updated_at: "2026-10-06"
