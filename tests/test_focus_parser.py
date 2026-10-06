@@ -43,3 +43,16 @@ def test_parser_fails_when_model_omits_dependency_format():
         assert "no dependency citation" in str(exc)
     else:
         raise AssertionError("missing dependency citations must fail closed")
+
+
+def test_parser_rejects_hallucinated_span_ids():
+    mod = _load()
+    try:
+        mod.parse_plan(
+            "Step: do x | Depends on: [s_1, s_9]",
+            allowed_ids={"s_1", "s_2"},
+        )
+    except ValueError as exc:
+        assert "unknown span ids" in str(exc)
+    else:
+        raise AssertionError("unknown span ids must fail closed")
