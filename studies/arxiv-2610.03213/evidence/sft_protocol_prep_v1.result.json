@@ -1,0 +1,22 @@
+{
+  "run_id": "independent-sft-protocol-v1",
+  "github_actions_run": 37424334958,
+  "github_actions_job": 112140458782,
+  "artifact_id": 11394890093,
+  "artifact_zip_sha256": "dd0ec779fda3e2381d394d858b92c4fe7558ee62c7d770d55a8846e8da0b2895",
+  "artifact_size_bytes": 107148,
+  "artifact_retention_days": 1,
+  "train_count": 4404,
+  "validation_count": 1136,
+  "train_positive": 2202,
+  "train_negative": 2202,
+  "validation_positive": 568,
+  "validation_negative": 568,
+  "class_balanced": true,
+  "response_schema": {
+    "reasoning": "string",
+    "appropriate": "boolean"
+  },
+  "status": "PREPARED",
+  "boundary": "Independent synthetic protocol-equivalent data. Does not reproduce ASTRA rows or the unpublished seed/GEPA prompt."
+}
