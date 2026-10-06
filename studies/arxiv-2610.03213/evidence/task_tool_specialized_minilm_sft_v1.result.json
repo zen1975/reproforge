@@ -1,0 +1,109 @@
+{
+  "experiment_id": "task-tool-specialized-minilm-sft-v1",
+  "dataset_id": "task-tool-sft-family-split-v1",
+  "model_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "model_revision": "ce0834f22110de6d9222af7a7a03628121708969",
+  "model_license": "Apache-2.0",
+  "seed": 20261006,
+  "epochs": 3,
+  "batch_size": 16,
+  "learning_rate": 0.00002,
+  "max_length": 96,
+  "counts": {
+    "train": 288,
+    "dev": 72,
+    "test": 72
+  },
+  "families": {
+    "train": [
+      "calendar",
+      "email",
+      "files",
+      "crm",
+      "billing",
+      "slack",
+      "github",
+      "travel"
+    ],
+    "dev": [
+      "weather",
+      "storage"
+    ],
+    "test": [
+      "translate",
+      "database"
+    ]
+  },
+  "initial_untrained_test_at_threshold_0": {
+    "accuracy": 0.8055555555555556,
+    "precision": 0.7272727272727273,
+    "recall": 0.6666666666666666,
+    "f1": 0.6956521739130435,
+    "false_positive_rate": 0.125,
+    "false_negative_rate": 0.3333333333333333,
+    "tp": 16,
+    "tn": 42,
+    "fp": 6,
+    "fn": 8
+  },
+  "training": {
+    "steps": 54,
+    "first_loss": 0.5957133769989014,
+    "last_loss": 0.17501752078533173,
+    "mean_loss": 0.3623301509974731
+  },
+  "calibrated_threshold": 1.2315812706947327,
+  "dev_metrics": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "false_positive_rate": 0,
+    "false_negative_rate": 0,
+    "tp": 24,
+    "tn": 48,
+    "fp": 0,
+    "fn": 0
+  },
+  "test_metrics": {
+    "accuracy": 0.9166666666666666,
+    "precision": 1,
+    "recall": 0.75,
+    "f1": 0.8571428571428571,
+    "false_positive_rate": 0,
+    "false_negative_rate": 0.25,
+    "tp": 18,
+    "tn": 48,
+    "fp": 0,
+    "fn": 6
+  },
+  "improvement_vs_untrained_test": {
+    "accuracy_percentage_points": 11.1111111111111,
+    "f1_percentage_points": 16.14906832298136
+  },
+  "paper_operational_target": {
+    "accuracy": 0.95,
+    "f1": 0.95
+  },
+  "test_meets_paper_operational_target": false,
+  "trained_model_sha256": "9c240428478633cc82c031016b3250a38c1f6346afaf281de275eed5ac91261b",
+  "github_actions": {
+    "run_id": 37416316621,
+    "job_id": 112115600842,
+    "artifact_id": 11391296321,
+    "artifact_zip_sha256": "3da543fb5a3c3914852cb398c8f0c21ac4504603e9e5d6498569a3f81b8b40c6"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "transformers": "5.18.0",
+    "torch": "2.14.1"
+  },
+  "conclusion": "Task-specific supervised specialization materially improved held-out family performance and eliminated false positives in this synthetic test, but it did not meet the paper's 95% accuracy/F1 operational target.",
+  "limitations": [
+    "Synthetic data is independently generated and is not the paper dataset.",
+    "The family-disjoint split contains only 12 synthetic tool families.",
+    "This experiment fine-tunes MiniLM, not Gemma 3.",
+    "No GEPA or GRPO stage is reproduced.",
+    "Test results are frozen after this run and should not be used to tune this experiment."
+  ]
+}
