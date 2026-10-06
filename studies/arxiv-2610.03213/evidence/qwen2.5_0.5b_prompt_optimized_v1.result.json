@@ -1,0 +1,62 @@
+{
+  "experiment_id": "qwen2.5-0.5b-prompt-optimized-v1",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "c89bee90d9f811437d9735454613c35b4a3c4dc8",
+  "model_license": "Apache-2.0",
+  "protocol_dataset": "protocol-equivalent-mcp-v1",
+  "prompt_candidates": [
+    "strict_boolean",
+    "security_gate",
+    "fewshot_gate"
+  ],
+  "dev_cases": 48,
+  "dev_results": {
+    "strict_boolean": {
+      "accuracy": 0.8125,
+      "f1": 0.6666666666666666,
+      "parse_failures": 0
+    },
+    "security_gate": {
+      "accuracy": 0.75,
+      "f1": 0.7272727272727273,
+      "parse_failures": 0
+    },
+    "fewshot_gate": {
+      "accuracy": 0.8541666666666666,
+      "f1": 0.8,
+      "parse_failures": 0
+    }
+  },
+  "selected_prompt": "fewshot_gate",
+  "test_cases": 160,
+  "test_metrics": {
+    "attempted": 160,
+    "valid": 160,
+    "parse_failures": 0,
+    "accuracy": 0.8,
+    "precision": 0.6375,
+    "recall": 0.9444444444444444,
+    "f1": 0.7611940298507462,
+    "tp": 51,
+    "tn": 77,
+    "fp": 29,
+    "fn": 3
+  },
+  "base_reference": {
+    "accuracy": 0.3125,
+    "f1": 0.47619047619047616,
+    "parse_failures": 64
+  },
+  "paper_operational_target": {
+    "accuracy": 0.95,
+    "f1": 0.95
+  },
+  "meets_target": false,
+  "github_actions": {
+    "run_id": 37418686548,
+    "job_id": 112122954964,
+    "artifact_id": 11392425900,
+    "artifact_zip_sha256": "eae17ac10ce377ee36ac1efc3d3ec795cd5f4eaea6458eb85328e303b61c2ded"
+  },
+  "interpretation": "Fixed-candidate prompt optimization using only train-pool dev rows eliminated parse failures and substantially improved held-out-server performance. This is a prompt-optimization analogue, not GEPA."
+}
