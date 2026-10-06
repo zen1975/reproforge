@@ -57,7 +57,8 @@ def _task(selected, rng):
 
 
 def _make_pool(pool_name, servers, groups_per_n=80):
-    rng=random.Random(SEED + (0 if pool_name=="train" else 1))
+    offsets={"train":0,"validation":1,"test":2}
+    rng=random.Random(SEED + offsets[pool_name])
     rows=[]
     gid=0
     for n in (2,3):
@@ -71,13 +72,15 @@ def _make_pool(pool_name, servers, groups_per_n=80):
             # Correct candidates.
             for s,idx in selected:
                 t=_tool(s,idx)
-                rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"correct","task":task,"label":1})
+                rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"correct","task":task,"label":1,
+                    "target_response":{"reasoning":"The candidate tool is directly required by the task.","appropriate":True}})
 
             # Wrong candidates: same represented server, different tool.
             for s,idx in selected:
                 wrong=rng.choice([x for x in range(3) if x!=idx])
                 t=_tool(s,wrong)
-                rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"wrong","task":task,"label":0})
+                rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"wrong","task":task,"label":0,
+                    "target_response":{"reasoning":"The candidate tool is not required by the task.","appropriate":False}})
 
             # Null candidates: tools come only from servers outside R(q), but remain
             # inside the same pool. Null tools must be distinct; their servers need
@@ -86,13 +89,15 @@ def _make_pool(pool_name, servers, groups_per_n=80):
             outside=[s for s in servers if s not in chosen]
             null_catalog=[_tool(s,idx) for s in outside for idx in range(3)]
             for t in rng.sample(null_catalog,n):
-                rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"null","task":task,"label":0})
+                rows.append({**t,"group_id":group,"pool":pool_name,"set_type":"null","task":task,"label":0,
+                    "target_response":{"reasoning":"The candidate tool is not required by the task.","appropriate":False}})
     return rows
 
 
 def generate():
-    train=_make_pool("train",TRAIN_SERVERS)
-    test=_make_pool("test",TEST_SERVERS)
+    train=_make_pool("train",TRAIN_SERVERS,groups_per_n=80)
+    validation=_make_pool("validation",TRAIN_SERVERS,groups_per_n=20)
+    test=_make_pool("test",TEST_SERVERS,groups_per_n=80)
     return {
         "dataset_id":"protocol-equivalent-mcp-v1",
         "seed":SEED,
@@ -106,7 +111,7 @@ def generate():
         },
         "train_servers":TRAIN_SERVERS,
         "test_servers":TEST_SERVERS,
-        "rows":train+test,
+        "rows":train+validation+test,
     }
 
 
@@ -117,5 +122,6 @@ if __name__=="__main__":
         "path":str(OUT),
         "rows":len(data["rows"]),
         "train_rows":sum(r["pool"]=="train" for r in data["rows"]),
+        "validation_rows":sum(r["pool"]=="validation" for r in data["rows"]),
         "test_rows":sum(r["pool"]=="test" for r in data["rows"]),
     },indent=2))
