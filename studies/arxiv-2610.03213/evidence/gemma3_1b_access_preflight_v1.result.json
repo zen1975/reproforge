@@ -1,0 +1,13 @@
+{
+  "run_id": "gemma3-1b-access-preflight-v1",
+  "github_actions_run": 37424070232,
+  "github_actions_job": 112139639025,
+  "artifact_id": 11394053527,
+  "artifact_sha256": "1218be9bd60712d190537a5e75bb68775816f76b1fb69b013a40d5b13cf2034b",
+  "requested_model": "google/gemma-3-1b-it",
+  "status": "BLOCKED_MODEL_ACCESS",
+  "reason": "HF_TOKEN secret is not configured. Official Gemma files require acceptance of Google's usage terms and authenticated access.",
+  "implementation_status": "Gemma base evaluation workflow is implemented and reached the access gate successfully.",
+  "paper_hardware": "single H100 GPU",
+  "current_runner": "standard CPU GitHub-hosted runner"
+}
