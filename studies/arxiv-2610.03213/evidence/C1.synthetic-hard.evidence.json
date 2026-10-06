@@ -1,0 +1,18 @@
+{
+  "claim_id": "C1-task-tool-relevance",
+  "run_id": "task-tool-synthetic-hard-v1",
+  "artifact_hashes": {},
+  "metrics": {
+    "case_count": 32,
+    "accuracy": 0.5,
+    "precision": 0.4782608695652174,
+    "recall": 0.7333333333333333,
+    "f1": 0.5789473684210527,
+    "false_positive_rate": 0.7058823529411765,
+    "false_negative_rate": 0.26666666666666666,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "Independent mechanism evidence only. The lexical reference baseline was executed on a hard synthetic candidate-level task-tool relevance benchmark and did not meet the paper's 95% accuracy/F1 operational target. This does not reproduce the paper's Gemma 3, GEPA, SFT, or GRPO results."
+}
