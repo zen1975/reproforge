@@ -1,8 +1,8 @@
 {
-  "source_url": "https://arxiv-troller.com/?q=paper%3A+2609.39450",
-  "source_kind": "secondary_mirror",
-  "authoritative": false,
-  "captured_at": "2026-10-05",
+  "source_url": "https://arxiv.org/abs/2610.03213",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-06",
   "arxiv_id": "2610.03213",
   "canonical_url": "https://arxiv.org/abs/2610.03213",
   "title": "Toward SLM-based agentic task-tool intent matching",
@@ -15,6 +15,6 @@
     "Hervé Muyal",
     "Marcelo Yannuzzi"
   ],
-  "abstract": "Tool-equipped AI agents use tool calls to access data and act on external systems. The study investigates Small Language Models as task-tool relevance classifiers that independently evaluate selected tools against an assigned task, using a multi-tool dataset spanning distinct MCP servers and specialization through prompt optimization, supervised fine-tuning, and GRPO.",
-  "notes": "Captured from a secondary mirror because direct arXiv retrieval was unavailable in the current intake session. This record is sufficient for identity matching but MUST NOT satisfy the authoritative-source gate."
+  "abstract": "Tool-equipped AI agents use tool calls to access data and act on external systems. The study investigates Small Language Models as task-tool relevance classifiers that independently evaluate selected tools against an assigned task and returns a relevance signal for downstream enforcement. It introduces a multi-tool dataset spanning distinct MCP servers and applies prompt optimization, supervised fine-tuning, and GRPO to specialize SLMs.",
+  "notes": "Authoritative arXiv metadata and full PDF were inspected on 2026-10-06. The paper reports 352 tools across 12 MCP servers, server-disjoint validation/test pools, Gemma 3 1B and 4B, sequential Base→GEPA→SFT→GRPO optimization, and a 95% accuracy/F1 operational target. The paper links author code/data, but that repository was not available through the current GitHub access path at verification time, so no author artifacts are copied or relied upon."
 }
