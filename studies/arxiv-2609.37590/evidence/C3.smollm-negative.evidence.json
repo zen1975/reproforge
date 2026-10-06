@@ -1,0 +1,15 @@
+{
+  "claim_id": "C3-protocol-shape",
+  "run_id": "focus-smollm-draft-analogue-v1-negative",
+  "artifact_hashes": {
+    "workflow_run": "37507584968",
+    "head_sha": "a61118f29bb0b5a24c74f557116e4b0f58adb2fd"
+  },
+  "metrics": {
+    "rollouts": 3,
+    "protocol_dependency_citation_successes": 0,
+    "protocol_dependency_citation_success_rate": 0
+  },
+  "verdict": "PARTIAL",
+  "notes": "Negative evidence: SmolLM2-135M-Instruct did not emit any required dependency citation lines on the raw-prompt analogue. The strict parser correctly rejects all 3 rollouts. This demonstrates a model-quality/format-following boundary, not a failure of the deterministic citation-frequency selector."
+}
