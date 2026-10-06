@@ -26,6 +26,7 @@ jobs:
           set -o pipefail
           python studies/arxiv-2609.37590/experiments/run_model_backed_analogue.py \
             --model-id Qwen/Qwen2.5-0.5B-Instruct \
+            --experiment-id focus-qwen0.5b-draft-analogue-v1 \
             --rollouts 3 \
             --temperature 0.7 \
             --max-new-tokens 256 \
