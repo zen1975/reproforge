@@ -15,8 +15,8 @@ paper:
   license_status: "VERIFIED"
 reproduction:
   implementation_type: "DERIVED"
-  official_code_used: false
-  notes: "The paper PDF and official MIT-licensed repository were inspected before implementation, so this study does not claim clean-room independence. The initial ReproForge mechanism implementation is written separately and does not copy author source code. Official released episodes/code are reserved for a later explicitly labeled audit run."
+  official_code_used: true
+  notes: "The paper PDF and official MIT-licensed repository were inspected before implementation, so this study does not claim clean-room independence. The ReproForge mechanism/metric implementations are separate and do not copy author source code. Later explicitly labeled OFFICIAL_AUDIT runs use pinned released episodes and, for answer-after-five equivalence only, invoke the pinned official toolkit as a reference comparator."
 external_assets:
   - kind: "CODE"
     name: "Official paper repository"
