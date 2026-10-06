@@ -1,0 +1,16 @@
+{
+  "claim_id": "C3-time-matched-contrast",
+  "run_id": "official-episodes-delta-audit-v2-all-released",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:5450d3a598d0244f12550be188e8424af47f7b51cb46ba23328ff98b30c7ae81",
+    "official_repository_commit": "2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8"
+  },
+  "metrics": {
+    "cells_audited": 43,
+    "exact_delta_matches": 43,
+    "exact_ci_matches": 43,
+    "exact_match_rate": 1
+  },
+  "verdict": "PASS",
+  "notes": "Pinned official-data audit: all 43 released cells with available episodes exactly match the paper_values Δ and 95% bootstrap interval using ReproForge's separate implementation. This is an OFFICIAL_AUDIT of released trajectories, not independent regeneration of model episodes."
+}
