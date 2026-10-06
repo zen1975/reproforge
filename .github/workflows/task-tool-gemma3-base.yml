@@ -26,6 +26,7 @@ jobs:
         run: python studies/arxiv-2610.03213/experiments/generate_protocol_equivalent_mcp.py
       - name: Run Gemma 3 1B baseline
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/run_gemma3_protocol_baseline.py             | tee gemma3_protocol_base_result.json
       - uses: actions/upload-artifact@v4
         with:
