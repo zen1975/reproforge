@@ -11,13 +11,25 @@ paper:
     - "Jean Diaconu"
     - "Hervé Muyal"
     - "Marcelo Yannuzzi"
-  license: null
-  license_status: "UNKNOWN"
+  license: "CC BY-NC-ND 4.0"
+  license_status: "VERIFIED"
 reproduction:
   implementation_type: "INDEPENDENT"
   official_code_used: false
-  notes: "Authoritative arXiv metadata and full PDF inspected. ReproForge independently implements a deterministic lexical reference classifier and evaluates it on an independent hard synthetic candidate-level benchmark. This provides PARTIAL mechanism evidence only. The paper's Gemma 3 Base/GEPA/SFT/GRPO experiments and held-out server-disjoint benchmark remain unreproduced."
-external_assets: []
+  notes: "Authoritative arXiv metadata, full paper text, and paper license inspected. ReproForge independently implements multiple task-tool relevance baselines, a protocol-equivalent server-disjoint dataset, prompt optimization analogue, supervised specialization experiments, blind tests, and a model-backed runtime path. This remains PARTIAL because the paper's exact Gemma 3, GEPA, SFT, GRPO, author dataset, and author-code benchmark results are not yet reproduced."
+external_assets:
+  - kind: "DATASET"
+    name: "Author task-tool dataset"
+    source: "Paper links https://github.com/outshift-open/outshift-casa-slm"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+  - kind: "CODE"
+    name: "Author code"
+    source: "Paper links https://github.com/outshift-open/outshift-casa-slm"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
 claims:
   - id: "C1-task-tool-relevance"
     statement: "The study investigates a Small Language Model as a per-call classifier that evaluates a selected tool independently against an assigned task and emits a relevance signal for downstream enforcement."
