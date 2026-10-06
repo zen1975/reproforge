@@ -12,9 +12,9 @@ candidates:
     candidate_capability: "agent.decision-preserving-context-compressor"
     why_reusable: "Training-free, architecture-agnostic context reduction aimed at preserving future agent decisions; broadly reusable across long-horizon agent systems."
     free_light_fit: "high"
-    next_gate: "LICENSE_ASSET_REVIEW"
-    status: "PDF_REVIEWED"
-    notes: "Full PDF reviewed. Algorithm 1 uses span-level history, stochastic draft-model plan rollouts, dependency citation frequency, thresholded keep-set selection, and defensive verification. Default rollout count N=3 is reported. Retained as the next high-priority study candidate."
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full PDF and CC BY 4.0 license reviewed; promoted to studies/arxiv-2609.37590. Independent deterministic FOCUS core implemented with published N=3/tau=0.3 semantics, defensive rescue, and frozen synthetic failure-mode evidence."
 
   - arxiv_id: "2610.06191"
     title: "Judged Useless, Queried Anyway: Tool-Using Agents Rarely Turn Their Own Evidence Judgments into Stopping Decisions"
