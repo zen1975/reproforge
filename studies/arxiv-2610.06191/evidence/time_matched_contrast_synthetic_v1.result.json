@@ -1,0 +1,9 @@
+{
+  "experiment_id": "time-matched-contrast-synthetic-v1",
+  "evidence_integrating_delta": 1,
+  "clock_driven_delta": 0,
+  "positive_expected": true,
+  "zero_expected": true,
+  "all_pass": true,
+  "boundary": "Synthetic metric semantics test only; no paper episodes or model outputs are used."
+}
