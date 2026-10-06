@@ -15,7 +15,7 @@ paper:
 reproduction:
   implementation_type: "INDEPENDENT"
   official_code_used: false
-  notes: "Authoritative arXiv metadata and full PDF inspected. ReproForge implements only an independent deterministic budget-allocation kernel at intake. Full rule generation, trajectory preprocessing, MMR evidence selection, rubric-guided LLM judging, and benchmark reproduction remain NOT_RUN."
+  notes: "Authoritative arXiv metadata and full PDF inspected. ReproForge independently implements and stress-tests the deterministic tier-based budget allocation kernel. This is PARTIAL evidence for the fixed-budget serializer mechanism only. Full rule generation, trajectory normalization, MMR evidence selection, rubric-guided LLM judging, and public benchmark reproduction remain NOT_RUN."
 external_assets:
   - kind: "DATASET"
     name: "Magentic-One-style failed trajectories derived from AgentRx benchmark"
