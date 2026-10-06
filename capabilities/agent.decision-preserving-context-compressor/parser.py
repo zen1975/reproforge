@@ -22,8 +22,11 @@ def _ids(body: str) -> set[str]:
 
 
 def parse_plan(text: str) -> tuple[set[str], set[str]]:
+    dependency_matches = list(_DEPENDS.finditer(text))
+    if not dependency_matches:
+        raise ValueError("no dependency citation lines found")
     dependencies: set[str] = set()
-    for match in _DEPENDS.finditer(text):
+    for match in dependency_matches:
         dependencies |= _ids(match.group(1))
 
     rescued: set[str] = set()
