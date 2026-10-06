@@ -1,7 +1,9 @@
 {
   "claim_id": "C3-action-only-preference-loss",
   "run_id": "had-synthetic-protocol-v1",
-  "artifact_hashes": {},
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:38c8463c96ca030efce9628df395299a615e9c4ea952d8531584554a6696e291"
+  },
   "metrics": {
     "checks": 10,
     "passed": 10,
@@ -10,5 +12,5 @@
     "rho": 0.5
   },
   "verdict": "PASS",
-  "notes": "Synthetic protocol verification confirms paired with/without-harness action construction, conservative positive-action validity filtering, action-only length-normalized margin, beta=0.5 logistic preference loss, and rho=0.5 gradient-norm balancing semantics. This PASS is limited to mechanism/protocol semantics."
+  "notes": "Synthetic protocol verification confirms paired with/without-harness action construction, conservative positive-action validity filtering, action-only length-normalized margin, beta=0.5 logistic preference loss, and rho=0.5 gradient-norm balancing semantics. This PASS is limited to mechanism/protocol semantics. Executed in GitHub Actions run 37513881342; artifact id 11436256378."
 }
