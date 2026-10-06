@@ -1,0 +1,17 @@
+study_id: arxiv-2609.37590
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "The deterministic FOCUS span-selection mechanism is independently implemented and synthetic-tested at published N=3/tau=0.3, including defensive rescue and a preserved set-valued failure case. Real draft-model plan generation is not yet executed."
+next_step: "Add and smoke-test a provider-neutral draft-plan adapter/parser using a lightweight model-backed analogue, while keeping paper benchmark claims separate."
+handoff:
+  path: studies/arxiv-2609.37590/HANDOFF.md
+  ready: false
+blockers:
+  - "No official paper implementation was identified during the 2026-10-07 source review."
+  - "Exact paper benchmark reproduction uses GPT-4.1/API or 8B-14B draft models and full agent environments."
+frozen_evaluations:
+  - "focus-synthetic-protocol-v1"
+entrypoints:
+  - "studies/arxiv-2609.37590/experiments/run_focus_synthetic.py"
+updated_at: "2026-10-07"
