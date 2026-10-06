@@ -1,0 +1,41 @@
+{
+  "experiment_id": "focus-provider-neutral-protocol-v1",
+  "published_defaults": {
+    "rollouts_n": 3,
+    "tau": 0.3,
+    "draft_temperature": 0.7,
+    "seed": 42,
+    "officebench_budget_tokens": 2048
+  },
+  "checks": {
+    "under_budget_no_compression": true,
+    "over_budget_exactly_n_drafts": true,
+    "paper_temperature_forwarded": true,
+    "seed_offsets_forwarded": true,
+    "dependency_frequency_selection": true,
+    "defensive_rescue_union": true,
+    "irrelevant_span_pruned": true
+  },
+  "passed": 7,
+  "check_count": 7,
+  "all_pass": true,
+  "retained_ids": [
+    "s_1",
+    "s_2",
+    "s_3",
+    "s_5"
+  ],
+  "dropped_ids": [
+    "s_4",
+    "s_6"
+  ],
+  "utility": {
+    "s_1": 1,
+    "s_2": 0,
+    "s_3": 0.6666666666666666,
+    "s_4": 0,
+    "s_5": 1,
+    "s_6": 0
+  },
+  "boundary": "Scripted draft outputs verify the published control-flow semantics only. This is protocol-shape evidence, not model-quality or benchmark reproduction."
+}
