@@ -14,13 +14,12 @@ from sentence_transformers import CrossEncoder
 ROOT = Path(__file__).resolve().parents[3]
 STUDY = ROOT / "studies" / "arxiv-2610.03213"
 MODEL_ID = "cross-encoder/ms-marco-MiniLM-L6-v2"
-THRESHOLD = 0.0
 
 
-def _metrics(rows):
+def _metrics(rows, threshold):
     tp = tn = fp = fn = 0
     for row in rows:
-        pred = row["score"] >= THRESHOLD
+        pred = row["score"] >= threshold
         expected = row["expected_relevant"]
         if pred and expected:
             tp += 1
@@ -48,6 +47,25 @@ def _metrics(rows):
     }
 
 
+def _calibrate_threshold(dev_rows):
+    scores = sorted({row["score"] for row in dev_rows})
+    if not scores:
+        return 0.0
+    candidates = [scores[0] - 1.0, scores[-1] + 1.0]
+    candidates += scores
+    candidates += [
+        (left + right) / 2 for left, right in zip(scores, scores[1:], strict=False)
+    ]
+    best = None
+    for threshold in candidates:
+        metrics = _metrics(dev_rows, threshold)
+        key = (metrics["f1"], metrics["accuracy"], -abs(threshold))
+        if best is None or key > best[0]:
+            best = (key, threshold, metrics)
+    assert best is not None
+    return best[1]
+
+
 def run():
     data = json.loads(
         (STUDY / "experiments" / "task_tool_synthetic_hard_v1.json").read_text()
@@ -58,32 +76,54 @@ def run():
         for case in data["cases"]
     ]
     scores = [float(x) for x in model.predict(pairs, show_progress_bar=False)]
-    rows = []
-    for case, score in zip(data["cases"], scores, strict=True):
-        rows.append(
-            {
-                "id": case["id"],
-                "expected_relevant": case["expected_relevant"],
-                "score": score,
-                "predicted_relevant": score >= THRESHOLD,
-            }
-        )
-    metrics = _metrics(rows)
+    rows = [
+        {
+            "id": case["id"],
+            "expected_relevant": case["expected_relevant"],
+            "score": score,
+        }
+        for case, score in zip(data["cases"], scores, strict=True)
+    ]
+
+    fixed_threshold = 0.0
+    fixed_metrics = _metrics(rows, fixed_threshold)
+
+    dev_rows = rows[:16]
+    test_rows = rows[16:]
+    calibrated_threshold = _calibrate_threshold(dev_rows)
+    dev_metrics = _metrics(dev_rows, calibrated_threshold)
+    test_metrics = _metrics(test_rows, calibrated_threshold)
+
+    for row in rows:
+        row["predicted_relevant_fixed_0"] = row["score"] >= fixed_threshold
+        row["split"] = "dev" if row in dev_rows else "test"
+        row["predicted_relevant_calibrated"] = row["score"] >= calibrated_threshold
+
     return {
         "benchmark_id": data["benchmark_id"],
         "model_id": MODEL_ID,
-        "threshold": THRESHOLD,
         "case_count": len(rows),
-        "metrics": metrics,
+        "fixed_threshold_baseline": {
+            "threshold": fixed_threshold,
+            "metrics": fixed_metrics,
+        },
+        "calibrated_split": {
+            "dev_count": len(dev_rows),
+            "test_count": len(test_rows),
+            "threshold": calibrated_threshold,
+            "dev_metrics": dev_metrics,
+            "test_metrics": test_metrics,
+        },
         "paper_operational_target": {"accuracy": 0.95, "f1": 0.95},
-        "meets_paper_operational_target": (
-            metrics["accuracy"] >= 0.95 and metrics["f1"] >= 0.95
+        "test_meets_paper_operational_target": (
+            test_metrics["accuracy"] >= 0.95 and test_metrics["f1"] >= 0.95
         ),
         "rows": rows,
         "notes": (
-            "Independent off-the-shelf semantic relevance baseline. No threshold tuning "
-            "was performed on this benchmark; the fixed decision threshold is 0.0. "
-            "This is not a reproduction of the paper's Gemma 3 / GEPA / SFT / GRPO results."
+            "Independent off-the-shelf semantic relevance baseline. The first 16 cases "
+            "are used only to choose a scalar decision threshold; the final 16 cases are "
+            "held out for test scoring. No model weights are tuned. This is not a "
+            "reproduction of the paper's Gemma 3 / GEPA / SFT / GRPO results."
         ),
     }
 
