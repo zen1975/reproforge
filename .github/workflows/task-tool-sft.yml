@@ -23,6 +23,7 @@ jobs:
         run: python studies/arxiv-2610.03213/experiments/generate_task_tool_sft_dataset.py
       - name: Run supervised specialization
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/run_specialized_crossencoder_sft.py             | tee task_tool_specialized_sft_result.json
       - uses: actions/upload-artifact@v4
         with:
