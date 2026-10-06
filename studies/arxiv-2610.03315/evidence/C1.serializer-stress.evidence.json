@@ -1,0 +1,20 @@
+{
+  "claim_id": "C1-single-call-fixed-budget",
+  "run_id": "serializer-late-failure-stress-v1",
+  "artifact_hashes": {
+    "serializer.py": "sha256:05819fad45051b5aeca559abb24af0837ba290511ed1041c66472b9f85e19bff",
+    "serializer_stress_spec.json": "sha256:916c1ff8e8dbc76d9e9afe28fd2b3e294a54f1dfd334d3d6d69013905dabf677",
+    "serializer_stress_result.json": "sha256:4563f2995a4e2e8d8126e062ca27a55f7f2d7c54b643c669a97c8289434b815b"
+  },
+  "metrics": {
+    "case_count": 10,
+    "budget_compliance_rate": 1.0,
+    "tiered_mean_error_step_allocation": 700.0,
+    "head_mean_error_step_allocation": 210.0,
+    "tiered_error_full_retention_rate": 1.0,
+    "head_error_full_retention_rate": 0.3,
+    "error_allocation_multiplier_vs_head": 3.3333333333333335
+  },
+  "verdict": "PARTIAL",
+  "notes": "Independent synthetic stress evidence supports only the deterministic fixed-budget tier allocation portion of C1. The paper's normalization, MMR evidence selection, single-call LLM judge, public benchmark localization, cost, and runtime claims remain unreproduced."
+}
