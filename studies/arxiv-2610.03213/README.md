@@ -33,7 +33,9 @@ Measured lexical baseline:
 
 This does **not** reproduce the paper's SLM results. It establishes a reproducible reference floor and demonstrates that lexical matching alone is inadequate for the paper's 95% operational target.
 
-ReproForge then evaluated a generic off-the-shelf MiniLM CrossEncoder and found that generic semantic relevance alone was also insufficient. Finally, a task-specific supervised specialization experiment was run on deterministic synthetic data with family-disjoint train/dev/test splits. The held-out-family result improved from 80.56% accuracy / 69.57% F1 before specialization to 91.67% accuracy / 85.71% F1 after specialization, with 100% precision and 0% false-positive rate. This is meaningful evidence that task-specific supervision helps, but it still falls short of the paper's 95% accuracy/F1 target.
+ReproForge then evaluated a generic off-the-shelf MiniLM CrossEncoder and found that generic semantic relevance alone was also insufficient. A task-specific supervised specialization experiment on deterministic family-disjoint data improved the first held-out test from 80.56% accuracy / 69.57% F1 to 91.67% / 85.71%.
+
+Because that first test had already been observed, ReproForge then froze an entirely new four-family blind benchmark before evaluation. On 144 unseen-family examples, the same recipe improved 85.42% accuracy / 78.79% F1 to 94.44% / 91.30%. The paired improvement was 13 corrected cases versus 0 regressions (exact McNemar p=0.000244), and the 95% bootstrap interval for accuracy was 90.28%–97.92%. This materially strengthens the specialization finding while still falling short of the paper's joint 95% accuracy/F1 target.
 
 ## Correction record
 
