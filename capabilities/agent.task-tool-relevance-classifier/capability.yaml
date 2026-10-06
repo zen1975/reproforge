@@ -22,11 +22,13 @@ runtime:
   deterministic: true
   requirements: []
 evidence:
-  reproduction_status: "NOT_RUN"
+  reproduction_status: "PARTIAL"
   studies:
     - "studies/arxiv-2610.03213"
   evidence_paths:
     - "studies/arxiv-2610.03213/fixtures/synthetic_cases.json"
+    - "studies/arxiv-2610.03213/evidence/C1.synthetic-hard.evidence.json"
+    - "studies/arxiv-2610.03213/evidence/task_tool_synthetic_hard_v1.result.json"
 implementation:
   path: "capabilities/agent.task-tool-relevance-classifier/classifier.py"
   license: "Apache-2.0"
