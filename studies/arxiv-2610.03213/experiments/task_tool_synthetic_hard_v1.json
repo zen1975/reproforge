@@ -1,0 +1,230 @@
+{
+  "benchmark_id": "task-tool-synthetic-hard-v1",
+  "scope": "Independent candidate-level binary classification benchmark inspired by paper input/output semantics; not author data and not paper reproduction benchmark.",
+  "cases": [
+    {
+      "id": "case-01",
+      "task": "schedule a team meeting for friday",
+      "tool_name": "calendar_create_event",
+      "tool_description": "create calendar meeting event with date and attendees",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-02",
+      "task": "schedule a team meeting for friday",
+      "tool_name": "email_send",
+      "tool_description": "send an email message to recipients",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-03",
+      "task": "email the signed contract to the client",
+      "tool_name": "email_send",
+      "tool_description": "send email message with attachment to recipients",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-04",
+      "task": "email the signed contract to the client",
+      "tool_name": "file_delete",
+      "tool_description": "delete a file from storage",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-05",
+      "task": "find tomorrow's weather in tokyo",
+      "tool_name": "weather_forecast",
+      "tool_description": "get weather forecast for city and date",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-06",
+      "task": "find tomorrow's weather in tokyo",
+      "tool_name": "calendar_list",
+      "tool_description": "list calendar events by date",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-07",
+      "task": "read the quarterly report from storage",
+      "tool_name": "file_read",
+      "tool_description": "read file contents from storage path",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-08",
+      "task": "read the quarterly report from storage",
+      "tool_name": "database_query",
+      "tool_description": "query database tables using filters",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-09",
+      "task": "look up customer 482 in the crm",
+      "tool_name": "crm_get_customer",
+      "tool_description": "look up customer record by identifier in crm",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-10",
+      "task": "look up customer 482 in the crm",
+      "tool_name": "crm_delete_customer",
+      "tool_description": "delete customer record from crm",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-11",
+      "task": "create an invoice for order 771",
+      "tool_name": "billing_create_invoice",
+      "tool_description": "create invoice for an order",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-12",
+      "task": "create an invoice for order 771",
+      "tool_name": "billing_refund_payment",
+      "tool_description": "refund payment for an invoice",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-13",
+      "task": "post the launch announcement to slack",
+      "tool_name": "slack_post_message",
+      "tool_description": "post message to slack channel",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-14",
+      "task": "post the launch announcement to slack",
+      "tool_name": "slack_search_messages",
+      "tool_description": "search slack messages",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-15",
+      "task": "search github issues mentioning oauth",
+      "tool_name": "github_search_issues",
+      "tool_description": "search github issues and pull requests",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-16",
+      "task": "search github issues mentioning oauth",
+      "tool_name": "github_close_issue",
+      "tool_description": "close github issue",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-17",
+      "task": "book a hotel room in osaka",
+      "tool_name": "travel_book_hotel",
+      "tool_description": "book hotel room in a destination",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-18",
+      "task": "book a hotel room in osaka",
+      "tool_name": "travel_cancel_booking",
+      "tool_description": "cancel travel booking",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-19",
+      "task": "translate this note into french",
+      "tool_name": "translate_text",
+      "tool_description": "translate text into another language",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-20",
+      "task": "translate this note into french",
+      "tool_name": "summarize_text",
+      "tool_description": "summarize text into shorter form",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-21",
+      "task": "remove the obsolete database backup",
+      "tool_name": "storage_delete_object",
+      "tool_description": "remove object or backup from storage",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-22",
+      "task": "remove the obsolete database backup",
+      "tool_name": "storage_restore_backup",
+      "tool_description": "restore database backup from storage",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-23",
+      "task": "reserve a room for tonight in kyoto",
+      "tool_name": "travel_book_hotel",
+      "tool_description": "book hotel accommodation at destination",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-24",
+      "task": "send the customer a message about delivery",
+      "tool_name": "email_send",
+      "tool_description": "dispatch electronic mail to recipient",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-25",
+      "task": "erase the archived report",
+      "tool_name": "file_delete",
+      "tool_description": "remove file from storage",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-26",
+      "task": "retrieve account details for user 42",
+      "tool_name": "crm_get_customer",
+      "tool_description": "fetch customer profile by identifier",
+      "expected_relevant": true
+    },
+    {
+      "id": "case-27",
+      "task": "read the quarterly report file",
+      "tool_name": "file_delete",
+      "tool_description": "delete quarterly report file from storage",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-28",
+      "task": "send email to the project team",
+      "tool_name": "email_delete",
+      "tool_description": "delete email message for project team",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-29",
+      "task": "create a calendar event tomorrow",
+      "tool_name": "calendar_delete_event",
+      "tool_description": "delete calendar event by id",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-30",
+      "task": "get weather forecast for paris",
+      "tool_name": "weather_alert_create",
+      "tool_description": "create weather alert for city",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-31",
+      "task": "search github issues mentioning oauth",
+      "tool_name": "github_create_issue",
+      "tool_description": "create github issue mentioning a topic",
+      "expected_relevant": false
+    },
+    {
+      "id": "case-32",
+      "task": "create invoice for order 771",
+      "tool_name": "billing_delete_invoice",
+      "tool_description": "delete invoice for an order",
+      "expected_relevant": false
+    }
+  ]
+}
