@@ -36,7 +36,7 @@ def test_second_capability_descriptor_validates():
         ROOT / "schemas" / "capability.schema.json",
     )
     assert capability["status"] == "experimental"
-    assert capability["evidence"]["reproduction_status"] == "NOT_RUN"
+    assert capability["evidence"]["reproduction_status"] == "PARTIAL"
 
 
 def test_allocator_is_deterministic_and_budget_bounded():
