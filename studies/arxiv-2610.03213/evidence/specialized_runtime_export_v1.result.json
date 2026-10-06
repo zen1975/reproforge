@@ -1,0 +1,35 @@
+{
+  "run_id": "specialized-runtime-export-v1",
+  "github_actions_run": 37417400711,
+  "github_actions_job": 112118949142,
+  "artifact_id": 11391523047,
+  "artifact_size_bytes": 83444858,
+  "artifact_retention_days": 1,
+  "artifact_zip_sha256": "2d203c1207352fc01ade7a5e7aa96edda800f0dabac48b2db3299a9ddcfded98",
+  "model_sha256": "9c240428478633cc82c031016b3250a38c1f6346afaf281de275eed5ac91261b",
+  "threshold": 1.2315812706947327,
+  "dev_metrics": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "false_positive_rate": 0,
+    "false_negative_rate": 0,
+    "tp": 24,
+    "tn": 48,
+    "fp": 0,
+    "fn": 0
+  },
+  "runtime_module": "capabilities/agent.task-tool-relevance-classifier/semantic_classifier.py",
+  "method": "specialized-crossencoder-local-v1",
+  "smoke_count": 4,
+  "smoke_passed": true,
+  "smoke_scope": [
+    "calendar positive",
+    "calendar wrong-action negative",
+    "email positive",
+    "email wrong-action negative"
+  ],
+  "conclusion": "The independently trained checkpoint can be exported, reloaded from local files, and invoked through a stable task/tool classification runtime contract.",
+  "boundary": "This validates packaging and invocation only. The model remains experimental and paper reproduction remains PARTIAL."
+}
