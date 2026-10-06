@@ -94,10 +94,10 @@ def _make_pool(pool_name, servers, groups_per_n=80):
     return rows
 
 
-def generate():
-    train=_make_pool("train",TRAIN_SERVERS,groups_per_n=80)
-    validation=_make_pool("validation",TRAIN_SERVERS,groups_per_n=20)
-    test=_make_pool("test",TEST_SERVERS,groups_per_n=80)
+def generate(train_groups_per_n=80, validation_groups_per_n=20, test_groups_per_n=80):
+    train=_make_pool("train",TRAIN_SERVERS,groups_per_n=train_groups_per_n)
+    validation=_make_pool("validation",TRAIN_SERVERS,groups_per_n=validation_groups_per_n)
+    test=_make_pool("test",TEST_SERVERS,groups_per_n=test_groups_per_n)
     return {
         "dataset_id":"protocol-equivalent-mcp-v1",
         "seed":SEED,
