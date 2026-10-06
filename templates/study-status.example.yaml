@@ -1,0 +1,13 @@
+study_id: arxiv-YYYY.NNNNN
+lifecycle: INTAKE_VERIFIED
+reproduction_status: NOT_RUN
+free_light_phase_complete: false
+current_boundary: "Describe the present evidence/compute boundary."
+next_step: "Describe the single next action."
+handoff:
+  path: studies/arxiv-YYYY.NNNNN/HANDOFF.md
+  ready: false
+blockers: []
+frozen_evaluations: []
+entrypoints: []
+updated_at: 2026-10-06
