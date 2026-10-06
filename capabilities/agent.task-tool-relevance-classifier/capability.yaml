@@ -33,6 +33,8 @@ evidence:
     - "studies/arxiv-2610.03213/evidence/semantic_crossencoder_calibrated_v1.result.json"
     - "studies/arxiv-2610.03213/evidence/C3.specialized-sft.evidence.json"
     - "studies/arxiv-2610.03213/evidence/task_tool_specialized_minilm_sft_v1.result.json"
+    - "studies/arxiv-2610.03213/evidence/C3.blind-v1.evidence.json"
+    - "studies/arxiv-2610.03213/evidence/task_tool_specialized_minilm_blind_v1.result.json"
 implementation:
   path: "capabilities/agent.task-tool-relevance-classifier/classifier.py"
   license: "Apache-2.0"
