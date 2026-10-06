@@ -1,0 +1,73 @@
+{
+  "experiment_id": "had-real-teacher-pair-multiseed-v1",
+  "source_pair_experiment": "had-harness-signal-qwen-contrast-v2",
+  "student_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "steps_per_run": 8,
+  "train_pairs": 2,
+  "heldout_examples": 4,
+  "baseline_before_accuracy": 0.5,
+  "baseline_before_mean_margin": 0.1637290120124817,
+  "runs": {
+    "distill_only": [
+      {
+        "seed": 101,
+        "after_accuracy": 0.5,
+        "mean_margin_change": 0.024662300944328308
+      },
+      {
+        "seed": 202,
+        "after_accuracy": 0.5,
+        "mean_margin_change": 0.02312031388282776
+      },
+      {
+        "seed": 303,
+        "after_accuracy": 0.5,
+        "mean_margin_change": 0.022994473576545715
+      }
+    ],
+    "had": [
+      {
+        "seed": 101,
+        "after_accuracy": 0.5,
+        "mean_margin_change": 0.027695268392562866
+      },
+      {
+        "seed": 202,
+        "after_accuracy": 0.5,
+        "mean_margin_change": 0.026289835572242737
+      },
+      {
+        "seed": 303,
+        "after_accuracy": 0.5,
+        "mean_margin_change": 0.026688218116760254
+      }
+    ]
+  },
+  "aggregate": {
+    "distill_only_mean_margin_change": 0.02359236280123393,
+    "distill_only_population_sd": 0.000758302783944724,
+    "had_mean_margin_change": 0.026891107360521953,
+    "had_population_sd": 0.0005914295602092124,
+    "had_minus_distill_mean_margin_change": 0.003298744559288025,
+    "seeds_where_had_margin_change_exceeded_distill": 3,
+    "seeds_total": 3,
+    "accuracy_improvement_runs": 0
+  },
+  "artifacts": {
+    "distill-101": "sha256:9459db9d486af9f7e3ae70a07f8e98c51d38c25a1042e9421aa0c2d5298a0e7b",
+    "distill-202": "sha256:8b1666283d59c49c82ad92c8d2c6fdb87cb6e2ced9b51a05deb2d1d43fe1b723",
+    "distill-303": "sha256:dedcd2e9bf22bc0917ac2e33eebdeeb271c8551706cf5fe3febeb51a6ed6036a",
+    "had-101": "sha256:889bd76dbf4171cb776476c814b6c5f720d27131e5fc4de3b6202487ab3ffef9",
+    "had-202": "sha256:f05ab585121018978026f29e713ecd22dc217ecb08c1da22e7aac1bcf4033f3f",
+    "had-303": "sha256:bbb45e0211e84a248ab0792a22e053a0d276bdda51c131512c6f6d5b4a2608a5"
+  },
+  "performance_claim": "NONE",
+  "conclusion": "All six runs completed. Held-out accuracy stayed 50% for both methods in all seeds. HAD produced a larger positive unseen-state mean-margin shift than distillation-only in all 3 seeds, with a small mean difference of +0.003299. This is consistent directional evidence for the training signal, not statistical or benchmark evidence of task-performance superiority.",
+  "workflow_run": 37518327959,
+  "boundary": "Two real-teacher-generated synthetic pairs, four frozen unseen synthetic analogues, 8 LoRA updates, 3 seeds. Not equivalent to the paper's on-policy benchmark training."
+}
