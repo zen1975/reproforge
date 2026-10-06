@@ -34,3 +34,10 @@ claims:
   - id: "C4-gradient-balance"
     statement: "HAD balances the preference-gradient contribution to rho=0.5 times the response-distillation gradient norm on each minibatch."
     acceptance_criteria: "Protocol verification requires an executable fail-safe lambda calculation equal to rho * ||grad D|| / ||grad P|| when preference gradient is nonzero and zero otherwise."
+
+  - kind: "WEIGHTS"
+    name: "Qwen2.5-1.5B-Instruct"
+    source: "https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct"
+    license: "Apache-2.0"
+    license_status: "VERIFIED"
+    redistributed: false
