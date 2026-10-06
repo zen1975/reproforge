@@ -1,0 +1,51 @@
+{
+  "experiment_id": "qwen2.5-0.5b-lora-sft-v2-frozen",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "c89bee90d9f811437d9735454613c35b4a3c4dc8",
+  "predeclared_change": "training cases only: 96 -> 192",
+  "train_cases": 192,
+  "test_start": 160,
+  "test_cases": 240,
+  "test_end_exclusive": 400,
+  "lora": {
+    "r": 4,
+    "alpha": 8,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ]
+  },
+  "training": {
+    "steps": 192,
+    "first_loss": 0.1636270135641098,
+    "last_loss": 0.004801912698894739,
+    "mean_loss": 0.10422731918364055,
+    "learning_rate": 0.0002
+  },
+  "test_metrics": {
+    "attempted": 240,
+    "valid": 240,
+    "parse_failures": 0,
+    "accuracy": 0.9083333333333333,
+    "precision": 0.79,
+    "recall": 0.9875,
+    "f1": 0.8777777777777778,
+    "tp": 79,
+    "tn": 139,
+    "fp": 21,
+    "fn": 1
+  },
+  "paper_operational_target": {
+    "accuracy": 0.95,
+    "f1": 0.95
+  },
+  "meets_target": false,
+  "github_actions": {
+    "run_id": 37419871776,
+    "job_id": 112126614364,
+    "artifact_id": 11393005929,
+    "artifact_zip_sha256": "32e708d220a1c7b2d19b85fed1758558d3b9040966eb2435e183b65744e77fa9"
+  },
+  "conclusion": "Doubling training rows from 96 to 192 under the otherwise frozen recipe did not improve generalization on a newly frozen held-out slice. Recall rose to 98.75%, but false positives increased and accuracy/F1 fell to 90.83%/87.78%. More synthetic data alone is not sufficient.",
+  "boundary": "This slice is frozen after this observation and will not be reused for tuning."
+}
