@@ -48,3 +48,16 @@ A FAIL is not automatically evidence that the original paper is wrong. It is evi
 ## 9. Publication
 
 Publish the protocol, code you have rights to publish, structured manifests, environment metadata, and evidence summaries. Clearly distinguish original work from third-party assets and cite the source paper.
+
+
+## 10. Lifecycle and stopping rule
+
+Every active study should maintain a machine-readable `status.yaml`. Lifecycle state is separate from the claim-level reproduction verdict.
+
+The default free/lightweight stopping point is `HEAVY_COMPUTE_READY`: the mechanism, evidence, protocol reconstruction, lightweight executable checks, CI, and continuation handoff are complete, while remaining work is primarily gated/large-scale compute or unavailable external assets.
+
+A `HEAVY_COMPUTE_READY` study must include a ready `HANDOFF.md` and frozen-evaluation declarations. It must not be described as `REPRODUCED` unless the declared paper-level acceptance criteria have actually been executed with sufficiently equivalent protocol/data/model/compute.
+
+Unknown paper parameters remain unknown. Independent substitutes must be labeled as analogues.
+
+See `docs/STUDY_COMPLETION_POLICY.md`.
