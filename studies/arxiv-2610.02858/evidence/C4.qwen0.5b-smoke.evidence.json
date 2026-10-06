@@ -1,0 +1,20 @@
+{
+  "claim_id": "C4-gradient-balance",
+  "run_id": "had-qwen0.5b-smoke-v2",
+  "artifact_hashes": {
+    "had_artifact_zip": "sha256:9dda4a10196e807289d5bdd17230fa7999c3a7dbd3ce47b95aea2f2608b08a2b",
+    "distill_only_artifact_zip": "sha256:46f8492c8eb2d593b107d4d5efe9f22c55d74717a2deabed29908c13cdeeafe6"
+  },
+  "metrics": {
+    "had_steps": 6,
+    "distill_only_steps": 6,
+    "held_out_accuracy_had": 0.75,
+    "held_out_accuracy_distill_only": 0.75,
+    "had_mean_margin_change": 0.003468811511993408,
+    "distill_only_mean_margin_change": -0.0026323795318603516,
+    "invalid_pair_preference_grad_norm": 0,
+    "invalid_pair_lambda": 0
+  },
+  "verdict": "PARTIAL",
+  "notes": "Real Qwen2.5-0.5B LoRA smoke confirms action-only preference gradients, rho=0.5 gradient balancing, and fail-safe masking of an invalid preferred action. Both methods remain 75% on the four-example frozen held-out set. Tiny margin movements are recorded but are not an efficacy claim or paper reproduction."
+}
