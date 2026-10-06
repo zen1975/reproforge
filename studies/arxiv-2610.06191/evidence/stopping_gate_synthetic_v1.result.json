@@ -1,0 +1,66 @@
+{
+  "experiment_id": "stopping-gate-synthetic-v1",
+  "threshold": 5,
+  "scenario_count": 6,
+  "scenario_pass_rate": 1,
+  "total_tool_calls_saved_vs_deadline_baseline": 4,
+  "sticky_after_fire_pass": true,
+  "all_pass": true,
+  "rows": [
+    {
+      "id": "persistent-8",
+      "fired": true,
+      "gate_calls": 5,
+      "baseline_calls": 8,
+      "saved_calls": 3,
+      "expected_gate_calls": 5,
+      "pass": true
+    },
+    {
+      "id": "recover-1",
+      "fired": false,
+      "gate_calls": 6,
+      "baseline_calls": 6,
+      "saved_calls": 0,
+      "expected_gate_calls": 6,
+      "pass": true
+    },
+    {
+      "id": "recover-3",
+      "fired": false,
+      "gate_calls": 6,
+      "baseline_calls": 6,
+      "saved_calls": 0,
+      "expected_gate_calls": 6,
+      "pass": true
+    },
+    {
+      "id": "exact-5",
+      "fired": true,
+      "gate_calls": 5,
+      "baseline_calls": 5,
+      "saved_calls": 0,
+      "expected_gate_calls": 5,
+      "pass": true
+    },
+    {
+      "id": "intermittent",
+      "fired": false,
+      "gate_calls": 8,
+      "baseline_calls": 8,
+      "saved_calls": 0,
+      "expected_gate_calls": 8,
+      "pass": true
+    },
+    {
+      "id": "late-persistent",
+      "fired": true,
+      "gate_calls": 7,
+      "baseline_calls": 8,
+      "saved_calls": 1,
+      "expected_gate_calls": 7,
+      "pass": true
+    }
+  ],
+  "boundary": "Independent synthetic mechanism test only; not a reproduction of agent behavior or paper benchmark results."
+}
