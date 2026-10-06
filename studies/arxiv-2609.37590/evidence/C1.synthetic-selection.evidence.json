@@ -1,7 +1,11 @@
 {
   "claim_id": "C1-decision-preserving-span-selection",
   "run_id": "focus-synthetic-protocol-v1",
-  "artifact_hashes": {},
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:632f6d7e4ed543d21f9d26098b15db075faf6144c20feb860026c9683ad9dc40",
+    "workflow_run": "37507063804",
+    "head_sha": "fd2708984c721cbfdef110136ecefe124526981d"
+  },
   "metrics": {
     "case_count": 4,
     "pass_rate": 1
