@@ -30,6 +30,8 @@ evidence:
     - "studies/arxiv-2609.37590/evidence/C1.synthetic-selection.evidence.json"
     - "studies/arxiv-2609.37590/evidence/C2.synthetic-defensive.evidence.json"
     - "studies/arxiv-2609.37590/evidence/focus_synthetic_protocol_v1.result.json"
+    - "studies/arxiv-2609.37590/evidence/C3.provider-neutral-protocol.evidence.json"
+    - "studies/arxiv-2609.37590/evidence/focus_provider_neutral_protocol_v1.result.json"
     - "studies/arxiv-2609.37590/evidence/C3.smollm-negative.evidence.json"
     - "studies/arxiv-2609.37590/evidence/focus_smollm_draft_analogue_v1_negative.result.json"
 implementation:
