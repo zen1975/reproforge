@@ -59,6 +59,25 @@ The prompt stage selected among three predeclared prompts using only train-pool 
 
 An SFT v2 protocol was committed before evaluation: identical model revision, prompt, LoRA hyperparameters, learning rate, and seed; only training examples increase from 96 to 192, and evaluation moves to untouched held-out rows 160–399.
 
+## Paper-aligned SFT/GRPO reproduction harness
+
+The paper's published optimization settings are now captured in `experiments/paper_protocol_config_v1.json` and guarded by tests.
+
+For SFT, the paper specifies LoRA `r=32`, `alpha=64`, AdamW, peak learning rate `1.9e-4`, 10% warmup, 3 epochs, effective batch size 64, max sequence length 1024, bf16, response-only cross-entropy, 4,404 balanced training examples and 1,136 validation examples.
+
+ReproForge can now independently prepare exactly 4,404 / 1,136 class-balanced protocol-shaped rows with the same structured `{"reasoning": ..., "appropriate": bool}` target. This is a shape/protocol reproduction only: the paper used ASTRA single-tool examples and the exact seed/GEPA prompt is not published.
+
+The generic LoRA SFT harness was executed with a public Apache-2.0 135M surrogate to validate the training mechanics. With `r=32`, `alpha=64`, response-only prompt masking and the paper's peak learning rate, a 2-step CPU smoke run reduced loss from 3.0556 to 2.4013. This validates the code path, not the paper result.
+
+For GRPO, ReproForge exposes the deterministic reward components stated in the paper—schema compliance, label correctness, excessive-reasoning penalty and invalid-output flag—but deliberately does not combine them into a scalar because the paper does not publish the weights. The same rule applies to the unpublished mixture ratios across single-tool, same-MCP and cross-MCP training examples.
+
+### Current hard blockers
+
+- Official `google/gemma-3-1b-it` access requires accepted Gemma terms and an authenticated HF token; the Actions preflight currently records `BLOCKED_MODEL_ACCESS`.
+- The paper used a single H100 GPU for optimization; the current GitHub runner is CPU-only.
+- The paper-linked author repository currently returns 404 through both the connected GitHub API and public search, so author data/code cannot yet be inspected.
+- Exact seed prompt text, vLLM decoding settings, GRPO scalar reward weights and GRPO mixture ratios are not published in the paper and remain unknown.
+
 ## Exact Gemma gate
 
 An authenticated Gemma 3 1B workflow is ready, but it fails closed without `HF_TOKEN` and prior acceptance of Google's Gemma license. Qwen/MiniLM evidence is never labeled as Gemma evidence.
