@@ -27,9 +27,9 @@ jobs:
             --rollouts 3 \
             --temperature 0.7 \
             --max-new-tokens 96 \
-            | tee focus_smollm_draft_analogue_v1.result.json
+            | tee focus_smollm_draft_analogue_v2_strict.result.json
       - uses: actions/upload-artifact@v4
         with:
-          name: focus-smollm-draft-analogue-v1
+          name: focus-smollm-draft-analogue-v2-strict
           path: focus_smollm_draft_analogue_v1.result.json
           retention-days: 7
