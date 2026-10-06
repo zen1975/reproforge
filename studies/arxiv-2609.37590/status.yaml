@@ -1,9 +1,9 @@
 study_id: arxiv-2609.37590
-lifecycle: MECHANISM_VERIFIED
+lifecycle: PROTOCOL_VERIFIED
 reproduction_status: PARTIAL
 free_light_phase_complete: false
-current_boundary: "The deterministic FOCUS span-selection mechanism is independently implemented and synthetic-tested at published N=3/tau=0.3, including defensive rescue and a preserved set-valued failure case. Real draft-model plan generation is not yet executed."
-next_step: "Add and smoke-test a provider-neutral draft-plan adapter/parser using a lightweight model-backed analogue, while keeping paper benchmark claims separate."
+current_boundary: "The deterministic FOCUS core and provider-neutral Algorithm 1 control flow are verified: memory-budget trigger, N=3 stochastic draft calls, strict dependency parsing, tau=0.3 selection, and defensive rescue are executable. A 135M draft analogue failed closed; a 0.5B analogue is being tested. Paper-scale agent benchmarks remain unreproduced."
+next_step: "Complete the Qwen2.5-0.5B model-backed analogue. If structured dependency output succeeds, preserve it as model-path evidence and prepare heavy-compute handoff for Qwen3-8B/14B or GPT-4.1 benchmark regeneration."
 handoff:
   path: studies/arxiv-2609.37590/HANDOFF.md
   ready: false
@@ -12,6 +12,9 @@ blockers:
   - "Exact paper benchmark reproduction uses GPT-4.1/API or 8B-14B draft models and full agent environments."
 frozen_evaluations:
   - "focus-synthetic-protocol-v1"
+  - "focus-provider-neutral-protocol-v1"
 entrypoints:
   - "studies/arxiv-2609.37590/experiments/run_focus_synthetic.py"
+  - "studies/arxiv-2609.37590/experiments/run_provider_neutral_protocol.py"
+  - ".github/workflows/focus-synthetic.yml"
 updated_at: "2026-10-07"
