@@ -1,4 +1,4 @@
-.PHONY: bootstrap install test lint validate statuses verify
+.PHONY: bootstrap install test lint validate candidates statuses verify
 
 bootstrap: install
 
@@ -14,7 +14,10 @@ lint:
 validate:
 	reproforge validate templates/paper-manifest.example.yaml
 
+candidates:
+	reproforge validate-candidates candidates/queue.yaml
+
 statuses:
 	reproforge validate-all-statuses
 
-verify: lint test validate statuses
+verify: lint test validate candidates statuses
