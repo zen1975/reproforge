@@ -1,0 +1,41 @@
+name: HAD real teacher pair multiseed
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.02858/experiments/run_real_teacher_pair_multiseed.py"
+      - ".github/workflows/had-real-pair-multiseed.yml"
+
+jobs:
+  train:
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [distill-only, had]
+        seed: [101, 202, 303]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU training dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch>=2.3,<3"
+          python -m pip install "transformers>=4.51,<5" "peft>=0.14,<1"
+      - name: Train from real teacher-generated pairs
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.02858/experiments/run_real_teacher_pair_multiseed.py \
+            --model-id Qwen/Qwen2.5-0.5B-Instruct \
+            --mode ${{ matrix.mode }} \
+            --seed ${{ matrix.seed }} \
+            --steps 8 \
+            | tee had_real_pairs_${{ matrix.mode }}_seed${{ matrix.seed }}_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: had-real-pairs-${{ matrix.mode }}-seed${{ matrix.seed }}-v1
+          path: had_real_pairs_${{ matrix.mode }}_seed${{ matrix.seed }}_v1.result.json
+          retention-days: 7
