@@ -1,0 +1,29 @@
+name: Stopping gate mechanism benchmark
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "capabilities/agent.evidence-aware-stopping-gate/gate.py"
+      - "studies/arxiv-2610.06191/experiments/run_stopping_gate_synthetic.py"
+      - ".github/workflows/stopping-gate-mechanism.yml"
+
+jobs:
+  mechanism:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run frozen synthetic mechanism benchmark
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.06191/experiments/run_stopping_gate_synthetic.py \
+            | tee stopping_gate_synthetic_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stopping-gate-synthetic-v1
+          path: stopping_gate_synthetic_v1.result.json
+          retention-days: 7
