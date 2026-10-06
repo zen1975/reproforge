@@ -40,7 +40,9 @@
           "studies/arxiv-2610.03213/evidence/C1.synthetic-hard.evidence.json",
           "studies/arxiv-2610.03213/evidence/task_tool_synthetic_hard_v1.result.json",
           "studies/arxiv-2610.03213/evidence/C1.semantic-crossencoder.evidence.json",
-          "studies/arxiv-2610.03213/evidence/semantic_crossencoder_calibrated_v1.result.json"
+          "studies/arxiv-2610.03213/evidence/semantic_crossencoder_calibrated_v1.result.json",
+          "studies/arxiv-2610.03213/evidence/C3.specialized-sft.evidence.json",
+          "studies/arxiv-2610.03213/evidence/task_tool_specialized_minilm_sft_v1.result.json"
         ]
       },
       "implementation": {
