@@ -1,0 +1,49 @@
+{
+  "experiment_id": "had-qwen0.5b-had-smoke-v2",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_license": "Apache-2.0",
+  "mode": "had",
+  "seed": 261002858,
+  "steps": 6,
+  "learning_rate": 0.00001,
+  "beta": 0.5,
+  "rho": 0.5,
+  "lora_r": 4,
+  "lora_alpha": 8,
+  "trainable_parameters": 270336,
+  "total_parameters": 494303104,
+  "before": {
+    "accuracy": 0.75,
+    "mean_margin": 2.125328451395035
+  },
+  "after": {
+    "accuracy": 0.75,
+    "mean_margin": 2.128797262907028
+  },
+  "margin_change": 0.003468811511993408,
+  "invalid_step": {
+    "step": 6,
+    "valid_preference": false,
+    "preference_loss": 0,
+    "preference_grad_norm": 0,
+    "lambda": 0
+  },
+  "gradient_balance_examples": [
+    {
+      "step": 1,
+      "distillation_grad_norm": 14.328238487243652,
+      "preference_grad_norm": 4.413069725036621,
+      "lambda": 1.6233868598937988
+    },
+    {
+      "step": 2,
+      "distillation_grad_norm": 9.811649322509766,
+      "preference_grad_norm": 2.5132997035980225,
+      "lambda": 1.9519457817077637
+    }
+  ],
+  "workflow_run": 37514762789,
+  "artifact_id": 11435957916,
+  "artifact_digest": "sha256:9dda4a10196e807289d5bdd17230fa7999c3a7dbd3ce47b95aea2f2608b08a2b",
+  "boundary": "Synthetic Qwen2.5-0.5B LoRA smoke only; held-out accuracy stayed 75%. The small positive margin change is not evidence of paper-level performance superiority."
+}
