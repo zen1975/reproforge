@@ -22,4 +22,4 @@ entrypoints:
   - "studies/arxiv-2610.03213/experiments/run_gemma3_1b_base.py"
   - "studies/arxiv-2610.03213/experiments/run_lora_sft_harness.py"
   - "studies/arxiv-2610.03213/experiments/prepare_sft_protocol_data.py"
-updated_at: 2026-10-06
+updated_at: "2026-10-06"
