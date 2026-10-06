@@ -1,12 +1,14 @@
 {
   "claim_id": "C3-protocol-shape",
   "run_id": "focus-provider-neutral-protocol-v1",
-  "artifact_hashes": {},
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:764972cf1e765063d823c87035f3e0cb1f245765f94eff226809cb7bd5283ede"
+  },
   "metrics": {
     "checks": 7,
     "passed": 7,
     "pass_rate": 1
   },
   "verdict": "PASS",
-  "notes": "Provider-neutral protocol harness verifies memory-budget trigger semantics, N=3 draft calls, temperature/seed propagation, strict citation parsing, tau=0.3 utility selection, and defensive rescue union. Scripted draft outputs mean this is protocol-shape evidence only."
+  "notes": "Provider-neutral protocol harness verifies memory-budget trigger semantics, N=3 draft calls, temperature/seed propagation, strict citation parsing, tau=0.3 utility selection, and defensive rescue union. Scripted draft outputs mean this is protocol-shape evidence only. Executed in GitHub Actions run 37510681604; artifact id 11435236791."
 }
