@@ -1,0 +1,44 @@
+name: Stopping contrast protocol audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "capabilities/agent.evidence-aware-stopping-gate/contrast.py"
+      - "studies/arxiv-2610.06191/experiments/run_contrast_synthetic.py"
+      - "studies/arxiv-2610.06191/experiments/run_official_episode_audit.py"
+      - ".github/workflows/stopping-contrast-audit.yml"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run synthetic protocol test
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.06191/experiments/run_contrast_synthetic.py \
+            | tee contrast_synthetic_v1.result.json
+      - name: Fetch pinned official repository
+        run: |
+          git init /tmp/judged-useless-official
+          git -C /tmp/judged-useless-official remote add origin https://github.com/bennidict23/judged-useless-queried-anyway.git
+          git -C /tmp/judged-useless-official fetch --depth 1 origin 2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8
+          git -C /tmp/judged-useless-official checkout --detach FETCH_HEAD
+          test "$(git -C /tmp/judged-useless-official rev-parse HEAD)" = "2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8"
+      - name: Run pinned official episode audit
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.06191/experiments/run_official_episode_audit.py \
+            /tmp/judged-useless-official | tee official_episode_delta_audit_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: stopping-contrast-audit-v1
+          path: |
+            contrast_synthetic_v1.result.json
+            official_episode_delta_audit_v1.result.json
+          retention-days: 7
