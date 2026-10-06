@@ -1,0 +1,30 @@
+schema_version: "0.1"
+paper:
+  title: "Harness-Aware Distillation for Small Language Model Agents"
+  canonical_url: "https://arxiv.org/abs/2610.02858"
+  arxiv_id: "2610.02858"
+  authors:
+    - "Moonseok Choi"
+    - "Taehong Moon"
+    - "Giung Nam"
+    - "Juho Lee"
+  license: "UNKNOWN"
+  license_status: "UNKNOWN"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "The arXiv paper and appendix were inspected before implementation. No official public implementation was identified during the 2026-10-07 source review, so ReproForge implements the published mechanism independently from the paper description. Paper license remains UNKNOWN and no paper artifacts are redistributed."
+external_assets: []
+claims:
+  - id: "C1-harness-action-contrast"
+    statement: "Harness-Aware Distillation constructs action preferences by querying the same teacher with and without harness information at student-visited states, preferring the harness-conditioned action."
+    acceptance_criteria: "Mechanism verification requires deterministic construction of positive/negative action preference records from paired teacher actions at the same visited state, while leaving identical-action pairs gradient-neutral."
+  - id: "C2-validity-filter"
+    statement: "HAD excludes preference pairs whose preferred action contradicts harness records while retaining response-distillation supervision for that state."
+    acceptance_criteria: "Mechanism verification requires a validity mask that rejects at least actions outside admissible commands, actions using unheld objects, and repeated no-effect actions, and applies the mask only to the preference term."
+  - id: "C3-action-only-preference-loss"
+    statement: "HAD scores preferred and dispreferred actions under the same student reasoning prefix using a reference-free pairwise logistic loss."
+    acceptance_criteria: "Protocol verification requires executable action-only length-normalized margin and logistic preference loss with beta=0.5, excluding teacher reasoning from the compared span."
+  - id: "C4-gradient-balance"
+    statement: "HAD balances the preference-gradient contribution to rho=0.5 times the response-distillation gradient norm on each minibatch."
+    acceptance_criteria: "Protocol verification requires an executable fail-safe lambda calculation equal to rho * ||grad D|| / ||grad P|| when preference gradient is nonzero and zero otherwise."
