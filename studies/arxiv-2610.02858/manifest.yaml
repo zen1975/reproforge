@@ -14,7 +14,13 @@ reproduction:
   implementation_type: "DERIVED"
   official_code_used: false
   notes: "The arXiv paper and appendix were inspected before implementation. No official public implementation was identified during the 2026-10-07 source review, so ReproForge implements the published mechanism independently from the paper description. Paper license remains UNKNOWN and no paper artifacts are redistributed."
-external_assets: []
+external_assets:
+  - kind: "WEIGHTS"
+    name: "Qwen2.5-0.5B-Instruct"
+    source: "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
+    license: "Apache-2.0"
+    license_status: "VERIFIED"
+    redistributed: false
 claims:
   - id: "C1-harness-action-contrast"
     statement: "Harness-Aware Distillation constructs action preferences by querying the same teacher with and without harness information at student-visited states, preferring the harness-conditioned action."
