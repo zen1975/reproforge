@@ -21,6 +21,7 @@ jobs:
         run: python -m pip install "sentence-transformers>=5,<6"
       - name: Run semantic baseline
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/run_semantic_crossencoder.py             | tee semantic_crossencoder_result.json
       - uses: actions/upload-artifact@v4
         with:
