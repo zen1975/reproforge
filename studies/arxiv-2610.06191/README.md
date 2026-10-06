@@ -4,7 +4,7 @@
 **arXiv:** https://arxiv.org/abs/2610.06191  
 **Intake:** VERIFIED against authoritative arXiv metadata and full PDF  
 **Reproduction:** PARTIAL  
-**Lifecycle:** MECHANISM_VERIFIED
+**Lifecycle:** PROTOCOL_VERIFIED
 
 ## Why this study
 
@@ -35,10 +35,33 @@ ReproForge implements a separate deterministic gate from the paper description a
 
 This initial experiment verifies only the harness mechanism. It does not reproduce the paper's model behavior, HotpotQA/FEVER environments, time-matched contrast, or reported success statistics.
 
+## Time-matched contrast protocol verification
+
+ReproForge now includes its own executable implementation of the paper-defined time-matched stopping contrast Δ. A frozen synthetic protocol test produces the expected behavior:
+
+- evidence-integrating stopping: Δ = 1.0
+- clock-matched stopping: Δ = 0.0
+
+The implementation was then audited against the authors' released CC BY 4.0 episode data at pinned repository commit `2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8`.
+
+Across **all 43 released cells with available episodes**, ReproForge reproduced the stored paper values exactly:
+
+- Δ exact matches: 43 / 43
+- 95% bootstrap interval exact matches: 43 / 43
+
+Representative Qwen3-8B results:
+
+- test300 unaided: Δ = -0.0648006045
+- test300 enforced rule: Δ = +0.3290158752
+- fresh300 unaided: Δ = -0.0520519898
+- fresh300 enforced rule: Δ = +0.3444698781
+
+This is an `OFFICIAL_AUDIT` of released trajectories using a separate ReproForge metric implementation. It does **not** independently regenerate the model trajectories.
+
 ## External assets
 
 The official repository is public and MIT-licensed. Its released episode data is documented as CC BY 4.0. ReproForge does not vendor either into this study. Because the official repository was inspected before implementation, this study is classified as `DERIVED`, not clean-room independent.
 
 ## Next gate
 
-Implement the paper-defined trajectory metric and reproduce it first on synthetic trajectories, then perform a pinned official-data audit without silently mixing official results with independent mechanism evidence.
+Audit the remaining lightweight paper summaries (answer-after-five-useless and released success-rate aggregates). After that, if remaining work is primarily original large-model episode regeneration, move the study to `HEAVY_COMPUTE_READY` with a fork-ready handoff.
