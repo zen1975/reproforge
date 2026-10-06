@@ -6,20 +6,17 @@ decisions. Draft-model generation is intentionally outside this deterministic co
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Iterable, Sequence
+from typing import Iterable, NamedTuple, Sequence
 
 
-@dataclass(frozen=True)
-class Span:
+class Span(NamedTuple):
     id: str
     reasoning: str
     action: str
     observation: str
 
 
-@dataclass(frozen=True)
-class CompressionResult:
+class CompressionResult(NamedTuple):
     retained_ids: tuple[str, ...]
     dropped_ids: tuple[str, ...]
     utility: dict[str, float]
