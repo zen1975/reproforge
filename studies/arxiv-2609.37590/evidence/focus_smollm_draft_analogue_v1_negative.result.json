@@ -1,0 +1,13 @@
+{
+  "experiment_id": "focus-smollm-draft-analogue-v1-negative",
+  "model_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "workflow_run": 37507584968,
+  "head_sha": "a61118f29bb0b5a24c74f557116e4b0f58adb2fd",
+  "rollouts": 3,
+  "temperature": 0.7,
+  "protocol_dependency_citation_successes": 0,
+  "protocol_dependency_citation_success_rate": 0,
+  "retained_ids": [],
+  "finding": "The 135M draft model continued the trajectory-like span format instead of emitting required Depends on: citation lines. Under the corrected strict parser, all three rollouts fail closed.",
+  "verdict_boundary": "Negative model-backed analogue evidence only. It shows that the deterministic FOCUS core requires a sufficiently instruction-following draft model or constrained output layer."
+}
