@@ -1,0 +1,25 @@
+study_id: arxiv-2610.03213
+lifecycle: HEAVY_COMPUTE_READY
+reproduction_status: PARTIAL
+free_light_phase_complete: true
+current_boundary: "Free/lightweight reproduction is complete; exact Gemma 3 1B/4B optimization and paper-scale GRPO require gated model access and GPU-class compute."
+next_step: "Run the prepared Gemma 3 1B Base workflow after configuring authorized HF_TOKEN, then execute paper-aligned LoRA SFT locally on suitable GPU hardware."
+handoff:
+  path: studies/arxiv-2610.03213/HANDOFF.md
+  ready: true
+blockers:
+  - "Official Gemma access requires accepted Google terms and authenticated Hugging Face access."
+  - "Paper-scale SFT/GRPO used H100-class compute; standard GitHub runners are CPU-only."
+  - "Paper-linked author repository currently returns 404, so author code/data remain unavailable."
+  - "Exact seed/GEPA prompt, GRPO scalar reward weights, dataset mixture ratios, and fixed vLLM decoding settings are unpublished."
+frozen_evaluations:
+  - "task_tool_specialized_minilm_sft_v1: translate/database held-out families"
+  - "task-tool-specialized-minilm-blind-v1: commerce/documents/identity/notifications blind families"
+  - "qwen2.5_0.5b_lora_sft_v1: first frozen held-out slice"
+  - "qwen2.5_0.5b_lora_sft_v2_frozen: held-out rows 160-399"
+entrypoints:
+  - ".github/workflows/gemma3-1b-protocol.yml"
+  - "studies/arxiv-2610.03213/experiments/run_gemma3_1b_base.py"
+  - "studies/arxiv-2610.03213/experiments/run_lora_sft_harness.py"
+  - "studies/arxiv-2610.03213/experiments/prepare_sft_protocol_data.py"
+updated_at: 2026-10-06
