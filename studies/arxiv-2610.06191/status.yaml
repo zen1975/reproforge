@@ -1,15 +1,19 @@
 study_id: arxiv-2610.06191
-lifecycle: MECHANISM_VERIFIED
+lifecycle: PROTOCOL_VERIFIED
 reproduction_status: PARTIAL
 free_light_phase_complete: false
-current_boundary: "The harness-level five-consecutive-USELESS stopping gate is independently implemented and synthetic mechanism-tested. Paper trajectory statistics and the time-matched contrast are not yet reproduced in ReproForge."
-next_step: "Implement the paper-defined time-matched contrast on trajectory records, then run an explicitly labeled audit against pinned official released episodes."
+current_boundary: "The harness stopping gate is mechanism-verified and the paper-defined time-matched contrast is protocol-verified. A pinned official-data audit reproduces all 43 released Δ/95% CI cells exactly, but original model episode generation and full success-rate claims are not independently reproduced."
+next_step: "Use the pinned released episodes to audit answer-after-five-useless and success-rate summaries, then decide whether remaining work is primarily large-model regeneration/compute and qualifies for HEAVY_COMPUTE_READY."
 handoff:
   path: studies/arxiv-2610.06191/HANDOFF.md
   ready: false
 blockers: []
 frozen_evaluations:
   - "stopping-gate-synthetic-v1"
+  - "time-matched-contrast-synthetic-v1"
+  - "official-episodes-delta-audit-v2-all-released"
 entrypoints:
   - "studies/arxiv-2610.06191/experiments/run_stopping_gate_synthetic.py"
+  - "studies/arxiv-2610.06191/experiments/run_contrast_synthetic.py"
+  - "studies/arxiv-2610.06191/experiments/run_official_episode_audit.py"
 updated_at: "2026-10-07"
