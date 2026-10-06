@@ -36,7 +36,7 @@ def test_contrast_is_deterministic_for_fixed_bootstrap_seed():
         {
             "question_id": "q1",
             "actions": ["search", "search", "search", "search", "search"],
-            "judgments": ["USEFUL", "USELESS", "USELESS", "USELESS"],
+            "judgments": ["USELESS", "USEFUL", "USELESS", "USELESS"],
         },
     ]
     a = metric.time_matched_contrast(
