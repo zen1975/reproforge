@@ -12,4 +12,4 @@ frozen_evaluations:
   - "stopping-gate-synthetic-v1"
 entrypoints:
   - "studies/arxiv-2610.06191/experiments/run_stopping_gate_synthetic.py"
-updated_at: 2026-10-07
+updated_at: "2026-10-07"
