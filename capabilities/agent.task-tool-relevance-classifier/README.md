@@ -41,6 +41,29 @@ So a generic semantic relevance model did **not** solve task-tool intent matchin
 
 The paper's Gemma 3 Base → GEPA → SFT → GRPO results remain unreproduced.
 
+## Task-specific supervised specialization
+
+A third experiment fine-tunes the pinned MiniLM CrossEncoder on a deterministic synthetic dataset with tool-family-disjoint splits:
+
+- train: 288 examples across 8 families;
+- dev: 72 examples across 2 unseen families;
+- test: 72 examples across 2 additional unseen families;
+- 3 epochs, batch size 16, learning rate 2e-5;
+- test families were frozen as `translate` and `database`.
+
+The same base model scored 80.56% accuracy / 69.57% F1 on that held-out test before specialization. After supervised task-specific fine-tuning:
+
+- accuracy: 91.67%
+- precision: 100%
+- recall: 75%
+- F1: 85.71%
+- false-positive rate: 0%
+- false-negative rate: 25%
+
+That is +11.11 percentage points in accuracy and +16.15 points in F1. The result is still below the paper's 95% accuracy/F1 operational target, so the capability remains experimental and the paper reproduction remains PARTIAL.
+
+This trained checkpoint is an experiment artifact, not the shipped runtime implementation. The production descriptor still points to the transparent lexical reference until a model-backed runtime is independently validated and packaged.
+
 ## Contract
 
 Input:
