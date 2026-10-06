@@ -1,4 +1,6 @@
-.PHONY: install test lint validate
+.PHONY: bootstrap install test lint validate statuses verify
+
+bootstrap: install
 
 install:
 	python -m pip install -e '.[dev]'
@@ -11,3 +13,8 @@ lint:
 
 validate:
 	reproforge validate templates/paper-manifest.example.yaml
+
+statuses:
+	reproforge validate-all-statuses
+
+verify: lint test validate statuses
