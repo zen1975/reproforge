@@ -22,7 +22,24 @@ Measured result for `lexical-overlap-reference-v1`:
 
 The paper defines an operational target of 95% accuracy and 95% F1. The lexical baseline fails that target by a wide margin. That is useful evidence: keyword overlap is not sufficient for intent-aware tool-call oversight.
 
-This benchmark is independent synthetic mechanism evidence, not the paper's held-out server-disjoint dataset. The paper's Gemma 3 Base → GEPA → SFT → GRPO results remain unreproduced.
+This benchmark is independent synthetic mechanism evidence, not the paper's held-out server-disjoint dataset.
+
+## Off-the-shelf semantic baseline
+
+ReproForge also ran `cross-encoder/ms-marco-MiniLM-L6-v2` (Apache-2.0) on the same benchmark. With the model's raw score threshold fixed at 0.0, accuracy was 56.25% and F1 was 30.0%.
+
+To avoid tuning on the whole set, the first 16 cases were then used only to calibrate a scalar threshold, and the remaining 16 cases were held out for test scoring. The calibrated test result was:
+
+- accuracy: 37.5%
+- precision: 36.36%
+- recall: 57.14%
+- F1: 44.44%
+- false-positive rate: 77.78%
+- false-negative rate: 42.86%
+
+So a generic semantic relevance model did **not** solve task-tool intent matching and did not outperform the lexical reference on this independent test split. This strengthens the case for task-specific supervision or instruction tuning rather than generic semantic similarity alone.
+
+The paper's Gemma 3 Base → GEPA → SFT → GRPO results remain unreproduced.
 
 ## Contract
 
