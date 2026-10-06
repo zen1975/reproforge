@@ -1,0 +1,27 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "task-tool-specialized-minilm-blind-v1",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:1a7dbd193927e54b6855c4f185f1e976c756db4a38edb9893521a1f6138676a3",
+    "base_model_revision": "ce0834f22110de6d9222af7a7a03628121708969"
+  },
+  "metrics": {
+    "blind_count": 144,
+    "before_accuracy": 0.8541666666666666,
+    "before_f1": 0.787878787878788,
+    "after_accuracy": 0.9444444444444444,
+    "after_f1": 0.9130434782608695,
+    "after_precision": 0.9545454545454546,
+    "after_recall": 0.875,
+    "after_false_positive_rate": 0.020833333333333332,
+    "accuracy_gain_percentage_points": 9.02777777777778,
+    "f1_gain_percentage_points": 12.51646903820815,
+    "accuracy_ci_95_low": 0.9027777777777778,
+    "accuracy_ci_95_high": 0.9791666666666666,
+    "mcnemar_p_value": 0.000244140625,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "Frozen unseen-family blind evaluation. Specialization materially and significantly improved paired correctness, but the independent synthetic result remains below the paper target and is not a reproduction of Gemma 3/GEPA/SFT/GRPO."
+}
