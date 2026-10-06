@@ -1,0 +1,30 @@
+name: LoRA SFT harness smoke
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.03213/experiments/run_lora_sft_harness.py"
+      - ".github/workflows/lora-sft-harness-smoke.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install training dependencies
+        run: python -m pip install "transformers==5.18.0" "torch==2.14.1" "peft>=0.17,<1"
+      - name: Prepare independent SFT data
+        run: python studies/arxiv-2610.03213/experiments/prepare_sft_protocol_data.py
+      - name: Smoke-test LoRA response-only training path
+        run: |
+          python studies/arxiv-2610.03213/experiments/run_lora_sft_harness.py             --model-id HuggingFaceTB/SmolLM2-135M-Instruct             --train-jsonl studies/arxiv-2610.03213/experiments/generated/sft_train_4404.jsonl             --max-train-examples 16             --batch-size 2             --gradient-accumulation 1             --epochs 3             --max-steps 2             --max-length 256             --dtype float32             | tee lora_sft_harness_smoke.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lora-sft-harness-smoke
+          path: lora_sft_harness_smoke.json
+          retention-days: 7
