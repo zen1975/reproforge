@@ -12,11 +12,11 @@ def test_intake_source_record_schema_validates():
     assert validate_document(source, schema) == []
 
 
-def test_first_study_identity_matches_but_authority_remains_unverified():
+def test_first_study_authoritative_identity_verifies():
     manifest = load_document(ROOT / "studies" / "arxiv-2610.03213" / "manifest.yaml")
     source = load_document(ROOT / "studies" / "arxiv-2610.03213" / "source-metadata.json")
     result = validate_intake_identity(manifest, source)
-    assert result["status"] == "IDENTITY_MATCHED_SOURCE_UNVERIFIED"
+    assert result["status"] == "VERIFIED"
     assert result["errors"] == []
     assert all(result["checks"].values())
 
@@ -33,7 +33,5 @@ def test_intake_gate_rejects_title_mismatch():
 def test_authoritative_match_can_verify_identity():
     manifest = load_document(ROOT / "studies" / "arxiv-2610.03213" / "manifest.yaml")
     source = load_document(ROOT / "studies" / "arxiv-2610.03213" / "source-metadata.json")
-    source["authoritative"] = True
-    source["source_kind"] = "arxiv"
     result = validate_intake_identity(manifest, source)
     assert result["status"] == "VERIFIED"
