@@ -1,0 +1,13 @@
+{
+  "claim_id": "C2-enforced-integration-rule",
+  "run_id": "stopping-gate-synthetic-v1",
+  "artifact_hashes": {},
+  "metrics": {
+    "scenario_count": 6,
+    "scenario_pass_rate": 1,
+    "total_tool_calls_saved_vs_deadline_baseline": 4,
+    "sticky_after_fire_pass": true
+  },
+  "verdict": "PASS",
+  "notes": "The deterministic harness gate fires exactly at five consecutive USELESS judgments, resets on useful evidence before firing, remains fired once triggered, and saves tool calls under persistent failure in the frozen synthetic mechanism benchmark. This PASS applies only to the mechanism acceptance criteria, not the paper-level reproduction."
+}
