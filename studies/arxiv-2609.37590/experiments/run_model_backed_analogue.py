@@ -54,6 +54,7 @@ def _load(path: Path, name: str):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-id", default="Qwen/Qwen2.5-0.5B-Instruct")
+    parser.add_argument("--experiment-id", default="focus-model-backed-analogue")
     parser.add_argument("--rollouts", type=int, default=3)
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--max-new-tokens", type=int, default=256)
@@ -137,7 +138,7 @@ def main():
     distractor_pruned = DISTRACTOR not in retained
 
     result = {
-        "experiment_id": "focus-qwen0.5b-draft-analogue-v1",
+        "experiment_id": args.experiment_id,
         "model_id": args.model_id,
         "seed": SEED,
         "rollouts": args.rollouts,
