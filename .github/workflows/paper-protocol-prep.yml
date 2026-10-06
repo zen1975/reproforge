@@ -1,0 +1,29 @@
+name: Paper protocol data preparation
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.03213/experiments/prepare_sft_protocol_data.py"
+      - "studies/arxiv-2610.03213/experiments/generate_protocol_equivalent_mcp.py"
+      - ".github/workflows/paper-protocol-prep.yml"
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Prepare paper-sized independent SFT data
+        run: |
+          python studies/arxiv-2610.03213/experiments/prepare_sft_protocol_data.py             | tee sft_protocol_prepare_result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: independent-sft-protocol-v1
+          path: |
+            studies/arxiv-2610.03213/experiments/generated/
+            sft_protocol_prepare_result.json
+          retention-days: 1
