@@ -81,6 +81,14 @@ The paired comparison had 13 cases corrected by specialization and 0 cases made 
 
 This is stronger evidence that specialization generalizes beyond the originally observed test families. It still does **not** satisfy the paper's joint 95% accuracy/F1 target, because observed accuracy is 94.44% and F1 is 91.30%.
 
+## Model-backed runtime path
+
+ReproForge now also includes an optional local checkpoint runtime in `semantic_classifier.py`. The export workflow independently trains the specialized model, writes tokenizer/model files plus `reproforge_metadata.json`, reloads them using `local_files_only=True`, and exercises the stable `classify(task, tool_name, tool_description)` contract.
+
+The export/reload smoke test passed 4/4 positive and wrong-action examples. The resulting checkpoint was about 83.4 MB and is kept only as a one-day GitHub Actions artifact; the durable repository stores the training recipe, model revision, model SHA256, calibrated threshold, and Evidence instead of committing weights.
+
+This makes the specialized classifier reproducibly callable without promoting it to the default runtime yet. The default descriptor intentionally remains the deterministic lexical implementation until a model-backed package has stronger protocol-equivalent evidence.
+
 ## Contract
 
 Input:
