@@ -1,0 +1,24 @@
+{
+  "benchmark_id": "task-tool-synthetic-hard-v1",
+  "case_count": 32,
+  "positive_count": 15,
+  "negative_count": 17,
+  "lexical_overlap_reference_v1": {
+    "accuracy": 0.5,
+    "precision": 0.4782608695652174,
+    "recall": 0.7333333333333333,
+    "f1": 0.5789473684210527,
+    "false_positive_rate": 0.7058823529411765,
+    "false_negative_rate": 0.26666666666666666,
+    "tp": 11,
+    "tn": 5,
+    "fp": 12,
+    "fn": 4
+  },
+  "paper_operational_target": {
+    "accuracy": 0.95,
+    "f1": 0.95
+  },
+  "meets_paper_operational_target": false,
+  "interpretation": "The deterministic lexical baseline is reproducible but fails the paper's 95% accuracy/F1 operational target on this independent hard synthetic benchmark. This supports the need for semantic model-based specialization but does not reproduce the paper's Gemma/GEPA/SFT/GRPO results."
+}
