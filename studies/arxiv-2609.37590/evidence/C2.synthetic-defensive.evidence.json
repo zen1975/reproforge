@@ -1,0 +1,11 @@
+{
+  "claim_id": "C2-defensive-rescue",
+  "run_id": "focus-synthetic-protocol-v1",
+  "artifact_hashes": {},
+  "metrics": {
+    "defensive_rescue_pass": true,
+    "set_valued_failure_preserved": true
+  },
+  "verdict": "PASS",
+  "notes": "Defensive rescue preserves an otherwise dropped state span without removing utility-retained spans. The benchmark also intentionally preserves the paper-described set-valued failure mode as negative evidence."
+}
