@@ -32,6 +32,37 @@ def cmd_validate(path: str) -> int:
     return 0
 
 
+def cmd_validate_candidates(path: str) -> int:
+    document = load_document(path)
+    schema = load_document(_schema_path("candidate-queue.schema.json"))
+    errors = validate_document(document, schema)
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}")
+        return 1
+
+    candidates = document.get("candidates", [])
+    ids = [item["arxiv_id"] for item in candidates]
+    if len(ids) != len(set(ids)):
+        print("ERROR: duplicate arXiv IDs in candidate queue")
+        return 1
+
+    promoted = [
+        item for item in candidates
+        if item["status"] == "PROMOTED_TO_STUDY"
+    ]
+    for item in promoted:
+        study_path = _root() / "studies" / f"arxiv-{item['arxiv_id']}"
+        if not study_path.exists():
+            print(f"ERROR: promoted candidate has no study directory: {study_path}")
+            return 1
+
+    print(f"VALID {path}")
+    print(f"candidate_queue_sha256={sha256_object(document)}")
+    print(f"candidate_count={len(candidates)}")
+    return 0
+
+
 def _resolve_status_path(path: str) -> Path:
     candidate = Path(path)
     if candidate.is_dir():
@@ -111,6 +142,11 @@ def main() -> None:
     validate = sub.add_parser("validate", help="validate a paper manifest")
     validate.add_argument("path")
 
+    validate_candidates = sub.add_parser(
+        "validate-candidates", help="validate a research candidate queue"
+    )
+    validate_candidates.add_argument("path")
+
     validate_status = sub.add_parser("validate-status", help="validate one study status")
     validate_status.add_argument("path")
 
@@ -123,6 +159,8 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "validate":
         raise SystemExit(cmd_validate(args.path))
+    if args.command == "validate-candidates":
+        raise SystemExit(cmd_validate_candidates(args.path))
     if args.command == "validate-status":
         raise SystemExit(cmd_validate_status(args.path))
     if args.command == "study-status":
