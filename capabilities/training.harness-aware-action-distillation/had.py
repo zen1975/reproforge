@@ -7,20 +7,17 @@ task rewards or future information.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
 from math import exp, log
-from typing import Iterable
+from typing import Iterable, NamedTuple
 
 
-@dataclass(frozen=True)
-class HarnessRecord:
+class HarnessRecord(NamedTuple):
     admissible_actions: frozenset[str]
     held_objects: frozenset[str]
     no_effect_actions: frozenset[str]
 
 
-@dataclass(frozen=True)
-class PreferenceRecord:
+class PreferenceRecord(NamedTuple):
     positive_action: str
     negative_action: str
     valid_positive: bool
