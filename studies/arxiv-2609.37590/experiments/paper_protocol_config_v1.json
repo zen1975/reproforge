@@ -1,0 +1,25 @@
+{
+  "protocol_id": "focus-paper-protocol-v1",
+  "source": "arXiv:2609.37590v1",
+  "defaults": {
+    "rollouts_n": 3,
+    "utility_threshold_tau": 0.3,
+    "draft_temperature": 0.7,
+    "main_agent_temperature": 0,
+    "seed": 42
+  },
+  "memory_trigger_tokens": {
+    "AppWorld": 4096,
+    "OfficeBench": 2048,
+    "8-Objective QA": 2048
+  },
+  "span_unit": [
+    "reasoning",
+    "action",
+    "observation"
+  ],
+  "utility_estimator": "citation_frequency_across_plan_rollouts",
+  "keep_rule": "utility >= tau",
+  "defensive_verification": "union rescued spans into utility-retained set",
+  "boundary": "Published protocol values captured from paper. This config alone is not paper reproduction."
+}
