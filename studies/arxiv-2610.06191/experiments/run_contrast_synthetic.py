@@ -46,7 +46,7 @@ def run():
             _trajectory(f"c{q}", ["USELESS"] * 4, 4)
         )
         clock_driven.append(
-            _trajectory(f"c{q}", ["USEFUL", "USELESS", "USELESS", "USELESS"], 4)
+            _trajectory(f"c{q}", ["USELESS", "USEFUL", "USELESS", "USELESS"], 4)
         )
 
     positive = mod.time_matched_contrast(
