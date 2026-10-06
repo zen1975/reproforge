@@ -100,7 +100,7 @@ def main():
         continuation = generated[0][inputs["input_ids"].shape[1]:]
         text = tokenizer.decode(continuation, skip_special_tokens=True)
         try:
-            deps, rescued = parser_mod.parse_plan(text)
+            deps, rescued = parser_mod.parse_plan(text, allowed_ids={f"s_{i}" for i in range(1, 7)})
             parse_ok = True
             error = None
         except ValueError as exc:
