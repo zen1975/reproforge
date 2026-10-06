@@ -9,9 +9,9 @@ threshold selection, and defensive rescue union.
 from __future__ import annotations
 
 from collections.abc import Callable, Sequence
-from dataclasses import dataclass
 import importlib.util
 from pathlib import Path
+from typing import NamedTuple
 
 CAP = Path(__file__).resolve().parent
 
@@ -23,8 +23,7 @@ Format: Step: <description> | Depends on: [s_X, s_Y]
 Format: Rescued Spans: [s_A, s_B] | Reason: <risk if deleted>"""
 
 
-@dataclass(frozen=True)
-class ProtocolRun:
+class ProtocolRun(NamedTuple):
     compression_triggered: bool
     draft_calls: int
     retained_ids: tuple[str, ...]
