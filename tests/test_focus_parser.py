@@ -33,3 +33,13 @@ def test_parser_rejects_malformed_span_ids():
         pass
     else:
         raise AssertionError("malformed span id must fail closed")
+
+
+def test_parser_fails_when_model_omits_dependency_format():
+    mod = _load()
+    try:
+        mod.parse_plan("[s_7] Thought: continue history | Action: noop")
+    except ValueError as exc:
+        assert "no dependency citation" in str(exc)
+    else:
+        raise AssertionError("missing dependency citations must fail closed")
