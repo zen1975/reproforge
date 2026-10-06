@@ -1,0 +1,35 @@
+id: "agent.evidence-aware-stopping-gate"
+version: "0.1.0"
+name: "Evidence-Aware Stopping Gate"
+summary: "Deterministic harness policy that converts repeated useless-evidence judgments into a forced stop/answer decision."
+status: "experimental"
+task_classes:
+  - "agent-tool-oversight"
+  - "stopping-policy"
+  - "tool-call-mediation"
+interface:
+  inputs:
+    judgment: "USEFUL|USELESS"
+  outputs:
+    force_answer: "boolean"
+    consecutive_useless: "integer"
+runtime:
+  kind: "python"
+  entrypoint: "capabilities/agent.evidence-aware-stopping-gate/gate.py:EvidenceStoppingGate"
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: "PARTIAL"
+  studies:
+    - "studies/arxiv-2610.06191"
+  evidence_paths:
+    - "studies/arxiv-2610.06191/evidence/C2.synthetic-gate.evidence.json"
+    - "studies/arxiv-2610.06191/evidence/stopping_gate_synthetic_v1.result.json"
+implementation:
+  path: "capabilities/agent.evidence-aware-stopping-gate/gate.py"
+  license: "Apache-2.0"
+adapters:
+  - kind: "python"
+  - kind: "agent-tool"
+  - kind: "mcp"
+  - kind: "cloudflare-worker"
