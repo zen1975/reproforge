@@ -1,0 +1,35 @@
+{
+  "experiment_id": "focus-qwen0.5b-draft-analogue-v1-negative",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_license": "Apache-2.0",
+  "workflow_run": 37511431415,
+  "artifact_id": 11434448179,
+  "artifact_digest": "sha256:96d5931f73fe546eba86a40193a8c168abe479e8ce7c9104e8286e8b2cd23db1",
+  "rollouts": 3,
+  "temperature": 0.7,
+  "max_new_tokens": 256,
+  "parse_successes": 0,
+  "parse_success_rate": 0,
+  "rejection_reason_category": "hallucinated_unknown_span_ids",
+  "required_preserved": false,
+  "hallucinated_ids_by_rollout": [
+    [
+      "s_10",
+      "s_11",
+      "s_7",
+      "s_8",
+      "s_9"
+    ],
+    [
+      "s_7"
+    ],
+    [
+      "s_10",
+      "s_7",
+      "s_8",
+      "s_9"
+    ]
+  ],
+  "finding": "The 0.5B model partially followed the dependency-citation format but cited future/nonexistent span IDs. The strict parser rejected all three rollouts, preventing invalid references from entering utility estimation.",
+  "verdict_boundary": "Negative model-backed analogue on a synthetic trace. It shows that exact referential dependency constraints are not reliable at this scale/prompt setting; it does not imply Qwen3-8B/14B, Phi-4, or GPT-4.1 draft models fail."
+}
