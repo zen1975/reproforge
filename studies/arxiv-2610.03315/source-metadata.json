@@ -1,0 +1,19 @@
+{
+  "source_url": "https://arxiv.org/abs/2610.03315",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-06",
+  "arxiv_id": "2610.03315",
+  "canonical_url": "https://arxiv.org/abs/2610.03315",
+  "title": "Lightweight, Rubric-Guided Trajectory Evaluation for Production AI Agents",
+  "authors": [
+    "Linh-An Phan",
+    "MingXue Wang",
+    "Guangyu Wu",
+    "Feng Pan",
+    "Zhaoyu Pang",
+    "Yanbin Zhang"
+  ],
+  "abstract": "LiteTrajEval is a budget-bounded trajectory evaluation architecture that derives domain-specific rule profiles offline, deterministically preprocesses and serializes agent trajectories under a fixed budget, and uses a single rubric-guided LLM judge to produce structured diagnostics. The paper evaluates the approach on Magentic-One-style and tau-retail trajectories and reports improved failure-localization alignment with lower evaluation cost and runtime.",
+  "notes": "Identity and abstract captured from authoritative arXiv metadata. Full PDF was inspected during intake. Paper license link resolves to CC BY 4.0. No paper PDF, figures, author code, datasets, prompts, or model artifacts are redistributed by ReproForge."
+}

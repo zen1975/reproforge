@@ -1,0 +1,44 @@
+schema_version: "0.1"
+paper:
+  title: "Lightweight, Rubric-Guided Trajectory Evaluation for Production AI Agents"
+  canonical_url: "https://arxiv.org/abs/2610.03315"
+  arxiv_id: "2610.03315"
+  authors:
+    - "Linh-An Phan"
+    - "MingXue Wang"
+    - "Guangyu Wu"
+    - "Feng Pan"
+    - "Zhaoyu Pang"
+    - "Yanbin Zhang"
+  license: "CC BY 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Authoritative arXiv metadata and full PDF inspected. ReproForge implements only an independent deterministic budget-allocation kernel at intake. Full rule generation, trajectory preprocessing, MMR evidence selection, rubric-guided LLM judging, and benchmark reproduction remain NOT_RUN."
+external_assets:
+  - kind: "DATASET"
+    name: "Magentic-One-style failed trajectories derived from AgentRx benchmark"
+    source: "Referenced by paper; not redistributed"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+  - kind: "DATASET"
+    name: "tau-retail failed trajectories derived from AgentRx benchmark"
+    source: "Referenced by paper; not redistributed"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-single-call-fixed-budget"
+    statement: "LiteTrajEval uses deterministic preprocessing and fixed-budget serialization so a single rubric-guided LLM call can produce structured trajectory diagnostics."
+    acceptance_criteria: "Independent reproduction implements protocol-equivalent normalization, status-aware preprocessing, budget-bounded serialization, and one-call structured judging, then verifies the serialized input stays within the declared budget."
+  - id: "C2-localization-alignment"
+    statement: "The paper reports higher failure-localization alignment with human annotations than AgentRx on Magentic-One-style and tau-retail failed trajectories."
+    acceptance_criteria: "Independent benchmark reproduction must use protocol-equivalent datasets, failure-group normalization, and Align.|Det.@1/@3 metrics, and compare results against the reported AgentRx baseline."
+  - id: "C3-cost-runtime"
+    statement: "The paper reports materially lower evaluation cost and runtime than the multi-call AgentRx baseline."
+    acceptance_criteria: "Independent reproduction must record judge model, input/output tokens, estimated cost, per-sample runtime, and total runtime under a fixed trajectory budget and compare them against a multi-call baseline."
+  - id: "C4-status-only-limit"
+    statement: "Rule-based status signals alone provide substantially lower failure-detection coverage than LLM-based LiteTrajEval in the reported evaluation."
+    acceptance_criteria: "Independent reproduction must include a no-LLM status-only ablation and compare detection rate against at least one rubric-guided judge configuration."

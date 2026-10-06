@@ -1,0 +1,35 @@
+id: "agent.trajectory-budget-serializer"
+version: "0.1.0"
+name: "Trajectory Budget Serializer"
+summary: "Experimental deterministic kernel for allocating a fixed serialization budget across agent trajectory steps while preserving more evidence for warning and error steps."
+status: "experimental"
+task_classes:
+  - "agent-trajectory-evaluation"
+  - "trajectory-compression"
+  - "budget-aware-serialization"
+interface:
+  inputs:
+    lengths: "array[integer]"
+    statuses: "array[ok|warning|error]"
+    budget: "integer"
+    floors: "object"
+  outputs:
+    allocations: "array[integer]"
+    total: "integer"
+runtime:
+  kind: "python"
+  entrypoint: "capabilities/agent.trajectory-budget-serializer/serializer.py:allocate_budgets"
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: "NOT_RUN"
+  studies:
+    - "studies/arxiv-2610.03315"
+  evidence_paths: []
+implementation:
+  path: "capabilities/agent.trajectory-budget-serializer/serializer.py"
+  license: "Apache-2.0"
+adapters:
+  - kind: "python"
+  - kind: "agent-tool"
+  - kind: "cloudflare-worker"
