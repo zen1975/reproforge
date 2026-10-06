@@ -15,3 +15,18 @@ A capability should not be promoted merely because experimental code runs. Promo
 - tests appropriate to the claimed guarantees.
 
 Multiple studies may support the same capability. A single study may yield multiple capabilities.
+
+
+## Agent continuation guide
+
+Every capability directory must include `AGENTS.md`.
+
+The capability guide defines:
+- the stable contract;
+- lightweight checks that must remain cheap and deterministic;
+- which heavy/model work belongs back in the supporting study;
+- the real implementation / operationalization boundary.
+
+Read the source study's `AGENTS.md` and `HANDOFF.md` before changing evidence-backed behavior.
+
+Use `templates/CAPABILITY_AGENTS.md` when creating a new capability.
