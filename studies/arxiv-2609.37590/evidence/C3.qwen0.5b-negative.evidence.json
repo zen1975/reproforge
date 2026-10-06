@@ -1,0 +1,15 @@
+{
+  "claim_id": "C3-protocol-shape",
+  "run_id": "focus-qwen0.5b-draft-analogue-v1-negative",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:96d5931f73fe546eba86a40193a8c168abe479e8ce7c9104e8286e8b2cd23db1"
+  },
+  "metrics": {
+    "rollouts": 3,
+    "parse_successes": 0,
+    "parse_success_rate": 0,
+    "hallucinated_reference_rollouts": 3
+  },
+  "verdict": "FAIL",
+  "notes": "Negative analogue subtest only. Qwen2.5-0.5B followed the dependency-style format partially but cited unknown future span IDs in all three rollouts; the strict parser correctly failed closed. This does not change the separate PASS on provider-neutral protocol-shape verification."
+}
