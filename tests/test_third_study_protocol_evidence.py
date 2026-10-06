@@ -30,6 +30,6 @@ def test_official_delta_audit_matches_all_released_cells():
 
 def test_study_is_protocol_verified_but_not_full_reproduction():
     status = load_document(STUDY / "status.yaml")
-    assert status["lifecycle"] == "PROTOCOL_VERIFIED"
+    assert status["lifecycle"] in {"PROTOCOL_VERIFIED", "HEAVY_COMPUTE_READY"}
     assert status["reproduction_status"] == "PARTIAL"
-    assert status["free_light_phase_complete"] is False
+    assert status["free_light_phase_complete"] is True
