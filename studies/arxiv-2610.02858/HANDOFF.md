@@ -157,3 +157,27 @@ Until then:
 lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
 ```
+
+## Additional free/lightweight verification completed
+
+After the initial handoff was created, ReproForge also completed:
+
+- real `Qwen2.5-0.5B-Instruct` student state/action collection;
+- same `Qwen2.5-1.5B-Instruct` teacher scoring with and without harness records;
+- a zero-contrast run (0/3) preserved as negative evidence;
+- a harness-signal run where 2/4 states produced active, valid teacher action contrasts;
+- both active contrasts corrected the 0.5B student's baseline action;
+- 0.5B LoRA training from only those real teacher-generated active pairs;
+- a 3-seed `distill-only` vs `HAD` comparison on four new frozen unseen states.
+
+Across all three seeds, held-out accuracy remained 50% for both methods. HAD produced a slightly larger positive mean-margin change than distillation-only in all three seeds:
+
+```text
+distill-only mean margin change  +0.023592
+HAD mean margin change           +0.026891
+difference                       +0.003299
+```
+
+This remains `PARTIAL`: the result is small synthetic directional evidence, not benchmark efficacy evidence.
+
+The practical free/lightweight boundary is therefore now exhausted. The next meaningful work should use true on-policy interactive trajectories, larger paper-scale students/teachers, substantially more updates, and task-level benchmark metrics.
