@@ -1,0 +1,11 @@
+{
+  "claim_id": "C1-decision-preserving-span-selection",
+  "run_id": "focus-synthetic-protocol-v1",
+  "artifact_hashes": {},
+  "metrics": {
+    "case_count": 4,
+    "pass_rate": 1
+  },
+  "verdict": "PASS",
+  "notes": "PASS applies to the deterministic span-selection mechanism with frozen dependency rollouts. It does not establish that a real draft LLM produces paper-quality dependency estimates."
+}
