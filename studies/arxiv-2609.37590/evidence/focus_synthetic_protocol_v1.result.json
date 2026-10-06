@@ -1,0 +1,61 @@
+{
+  "experiment_id": "focus-synthetic-protocol-v1",
+  "paper_defaults": {
+    "N": 3,
+    "tau": 0.3
+  },
+  "case_count": 4,
+  "passed": 4,
+  "pass_rate": 1,
+  "all_pass": true,
+  "cases": [
+    {
+      "id": "citation-frequency-selection",
+      "retained": [
+        "s_1",
+        "s_3",
+        "s_4",
+        "s_5"
+      ],
+      "expected": [
+        "s_1",
+        "s_3",
+        "s_4",
+        "s_5"
+      ],
+      "pass": true
+    },
+    {
+      "id": "defensive-rescue",
+      "optimistic_retained": [
+        "s_1",
+        "s_2"
+      ],
+      "defensive_retained": [
+        "s_1",
+        "s_2",
+        "s_4"
+      ],
+      "pass": true
+    },
+    {
+      "id": "set-valued-goal-limitation",
+      "entity_spans_dropped": [
+        "s_3",
+        "s_4",
+        "s_5",
+        "s_6"
+      ],
+      "expected_negative_evidence": true,
+      "pass": true
+    },
+    {
+      "id": "whole-span-integrity",
+      "retained_ids": [
+        "s_2"
+      ],
+      "pass": true
+    }
+  ],
+  "boundary": "Synthetic deterministic protocol/mechanism test. Rollout dependencies are frozen fixtures, not LLM-generated paper benchmark trajectories."
+}
