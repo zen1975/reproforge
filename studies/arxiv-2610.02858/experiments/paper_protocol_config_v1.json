@@ -1,0 +1,42 @@
+{
+  "paper_id": "2610.02858",
+  "method": "Harness-Aware Distillation",
+  "preference": {
+    "beta": 0.5,
+    "rho": 0.5,
+    "score_span": "action-only",
+    "conditioning_prefix": "same student reasoning prefix",
+    "positive": "teacher action with harness",
+    "negative": "same teacher action without harness",
+    "identical_actions": "zero preference gradient",
+    "validity_mask": "positive action only"
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "weight_decay": 0.01,
+    "gradient_clip": 1,
+    "learning_rate": 0.00001,
+    "schedule": "cosine to 0",
+    "warmup_updates": 15,
+    "effective_batch_size": 60,
+    "tasks_per_round": 16,
+    "staleness_policy_versions": 2,
+    "rollout_temperature": 1,
+    "evaluation_temperature": 0.4,
+    "alfworld_updates": 250,
+    "webshop_updates": 150,
+    "scienceworld_updates": 150,
+    "opd_teacher_top_k_tokens": 64
+  },
+  "validity_checks": [
+    "action not among admissible commands",
+    "action uses an object the agent does not hold",
+    "action repeats an action reported as having had no effect at the same state"
+  ],
+  "paper_boundaries": [
+    "No task rewards required for HAD preference construction.",
+    "No success labels required.",
+    "No future information used by the validity checker.",
+    "Teacher with-harness and without-harness responses are sampled independently."
+  ]
+}
