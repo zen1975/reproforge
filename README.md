@@ -36,6 +36,32 @@ Registry
 Adapters / Plugins / Runtimes
 ```
 
+## Candidate screening before studies
+
+Recent papers first enter a verified candidate queue:
+
+```text
+candidates/queue.yaml
+    ↓
+SOURCE_VERIFIED
+    ↓
+PDF_PROTOCOL_REVIEW
+    ↓
+LICENSE_ASSET_REVIEW
+    ↓
+MECHANISM_DESIGN
+    ↓
+studies/<study-id>/
+```
+
+Validate the queue with:
+
+```bash
+reproforge validate-candidates candidates/queue.yaml
+```
+
+Candidate priority measures ReproForge reuse/verification value, not scientific prestige. A candidate does not enter the capability registry until it becomes a study with actual evidence.
+
 ## One repository, many papers
 
 ReproForge is intentionally a monorepo for many independent reproduction studies.
@@ -84,6 +110,7 @@ A study remains isolated under `studies/`. A method is promoted into `capabiliti
 
 ```text
 reproforge/
+├── candidates/                 # Verified research screening queue before study promotion
 ├── studies/                    # Independent reproduction studies, one directory per paper/study
 ├── capabilities/               # Promoted reusable capabilities
 ├── registry/                   # Machine-readable capability index
