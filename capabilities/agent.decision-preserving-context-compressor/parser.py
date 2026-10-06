@@ -21,7 +21,11 @@ def _ids(body: str) -> set[str]:
     return out
 
 
-def parse_plan(text: str) -> tuple[set[str], set[str]]:
+def parse_plan(
+    text: str,
+    *,
+    allowed_ids: set[str] | None = None,
+) -> tuple[set[str], set[str]]:
     dependency_matches = list(_DEPENDS.finditer(text))
     if not dependency_matches:
         raise ValueError("no dependency citation lines found")
@@ -33,4 +37,10 @@ def parse_plan(text: str) -> tuple[set[str], set[str]]:
     matches = list(_RESCUED.finditer(text))
     if matches:
         rescued = _ids(matches[-1].group(1))
+
+    cited = dependencies | rescued
+    if allowed_ids is not None:
+        unknown = cited - allowed_ids
+        if unknown:
+            raise ValueError(f"unknown span ids: {sorted(unknown)}")
     return dependencies, rescued
