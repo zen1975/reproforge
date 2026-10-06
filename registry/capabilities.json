@@ -169,7 +169,11 @@
         ],
         "evidence_paths": [
           "studies/arxiv-2610.06191/evidence/C2.synthetic-gate.evidence.json",
-          "studies/arxiv-2610.06191/evidence/stopping_gate_synthetic_v1.result.json"
+          "studies/arxiv-2610.06191/evidence/stopping_gate_synthetic_v1.result.json",
+          "studies/arxiv-2610.06191/evidence/C3.synthetic-contrast.evidence.json",
+          "studies/arxiv-2610.06191/evidence/time_matched_contrast_synthetic_v1.result.json",
+          "studies/arxiv-2610.06191/evidence/C3.official-delta-audit.evidence.json",
+          "studies/arxiv-2610.06191/evidence/official_episode_delta_audit_v2.result.json"
         ]
       },
       "implementation": {
