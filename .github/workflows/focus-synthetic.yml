@@ -1,0 +1,29 @@
+name: FOCUS synthetic protocol
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "capabilities/agent.decision-preserving-context-compressor/**"
+      - "studies/arxiv-2609.37590/experiments/run_focus_synthetic.py"
+      - ".github/workflows/focus-synthetic.yml"
+
+jobs:
+  synthetic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run frozen FOCUS synthetic protocol
+        run: |
+          set -o pipefail
+          python studies/arxiv-2609.37590/experiments/run_focus_synthetic.py \
+            | tee focus_synthetic_protocol_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: focus-synthetic-protocol-v1
+          path: focus_synthetic_protocol_v1.result.json
+          retention-days: 7
