@@ -1,0 +1,15 @@
+study_id: arxiv-2610.06191
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "The harness-level five-consecutive-USELESS stopping gate is independently implemented and synthetic mechanism-tested. Paper trajectory statistics and the time-matched contrast are not yet reproduced in ReproForge."
+next_step: "Implement the paper-defined time-matched contrast on trajectory records, then run an explicitly labeled audit against pinned official released episodes."
+handoff:
+  path: studies/arxiv-2610.06191/HANDOFF.md
+  ready: false
+blockers: []
+frozen_evaluations:
+  - "stopping-gate-synthetic-v1"
+entrypoints:
+  - "studies/arxiv-2610.06191/experiments/run_stopping_gate_synthetic.py"
+updated_at: 2026-10-07
