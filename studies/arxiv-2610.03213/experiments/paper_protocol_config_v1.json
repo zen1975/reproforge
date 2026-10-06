@@ -1,0 +1,51 @@
+{
+  "paper_arxiv_id": "2610.03213",
+  "model_family": "Gemma 3",
+  "models": ["google/gemma-3-1b-it", "google/gemma-3-4b-it"],
+  "sequence": ["Base", "GEPA", "SFT", "GRPO"],
+  "gemma_3_1b_note": "Paper reports no validation improvement from GEPA for 1B, so no separate held-out GEPA condition was selected.",
+  "operational_target": {"accuracy": 0.95, "f1": 0.95},
+  "gepa": {
+    "train_subset": 500,
+    "validation_subset": 250,
+    "optimizer_model": "GPT-5.6 Sol",
+    "reflection_minibatch_size": 35,
+    "selection_metric": "validation relevant-class F1"
+  },
+  "sft": {
+    "training_examples": 4404,
+    "validation_examples": 1136,
+    "source_stage": "class-balanced single-tool ASTRA-style examples",
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "optimizer": "AdamW",
+    "peak_learning_rate": 0.00019,
+    "warmup_fraction": 0.1,
+    "epochs": 3,
+    "effective_batch_size": 64,
+    "max_sequence_length": 1024,
+    "dtype": "bf16",
+    "loss": "response-only cross entropy with prompt token masking",
+    "selection_metric": "validation relevant-class F1"
+  },
+  "grpo": {
+    "training_examples": 9485,
+    "validation_examples": 2927,
+    "mixture": ["single-tool", "same-MCP multi-tool", "cross-MCP multi-tool"],
+    "responses_per_prompt": 16,
+    "temperature": 1.1,
+    "objective": "Dr. GRPO with sequence-level importance sampling and batch-scaled group-relative advantages",
+    "kl_beta": 0.001,
+    "learning_rate": 0.00001,
+    "epochs": 3,
+    "effective_batch_size": 256,
+    "dtype": "bf16",
+    "prompt_max_tokens": 1024,
+    "completion_max_tokens": 192,
+    "reward": ["schema compliance", "label correctness", "reasoning length penalty"],
+    "invalid_output_extra_penalty": true,
+    "false_positive_false_negative_equal_penalty": true
+  },
+  "paper_hardware": "single H100 GPU",
+  "reproforge_boundary": "Configuration extracted from paper primary source. Execution status must be recorded separately; configuration presence is not evidence of reproduction."
+}
