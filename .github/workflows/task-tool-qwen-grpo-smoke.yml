@@ -17,11 +17,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install TRL stack
-        run: python -m pip install "trl==0.26.1" "peft>=0.18,<1" "datasets>=4,<5"
+        run: python -m pip install "trl==0.26.1" "peft>=0.18,<1" "datasets>=4,<5" "weave>=0.52"
       - name: Generate protocol-equivalent dataset
         run: python studies/arxiv-2610.03213/experiments/generate_protocol_equivalent_mcp.py
       - name: Run real GRPO smoke
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/run_qwen_grpo_smoke.py             | tee qwen_grpo_smoke_result.json
       - uses: actions/upload-artifact@v4
         with:
