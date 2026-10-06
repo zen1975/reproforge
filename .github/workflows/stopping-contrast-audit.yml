@@ -7,6 +7,8 @@ on:
       - "capabilities/agent.evidence-aware-stopping-gate/contrast.py"
       - "studies/arxiv-2610.06191/experiments/run_contrast_synthetic.py"
       - "studies/arxiv-2610.06191/experiments/run_official_episode_audit.py"
+      - "studies/arxiv-2610.06191/experiments/run_official_summary_audit.py"
+      - "capabilities/agent.evidence-aware-stopping-gate/summary.py"
       - ".github/workflows/stopping-contrast-audit.yml"
 
 jobs:
@@ -35,10 +37,16 @@ jobs:
           set -o pipefail
           python studies/arxiv-2610.06191/experiments/run_official_episode_audit.py \
             /tmp/judged-useless-official | tee official_episode_delta_audit_v1.result.json
+      - name: Run pinned official summary audit
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.06191/experiments/run_official_summary_audit.py \
+            /tmp/judged-useless-official | tee official_episode_summary_audit_v1.result.json
       - uses: actions/upload-artifact@v4
         with:
           name: stopping-contrast-audit-v1
           path: |
             contrast_synthetic_v1.result.json
             official_episode_delta_audit_v1.result.json
+            official_episode_summary_audit_v1.result.json
           retention-days: 7
