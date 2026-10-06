@@ -64,6 +64,23 @@ That is +11.11 percentage points in accuracy and +16.15 points in F1. The result
 
 This trained checkpoint is an experiment artifact, not the shipped runtime implementation. The production descriptor still points to the transparent lexical reference until a model-backed runtime is independently validated and packaged.
 
+## Frozen blind generalization check
+
+After the first held-out result had already been observed, ReproForge defined a **new** blind benchmark before evaluation. It contains 144 examples from four entirely new families: `commerce`, `documents`, `identity`, and `notifications`. None of those families participate in training or threshold selection.
+
+Using the same frozen training recipe, the base model scored 85.42% accuracy / 78.79% F1. After task-specific specialization:
+
+- accuracy: 94.44%
+- precision: 95.45%
+- recall: 87.50%
+- F1: 91.30%
+- false-positive rate: 2.08%
+- false-negative rate: 12.50%
+
+The paired comparison had 13 cases corrected by specialization and 0 cases made worse; exact McNemar p = 0.000244. A 5,000-sample bootstrap placed accuracy at 90.28%–97.92% (95% interval).
+
+This is stronger evidence that specialization generalizes beyond the originally observed test families. It still does **not** satisfy the paper's joint 95% accuracy/F1 target, because observed accuracy is 94.44% and F1 is 91.30%.
+
 ## Contract
 
 Input:
