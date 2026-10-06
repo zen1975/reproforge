@@ -42,12 +42,11 @@ def main():
         "recover_after_3",
         "late_onset_from_3",
     }
-    keys = [
-        "test300/qwen3-8b__unaided",
-        "test300/qwen3-8b__enforced_rule",
-        "fresh300/qwen3-8b__unaided",
-        "fresh300/qwen3-8b__enforced_rule",
-    ]
+    keys = []
+    episode_root = official / "experiments" / "episodes"
+    for key in sorted(paper_values):
+        if (episode_root / f"{key}.jsonl.gz").exists():
+            keys.append(key)
     rows = []
     all_match = True
     for key in keys:
@@ -84,7 +83,7 @@ def main():
     print(
         json.dumps(
             {
-                "audit_id": "official-episodes-delta-audit-v1",
+                "audit_id": "official-episodes-delta-audit-v2-all-released",
                 "official_repository": "bennidict23/judged-useless-queried-anyway",
                 "official_commit": PINNED_COMMIT,
                 "cells_audited": len(rows),
