@@ -89,6 +89,22 @@ The export/reload smoke test passed 4/4 positive and wrong-action examples. The 
 
 This makes the specialized classifier reproducibly callable without promoting it to the default runtime yet. The default descriptor intentionally remains the deterministic lexical implementation until a model-backed package has stronger protocol-equivalent evidence.
 
+## Protocol-equivalent SLM chain
+
+ReproForge now also has an independent structural reproduction of the paper's evaluation shape: 12 synthetic MCP-style servers, an 8/4 server-disjoint split, N=2/3 multi-tool tasks, and candidate-level `correct / wrong / null` classification.
+
+Using the ungated Apache-2.0 `Qwen/Qwen2.5-0.5B-Instruct` strictly as a model-class proxy:
+
+| Stage | Accuracy | F1 | Parse failures |
+| --- | ---: | ---: | ---: |
+| Initial Base prompt | 31.25% | 47.62% | 64 / 160 |
+| Prompt-optimization analogue | 80.00% | 76.12% | 0 / 160 |
+| LoRA SFT analogue v1 | 95.00% | 92.86% | 0 / 80 |
+
+The prompt stage selected one of three fixed prompt candidates using only train-pool dev rows; it is **not GEPA**. The LoRA stage fine-tuned only 270,336 parameters (r=4, alpha=8, q_proj/v_proj) on 96 train-pool rows and evaluated a frozen held-out-server slice.
+
+SFT v1 reached the paper's 95% accuracy threshold but not the 95% F1 threshold. Therefore the joint operational target is still not met. These are protocol-equivalent proxy experiments, not Gemma 3 or author-dataset reproduction.
+
 ## Contract
 
 Input:
