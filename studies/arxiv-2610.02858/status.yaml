@@ -1,18 +1,23 @@
 study_id: arxiv-2610.02858
-lifecycle: PROTOCOL_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The published HAD preference construction, positive-action validity filter, action-only pairwise loss, and minibatch gradient-balance rule are independently implemented and synthetic-protocol verified. No teacher/student model training or benchmark reproduction has yet been executed."
-next_step: "Implement a lightweight Qwen2.5-0.5B training analogue that compares response distillation alone against HAD-style action preference supervision on a frozen synthetic harness dataset, without claiming paper benchmark reproduction."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete: HAD protocol semantics, real Qwen2.5-0.5B action-only preference gradients, rho=0.5 gradient balancing, and invalid-positive masking are executed. Remaining primary work is on-policy teacher/student training and benchmark-scale 0.6B–1.7B experiments."
+next_step: "Build the local on-policy data-generation loop with one open small student and one larger open teacher, then compare distillation-only vs HAD across multiple seeds on frozen unseen harness states before moving to ALFWorld/WebShop/ScienceWorld."
 handoff:
   path: studies/arxiv-2610.02858/HANDOFF.md
-  ready: false
+  ready: true
 blockers:
   - "No official public paper implementation was identified during the 2026-10-07 source review."
   - "Paper license remains UNKNOWN; no paper artifacts are redistributed."
-  - "Paper-level reproduction requires long-horizon benchmark environments and 0.6B–1.7B students with larger teachers."
+  - "Paper-level reproduction requires on-policy long-horizon benchmark environments, 0.6B–1.7B students, larger teachers, and substantially more updates."
+  - "Unpublished prompts, exact model revisions, seeds, or dataset details must not be invented."
 frozen_evaluations:
   - "had-synthetic-protocol-v1"
+  - "had-qwen0.5b-had-smoke-v2"
+  - "had-qwen0.5b-distill-only-smoke-v2"
 entrypoints:
   - "studies/arxiv-2610.02858/experiments/run_had_synthetic.py"
+  - ".github/workflows/had-qwen0.5b-smoke.yml"
+  - "studies/arxiv-2610.02858/experiments/run_qwen0.5b_had_smoke.py"
 updated_at: "2026-10-07"
