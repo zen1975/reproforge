@@ -1,0 +1,16 @@
+{
+  "claim_id": "C1-judgment-action-dissociation",
+  "run_id": "official-episode-summary-audit-v1",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:442d132dd1592532e8e8293d412c0328a04b9e8e3e1dd772a00adeff1e366f47",
+    "official_repository_commit": "2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8"
+  },
+  "metrics": {
+    "cells_audited": 43,
+    "mean6_exact_matches": 43,
+    "answer_summary_exact_matches": 43,
+    "exact_match_rate": 1
+  },
+  "verdict": "PASS",
+  "notes": "Pinned released-data audit. ReproForge mean6 matches paper_values for all 43 available cells and ReproForge answer-after-five-useless summaries exactly match the pinned official toolkit for all 43 cells. PASS applies to released-trajectory summary reproduction, not independent model trajectory generation."
+}
