@@ -1,0 +1,23 @@
+{
+  "experiment_id": "had-synthetic-protocol-v1",
+  "beta": 0.5,
+  "rho": 0.5,
+  "checks": {
+    "harness_changes_teacher_action_creates_active_pair": true,
+    "identical_teacher_actions_are_gradient_neutral": true,
+    "unheld_object_positive_is_filtered": true,
+    "unavailable_action_positive_is_filtered": true,
+    "repeated_no_effect_positive_is_filtered": true,
+    "action_only_length_normalized_margin": true,
+    "pairwise_logistic_loss_positive": true,
+    "beta_default_matches_paper": true,
+    "gradient_balance_matches_rho_half": true,
+    "zero_preference_gradient_yields_zero_lambda": true
+  },
+  "passed": 10,
+  "check_count": 10,
+  "all_pass": true,
+  "example_margin": 0.85,
+  "gradient_balance_lambda": 1,
+  "boundary": "Independent synthetic mechanism/protocol verification only. No teacher/student model inference, benchmark rollouts, or paper-level training result is reproduced here."
+}
