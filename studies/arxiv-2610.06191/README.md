@@ -4,7 +4,7 @@
 **arXiv:** https://arxiv.org/abs/2610.06191  
 **Intake:** VERIFIED against authoritative arXiv metadata and full PDF  
 **Reproduction:** PARTIAL  
-**Lifecycle:** PROTOCOL_VERIFIED
+**Lifecycle:** HEAVY_COMPUTE_READY
 
 ## Why this study
 
@@ -58,10 +58,28 @@ Representative Qwen3-8B results:
 
 This is an `OFFICIAL_AUDIT` of released trajectories using a separate ReproForge metric implementation. It does **not** independently regenerate the model trajectories.
 
+## Released-episode summary audit
+
+The remaining lightweight summaries were audited at the same pinned official commit.
+
+Across all **43 released cells**:
+
+- mean6 exact matches against `paper_values.json`: **43 / 43**
+- answer-after-five-useless exact matches against the pinned official toolkit: **43 / 43**
+
+Representative Qwen3-8B behavior:
+
+- test300 unaided: 1 / 292 answer after reaching five consecutive USELESS judgments (0.34%)
+- test300 enforced rule: 276 / 291 (94.85%)
+- fresh300 unaided: 0 / 289 (0%)
+- fresh300 enforced rule: 276 / 289 (95.50%)
+
+These values are computed from released trajectories and confirm the released-data summaries. They are not independent regeneration of the model runs.
+
 ## External assets
 
 The official repository is public and MIT-licensed. Its released episode data is documented as CC BY 4.0. ReproForge does not vendor either into this study. Because the official repository was inspected before implementation, this study is classified as `DERIVED`, not clean-room independent.
 
 ## Next gate
 
-Audit the remaining lightweight paper summaries (answer-after-five-useless and released success-rate aggregates). After that, if remaining work is primarily original large-model episode regeneration, move the study to `HEAVY_COMPUTE_READY` with a fork-ready handoff.
+The free/lightweight phase is complete. Continue with independent local regeneration of Qwen3-8B trajectories first; see `HANDOFF.md`. Keep reproduction status `PARTIAL` until equivalent model trajectories are independently generated.
