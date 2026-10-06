@@ -6,6 +6,7 @@ on:
     paths:
       - "capabilities/agent.decision-preserving-context-compressor/**"
       - "studies/arxiv-2609.37590/experiments/run_focus_synthetic.py"
+      - "studies/arxiv-2609.37590/experiments/run_provider_neutral_protocol.py"
       - ".github/workflows/focus-synthetic.yml"
 
 jobs:
@@ -22,8 +23,15 @@ jobs:
           set -o pipefail
           python studies/arxiv-2609.37590/experiments/run_focus_synthetic.py \
             | tee focus_synthetic_protocol_v1.result.json
+      - name: Run provider-neutral protocol-shape verification
+        run: |
+          set -o pipefail
+          python studies/arxiv-2609.37590/experiments/run_provider_neutral_protocol.py \
+            | tee focus_provider_neutral_protocol_v1.result.json
       - uses: actions/upload-artifact@v4
         with:
           name: focus-synthetic-protocol-v1
-          path: focus_synthetic_protocol_v1.result.json
+          path: |
+            focus_synthetic_protocol_v1.result.json
+            focus_provider_neutral_protocol_v1.result.json
           retention-days: 7
