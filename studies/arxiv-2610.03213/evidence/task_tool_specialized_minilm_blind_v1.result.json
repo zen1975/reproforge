@@ -1,0 +1,89 @@
+{
+  "experiment_id": "task-tool-specialized-minilm-blind-v1",
+  "blind_dataset_id": "task-tool-blind-v1",
+  "blind_families": [
+    "commerce",
+    "documents",
+    "identity",
+    "notifications"
+  ],
+  "blind_count": 144,
+  "training_recipe": {
+    "model_id": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "model_revision": "ce0834f22110de6d9222af7a7a03628121708969",
+    "seed": 20261006,
+    "epochs": 3,
+    "batch_size": 16,
+    "learning_rate": 0.00002,
+    "train_count": 288,
+    "dev_count": 72
+  },
+  "before_specialization": {
+    "accuracy": 0.8541666666666666,
+    "precision": 0.7647058823529411,
+    "recall": 0.8125,
+    "f1": 0.787878787878788,
+    "false_positive_rate": 0.125,
+    "false_negative_rate": 0.1875,
+    "tp": 39,
+    "tn": 84,
+    "fp": 12,
+    "fn": 9
+  },
+  "after_specialization": {
+    "accuracy": 0.9444444444444444,
+    "precision": 0.9545454545454546,
+    "recall": 0.875,
+    "f1": 0.9130434782608695,
+    "false_positive_rate": 0.020833333333333332,
+    "false_negative_rate": 0.125,
+    "tp": 42,
+    "tn": 94,
+    "fp": 2,
+    "fn": 6
+  },
+  "calibrated_threshold_from_existing_dev": 1.2315812706947327,
+  "dev_metrics": {
+    "accuracy": 1,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "false_positive_rate": 0,
+    "false_negative_rate": 0,
+    "tp": 24,
+    "tn": 48,
+    "fp": 0,
+    "fn": 0
+  },
+  "accuracy_ci_95": {
+    "low": 0.9027777777777778,
+    "high": 0.9791666666666666,
+    "samples": 5000
+  },
+  "paired_mcnemar": {
+    "before_only_correct": 0,
+    "after_only_correct": 13,
+    "p_value_two_sided": 0.000244140625
+  },
+  "improvement": {
+    "accuracy_percentage_points": 9.02777777777778,
+    "f1_percentage_points": 12.51646903820815
+  },
+  "paper_operational_target": {
+    "accuracy": 0.95,
+    "f1": 0.95
+  },
+  "blind_meets_paper_operational_target": false,
+  "github_actions": {
+    "run_id": 37416988238,
+    "job_id": 112117660213,
+    "artifact_id": 11392091097,
+    "artifact_zip_sha256": "1a7dbd193927e54b6855c4f185f1e976c756db4a38edb9893521a1f6138676a3"
+  },
+  "conclusion": "On a frozen four-family blind benchmark defined before evaluation, task-specific specialization improved accuracy by 9.03 points and F1 by 12.52 points. The paired correctness improvement was significant by exact McNemar test, but F1 remained below the paper's 95% target.",
+  "limitations": [
+    "Independent synthetic benchmark; not paper data.",
+    "Blind v1 has four tool families and three action classes.",
+    "The result must not be used to tune and re-evaluate blind v1."
+  ]
+}
