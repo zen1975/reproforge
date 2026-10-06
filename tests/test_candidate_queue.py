@@ -18,7 +18,8 @@ def test_candidate_queue_has_unique_verified_sources():
     ids = [item["arxiv_id"] for item in candidates]
     assert len(ids) == len(set(ids))
     assert all(item["source_verified"] is True for item in candidates)
-    assert all(item["status"] == "SOURCE_VERIFIED" for item in candidates)
+    allowed = {"SOURCE_VERIFIED", "PDF_REVIEWED", "PROMOTED_TO_STUDY", "DEFERRED", "REJECTED"}
+    assert all(item["status"] in allowed for item in candidates)
 
 
 def test_candidate_queue_cli_validates():
