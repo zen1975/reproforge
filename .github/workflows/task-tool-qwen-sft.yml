@@ -1,0 +1,30 @@
+name: Qwen LoRA SFT analogue
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.03213/experiments/run_qwen_lora_sft.py"
+      - ".github/workflows/task-tool-qwen-sft.yml"
+
+jobs:
+  qwen-sft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: python -m pip install "transformers==5.18.0" "torch==2.14.1" "accelerate>=1,<2" "peft>=0.18,<1"
+      - name: Generate protocol-equivalent dataset
+        run: python studies/arxiv-2610.03213/experiments/generate_protocol_equivalent_mcp.py
+      - name: Run Qwen LoRA SFT analogue
+        run: |
+          python studies/arxiv-2610.03213/experiments/run_qwen_lora_sft.py             | tee qwen_lora_sft_result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qwen-lora-sft-result
+          path: qwen_lora_sft_result.json
+          retention-days: 1
