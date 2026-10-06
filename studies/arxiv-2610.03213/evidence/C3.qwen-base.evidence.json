@@ -1,0 +1,21 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "qwen2.5-0.5b-protocol-base-v1",
+  "artifact_hashes": {
+    "base_model_revision": "c89bee90d9f811437d9735454613c35b4a3c4dc8",
+    "workflow_artifact_zip": "sha256:03d67549c606d96c962c0d7ada3774bc068d2ec4d9c701c4df0e5899ee3991f4"
+  },
+  "metrics": {
+    "attempted": 160,
+    "valid": 96,
+    "parse_failures": 64,
+    "accuracy": 0.3125,
+    "precision": 0.3125,
+    "recall": 1,
+    "f1": 0.47619047619047616,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "Protocol-equivalent base SLM floor using ungated Qwen2.5-0.5B-Instruct. This is a model-class proxy, not Gemma 3 reproduction. The initial prompt produced 64/160 parse failures and severe positive bias."
+}
