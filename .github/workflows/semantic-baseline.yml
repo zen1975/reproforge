@@ -1,0 +1,28 @@
+name: Semantic baseline experiment
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.03213/experiments/run_semantic_crossencoder.py"
+      - "studies/arxiv-2610.03213/experiments/task_tool_synthetic_hard_v1.json"
+      - ".github/workflows/semantic-baseline.yml"
+
+jobs:
+  semantic-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install semantic baseline dependencies
+        run: python -m pip install "sentence-transformers>=5,<6"
+      - name: Run semantic baseline
+        run: |
+          python studies/arxiv-2610.03213/experiments/run_semantic_crossencoder.py             | tee semantic_crossencoder_result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-crossencoder-result
+          path: semantic_crossencoder_result.json
