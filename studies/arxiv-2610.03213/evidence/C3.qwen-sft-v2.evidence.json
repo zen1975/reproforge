@@ -1,0 +1,24 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "qwen2.5-0.5b-lora-sft-v2-frozen",
+  "artifact_hashes": {
+    "base_model_revision": "c89bee90d9f811437d9735454613c35b4a3c4dc8",
+    "workflow_artifact_zip": "sha256:32e708d220a1c7b2d19b85fed1758558d3b9040966eb2435e183b65744e77fa9"
+  },
+  "metrics": {
+    "train_cases": 192,
+    "test_cases": 240,
+    "test_start": 160,
+    "test_accuracy": 0.9083333333333333,
+    "test_precision": 0.79,
+    "test_recall": 0.9875,
+    "test_f1": 0.8777777777777778,
+    "false_positives": 21,
+    "false_negatives": 1,
+    "parse_failures": 0,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "Predeclared frozen v2 changed only training set size from 96 to 192 and evaluated untouched held-out rows 160:400. Generalization worsened via increased false positives. The slice is frozen and must not be tuned against."
+}
