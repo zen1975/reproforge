@@ -2,7 +2,7 @@
 
 **Paper:** Harness-Aware Distillation for Small Language Model Agents  
 **arXiv:** https://arxiv.org/abs/2610.02858  
-**Lifecycle:** PROTOCOL_VERIFIED  
+**Lifecycle:** HEAVY_COMPUTE_READY  
 **Reproduction:** PARTIAL
 
 ## Why this matters
@@ -71,6 +71,30 @@ The independent synthetic protocol test currently passes **10 / 10** checks:
 
 This verifies the published mechanism shape only.
 
+## Qwen2.5-0.5B real training smoke
+
+A real `Qwen/Qwen2.5-0.5B-Instruct` LoRA path was executed on CPU with the HAD action-only preference term.
+
+The six-step v2 run exercises five valid preference examples and one invalid positive-action example.
+
+At the invalid example:
+
+- preference loss = 0
+- preference gradient norm = 0
+- lambda = 0
+- response-distillation loss remains active
+
+This verifies the paper's intended separation between response distillation and preference filtering in an actual trainable small language model path.
+
+Frozen four-example held-out result:
+
+```text
+                    accuracy    mean-margin change
+distill-only        75%         -0.002632
+HAD                 75%         +0.003469
+```
+
+The difference is too small and the set too small for an efficacy claim. It is preserved as path evidence only.
 ## What is not yet reproduced
 
 No student has yet been trained by this ReproForge study. In particular:
@@ -84,7 +108,7 @@ No student has yet been trained by this ReproForge study. In particular:
 
 ## Next step
 
-The next free/lightweight step is a small Qwen training analogue using a frozen synthetic harness dataset.
+The free/lightweight phase is complete. The next step belongs on local compute: build the on-policy student-state → paired teacher query → validity mask → HAD update loop. See `HANDOFF.md`.
 
 Compare:
 
