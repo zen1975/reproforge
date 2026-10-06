@@ -46,9 +46,9 @@ def run():
         raise RuntimeError("HF_TOKEN is required for official Gemma access")
 
     data = json.loads(
-        (STUDY / "experiments" / "protocol_equivalent_cross_mcp_v1.json").read_text()
+        (STUDY / "experiments" / "protocol_equivalent_mcp_v1.json").read_text()
     )
-    test_rows = [r for r in data["rows"] if r["split"] == "test"][:48]
+    test_rows = [r for r in data["rows"] if r["pool"] == "test"][:48]
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, token=token)
     model = AutoModelForCausalLM.from_pretrained(
