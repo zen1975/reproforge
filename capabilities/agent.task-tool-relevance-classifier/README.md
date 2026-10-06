@@ -105,6 +105,21 @@ The prompt stage selected one of three fixed prompt candidates using only train-
 
 SFT v1 reached the paper's 95% accuracy threshold but not the 95% F1 threshold. Therefore the joint operational target is still not met. These are protocol-equivalent proxy experiments, not Gemma 3 or author-dataset reproduction.
 
+### Frozen SFT v2 check
+
+To test whether simply adding more synthetic supervision would close the gap, ReproForge predeclared SFT v2 before evaluation. It kept the model revision, prompt, LoRA r/alpha/modules, learning rate, and seed fixed; only training rows increased from 96 to 192. Evaluation moved to a previously untouched 240-row held-out slice (rows 160–399).
+
+Result:
+
+- accuracy: 90.83%
+- precision: 79.00%
+- recall: 98.75%
+- F1: 87.78%
+- false positives: 21
+- false negatives: 1
+
+So more synthetic training data alone **reduced** held-out performance. The new slice is frozen and will not be tuned against. This is useful negative evidence: the remaining gap is not solved by naively scaling the same synthetic recipe.
+
 ## Contract
 
 Input:
