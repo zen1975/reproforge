@@ -259,6 +259,57 @@
           "kind": "cloudflare-worker"
         }
       ]
+    },
+    {
+      "id": "training.harness-aware-action-distillation",
+      "version": "0.1.0",
+      "name": "Harness-Aware Action Distillation",
+      "summary": "Constructs validity-filtered action preferences from the same teacher with and without harness information, scored under the student's own reasoning.",
+      "status": "experimental",
+      "task_classes": [
+        "small-model-training",
+        "agent-distillation",
+        "harness-conditioned-policy-learning"
+      ],
+      "interface": {
+        "inputs": {
+          "teacher_with_harness_action": "string",
+          "teacher_without_harness_action": "string",
+          "harness_record": "object",
+          "student_action_logprobs": "object"
+        },
+        "outputs": {
+          "preference_active": "boolean",
+          "positive_valid": "boolean",
+          "action_margin": "number",
+          "preference_loss": "number"
+        }
+      },
+      "runtime": {
+        "kind": "python",
+        "entrypoint": "capabilities/training.harness-aware-action-distillation/had.py:build_preference",
+        "deterministic": true,
+        "requirements": []
+      },
+      "evidence": {
+        "reproduction_status": "PARTIAL",
+        "studies": [
+          "studies/arxiv-2610.02858"
+        ],
+        "evidence_paths": [
+          "studies/arxiv-2610.02858/evidence/C3.synthetic-protocol.evidence.json",
+          "studies/arxiv-2610.02858/evidence/had_synthetic_protocol_v1.result.json"
+        ]
+      },
+      "implementation": {
+        "path": "capabilities/training.harness-aware-action-distillation/had.py",
+        "license": "Apache-2.0"
+      },
+      "adapters": [
+        {
+          "kind": "python"
+        }
+      ]
     }
   ]
 }
