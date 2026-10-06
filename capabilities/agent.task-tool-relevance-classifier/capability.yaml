@@ -45,6 +45,11 @@ evidence:
     - "studies/arxiv-2610.03213/evidence/qwen2.5_0.5b_lora_sft_v1.result.json"
     - "studies/arxiv-2610.03213/evidence/C3.qwen-sft-v2.evidence.json"
     - "studies/arxiv-2610.03213/evidence/qwen2.5_0.5b_lora_sft_v2_frozen.result.json"
+    - "studies/arxiv-2610.03213/evidence/C3.sft-protocol-prep.evidence.json"
+    - "studies/arxiv-2610.03213/evidence/sft_protocol_prep_v1.result.json"
+    - "studies/arxiv-2610.03213/evidence/C3.lora-sft-harness.evidence.json"
+    - "studies/arxiv-2610.03213/evidence/lora_sft_harness_smoke_v1.result.json"
+    - "studies/arxiv-2610.03213/evidence/gemma3_1b_access_preflight_v1.result.json"
 implementation:
   path: "capabilities/agent.task-tool-relevance-classifier/classifier.py"
   license: "Apache-2.0"
