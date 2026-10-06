@@ -16,6 +16,12 @@ reproduction:
   official_code_used: false
   notes: "ReproForge implements the published Algorithm 1 structure independently from the paper description. No official implementation was identified during the 2026-10-07 source review. The initial evidence uses frozen synthetic dependency rollouts and does not claim reproduction of paper benchmark results or LLM-generated rollout quality."
 external_assets:
+  - kind: "WEIGHTS"
+    name: "Qwen2.5-0.5B-Instruct"
+    source: "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct"
+    license: "Apache-2.0"
+    license_status: "VERIFIED"
+    redistributed: false
   - kind: "OTHER"
     name: "arXiv paper and appendix"
     source: "https://arxiv.org/pdf/2609.37590"
