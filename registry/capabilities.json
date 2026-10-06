@@ -298,7 +298,11 @@
         ],
         "evidence_paths": [
           "studies/arxiv-2610.02858/evidence/C3.synthetic-protocol.evidence.json",
-          "studies/arxiv-2610.02858/evidence/had_synthetic_protocol_v1.result.json"
+          "studies/arxiv-2610.02858/evidence/had_synthetic_protocol_v1.result.json",
+          "studies/arxiv-2610.02858/evidence/C4.qwen0.5b-smoke.evidence.json",
+          "studies/arxiv-2610.02858/evidence/had_qwen0.5b_distill_only_smoke_v2.result.json",
+          "studies/arxiv-2610.02858/evidence/had_qwen0.5b_had_smoke_v2.result.json",
+          "studies/arxiv-2610.02858/evidence/had_qwen0.5b_smoke_v2_comparison.result.json"
         ]
       },
       "implementation": {
