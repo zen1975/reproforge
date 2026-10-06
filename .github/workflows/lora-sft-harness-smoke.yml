@@ -22,6 +22,7 @@ jobs:
         run: python studies/arxiv-2610.03213/experiments/prepare_sft_protocol_data.py
       - name: Smoke-test LoRA response-only training path
         run: |
+          set -o pipefail
           python studies/arxiv-2610.03213/experiments/run_lora_sft_harness.py             --model-id HuggingFaceTB/SmolLM2-135M-Instruct             --train-jsonl studies/arxiv-2610.03213/experiments/generated/sft_train_4404.jsonl             --max-train-examples 16             --batch-size 2             --gradient-accumulation 1             --epochs 3             --max-steps 2             --max-length 256             --dtype float32             | tee lora_sft_harness_smoke.json
       - uses: actions/upload-artifact@v4
         with:
