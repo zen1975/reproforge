@@ -68,7 +68,15 @@ def main():
     parser_mod = _load(CAP / "parser.py", "focus_parser_model_backed")
     core_mod = _load(CAP / "compressor.py", "focus_core_model_backed")
 
-    inputs = tokenizer(_prompt(), return_tensors="pt")
+    if getattr(tokenizer, "chat_template", None):
+        rendered = tokenizer.apply_chat_template(
+            [{"role": "user", "content": _prompt()}],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
+    else:
+        rendered = _prompt()
+    inputs = tokenizer(rendered, return_tensors="pt")
     outputs = []
     dependencies = []
     rescued_union = set()
@@ -115,7 +123,7 @@ def main():
     )
     parse_successes = sum(int(item["parse_ok"]) for item in outputs)
     result = {
-        "experiment_id":"focus-smollm-draft-analogue-v1",
+        "experiment_id":"focus-smollm-draft-analogue-v2-strict",
         "model_id":args.model_id,
         "seed":SEED,
         "rollouts":args.rollouts,
