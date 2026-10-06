@@ -3,6 +3,19 @@ screening_window:
   from: "2026-09-23"
   to: "2026-10-07"
 candidates:
+  - arxiv_id: "2610.02858"
+    title: "Harness-Aware Distillation for Small Language Model Agents"
+    submitted_on: "2026-10-02"
+    source_url: "https://arxiv.org/abs/2610.02858"
+    source_verified: true
+    priority: "A+"
+    candidate_capability: "training.harness-aware-action-distillation"
+    why_reusable: "Directly targets how small agent models should learn to act on fixed harness information rather than redundantly internalizing what the harness already provides."
+    free_light_fit: "high"
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full 28-page PDF and appendices reviewed. Promoted as the top-priority small-model track study; independent HAD mechanism and protocol semantics implemented without redistributing paper artifacts."
+
   - arxiv_id: "2609.37590"
     title: "FOCUS: Training-Free Decision-Preserving Context Compression for LLM Agents"
     submitted_on: "2026-09-29"
