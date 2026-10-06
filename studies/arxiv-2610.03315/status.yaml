@@ -1,0 +1,15 @@
+study_id: arxiv-2610.03315
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "The deterministic trajectory budget allocator is implemented and stress-tested, but the paper's MMR evidence selection, LLM judge, localization metrics, and cost/runtime evaluation are not yet reproduced."
+next_step: "Implement the paper's evidence-selection and judge-input protocol with an independent benchmark before deciding whether heavy compute is required."
+handoff:
+  path: studies/arxiv-2610.03315/HANDOFF.md
+  ready: false
+blockers: []
+frozen_evaluations:
+  - "serializer-late-failure-stress-v1"
+entrypoints:
+  - "studies/arxiv-2610.03315/experiments/run_serializer_stress.py"
+updated_at: 2026-10-06
