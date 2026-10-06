@@ -1,0 +1,22 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "qwen2.5-0.5b-prompt-optimized-v1",
+  "artifact_hashes": {
+    "base_model_revision": "c89bee90d9f811437d9735454613c35b4a3c4dc8",
+    "workflow_artifact_zip": "sha256:eae17ac10ce377ee36ac1efc3d3ec795cd5f4eaea6458eb85328e303b61c2ded"
+  },
+  "metrics": {
+    "dev_cases": 48,
+    "test_cases": 160,
+    "base_accuracy": 0.3125,
+    "base_f1": 0.47619047619047616,
+    "base_parse_failures": 64,
+    "optimized_accuracy": 0.8,
+    "optimized_f1": 0.7611940298507462,
+    "optimized_parse_failures": 0,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "Manual prompt optimization analogue on Qwen2.5-0.5B-Instruct. Prompt selection used only train-pool dev rows; held-out test servers were evaluated once. This is not GEPA."
+}
