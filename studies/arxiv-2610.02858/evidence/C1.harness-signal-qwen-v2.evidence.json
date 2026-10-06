@@ -1,0 +1,16 @@
+{
+  "claim_id": "C1-harness-action-contrast",
+  "run_id": "had-harness-signal-qwen-contrast-v2",
+  "artifact_hashes": {
+    "workflow_artifact_zip": "sha256:187d79bdc3db169d35959c65f1e91a163d07bdc6a52f97380c20078c3582a7b3"
+  },
+  "metrics": {
+    "student_acted_states": 4,
+    "active_contrasts": 2,
+    "valid_active_contrasts": 2,
+    "contrast_rate": 0.5,
+    "harness_corrected_student_actions": 2
+  },
+  "verdict": "PARTIAL",
+  "notes": "Real Qwen2.5-0.5B student actions and same Qwen2.5-1.5B teacher with/without-harness scoring produced two active, valid HAD preference pairs. Two other cases show that harness text can still fail to move the teacher or can select an invalid action; validity filtering remains necessary. Synthetic boundary only."
+}
