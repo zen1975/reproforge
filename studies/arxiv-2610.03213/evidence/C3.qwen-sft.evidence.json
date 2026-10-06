@@ -1,0 +1,22 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "qwen2.5-0.5b-lora-sft-v1",
+  "artifact_hashes": {
+    "base_model_revision": "c89bee90d9f811437d9735454613c35b4a3c4dc8",
+    "workflow_artifact_zip": "sha256:ad20ce5f7da23ed331e82ff90af012f03dd53f29ef223ec6a12c9e2293d26c3f"
+  },
+  "metrics": {
+    "train_cases": 96,
+    "test_cases": 80,
+    "trainable_parameters": 270336,
+    "test_accuracy": 0.95,
+    "test_precision": 0.9285714285714286,
+    "test_recall": 0.9285714285714286,
+    "test_f1": 0.9285714285714286,
+    "test_parse_failures": 0,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "CPU-feasible LoRA supervised-fine-tuning analogue on Qwen2.5-0.5B-Instruct. Accuracy reached 95% on a frozen held-out-server slice but F1 remained below 95%. This is not the paper's Gemma SFT."
+}
