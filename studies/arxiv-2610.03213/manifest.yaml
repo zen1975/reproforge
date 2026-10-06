@@ -16,7 +16,7 @@ paper:
 reproduction:
   implementation_type: "INDEPENDENT"
   official_code_used: false
-  notes: "Corrected intake. Verified public abstract describes SLM-based per-call task-tool relevance classification, a novel multi-tool dataset spanning distinct MCP servers, and optimization via prompt optimization, supervised fine-tuning, and GRPO. Full-text metric extraction and paper-method reproduction remain NOT_RUN. No author code, dataset, model, weights, PDF, or figures are redistributed."
+  notes: "Authoritative arXiv metadata and full PDF inspected. ReproForge independently implements a deterministic lexical reference classifier and evaluates it on an independent hard synthetic candidate-level benchmark. This provides PARTIAL mechanism evidence only. The paper's Gemma 3 Base/GEPA/SFT/GRPO experiments and held-out server-disjoint benchmark remain unreproduced."
 external_assets: []
 claims:
   - id: "C1-task-tool-relevance"
