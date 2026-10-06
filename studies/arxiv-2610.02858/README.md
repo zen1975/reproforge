@@ -125,3 +125,55 @@ The purpose is not to reproduce ALFWorld. It is to answer a narrower question:
 > Can a ~0.5B student learn to change its action specifically when harness information changes the preferred decision?
 
 If this path works, preserve the training/evaluation harness and hand off the larger 0.6B–1.7B / benchmark-scale runs to local compute.
+
+## End-to-end lightweight HAD loop
+
+The free/lightweight track now goes beyond fixed synthetic pairs.
+
+### Real same-teacher contrast
+
+A `Qwen2.5-0.5B-Instruct` student acted on harness-dependent states. The same `Qwen2.5-1.5B-Instruct` teacher was then scored twice at each state: with harness-only records and without them.
+
+On the first simple environment, the teacher action changed on 0 / 3 states. This is preserved as negative evidence: redundant harness information produces no HAD preference signal.
+
+On the second harness-dependent set, the teacher action changed on 2 / 4 states, and both changes were valid:
+
+```text
+API failure:
+student / no-harness teacher   retry primary API
+with-harness teacher           use cached backup
+
+Missing approval:
+student / no-harness teacher   send invoice
+with-harness teacher           request approval
+```
+
+Thus the harness corrected the small student's action on 2 / 4 states without using task rewards, success labels, or future information.
+
+### Train the 0.5B student from those real teacher-generated pairs
+
+The two active valid pairs above were used as the only training pairs for a new 3-seed comparison on four unseen harness-dependent states.
+
+All six runs completed:
+
+```text
+                     held-out accuracy   mean margin change
+distill-only seed101       50%             +0.024662
+distill-only seed202       50%             +0.023120
+distill-only seed303       50%             +0.022994
+
+HAD seed101                50%             +0.027695
+HAD seed202                50%             +0.026290
+HAD seed303                50%             +0.026688
+```
+
+Aggregate unseen-state margin shift:
+
+```text
+distill-only mean   +0.023592
+HAD mean            +0.026891
+HAD - distill       +0.003299
+HAD > distill       3 / 3 seeds
+```
+
+Accuracy did not improve, so this is **not** evidence of task-performance superiority. It is consistent directional evidence that the HAD action-preference term changes the small model in the intended direction on unseen harness-dependent analogues.
