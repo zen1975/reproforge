@@ -57,9 +57,12 @@
         "requirements": []
       },
       "evidence": {
-        "reproduction_status": "NOT_RUN",
+        "reproduction_status": "PARTIAL",
         "studies": ["studies/arxiv-2610.03315"],
-        "evidence_paths": []
+        "evidence_paths": [
+          "studies/arxiv-2610.03315/evidence/C1.serializer-stress.evidence.json",
+          "studies/arxiv-2610.03315/evidence/serializer_stress_result.json"
+        ]
       },
       "implementation": {
         "path": "capabilities/agent.trajectory-budget-serializer/serializer.py",
