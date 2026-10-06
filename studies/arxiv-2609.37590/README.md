@@ -3,7 +3,7 @@
 **Paper:** FOCUS: Training-Free Decision-Preserving Context Compression for LLM Agents  
 **arXiv:** https://arxiv.org/abs/2609.37590  
 **Intake:** VERIFIED against arXiv v1 and full PDF  
-**Lifecycle:** PROTOCOL_VERIFIED  
+**Lifecycle:** HEAVY_COMPUTE_READY  
 **Reproduction:** PARTIAL
 
 ## Why this study
@@ -71,6 +71,22 @@ This exposed an important runtime boundary: a dependency-frequency compressor is
 
 The failed tiny-model run is preserved as negative evidence and is not counted as protocol success.
 
+## Qwen2.5-0.5B model-backed boundary
+
+A second lightweight analogue used `Qwen/Qwen2.5-0.5B-Instruct` with the paper-shaped dual-objective draft prompt, N=3, and temperature 0.7.
+
+The model partially followed the requested `Depends on: [...]` structure, but every rollout cited at least one nonexistent/future span ID such as `s_7` through `s_11`.
+
+Result:
+
+- valid referential rollouts: **0 / 3**
+- unknown-reference rollouts: **3 / 3**
+- strict parser behavior: **fail closed**
+
+This is useful negative evidence: syntactically structured dependency output is not enough. FOCUS-style compression requires citations to be referentially valid against the actual historical trace.
+
+This result does not imply that the paper's Qwen3-8B/14B, Phi-4, or GPT-4.1-family draft models fail.
+
 ## Next gate
 
-Protocol shape is now verified. Complete the Qwen2.5-0.5B model-backed analogue without tuning against frozen synthetic cases; then decide whether remaining work is primarily Qwen3-8B/14B, GPT-4.1, and full benchmark compute and therefore ready for `HEAVY_COMPUTE_READY`.
+The free/lightweight phase is complete. Continue with a paper-scale draft model, beginning with Qwen3-8B locally, and verify historical-span referential integrity before full benchmark integration. See `HANDOFF.md`.
