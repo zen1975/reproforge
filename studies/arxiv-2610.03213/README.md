@@ -33,6 +33,8 @@ Measured lexical baseline:
 
 This does **not** reproduce the paper's SLM results. It establishes a reproducible reference floor and demonstrates that lexical matching alone is inadequate for the paper's 95% operational target.
 
+ReproForge then evaluated a generic off-the-shelf MiniLM CrossEncoder and found that generic semantic relevance alone was also insufficient. Finally, a task-specific supervised specialization experiment was run on deterministic synthetic data with family-disjoint train/dev/test splits. The held-out-family result improved from 80.56% accuracy / 69.57% F1 before specialization to 91.67% accuracy / 85.71% F1 after specialization, with 100% precision and 0% false-positive rate. This is meaningful evidence that task-specific supervision helps, but it still falls short of the paper's 95% accuracy/F1 target.
+
 ## Correction record
 
 The original intake accidentally mapped this arXiv ID to an unrelated paper because of mixed search aggregation. That mapping was removed. The study is now verified directly from arXiv and the full PDF.
@@ -49,4 +51,4 @@ Status remains `experimental`. Reproduction is `PARTIAL` because only the interf
 
 ## Next gate
 
-The next meaningful step is a semantic-model classifier using protocol-equivalent server-disjoint data, followed by comparison against the paper's 95% accuracy/F1 target and eventually the Base/GEPA/SFT/GRPO progression.
+The next meaningful step is protocol-equivalent server-disjoint data at larger scale, then a closer reproduction of the paper's Gemma 3 Base → GEPA → SFT → GRPO progression. The current specialized MiniLM experiment is useful mechanism evidence but must not be treated as a reproduction of the paper's reported model results.
