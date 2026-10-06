@@ -30,13 +30,14 @@ jobs:
           python studies/arxiv-2610.02858/experiments/run_qwen0.5b_had_smoke.py \
             --model-id Qwen/Qwen2.5-0.5B-Instruct \
             --mode ${{ matrix.mode }} \
-            --steps 2 \
+            --steps 6 \
             --learning-rate 1e-5 \
             --beta 0.5 \
             --rho 0.5 \
-            | tee had_qwen0.5b_${{ matrix.mode }}_smoke_v1.result.json
+            --version v2 \
+            | tee had_qwen0.5b_${{ matrix.mode }}_smoke_v2.result.json
       - uses: actions/upload-artifact@v4
         with:
-          name: had-qwen0.5b-${{ matrix.mode }}-smoke-v1
-          path: had_qwen0.5b_${{ matrix.mode }}_smoke_v1.result.json
+          name: had-qwen0.5b-${{ matrix.mode }}-smoke-v2
+          path: had_qwen0.5b_${{ matrix.mode }}_smoke_v2.result.json
           retention-days: 7
