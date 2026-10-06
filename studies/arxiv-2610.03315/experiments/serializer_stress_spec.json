@@ -1,0 +1,24 @@
+{
+  "benchmark_id": "serializer-late-failure-stress-v1",
+  "scope": "Synthetic stress benchmark for deterministic tier-based allocation only; not the paper benchmark.",
+  "cases": [
+    {"error_step": 2, "warning_step": 1, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 3, "warning_step": 2, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 4, "warning_step": 3, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 5, "warning_step": 4, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 6, "warning_step": 5, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 7, "warning_step": 6, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 8, "warning_step": 7, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 9, "warning_step": 8, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 10, "warning_step": 9, "step_count": 12, "step_length": 700, "budget": 3500},
+    {"error_step": 11, "warning_step": 10, "step_count": 12, "step_length": 700, "budget": 3500}
+  ],
+  "baselines": ["tiered_waterfall", "naive_head_truncation"],
+  "metrics": [
+    "budget_compliance_rate",
+    "mean_error_step_allocation",
+    "mean_warning_step_allocation",
+    "error_full_retention_rate",
+    "warning_full_retention_rate"
+  ]
+}
