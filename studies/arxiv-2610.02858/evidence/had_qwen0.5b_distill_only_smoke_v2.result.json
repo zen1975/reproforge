@@ -1,0 +1,33 @@
+{
+  "experiment_id": "had-qwen0.5b-distill-only-smoke-v2",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_license": "Apache-2.0",
+  "mode": "distill-only",
+  "seed": 261002858,
+  "steps": 6,
+  "learning_rate": 0.00001,
+  "lora_r": 4,
+  "lora_alpha": 8,
+  "trainable_parameters": 270336,
+  "total_parameters": 494303104,
+  "before": {
+    "accuracy": 0.75,
+    "mean_margin": 2.1253326535224915
+  },
+  "after": {
+    "accuracy": 0.75,
+    "mean_margin": 2.122700273990631
+  },
+  "margin_change": -0.0026323795318603516,
+  "invalid_step": {
+    "step": 6,
+    "valid_preference": false,
+    "preference_loss": 0,
+    "preference_grad_norm": 0,
+    "lambda": 0
+  },
+  "workflow_run": 37514762789,
+  "artifact_id": 11436008013,
+  "artifact_digest": "sha256:46f8492c8eb2d593b107d4d5efe9f22c55d74717a2deabed29908c13cdeeafe6",
+  "boundary": "Synthetic Qwen2.5-0.5B LoRA smoke only; not a paper benchmark reproduction."
+}
