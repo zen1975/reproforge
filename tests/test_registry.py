@@ -33,7 +33,8 @@ def test_first_ingested_study_manifest_validates():
     schema = load_document(ROOT / "schemas" / "paper-manifest.schema.json")
     assert validate_document(manifest, schema) == []
     assert manifest["paper"]["arxiv_id"] == "2610.03213"
-    assert manifest["paper"]["license_status"] == "UNKNOWN"
+    assert manifest["paper"]["license_status"] == "VERIFIED"
+    assert manifest["paper"]["license"] == "CC BY-NC-ND 4.0"
     assert manifest["claims"][0]["id"] == "C1-task-tool-relevance"
 
 
