@@ -7,10 +7,22 @@
       "name": "Task-Tool Relevance Classifier",
       "summary": "Experimental provider-neutral capability for scoring whether a candidate tool is relevant to an assigned task before execution.",
       "status": "experimental",
-      "task_classes": ["agent-tool-oversight", "task-tool-matching", "tool-call-mediation"],
+      "task_classes": [
+        "agent-tool-oversight",
+        "task-tool-matching",
+        "tool-call-mediation"
+      ],
       "interface": {
-        "inputs": {"task": "string", "tool_name": "string", "tool_description": "string"},
-        "outputs": {"relevance_score": "number", "relevant": "boolean", "method": "string"}
+        "inputs": {
+          "task": "string",
+          "tool_name": "string",
+          "tool_description": "string"
+        },
+        "outputs": {
+          "relevance_score": "number",
+          "relevant": "boolean",
+          "method": "string"
+        }
       },
       "runtime": {
         "kind": "python",
@@ -19,19 +31,33 @@
         "requirements": []
       },
       "evidence": {
-        "reproduction_status": "NOT_RUN",
-        "studies": ["studies/arxiv-2610.03213"],
-        "evidence_paths": ["studies/arxiv-2610.03213/fixtures/synthetic_cases.json"]
+        "reproduction_status": "PARTIAL",
+        "studies": [
+          "studies/arxiv-2610.03213"
+        ],
+        "evidence_paths": [
+          "studies/arxiv-2610.03213/fixtures/synthetic_cases.json",
+          "studies/arxiv-2610.03213/evidence/C1.synthetic-hard.evidence.json",
+          "studies/arxiv-2610.03213/evidence/task_tool_synthetic_hard_v1.result.json"
+        ]
       },
       "implementation": {
         "path": "capabilities/agent.task-tool-relevance-classifier/classifier.py",
         "license": "Apache-2.0"
       },
       "adapters": [
-        {"kind": "python"},
-        {"kind": "agent-tool"},
-        {"kind": "mcp"},
-        {"kind": "cloudflare-worker"}
+        {
+          "kind": "python"
+        },
+        {
+          "kind": "agent-tool"
+        },
+        {
+          "kind": "mcp"
+        },
+        {
+          "kind": "cloudflare-worker"
+        }
       ]
     },
     {
@@ -40,7 +66,11 @@
       "name": "Trajectory Budget Serializer",
       "summary": "Experimental deterministic kernel for allocating a fixed serialization budget across agent trajectory steps while preserving more evidence for warning and error steps.",
       "status": "experimental",
-      "task_classes": ["agent-trajectory-evaluation", "trajectory-compression", "budget-aware-serialization"],
+      "task_classes": [
+        "agent-trajectory-evaluation",
+        "trajectory-compression",
+        "budget-aware-serialization"
+      ],
       "interface": {
         "inputs": {
           "lengths": "array[integer]",
@@ -48,7 +78,10 @@
           "budget": "integer",
           "floors": "object"
         },
-        "outputs": {"allocations": "array[integer]", "total": "integer"}
+        "outputs": {
+          "allocations": "array[integer]",
+          "total": "integer"
+        }
       },
       "runtime": {
         "kind": "python",
@@ -58,7 +91,9 @@
       },
       "evidence": {
         "reproduction_status": "PARTIAL",
-        "studies": ["studies/arxiv-2610.03315"],
+        "studies": [
+          "studies/arxiv-2610.03315"
+        ],
         "evidence_paths": [
           "studies/arxiv-2610.03315/evidence/C1.serializer-stress.evidence.json",
           "studies/arxiv-2610.03315/evidence/serializer_stress_result.json"
@@ -69,9 +104,15 @@
         "license": "Apache-2.0"
       },
       "adapters": [
-        {"kind": "python"},
-        {"kind": "agent-tool"},
-        {"kind": "cloudflare-worker"}
+        {
+          "kind": "python"
+        },
+        {
+          "kind": "agent-tool"
+        },
+        {
+          "kind": "cloudflare-worker"
+        }
       ]
     }
   ]
