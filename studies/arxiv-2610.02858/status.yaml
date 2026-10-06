@@ -2,8 +2,8 @@ study_id: arxiv-2610.02858
 lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
 free_light_phase_complete: true
-current_boundary: "Free/lightweight verification is complete: HAD protocol semantics, real Qwen2.5-0.5B action-only preference gradients, rho=0.5 gradient balancing, and invalid-positive masking are executed. Remaining primary work is on-policy teacher/student training and benchmark-scale 0.6B–1.7B experiments."
-next_step: "Build the local on-policy data-generation loop with one open small student and one larger open teacher, then compare distillation-only vs HAD across multiple seeds on frozen unseen harness states before moving to ALFWorld/WebShop/ScienceWorld."
+current_boundary: "Free/lightweight work now includes real 0.5B student state/action collection, same 1.5B teacher with/without-harness contrast generation, active-pair filtering, 0.5B LoRA training from real teacher-generated pairs, and 3-seed unseen-state comparison. Remaining work is paper-scale on-policy benchmark training and larger student/teacher runs."
+next_step: "Move to local compute with a 0.6B–1.7B student and larger teacher in one interactive benchmark or faithful environment, preserve true on-policy paired queries, run substantially more updates and multiple seeds, then compare task success and harness utilization."
 handoff:
   path: studies/arxiv-2610.02858/HANDOFF.md
   ready: true
@@ -16,8 +16,17 @@ frozen_evaluations:
   - "had-synthetic-protocol-v1"
   - "had-qwen0.5b-had-smoke-v2"
   - "had-qwen0.5b-distill-only-smoke-v2"
+  - "had-real-teacher-pair-multiseed-v1"
+  - "had-harness-signal-qwen-contrast-v2"
+  - "had-on-policy-paired-teacher-qwen-v1"
 entrypoints:
   - "studies/arxiv-2610.02858/experiments/run_had_synthetic.py"
   - ".github/workflows/had-qwen0.5b-smoke.yml"
   - "studies/arxiv-2610.02858/experiments/run_qwen0.5b_had_smoke.py"
+  - ".github/workflows/had-real-pair-multiseed.yml"
+  - ".github/workflows/had-harness-signal-contrast.yml"
+  - ".github/workflows/had-on-policy-paired-teacher.yml"
+  - "studies/arxiv-2610.02858/experiments/run_real_teacher_pair_multiseed.py"
+  - "studies/arxiv-2610.02858/experiments/run_harness_signal_teacher_contrast.py"
+  - "studies/arxiv-2610.02858/experiments/run_on_policy_paired_teacher.py"
 updated_at: "2026-10-07"
