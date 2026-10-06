@@ -1,0 +1,28 @@
+{
+  "claim_id": "C3-specialization-methods",
+  "run_id": "task-tool-specialized-minilm-sft-v1",
+  "artifact_hashes": {
+    "trained_model": "sha256:9c240428478633cc82c031016b3250a38c1f6346afaf281de275eed5ac91261b",
+    "workflow_artifact_zip": "sha256:3da543fb5a3c3914852cb398c8f0c21ac4504603e9e5d6498569a3f81b8b40c6",
+    "base_model_revision": "ce0834f22110de6d9222af7a7a03628121708969"
+  },
+  "metrics": {
+    "train_count": 288,
+    "dev_count": 72,
+    "test_count": 72,
+    "untrained_test_accuracy": 0.8055555555555556,
+    "untrained_test_f1": 0.6956521739130435,
+    "specialized_test_accuracy": 0.9166666666666666,
+    "specialized_test_f1": 0.8571428571428571,
+    "specialized_test_precision": 1,
+    "specialized_test_recall": 0.75,
+    "specialized_test_false_positive_rate": 0,
+    "specialized_test_false_negative_rate": 0.25,
+    "accuracy_gain_percentage_points": 11.1111111111111,
+    "f1_gain_percentage_points": 16.14906832298136,
+    "paper_accuracy_target": 0.95,
+    "paper_f1_target": 0.95
+  },
+  "verdict": "PARTIAL",
+  "notes": "Independent supervised fine-tuning analogue using pinned MiniLM and deterministic synthetic family-disjoint data. Specialization materially improves held-out-family performance but remains below the paper's 95% accuracy/F1 operational target. This does not reproduce the paper's Gemma 3, GEPA, SFT, or GRPO settings."
+}
