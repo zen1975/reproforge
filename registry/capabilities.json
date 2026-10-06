@@ -173,7 +173,9 @@
           "studies/arxiv-2610.06191/evidence/C3.synthetic-contrast.evidence.json",
           "studies/arxiv-2610.06191/evidence/time_matched_contrast_synthetic_v1.result.json",
           "studies/arxiv-2610.06191/evidence/C3.official-delta-audit.evidence.json",
-          "studies/arxiv-2610.06191/evidence/official_episode_delta_audit_v2.result.json"
+          "studies/arxiv-2610.06191/evidence/official_episode_delta_audit_v2.result.json",
+          "studies/arxiv-2610.06191/evidence/C1.official-summary-audit.evidence.json",
+          "studies/arxiv-2610.06191/evidence/official_episode_summary_audit_v1.result.json"
         ]
       },
       "implementation": {
