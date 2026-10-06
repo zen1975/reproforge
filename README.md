@@ -21,6 +21,10 @@ Environment Freeze
         ↓
 Evidence Bundle
         ↓
+Lifecycle:
+INTAKE_VERIFIED → MECHANISM_VERIFIED → PROTOCOL_VERIFIED
+→ HEAVY_COMPUTE_READY → REPRODUCED
+        ↓
 Verdict: PASS / PARTIAL / FAIL / INCONCLUSIVE
         ↓
 Capability Extraction
@@ -43,6 +47,8 @@ studies/
     claims.yaml
     experiments/
     evidence/
+    status.yaml
+    HANDOFF.md
     report.md
 
 capabilities/
@@ -111,18 +117,30 @@ See [`docs/CAPABILITY_MODEL.md`](docs/CAPABILITY_MODEL.md).
 
 ## Quick start
 
+Fork or clone, then:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install -e '.[dev]'
-pytest
+make bootstrap
+make verify
 ```
+
+Inspect a study before continuing it:
+
+```bash
+reproforge study-status studies/arxiv-2610.03213
+```
+
+A study marked `HEAVY_COMPUTE_READY` has completed the project's free/lightweight phase. Read that study's `HANDOFF.md` before spending GPU time or changing a frozen evaluation.
 
 Validate an example paper manifest:
 
 ```bash
 reproforge validate templates/paper-manifest.example.yaml
 ```
+
+See [`docs/STUDY_COMPLETION_POLICY.md`](docs/STUDY_COMPLETION_POLICY.md) for the standard stopping rule and fork handoff contract.
 
 ## What belongs here
 
