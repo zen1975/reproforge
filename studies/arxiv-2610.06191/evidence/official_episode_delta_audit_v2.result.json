@@ -1,0 +1,43 @@
+{
+  "audit_id": "official-episodes-delta-audit-v2-all-released",
+  "official_repository": "bennidict23/judged-useless-queried-anyway",
+  "official_commit": "2e6404e542b4afdafa3d54d9b18eb1c28c2bafc8",
+  "github_actions_run": 37502985008,
+  "artifact_id": 11430687240,
+  "artifact_digest": "sha256:5450d3a598d0244f12550be188e8424af47f7b51cb46ba23328ff98b30c7ae81",
+  "cells_audited": 43,
+  "exact_delta_matches": 43,
+  "exact_ci_matches": 43,
+  "all_cells_exact_match": true,
+  "representative": {
+    "test300/qwen3-8b__unaided": {
+      "delta": -0.06480060445458118,
+      "ci": [
+        -0.09516077563305873,
+        -0.03870803812500582
+      ]
+    },
+    "test300/qwen3-8b__enforced_rule": {
+      "delta": 0.3290158751511114,
+      "ci": [
+        0.28620321469840504,
+        0.37270849065753436
+      ]
+    },
+    "fresh300/qwen3-8b__unaided": {
+      "delta": -0.052051989797860125,
+      "ci": [
+        -0.07486920784959478,
+        -0.03314498663670471
+      ]
+    },
+    "fresh300/qwen3-8b__enforced_rule": {
+      "delta": 0.3444698781259309,
+      "ci": [
+        0.31292763516059535,
+        0.37866036883879506
+      ]
+    }
+  },
+  "boundary": "OFFICIAL_AUDIT of released CC BY 4.0 episodes using ReproForge's separate Δ implementation. This reproduces the released trajectory metric values, not the original model generation process."
+}
