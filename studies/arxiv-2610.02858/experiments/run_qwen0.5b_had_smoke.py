@@ -143,7 +143,8 @@ def main():
     parser.add_argument("--beta", type=float, default=0.5)
     parser.add_argument("--rho", type=float, default=0.5)
     parser.add_argument("--lora-r", type=int, default=4)
-    parser.add_argument("--lora-alpha", type=int, default=8)\n    parser.add_argument("--version", default="v1")
+    parser.add_argument("--lora-alpha", type=int, default=8)
+    parser.add_argument("--version", default="v1")
     args = parser.parse_args()
 
     random.seed(SEED)
