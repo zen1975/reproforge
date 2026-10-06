@@ -37,13 +37,13 @@ def test_first_ingested_study_manifest_validates():
     assert manifest["claims"][0]["id"] == "C1-task-tool-relevance"
 
 
-def test_first_paper_derived_capability_validates_and_stays_unverified():
+def test_first_paper_derived_capability_validates_and_remains_experimental():
     capability = load_capability(
         ROOT / "capabilities" / "agent.task-tool-relevance-classifier" / "capability.yaml",
         ROOT / "schemas" / "capability.schema.json",
     )
     assert capability["status"] == "experimental"
-    assert capability["evidence"]["reproduction_status"] == "NOT_RUN"
+    assert capability["evidence"]["reproduction_status"] == "PARTIAL"
 
     registry = load_document(ROOT / "registry" / "capabilities.json")
     descriptor = next(
@@ -54,3 +54,4 @@ def test_first_paper_derived_capability_validates_and_stays_unverified():
     schema = load_document(ROOT / "schemas" / "capability.schema.json")
     assert validate_document(descriptor, schema) == []
     assert descriptor["evidence"]["studies"] == ["studies/arxiv-2610.03213"]
+    assert descriptor["evidence"]["reproduction_status"] == "PARTIAL"
