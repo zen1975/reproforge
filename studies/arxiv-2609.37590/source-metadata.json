@@ -1,0 +1,35 @@
+{
+  "source_url": "https://arxiv.org/abs/2609.37590",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-07",
+  "arxiv_id": "2609.37590",
+  "version": "v1",
+  "submitted_on": "2026-09-29",
+  "canonical_url": "https://arxiv.org/abs/2609.37590",
+  "title": "FOCUS: Training-Free Decision-Preserving Context Compression for LLM Agents",
+  "authors": [
+    "Shantanu Dixit",
+    "Anson Bastos",
+    "Xuchao Zhang",
+    "Chetan Bansal",
+    "Saravan Rajmohan"
+  ],
+  "paper_license": "CC BY 4.0",
+  "published_protocol": {
+    "span_unit": "reasoning-action-observation",
+    "rollout_count_default": 3,
+    "utility_threshold": 0.3,
+    "draft_temperature": 0.7,
+    "main_agent_temperature": 0,
+    "seed": 42,
+    "token_counter": "tiktoken cl100k_base",
+    "memory_trigger_tokens": {
+      "AppWorld": 4096,
+      "OfficeBench": 2048,
+      "8-Objective QA": 2048
+    }
+  },
+  "official_code_status": "No official implementation was identified during source review/search on 2026-10-07.",
+  "notes": "Full 32-page PDF inspected, including Algorithm 1 and Appendix A.9 implementation details. Paper benchmark claims remain paper-reported until independently executed."
+}
