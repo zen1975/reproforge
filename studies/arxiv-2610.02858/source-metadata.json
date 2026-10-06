@@ -1,0 +1,17 @@
+{
+  "source_url": "https://arxiv.org/abs/2610.02858",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-07",
+  "arxiv_id": "2610.02858",
+  "canonical_url": "https://arxiv.org/abs/2610.02858",
+  "title": "Harness-Aware Distillation for Small Language Model Agents",
+  "authors": [
+    "Moonseok Choi",
+    "Taehong Moon",
+    "Giung Nam",
+    "Juho Lee"
+  ],
+  "submitted_at": "2026-10-02",
+  "notes": "Full 28-page arXiv PDF inspected. Core equations, Appendix A.1, Appendix B.4, training hyperparameters, validity checks, and model/benchmark settings were reviewed. No official public code repository was identified in the 2026-10-07 search. Paper license was not verified and remains UNKNOWN."
+}
