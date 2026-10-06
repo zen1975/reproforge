@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://reproforge.dev/schemas/study-status.schema.json",
+  "title": "ReproForge Study Status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "study_id",
+    "lifecycle",
+    "reproduction_status",
+    "free_light_phase_complete",
+    "current_boundary",
+    "next_step",
+    "handoff"
+  ],
+  "properties": {
+    "study_id": {"type": "string", "minLength": 1},
+    "lifecycle": {
+      "enum": [
+        "INTAKE_VERIFIED",
+        "MECHANISM_VERIFIED",
+        "PROTOCOL_VERIFIED",
+        "HEAVY_COMPUTE_READY",
+        "REPRODUCED",
+        "BLOCKED"
+      ]
+    },
+    "reproduction_status": {
+      "enum": ["PASS", "PARTIAL", "FAIL", "INCONCLUSIVE", "NOT_RUN"]
+    },
+    "free_light_phase_complete": {"type": "boolean"},
+    "current_boundary": {"type": "string", "minLength": 1},
+    "next_step": {"type": "string", "minLength": 1},
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "ready"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "ready": {"type": "boolean"}
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "default": []
+    },
+    "frozen_evaluations": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "default": []
+    },
+    "entrypoints": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "default": []
+    },
+    "updated_at": {"type": "string", "format": "date"}
+  }
+}
