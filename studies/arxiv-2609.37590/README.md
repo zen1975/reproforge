@@ -1,0 +1,51 @@
+# Study: arXiv 2609.37590
+
+**Paper:** FOCUS: Training-Free Decision-Preserving Context Compression for LLM Agents  
+**arXiv:** https://arxiv.org/abs/2609.37590  
+**Intake:** VERIFIED against arXiv v1 and full PDF  
+**Lifecycle:** MECHANISM_VERIFIED  
+**Reproduction:** PARTIAL
+
+## Why this study
+
+FOCUS treats agent context compression as future-decision preservation rather than generic summarization or redundancy removal. Historical interaction units remain intact as complete reasoning-action-observation spans.
+
+The reusable capability hypothesis is:
+
+`agent.decision-preserving-context-compressor`
+
+## Published mechanism captured
+
+Algorithm 1 has four operational stages:
+
+1. trigger compression when context exceeds a memory budget;
+2. sample multiple stochastic future plan sketches;
+3. score each historical span by how often future plans cite it as a dependency;
+4. retain spans above threshold and union spans rescued by defensive verification.
+
+Published defaults captured in `experiments/paper_protocol_config_v1.json` include `N=3`, `tau=0.3`, draft temperature `0.7`, main-agent temperature `0.0`, and seed `42`.
+
+## ReproForge implementation boundary
+
+The first implementation is an independent deterministic core. It consumes already-generated dependency sets and rescue decisions.
+
+It does **not** claim to reproduce:
+- GPT-4.1 / GPT-4.1-mini rollouts;
+- Qwen3-8B/14B or Phi-4 draft behavior;
+- AppWorld, OfficeBench, 8-QA, WebVoyager, or tau2-Bench task success;
+- paper token/cost reductions.
+
+## Frozen synthetic evidence
+
+`focus-synthetic-protocol-v1` verifies:
+- N=3 citation-frequency selection;
+- tau=0.3 threshold behavior;
+- whole-span retention;
+- defensive rescue;
+- the known set-valued-goal failure mode.
+
+The failure-mode case is intentionally negative evidence: generalized future plans may cite a procedure while failing to cite individual entity spans, causing those entity-specific facts to be pruned.
+
+## Next gate
+
+Add a strict draft-output parser and a provider-neutral rollout adapter contract, then execute a lightweight model-backed analogue without tuning on the frozen synthetic cases. Only after that should the study be considered for `PROTOCOL_VERIFIED` or `HEAVY_COMPUTE_READY`.
