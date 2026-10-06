@@ -196,6 +196,63 @@
           "kind": "cloudflare-worker"
         }
       ]
+    },
+    {
+      "id": "agent.decision-preserving-context-compressor",
+      "version": "0.1.0",
+      "name": "Decision-Preserving Context Compressor",
+      "summary": "Span-level context selector that retains future-decision dependencies estimated across plan rollouts and optionally rescues risky low-citation spans.",
+      "status": "experimental",
+      "task_classes": [
+        "agent-context-management",
+        "trajectory-compression",
+        "decision-preserving-memory"
+      ],
+      "interface": {
+        "inputs": {
+          "spans": "array[reasoning,action,observation]",
+          "rollout_dependencies": "array[set[span_id]]",
+          "tau": "number",
+          "rescued_ids": "set[span_id]"
+        },
+        "outputs": {
+          "retained_ids": "array[span_id]",
+          "dropped_ids": "array[span_id]",
+          "utility": "map[span_id,number]"
+        }
+      },
+      "runtime": {
+        "kind": "python",
+        "entrypoint": "capabilities/agent.decision-preserving-context-compressor/compressor.py:compress",
+        "deterministic": true,
+        "requirements": []
+      },
+      "evidence": {
+        "reproduction_status": "PARTIAL",
+        "studies": [
+          "studies/arxiv-2609.37590"
+        ],
+        "evidence_paths": [
+          "studies/arxiv-2609.37590/evidence/C1.synthetic-selection.evidence.json",
+          "studies/arxiv-2609.37590/evidence/C2.synthetic-defensive.evidence.json",
+          "studies/arxiv-2609.37590/evidence/focus_synthetic_protocol_v1.result.json"
+        ]
+      },
+      "implementation": {
+        "path": "capabilities/agent.decision-preserving-context-compressor/compressor.py",
+        "license": "Apache-2.0"
+      },
+      "adapters": [
+        {
+          "kind": "python"
+        },
+        {
+          "kind": "agent-tool"
+        },
+        {
+          "kind": "cloudflare-worker"
+        }
+      ]
     }
   ]
 }
