@@ -1,0 +1,42 @@
+schema_version: "0.1"
+paper:
+  title: "Judged Useless, Queried Anyway: Tool-Using Agents Rarely Turn Their Own Evidence Judgments into Stopping Decisions"
+  canonical_url: "https://arxiv.org/abs/2610.06191"
+  arxiv_id: "2610.06191"
+  authors:
+    - "Chubin Zhang"
+    - "Zhenglin Wan"
+    - "Xingrui Yu"
+    - "Jingxuan Wu"
+    - "Yaxin Zhou"
+    - "Ivor Tsang"
+    - "Bo An"
+  license: "CC BY 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "The paper PDF and official MIT-licensed repository were inspected before implementation, so this study does not claim clean-room independence. The initial ReproForge mechanism implementation is written separately and does not copy author source code. Official released episodes/code are reserved for a later explicitly labeled audit run."
+external_assets:
+  - kind: "CODE"
+    name: "Official paper repository"
+    source: "https://github.com/bennidict23/judged-useless-queried-anyway"
+    license: "MIT"
+    license_status: "VERIFIED"
+    redistributed: false
+  - kind: "DATASET"
+    name: "Official released episode data"
+    source: "https://github.com/bennidict23/judged-useless-queried-anyway/tree/main/experiments/episodes"
+    license: "CC BY 4.0"
+    license_status: "VERIFIED"
+    redistributed: false
+claims:
+  - id: "C1-judgment-action-dissociation"
+    statement: "Tool-using agents can correctly judge repeated source outputs as useless while failing to turn those judgments into stopping decisions."
+    acceptance_criteria: "Paper-level reproduction requires trajectory-level evidence that usefulness judgments and stopping actions are dissociated under the paper protocol or a clearly documented equivalent."
+  - id: "C2-enforced-integration-rule"
+    statement: "A harness-level rule that forces answering after five consecutive USELESS judgments makes stopping respond to evidence rather than only prompt/deadline behavior."
+    acceptance_criteria: "Mechanism verification requires a deterministic gate that fires after exactly five consecutive USELESS judgments, resets after useful evidence, remains fired once triggered, and reduces unnecessary tool calls in persistent-failure scenarios without firing on shorter recovery scenarios."
+  - id: "C3-time-matched-contrast"
+    statement: "A time-matched stopping contrast can distinguish evidence-integrating stopping from clock/deadline-driven stopping."
+    acceptance_criteria: "Protocol verification requires an executable implementation of the paper-defined stopping contrast or an explicitly bounded equivalent on trajectory records."
