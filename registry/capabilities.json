@@ -52,7 +52,9 @@
           "studies/arxiv-2610.03213/evidence/C3.qwen-prompt.evidence.json",
           "studies/arxiv-2610.03213/evidence/qwen2.5_0.5b_prompt_optimized_v1.result.json",
           "studies/arxiv-2610.03213/evidence/C3.qwen-sft.evidence.json",
-          "studies/arxiv-2610.03213/evidence/qwen2.5_0.5b_lora_sft_v1.result.json"
+          "studies/arxiv-2610.03213/evidence/qwen2.5_0.5b_lora_sft_v1.result.json",
+          "studies/arxiv-2610.03213/evidence/C3.qwen-sft-v2.evidence.json",
+          "studies/arxiv-2610.03213/evidence/qwen2.5_0.5b_lora_sft_v2_frozen.result.json"
         ]
       },
       "implementation": {
