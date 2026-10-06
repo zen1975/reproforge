@@ -38,7 +38,7 @@ def run():
             _trajectory(f"e{q}", ["USELESS"] * 4, 4)
         )
         evidence_integrating.append(
-            _trajectory(f"e{q}", ["USEFUL", "USELESS", "USELESS", "USELESS"], None)
+            _trajectory(f"e{q}", ["USELESS", "USEFUL", "USELESS", "USELESS"], None)
         )
 
         # clock-driven: both exposure groups answer at the same decision time.
