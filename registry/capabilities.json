@@ -302,7 +302,13 @@
           "studies/arxiv-2610.02858/evidence/C4.qwen0.5b-smoke.evidence.json",
           "studies/arxiv-2610.02858/evidence/had_qwen0.5b_distill_only_smoke_v2.result.json",
           "studies/arxiv-2610.02858/evidence/had_qwen0.5b_had_smoke_v2.result.json",
-          "studies/arxiv-2610.02858/evidence/had_qwen0.5b_smoke_v2_comparison.result.json"
+          "studies/arxiv-2610.02858/evidence/had_qwen0.5b_smoke_v2_comparison.result.json",
+          "studies/arxiv-2610.02858/evidence/C1.on-policy-qwen-v1.evidence.json",
+          "studies/arxiv-2610.02858/evidence/had_on_policy_paired_teacher_qwen_v1.result.json",
+          "studies/arxiv-2610.02858/evidence/C1.harness-signal-qwen-v2.evidence.json",
+          "studies/arxiv-2610.02858/evidence/had_harness_signal_qwen_contrast_v2.result.json",
+          "studies/arxiv-2610.02858/evidence/C3.real-pair-multiseed.evidence.json",
+          "studies/arxiv-2610.02858/evidence/had_real_teacher_pair_multiseed_v1.result.json"
         ]
       },
       "implementation": {
