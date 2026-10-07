@@ -1,0 +1,14 @@
+study_id: arxiv-2610.06354
+lifecycle: INTAKE_VERIFIED
+reproduction_status: NOT_RUN
+free_light_phase_complete: false
+current_boundary: "Primary arXiv identity verified; author repository license is undeclared, so no author code or assets are redistributed."
+next_step: "Independently reconstruct the graph decision evaluation contracts and implement a lightweight synthetic mechanism test."
+handoff:
+  path: studies/arxiv-2610.06354/HANDOFF.md
+  ready: false
+blockers:
+  - "Author repository has no declared repository license; do not copy or redistribute its code/assets."
+frozen_evaluations: []
+entrypoints: []
+updated_at: "2026-10-07"
