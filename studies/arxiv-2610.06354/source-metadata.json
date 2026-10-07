@@ -1,0 +1,16 @@
+{
+  "source_url": "https://arxiv.org/abs/2610.06354",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-08",
+  "arxiv_id": "2610.06354",
+  "canonical_url": "https://arxiv.org/abs/2610.06354",
+  "title": "GraphDecide: Benchmarking System One Models on Graph Tasks",
+  "authors": [
+    "Xianliang Yang",
+    "Yapu Zhang",
+    "Li Zhao"
+  ],
+  "abstract": "GraphDecide is a model-independent benchmark for graph cognition, matched graph-text decision conditions, and sequential graph optimization. It separates task/evaluator contracts from model adapters and evaluates structural correctness, relational information utility, completion coverage, and solution quality.",
+  "notes": "Identity and benchmark contracts were captured from authoritative arXiv metadata and the full PDF. No paper PDF, figures, datasets, author code, model outputs, or repository assets are redistributed. Author repository licensing remains undeclared at this intake."
+}
