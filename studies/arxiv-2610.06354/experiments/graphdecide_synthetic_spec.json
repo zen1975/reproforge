@@ -1,0 +1,125 @@
+{
+  "benchmark_id": "graphdecide-mechanism-v1",
+  "scope": "Synthetic mechanism fixture only; not the GraphDecide benchmark datasets.",
+  "graph": {
+    "vertices": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "edges": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "B",
+        "C"
+      ],
+      [
+        "C",
+        "A"
+      ],
+      [
+        "C",
+        "D"
+      ]
+    ]
+  },
+  "queries": [
+    {
+      "id": "q-adj",
+      "task": "adjacency",
+      "args": {
+        "u": "A",
+        "v": "B"
+      },
+      "candidates": [
+        "yes",
+        "no"
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "q-degree",
+      "task": "degree",
+      "args": {
+        "vertex": "C"
+      },
+      "candidates": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "expected": "3"
+    },
+    {
+      "id": "q-cycle",
+      "task": "cycle",
+      "args": {},
+      "candidates": [
+        "yes",
+        "no"
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "q-connectivity",
+      "task": "connectivity",
+      "args": {},
+      "candidates": [
+        "yes",
+        "no"
+      ],
+      "expected": "no"
+    },
+    {
+      "id": "q-distance",
+      "task": "distance_leq",
+      "args": {
+        "source": "A",
+        "target": "D",
+        "threshold": 2
+      },
+      "candidates": [
+        "yes",
+        "no"
+      ],
+      "expected": "yes"
+    },
+    {
+      "id": "q-articulation",
+      "task": "articulation",
+      "args": {
+        "vertex": "C"
+      },
+      "candidates": [
+        "yes",
+        "no"
+      ],
+      "expected": "yes"
+    }
+  ],
+  "tsp": {
+    "cities": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "distances": {
+      "A|B": 1,
+      "B|C": 1,
+      "C|D": 1,
+      "A|D": 1,
+      "A|C": 1.41421356237,
+      "B|D": 1.41421356237
+    },
+    "reference": 4,
+    "start": "A"
+  }
+}
