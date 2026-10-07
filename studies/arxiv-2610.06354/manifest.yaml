@@ -1,0 +1,35 @@
+schema_version: "0.1"
+paper:
+  title: "GraphDecide: Benchmarking System One Models on Graph Tasks"
+  canonical_url: "https://arxiv.org/abs/2610.06354"
+  arxiv_id: "2610.06354"
+  authors:
+    - "Xianliang Yang"
+    - "Yapu Zhang"
+    - "Li Zhao"
+  license: null
+  license_status: "UNKNOWN"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Authoritative arXiv metadata and full PDF inspected. ReproForge independently reconstructs the model-independent choice/evaluator/state-transition mechanism with synthetic graph fixtures. Author repository code/assets are not copied or redistributed because repository licensing is undeclared."
+external_assets:
+  - kind: "CODE"
+    name: "JevGraphBench author repository"
+    source: "https://github.com/VictorYXL/JevGraphBench"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-model-independent-choice-contract"
+    statement: "GraphDecide separates task specification, candidate identity, reference evaluation, and state transition from model execution through a common choice interface."
+    acceptance_criteria: "An independent implementation must preserve supplied candidate identities, keep reference answers/objectives outside the model adapter, count invalid choices as failures, and execute sequential state updates from the model's own prior decisions."
+  - id: "C2-graph-cognition-contract"
+    statement: "Graph cognition evaluates distinct structural operations rather than collapsing graph ability into a single score."
+    acceptance_criteria: "Independent synthetic tests must separately evaluate adjacency, exact degree, cycle existence, connectivity, distance threshold, and articulation using evaluator-computed ground truth."
+  - id: "C3-sequential-coverage-quality"
+    statement: "Sequential graph decision evaluation separates completion coverage from solution quality and leaves gap undefined for failed trajectories."
+    acceptance_criteria: "Independent sequential construction must expose legal candidates at each step, fail on invalid actions, compute objective/gap only for complete legal solutions, and retain failures in the coverage denominator."
+  - id: "C4-matched-graph-text-contrasts"
+    statement: "GraphDecide uses matched graph-text conditions to distinguish the marginal value of relational evidence from accompanying text or anchors."
+    acceptance_criteria: "A protocol reproduction must implement matched T/G/TG/BAG/A or A* conditions with paired targets/queries and reproduce the declared paired contrasts without leakage."
