@@ -9,7 +9,7 @@ candidates:
     source_url: "https://arxiv.org/abs/2610.06354"
     source_verified: true
     priority: "A+"
-    candidate_capability: "evaluation.graph-decision-profiler"
+    candidate_capability: "research.graph-decision-profiler"
     why_reusable: "Provides model-independent task contracts and scoring distinctions for graph cognition, graph-text utility, and sequential graph decisions; directly reusable for evaluating System One selectors, LLM adapters, and future GNN/agent decision layers."
     free_light_fit: "high"
     next_gate: "MECHANISM_DESIGN"
