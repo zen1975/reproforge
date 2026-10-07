@@ -1,0 +1,100 @@
+{
+  "benchmark_id": "graphdecide-mechanism-v1",
+  "graph_cognition": {
+    "task_count": 6,
+    "correct_count": 6,
+    "all_reference_matches": true,
+    "rows": [
+      {
+        "id": "q-adj",
+        "task": "adjacency",
+        "reference": "yes",
+        "expected": "yes",
+        "valid": true,
+        "correct": true
+      },
+      {
+        "id": "q-degree",
+        "task": "degree",
+        "reference": "3",
+        "expected": "3",
+        "valid": true,
+        "correct": true
+      },
+      {
+        "id": "q-cycle",
+        "task": "cycle",
+        "reference": "yes",
+        "expected": "yes",
+        "valid": true,
+        "correct": true
+      },
+      {
+        "id": "q-connectivity",
+        "task": "connectivity",
+        "reference": "no",
+        "expected": "no",
+        "valid": true,
+        "correct": true
+      },
+      {
+        "id": "q-distance",
+        "task": "distance_leq",
+        "reference": "yes",
+        "expected": "yes",
+        "valid": true,
+        "correct": true
+      },
+      {
+        "id": "q-articulation",
+        "task": "articulation",
+        "reference": "yes",
+        "expected": "yes",
+        "valid": true,
+        "correct": true
+      }
+    ]
+  },
+  "interface_probes": {
+    "invalid_output_valid": false,
+    "invalid_output_correct": false,
+    "unsupported_supported": false,
+    "unsupported_correct": false
+  },
+  "sequential": {
+    "complete_status": "complete",
+    "complete_objective": 4,
+    "complete_gap": 0,
+    "complete_candidate_history": [
+      [
+        "B",
+        "C",
+        "D"
+      ],
+      [
+        "C",
+        "D"
+      ],
+      [
+        "D"
+      ]
+    ],
+    "failed_status": "invalid_action",
+    "failed_objective": null,
+    "failed_gap": null,
+    "summary": {
+      "scheduled": 2,
+      "completed": 1,
+      "coverage": 0.5,
+      "mean_gap": 0,
+      "failed": 1
+    }
+  },
+  "verdict": "PASS",
+  "claim_scope": "Mechanism contract only; no paper benchmark performance claim.",
+  "ci": {
+    "run_id": 37646670852,
+    "python_3_11": "SUCCESS",
+    "python_3_12": "SUCCESS"
+  }
+}
