@@ -3,6 +3,19 @@ screening_window:
   from: "2026-09-23"
   to: "2026-10-07"
 candidates:
+  - arxiv_id: "2610.06354"
+    title: "GraphDecide: Benchmarking System One Models on Graph Tasks"
+    submitted_on: "2026-10-05"
+    source_url: "https://arxiv.org/abs/2610.06354"
+    source_verified: true
+    priority: "A+"
+    candidate_capability: "evaluation.graph-decision-profiler"
+    why_reusable: "Provides model-independent task contracts and scoring distinctions for graph cognition, graph-text utility, and sequential graph decisions; directly reusable for evaluating System One selectors, LLM adapters, and future GNN/agent decision layers."
+    free_light_fit: "high"
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "arXiv identity verified. Author repository is public but declares no repository license, so ReproForge does not redistribute or copy its code/assets. Promoted for an independent protocol-shaped graph decision profiler and synthetic mechanism test."
+
   - arxiv_id: "2610.02858"
     title: "Harness-Aware Distillation for Small Language Model Agents"
     submitted_on: "2026-10-02"
