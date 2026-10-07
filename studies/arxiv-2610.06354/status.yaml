@@ -1,14 +1,17 @@
 study_id: arxiv-2610.06354
-lifecycle: INTAKE_VERIFIED
-reproduction_status: NOT_RUN
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
 free_light_phase_complete: false
-current_boundary: "Primary arXiv identity verified; author repository license is undeclared, so no author code or assets are redistributed."
-next_step: "Independently reconstruct the graph decision evaluation contracts and implement a lightweight synthetic mechanism test."
+current_boundary: "Independent synthetic verification now covers the model-independent choice/evaluator contract, all six RQ1 structural operations, invalid/unsupported handling, and RQ3-style sequential coverage/gap semantics. RQ2 matched graph-text protocol and public benchmark reproduction remain NOT_RUN."
+next_step: "Reconstruct and execute the lightweight RQ2 T/G/TG/BAG/A(A*) matched-condition and paired-contrast protocol with an adapter-neutral synthetic fixture."
 handoff:
   path: studies/arxiv-2610.06354/HANDOFF.md
   ready: false
 blockers:
   - "Author repository has no declared repository license; do not copy or redistribute its code/assets."
-frozen_evaluations: []
-entrypoints: []
-updated_at: "2026-10-07"
+  - "RQ2 matched-condition schema, paired bootstrap evaluator, and adapter protocol are not yet independently executed."
+frozen_evaluations:
+  - graphdecide-mechanism-v1
+entrypoints:
+  - studies/arxiv-2610.06354/experiments/run_graphdecide_mechanism.py
+updated_at: "2026-10-08"
