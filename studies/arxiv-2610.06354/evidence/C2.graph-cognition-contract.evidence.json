@@ -1,0 +1,25 @@
+{
+  "claim_id": "C2-graph-cognition-contract",
+  "run_id": "graphdecide-mechanism-v1",
+  "artifact_hashes": {
+    "graphdecide_mechanism.py": "git-blob:30521245734f8d5c843152420cee2f2e4f771734",
+    "graphdecide_synthetic_spec.json": "git-blob:60522b8d1582fb17a89c5fbe976ddf299c59a3a7",
+    "run_graphdecide_mechanism.py": "git-blob:29e8b7beb6e1382cf92eec210d6d44a179fb2260",
+    "test_graphdecide_mechanism.py": "git-blob:674dee868152ee3e5d6297662ecbd2da47a7e89e"
+  },
+  "metrics": {
+    "task_count": 6,
+    "reference_match_count": 6,
+    "reference_match_rate": 1,
+    "tasks": [
+      "adjacency",
+      "degree",
+      "cycle",
+      "connectivity",
+      "distance_leq",
+      "articulation"
+    ]
+  },
+  "verdict": "PARTIAL",
+  "notes": "All six named graph-cognition operation contracts are independently exercised on a frozen synthetic graph. This validates task separation and evaluator computation only, not GraphDecide benchmark accuracy."
+}
