@@ -1,17 +1,20 @@
 study_id: arxiv-2610.06354
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "Independent synthetic verification now covers the model-independent choice/evaluator contract, all six RQ1 structural operations, invalid/unsupported handling, and RQ3-style sequential coverage/gap semantics. RQ2 matched graph-text protocol and public benchmark reproduction remain NOT_RUN."
-next_step: "Reconstruct and execute the lightweight RQ2 T/G/TG/BAG/A(A*) matched-condition and paired-contrast protocol with an adapter-neutral synthetic fixture."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete: model-independent RQ1/RQ3 mechanism, RQ2 matched T/G/TG/BAG/A condition construction, candidate/readout invariants, held-out-label isolation, and the paper-declared paired 1,000-target bootstrap convention are independently executable on frozen synthetic fixtures. Remaining primary work is legal public-data/model execution."
+next_step: "Run at least one pinned public-data RQ1 or RQ2 slice with a declared supported model/readout configuration, then compare paper-style accuracy/paired contrasts while preserving dataset, model revision, interface mode, and raw outputs."
 handoff:
   path: studies/arxiv-2610.06354/HANDOFF.md
-  ready: false
+  ready: true
 blockers:
   - "Author repository has no declared repository license; do not copy or redistribute its code/assets."
-  - "RQ2 matched-condition schema, paired bootstrap evaluator, and adapter protocol are not yet independently executed."
+  - "Public benchmark/model reproduction requires independently legal data access plus pinned model/readout execution."
+  - "No paper-level model performance has been independently reproduced yet."
 frozen_evaluations:
   - graphdecide-mechanism-v1
+  - graphdecide-rq2-synthetic-v1
 entrypoints:
   - studies/arxiv-2610.06354/experiments/run_graphdecide_mechanism.py
+  - studies/arxiv-2610.06354/experiments/run_graphdecide_rq2_protocol.py
 updated_at: "2026-10-08"
