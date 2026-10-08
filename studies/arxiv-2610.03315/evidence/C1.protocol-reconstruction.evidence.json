@@ -1,0 +1,20 @@
+{
+  "claim_id": "C1-single-call-fixed-budget",
+  "run_id": "litetraj-protocol-synthetic-v1",
+  "metrics": {
+    "mmr_selection_executed": true,
+    "detection_rate": 0.6666666666666666,
+    "align_detected_at_1": 1,
+    "align_detected_at_3": 1,
+    "single_call_payload": true,
+    "required_report_fields": 5,
+    "structured_report_validation": true
+  },
+  "verdict": "PARTIAL",
+  "ci": {
+    "python_3_11": "SUCCESS",
+    "python_3_12": "SUCCESS",
+    "latest_protocol_test_run": 37741884584
+  },
+  "notes": "Synthetic protocol evidence only. MMR equation shape, conditional alignment metric and one-call structured report contract are independently executable. Similarity implementation in the synthetic fixture is an explicitly labeled Jaccard analogue because the paper does not fully specify the similarity backend. No public benchmark or judge-quality claim."
+}
