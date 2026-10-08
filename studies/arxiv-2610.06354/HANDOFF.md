@@ -2,55 +2,62 @@
 
 ## State
 
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction verdict: `PARTIAL`
-- Free/lightweight phase: not complete
-- Frozen synthetic evaluation: `graphdecide-mechanism-v1`
+- Free/lightweight phase: complete
+- Frozen evaluations: `graphdecide-mechanism-v1`, `graphdecide-rq2-synthetic-v1`
 
-## Already executed
+## Completed lightweight verification
 
-The model-independent GraphDecide mechanism has been independently reconstructed and verified on a frozen synthetic fixture.
+ReproForge independently verifies:
 
-Verified:
+1. evaluator-owned candidate identities and reference truth;
+2. all six RQ1 structural task contracts;
+3. invalid vs unsupported handling;
+4. RQ3 model-induced sequential state and completion/quality separation;
+5. RQ2 matched T/G/TG/BAG/A condition construction;
+6. identical item/query/candidate identity across matched conditions;
+7. held-out truth exclusion from model input;
+8. BAG removes explicit edges;
+9. anchor-only condition removes entity text/edges;
+10. native selection, constrained generation and candidate scoring map back to the same candidate contract;
+11. paired accuracy differences;
+12. paper-declared 1,000-resample paired target bootstrap with seed `20261001` and endpoints 24/974.
 
-1. candidate identities and answer spaces are evaluator-owned;
-2. reference answers are computed independently of the model adapter;
-3. all six RQ1 structural operation contracts are represented separately;
-4. invalid outputs are rejected rather than silently mapped;
-5. unsupported responses remain distinct from invalid responses;
-6. RQ3-style sequential state evolves from the model's own choices;
-7. objective/gap are produced only for completed legal trajectories;
-8. failed trajectories remain in completion coverage without artificial objective values.
+## Not reproduced
 
-CI run `37646670852` passed on Python 3.11 and 3.12.
+- public ogbn-arxiv / STaRK-Prime model results;
+- fourteen paper model-interface configurations;
+- paper-level paired deltas;
+- public RQ3 optimization results.
 
-## Frozen evaluation
+The synthetic paired differences are protocol diagnostics only.
 
-Do not tune the mechanism against `graphdecide-mechanism-v1` after observing its results.
+## Licensing boundary
 
-Any changed graph, candidate set, transition rule, or probe intended for development must use a new benchmark version.
+The author repository currently has no declared repository license. Do not copy, vendor or redistribute author code/assets unless that changes and is independently verified.
 
-## Next free/lightweight work
+## Next local/heavy work
 
-Before `PROTOCOL_VERIFIED`:
+Start with one legal public-data slice and one supported model/readout mode.
 
-1. independently reconstruct RQ2 condition schemas for T / G / TG / BAG / A(A*);
-2. encode the paired-contrast contract, including TG-BAG and G-C0;
-3. implement a provider-neutral adapter boundary for native selection, constrained generation and candidate scoring;
-4. add paired metric/bootstrap logic using independent legal synthetic data;
-5. test held-out-label isolation and candidate-identity preservation;
-6. reconstruct at least one public-data RQ1 or RQ3 slice if licensing permits.
-
-## Local/heavy boundary
-
-Do not start large model sweeps yet. Heavy/local execution is premature while RQ2 and adapter protocol work remains lightweight and unresolved.
+Preserve:
+- exact dataset/split;
+- candidate construction;
+- model/revision;
+- native/generation/scoring mode;
+- inference settings;
+- raw outputs;
+- invalid/unsupported counts;
+- accuracy and paired contrasts;
+- bootstrap configuration and results.
 
 ## Real implementation direction
 
-Keep graph state, relations, provenance, legal candidates, objectives and constraints outside the model. Treat the model as a replaceable decision layer only.
+Keep graph state, relations, provenance, legal candidates, reference objectives and state transitions outside the learned model.
 
-This is especially relevant to downstream graph-memory/GNN systems: learned graph representations may propose or score actions, but evaluator-owned state and evidence contracts should remain explicit and inspectable.
+Small LLMs, GNNs, classifiers and scoring models are replaceable decision layers behind the same evaluator-owned contract.
 
-## Promotion rule
+## Promotion
 
-Move to `PROTOCOL_VERIFIED` only when the matched-condition and adapter/evaluator protocol is executable end to end without benchmark leakage. Move to `HEAVY_COMPUTE_READY` only when remaining work is genuinely model/data/compute gated.
+Do not promote to `REPRODUCED` until public-data/model execution tests the paper-level claims. The current state justifies `HEAVY_COMPUTE_READY`, not benchmark reproduction.
