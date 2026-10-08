@@ -110,3 +110,22 @@ def paired_bootstrap_interval(
     if high_index >= len(values):
         raise ValueError("bootstrap endpoint outside sample")
     return values[low_index], values[high_index]
+
+
+def readout_choice(
+    mode: str,
+    raw: object,
+    candidates: Sequence[str],
+) -> str | None:
+    """Map alternative model readouts back to the same candidate identity."""
+    if mode in {"native_selection", "constrained_generation"}:
+        if raw is None:
+            return None
+        return str(raw)
+    if mode == "candidate_scoring":
+        if not isinstance(raw, Mapping):
+            raise ValueError("candidate_scoring requires a score mapping")
+        if any(candidate not in raw for candidate in candidates):
+            return None
+        return max(candidates, key=lambda candidate: float(raw[candidate]))
+    raise ValueError("unsupported readout mode")
