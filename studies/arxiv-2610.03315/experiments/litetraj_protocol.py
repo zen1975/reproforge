@@ -114,3 +114,29 @@ def build_single_call_payload(
             ],
         },
     }
+
+
+_REQUIRED_REPORT_FIELDS = {
+    "rubric_scores",
+    "failure_categories",
+    "failure_steps",
+    "root_cause",
+    "key_observations",
+}
+
+
+def validate_judge_report(report: dict[str, object]) -> None:
+    """Validate the one-call structured diagnostic report contract."""
+    missing = _REQUIRED_REPORT_FIELDS - set(report)
+    if missing:
+        raise ValueError("missing judge report fields: " + ", ".join(sorted(missing)))
+    if not isinstance(report["failure_steps"], list):
+        raise ValueError("failure_steps must be a list")
+    if not isinstance(report["failure_categories"], list):
+        raise ValueError("failure_categories must be a list")
+    if not isinstance(report["rubric_scores"], dict):
+        raise ValueError("rubric_scores must be an object")
+    if not isinstance(report["root_cause"], str):
+        raise ValueError("root_cause must be text")
+    if not isinstance(report["key_observations"], list):
+        raise ValueError("key_observations must be a list")
