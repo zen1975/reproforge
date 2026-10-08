@@ -2,29 +2,68 @@
 
 ## State
 
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction verdict: `PARTIAL`
-- Free/lightweight phase: not complete
+- Free/lightweight phase: complete
+- Frozen evaluations: `serializer-late-failure-stress-v1`, `litetraj-protocol-synthetic-v1`
 
-## Already executed
+## Completed lightweight verification
 
-The deterministic fixed-budget serializer kernel has been implemented and stress-tested against naive head truncation. Evidence is stored under the study's `evidence/` directory.
+ReproForge now independently executes the paper's lightweight evaluation shape:
 
-## Next free/lightweight work
+1. deterministic tier-aware budget allocation;
+2. MMR-shaped intra-step evidence selection with injected similarity;
+3. single-call judge input contract with trajectory + weak candidate regions;
+4. structured judge-report validation;
+5. Detection Rate;
+6. group-level `Align.|Det.@1` and `Align.|Det.@3`;
+7. failure/negative boundary tests;
+8. CI on Python 3.11 and 3.12.
 
-Before declaring `HEAVY_COMPUTE_READY`:
+The synthetic fixture uses Jaccard similarity as an explicit independent analogue. The paper specifies the MMR equation but does not fully specify the similarity backend, so ReproForge does not claim this as an exact hidden implementation detail.
 
-1. implement independent MMR/evidence selection equivalent to the paper description;
-2. build or identify a legal evaluation set for failure-localization/judge-input testing;
-3. implement the single-judge-call input/output contract;
-4. measure localization/alignment-style metrics where the paper specifies them;
-5. separate mechanism evidence from any paper-reported cost/runtime values;
-6. save reproducible Evidence and keep CI green.
+## Not reproduced
 
-## Frozen evaluation
+- public Magentic-One-style and tau-retail benchmark results;
+- actual rubric-guided judge quality;
+- paper-level localization gains;
+- paper-level token/cost/runtime comparisons;
+- exact offline rule-generation LLM behavior.
 
-Do not tune the serializer against `serializer-late-failure-stress-v1` after observing its results. Create a new stress version for further tuning.
+## Next local/heavy work
+
+Use a legally obtained failed-trajectory slice and one pinned judge model first.
+
+Preserve:
+- dataset/split identity and hash;
+- exact judge model/revision/provider;
+- complete serialized judge input;
+- complete raw and parsed judge output;
+- rubric version;
+- token usage;
+- latency;
+- cost;
+- Detection Rate;
+- Align.|Det.@1/@3;
+- parse/validation failures.
+
+Do not tune against either frozen synthetic fixture.
+
+## Real implementation direction
+
+Keep the production stack layered:
+
+```text
+trajectory
+→ deterministic normalization/status hints
+→ evidence selection
+→ deterministic budget allocation
+→ one structured judge call
+→ evaluator
+```
+
+The serializer remains usable without an LLM. Judge disagreement must not be conflated with serializer failure.
 
 ## Promotion
 
-Move to `PROTOCOL_VERIFIED` when the paper's end-to-end evaluation shape is implemented and executable with independent legal data. Move to `HEAVY_COMPUTE_READY` only if the remaining primary work is genuinely large-scale/gated compute.
+Do not promote to `REPRODUCED` until a legal benchmark-equivalent trajectory set has been independently evaluated with a pinned judge and the declared paper-level claims are tested.
