@@ -42,3 +42,24 @@ def test_alignment_is_conditional_on_detected_samples():
     refs = [[protocol.FailureGroup((10,))], [protocol.FailureGroup((20,))]]
     assert protocol.detection_rate([[10], []]) == 0.5
     assert protocol.alignment_detected([[10], []], refs, 1) == 1.0
+
+
+def test_structured_judge_report_contract():
+    protocol = _load(STUDY / "experiments" / "litetraj_protocol.py", "litetraj_report_test")
+    valid = {
+        "rubric_scores": {"goal": 2},
+        "failure_categories": ["policy_failure"],
+        "failure_steps": [33],
+        "root_cause": "wrong cancellation scope",
+        "key_observations": ["whole order cancelled"],
+    }
+    protocol.validate_judge_report(valid)
+
+    invalid = dict(valid)
+    del invalid["failure_steps"]
+    try:
+        protocol.validate_judge_report(invalid)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("missing required report field must fail")
