@@ -59,3 +59,15 @@ def test_invalid_and_unsupported_are_separate_from_incorrect_candidate():
     assert invalid == {"supported": True, "valid": False, "correct": False}
     assert unsupported == {"supported": False, "valid": False, "correct": False}
     assert wrong == {"supported": True, "valid": True, "correct": False}
+
+
+def test_three_readout_modes_share_candidate_identity_contract():
+    p = _load(
+        STUDY / "experiments" / "graphdecide_rq2_protocol.py",
+        "graphdecide_rq2_readout_test",
+    )
+    candidates = ("a", "b")
+    assert p.readout_choice("native_selection", "a", candidates) == "a"
+    assert p.readout_choice("constrained_generation", "b", candidates) == "b"
+    assert p.readout_choice("candidate_scoring", {"a": 0.1, "b": 0.9}, candidates) == "b"
+    assert p.readout_choice("candidate_scoring", {"a": 0.9}, candidates) is None
