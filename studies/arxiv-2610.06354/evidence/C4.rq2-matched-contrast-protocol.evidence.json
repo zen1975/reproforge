@@ -1,0 +1,42 @@
+{
+  "claim_id": "C4-matched-graph-text-contrasts",
+  "run_id": "graphdecide-rq2-synthetic-v1",
+  "metrics": {
+    "matched_items": 8,
+    "conditions": [
+      "T",
+      "G",
+      "TG",
+      "BAG",
+      "A"
+    ],
+    "tg_bag_difference_pp": 37.5,
+    "tg_bag_ci95": [
+      12.5,
+      75
+    ],
+    "g_a_difference_pp": 25,
+    "g_a_ci95": [
+      0,
+      62.5
+    ],
+    "bootstrap_resamples": 1000,
+    "bootstrap_seed": 20261001,
+    "bootstrap_endpoints": [
+      24,
+      974
+    ],
+    "native_selection": true,
+    "constrained_generation": true,
+    "candidate_scoring": true,
+    "heldout_truth_excluded": true,
+    "candidate_identity_preserved": true
+  },
+  "verdict": "PARTIAL",
+  "ci": {
+    "python_3_11": "SUCCESS",
+    "python_3_12": "SUCCESS",
+    "latest_protocol_test_run": 37741901162
+  },
+  "notes": "Independent synthetic evidence verifies matched-condition construction, candidate/identity invariants, adapter-neutral readouts and the paper-declared paired bootstrap convention. Synthetic deltas are fixture diagnostics only, not GraphDecide model-performance reproduction."
+}
