@@ -1,15 +1,20 @@
 study_id: arxiv-2610.03315
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The deterministic trajectory budget allocator is implemented and stress-tested, but the paper's MMR evidence selection, LLM judge, localization metrics, and cost/runtime evaluation are not yet reproduced."
-next_step: "Implement the paper's evidence-selection and judge-input protocol with an independent benchmark before deciding whether heavy compute is required."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete: deterministic tiered allocation, independent MMR-shaped evidence selection, one-call judge input/output contract, Detection Rate, and Align.|Det.@1/@3 semantics are executable and tested on frozen synthetic fixtures. Remaining primary work is actual rubric-guided judge inference plus legal public-trajectory benchmark reproduction, cost, and runtime."
+next_step: "Run a pinned judge model on a legal Magentic-One-style or tau-retail-style evaluation slice using the frozen protocol, preserve full judge inputs/outputs, and compare localization/alignment, token use, cost, and runtime against the declared baseline."
 handoff:
   path: studies/arxiv-2610.03315/HANDOFF.md
-  ready: false
-blockers: []
+  ready: true
+blockers:
+  - "Public failed-trajectory benchmark assets are not redistributed by ReproForge; obtain a legally usable evaluation slice."
+  - "Judge-model reproduction requires pinned model/API or local model access and may incur compute/API cost."
+  - "The paper does not fully specify the similarity backend used inside MMR; the lightweight fixture labels Jaccard as an independent analogue rather than an exact paper constant."
 frozen_evaluations:
   - "serializer-late-failure-stress-v1"
+  - "litetraj-protocol-synthetic-v1"
 entrypoints:
   - "studies/arxiv-2610.03315/experiments/run_serializer_stress.py"
-updated_at: "2026-10-06"
+  - "studies/arxiv-2610.03315/experiments/run_litetraj_protocol.py"
+updated_at: "2026-10-08"
