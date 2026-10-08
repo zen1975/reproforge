@@ -1,0 +1,55 @@
+{
+  "benchmark_id": "graphdecide-rq2-synthetic-v1",
+  "matched_items": 8,
+  "conditions": [
+    "T",
+    "G",
+    "TG",
+    "BAG",
+    "A"
+  ],
+  "contrasts": {
+    "TG-BAG": {
+      "difference_pp": 37.5,
+      "ci95": [
+        12.5,
+        75
+      ]
+    },
+    "G-A": {
+      "difference_pp": 25,
+      "ci95": [
+        0,
+        62.5
+      ]
+    }
+  },
+  "interface": {
+    "invalid_valid": false,
+    "invalid_correct": false,
+    "unsupported_supported": false,
+    "unsupported_correct": false,
+    "readout_modes": [
+      "native_selection",
+      "constrained_generation",
+      "candidate_scoring"
+    ]
+  },
+  "bootstrap": {
+    "resamples": 1000,
+    "seed": 20261001,
+    "endpoints": [
+      24,
+      974
+    ],
+    "pairing_preserved": true
+  },
+  "leakage": {
+    "truth_in_model_input": false,
+    "candidate_identity_preserved": true,
+    "bag_has_explicit_edges": false,
+    "anchor_has_entity_text": false
+  },
+  "verdict": "PASS",
+  "claim_scope": "Synthetic protocol verification only; no GraphDecide model-performance claim."
+}
