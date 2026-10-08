@@ -1,73 +1,45 @@
 # Agent Guide — arXiv:2610.06354
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: NOT complete
+- Free/light phase: complete
 - Working label: `GraphDecide`
-- Frozen synthetic evaluation: `graphdecide-mechanism-v1`
+- Frozen: `graphdecide-mechanism-v1`, `graphdecide-rq2-synthetic-v1`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
 ## Verified boundary
 
-The model-independent decision mechanism is now independently verified on a frozen synthetic fixture.
+Lightweight verification covers RQ1/RQ3 mechanism contracts and the RQ2 matched-condition / paired-bootstrap protocol.
 
-Verified:
-- candidate identities remain evaluator-owned;
-- reference truth is independent of model output;
-- adjacency, degree, cycle, connectivity, distance-threshold and articulation are separate RQ1 contracts;
-- invalid output is rejected;
-- unsupported output is reported separately;
-- sequential legal candidates evolve from prior model decisions;
-- failed trajectories receive no fabricated objective/gap and remain in coverage.
+Verified readout modes:
+- native selection;
+- constrained generation;
+- candidate scoring.
 
-This is mechanism evidence only. It is not GraphDecide benchmark performance reproduction.
+Evaluator truth, candidate identity, relation provenance and state transitions remain outside the model.
 
-The author repository currently has no declared repository license. Do not copy, vendor, redistribute, or treat author code/assets as reusable implementation material unless that licensing state changes and is verified.
+The author repository has no declared repository license. Do not copy or redistribute it.
 
-## Lightweight next step
+## Local/heavy next step
 
-Stay in the CPU/lightweight lane.
+Run one pinned model/readout on one legal public-data slice first. Do not start broad model sweeps.
 
-1. reconstruct RQ2 T / G / TG / BAG / A(A*) condition schemas from primary sources;
-2. encode paired contrasts, especially TG-BAG and G-C0;
-3. implement adapter-neutral native-selection / constrained-generation / candidate-scoring boundaries;
-4. build a new legal synthetic fixture for paired condition evaluation;
-5. verify held-out-label isolation and candidate-set identity;
-6. add paired confidence-interval logic without tuning to observed frozen results.
+Record dataset/split, model/revision, readout mode, inference settings, raw outputs, invalid/unsupported outcomes, paired metrics and bootstrap results.
 
-Do not modify `graphdecide-mechanism-v1` to improve results. Create a new version.
-
-Do not invent unpublished graph construction rules, coefficients, prompts, model revisions, seeds, evaluator settings, or dataset transformations.
-
-## Local/heavy guidance
-
-No heavy model sweep is justified yet.
-
-Move toward local/GPU work only after:
-- RQ2 protocol is executable;
-- adapter behavior is frozen;
-- a legal evaluation slice is identified;
-- lightweight leakage/boundary tests pass;
-- status reaches at least `PROTOCOL_VERIFIED`.
-
-When heavy work starts, record model revision, interface/readout mode, inference settings, dataset/split identity, hardware and complete terminal outcomes.
+Do not tune against either frozen synthetic fixture.
 
 ## Real implementation direction
 
-Keep graph state, relation provenance, evidence, legal candidates, constraints, objective evaluation and state transitions outside the learned model.
+Treat graph/GNN representations as evidence or scoring inputs, never as silent owners of evaluator truth or the legal action space.
 
-Treat native selectors, small LLMs, classifiers, GNNs or scoring models as replaceable decision layers behind the same contract.
+Preferred structure:
 
-For graph-memory/GNN applications, experience or relational representations may inform candidate scoring, but they must not silently own evaluator truth or mutate the legal action space.
-
-## Frozen / no-tune
-
-`graphdecide-mechanism-v1` is frozen after observation.
-
-Any changed graph, action pool, transition rule or expected output used for development requires a new benchmark id.
-
-## Promotion
-
-Promote to `PROTOCOL_VERIFIED` only after the matched-condition and adapter/evaluator protocol is executable end to end. Promote to `HEAVY_COMPUTE_READY` only when the remaining unresolved work is genuinely compute/model/data gated.
+```text
+Graph / Evidence / State / Candidate Set
+→ replaceable decision model
+→ Candidate ID
+→ Validator / Evaluator
+→ State transition
+```
