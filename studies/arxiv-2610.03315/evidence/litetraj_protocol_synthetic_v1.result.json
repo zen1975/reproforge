@@ -1,0 +1,22 @@
+{
+  "benchmark_id": "litetraj-protocol-synthetic-v1",
+  "mmr": {
+    "selected_count": 3,
+    "unique_count": 3
+  },
+  "metrics": {
+    "detection_rate": 0.6666666666666666,
+    "align_detected_at_1": 1,
+    "align_detected_at_3": 1
+  },
+  "judge_payload": {
+    "single_call": true,
+    "required_field_count": 5,
+    "candidate_region_count": 1
+  },
+  "report_contract": {
+    "validated": true
+  },
+  "verdict": "PASS",
+  "claim_scope": "Protocol-equivalent synthetic verification only; no judge-quality, cost, runtime or public benchmark claim."
+}
