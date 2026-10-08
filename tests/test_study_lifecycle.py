@@ -26,7 +26,11 @@ def test_heavy_compute_ready_study_has_ready_handoff():
     assert (ROOT / status["handoff"]["path"]).exists()
 
 
-def test_incomplete_study_does_not_claim_free_light_completion():
-    status = load_document(ROOT / "studies" / "arxiv-2610.03315" / "status.yaml")
-    assert status["lifecycle"] == "MECHANISM_VERIFIED"
-    assert status["free_light_phase_complete"] is False
+def test_heavy_compute_ready_studies_claim_free_light_completion():
+    statuses = sorted((ROOT / "studies").glob("arxiv-*/status.yaml"))
+    assert statuses
+    for path in statuses:
+        status = load_document(path)
+        if status["lifecycle"] == "HEAVY_COMPUTE_READY":
+            assert status["free_light_phase_complete"] is True
+            assert status["handoff"]["ready"] is True
