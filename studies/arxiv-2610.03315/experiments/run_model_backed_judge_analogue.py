@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 import torch
+import transformers
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -138,8 +139,11 @@ def run(model_id: str, max_new_tokens: int) -> dict[str, object]:
         })
 
     return {
-        "experiment_id": "litetraj-qwen0.5b-judge-analogue-v1",
+        "experiment_id": "litetraj-qwen0.5b-judge-analogue-v2",
         "model": model_id,
+        "resolved_model_revision": getattr(model.config, "_commit_hash", None),
+        "torch_version": torch.__version__,
+        "transformers_version": transformers.__version__,
         "case_count": len(rows),
         "contract_valid_rate": sum(r["contract_valid"] for r in rows) / len(rows),
         "detection_rate": p.detection_rate(predictions),
