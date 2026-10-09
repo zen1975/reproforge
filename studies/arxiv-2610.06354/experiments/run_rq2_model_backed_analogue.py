@@ -15,6 +15,7 @@ import sys
 from pathlib import Path
 
 import torch
+import transformers
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -149,8 +150,11 @@ def run(model_id: str, max_new_tokens: int) -> dict[str, object]:
         "G-A_pp": m.paired_difference(by_condition["G"], by_condition["A"]),
     }
     return {
-        "experiment_id": "graphdecide-rq2-qwen0.5b-analogue-v1",
+        "experiment_id": "graphdecide-rq2-qwen0.5b-analogue-v2",
         "model": model_id,
+        "resolved_model_revision": getattr(model.config, "_commit_hash", None),
+        "torch_version": torch.__version__,
+        "transformers_version": transformers.__version__,
         "items": len(ITEMS),
         "conditions": list(conditions),
         "accuracy": accuracy,
