@@ -1,0 +1,24 @@
+{
+  "claim_id": "C1-single-call-fixed-budget",
+  "run_id": "litetraj-qwen0.5b-judge-analogue-v2",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "torch": "2.14.1+cpu",
+    "transformers": "4.57.6"
+  },
+  "workflow": {
+    "run_id": 37899828376,
+    "artifact_id": 11602290522,
+    "artifact_digest": "sha256:28f7144782299e1c87c86d7a78efd0ed7ef1f9366c1809af3cefb92d5e95008b"
+  },
+  "metrics": {
+    "case_count": 3,
+    "contract_valid_rate": 1.0,
+    "detection_rate": 1.0,
+    "align_detected_at_1": 1.0,
+    "align_detected_at_3": 1.0
+  },
+  "verdict": "PARTIAL",
+  "notes": "Real Qwen2.5-0.5B-Instruct inference successfully exercised the one-call structured judge contract on three independent synthetic trajectories. All three reports parsed and localized at least one reference step within tolerance. These tiny synthetic cases are deliberately easy and the paper metric does not penalize every extra predicted step, so the 1.0 alignment values are boundary evidence only, not a judge-quality or paper-benchmark performance claim."
+}
