@@ -1,0 +1,17 @@
+study_id: arxiv-2610.10062
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Independent scripted synthetic injector and clean-state recovery metric executed on 15 cases; no LLM agent, BFCL multi-turn, blinded detection judge, task-clustered analysis or paper benchmark reproduction."
+next_step: "Reconstruct model-neutral multi-turn fault protocol and detection/replanning/repetition evaluator; add legal benchmark or fresh small-model trajectories and freeze unseen splits."
+handoff:
+  path: studies/arxiv-2610.10062/HANDOFF.md
+  ready: false
+blockers:
+  - "Paper PDF carries IEEE reuse restrictions; do not redistribute."
+  - "Author data LICENSE-DATA applicability and BFCL dataset rights require asset-level review before reuse."
+frozen_evaluations:
+  - fault-synthetic-v1
+entrypoints:
+  - studies/arxiv-2610.10062/experiments/run_fault_injection_synthetic.py
+updated_at: "2026-10-09"

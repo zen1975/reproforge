@@ -1,0 +1,35 @@
+id: "agent.tool-fault-auditor"
+version: "0.1.0"
+name: "Tool Fault Auditor"
+summary: "Experimental independent deterministic tool-fault injection and synthetic recovery audit."
+status: "experimental"
+task_classes:
+  - "agent-tool-oversight"
+  - "tool-fault-injection"
+  - "agent-reliability-evaluation"
+interface:
+  inputs:
+    kind: "clean|timeout|missing_tool|schema_drift|silent_corruption"
+    policy: "no_retry|error_retry|invariant_check"
+  outputs:
+    fired: "boolean"
+    detected: "boolean|null"
+    recovered: "boolean"
+    calls: "integer"
+runtime:
+  kind: "python"
+  entrypoint: "capabilities/agent.tool-fault-auditor/fault_audit.py:run_synthetic"
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: "PARTIAL"
+  studies:
+    - "studies/arxiv-2610.10062"
+  evidence_paths:
+    - "studies/arxiv-2610.10062/evidence/fault_synthetic_v1.result.json"
+    - "studies/arxiv-2610.10062/evidence/C1.synthetic-fault-contract.evidence.json"
+implementation:
+  path: "capabilities/agent.tool-fault-auditor/fault_audit.py"
+  license: "Apache-2.0"
+adapters:
+  - kind: "python"

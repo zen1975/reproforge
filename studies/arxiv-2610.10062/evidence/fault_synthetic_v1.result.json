@@ -1,0 +1,178 @@
+{
+  "fired": 12,
+  "kind": "synthetic_mechanism_test_not_paper_benchmark",
+  "loud_detected": 9,
+  "loud_total": 9,
+  "protocol": "independent-synthetic-fault-mechanism-v1",
+  "quiet_detected": 1,
+  "quiet_total": 3,
+  "recovered": 12,
+  "total": 15,
+  "trials": [
+    {
+      "calls": 3,
+      "detected": null,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "clean",
+      "fired": false,
+      "policy": "no_retry",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": null,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "clean",
+      "fired": false,
+      "policy": "error_retry",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": null,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "clean",
+      "fired": false,
+      "policy": "invariant_check",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": true,
+      "end_state": {
+        "count": 2
+      },
+      "fault": "missing_tool",
+      "fired": true,
+      "policy": "no_retry",
+      "recovered": false
+    },
+    {
+      "calls": 4,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "missing_tool",
+      "fired": true,
+      "policy": "error_retry",
+      "recovered": true
+    },
+    {
+      "calls": 4,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "missing_tool",
+      "fired": true,
+      "policy": "invariant_check",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": true,
+      "end_state": {
+        "count": 2
+      },
+      "fault": "schema_drift",
+      "fired": true,
+      "policy": "no_retry",
+      "recovered": false
+    },
+    {
+      "calls": 4,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "schema_drift",
+      "fired": true,
+      "policy": "error_retry",
+      "recovered": true
+    },
+    {
+      "calls": 4,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "schema_drift",
+      "fired": true,
+      "policy": "invariant_check",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": false,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "silent_corruption",
+      "fired": true,
+      "policy": "no_retry",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": false,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "silent_corruption",
+      "fired": true,
+      "policy": "error_retry",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "silent_corruption",
+      "fired": true,
+      "policy": "invariant_check",
+      "recovered": true
+    },
+    {
+      "calls": 3,
+      "detected": true,
+      "end_state": {
+        "count": 2
+      },
+      "fault": "timeout",
+      "fired": true,
+      "policy": "no_retry",
+      "recovered": false
+    },
+    {
+      "calls": 4,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "timeout",
+      "fired": true,
+      "policy": "error_retry",
+      "recovered": true
+    },
+    {
+      "calls": 4,
+      "detected": true,
+      "end_state": {
+        "count": 3
+      },
+      "fault": "timeout",
+      "fired": true,
+      "policy": "invariant_check",
+      "recovered": true
+    }
+  ]
+}

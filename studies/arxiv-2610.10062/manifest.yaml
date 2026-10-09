@@ -1,0 +1,42 @@
+schema_version: "0.1"
+paper:
+  title: "Loud Failures, Quiet Failures: Fault Detection and Recovery in Tool-Using Language Model Agents"
+  canonical_url: "https://arxiv.org/abs/2610.10062"
+  arxiv_id: "2610.10062"
+  authors:
+    - "Obada Kraishan"
+  license: null
+  license_status: "UNKNOWN"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Independent scripted-agent synthetic mechanism only; PDF bears IEEE reuse restrictions. No author code, datasets, PDF or figures copied."
+external_assets:
+  - kind: "CODE"
+    name: "Author brittle-agents repository"
+    source: "https://github.com/obadaKraishan/brittle-agents"
+    license: "MIT"
+    license_status: "VERIFIED"
+    redistributed: false
+  - kind: "DATASET"
+    name: "Author trajectory data"
+    source: "https://github.com/obadaKraishan/brittle-agents"
+    license: "Apache-2.0 LICENSE-DATA; per-asset applicability unconfirmed"
+    license_status: "UNKNOWN"
+    redistributed: false
+  - kind: "DATASET"
+    name: "BFCL multi-turn benchmark"
+    source: "https://gorilla.cs.berkeley.edu/leaderboard.html"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-one-shot-fault-contract"
+    statement: "Typed faults separate loud error channels from well-formed quiet corruption while preserving state boundary."
+    acceptance_criteria: "Synthetic injector fires once on first eligible step, loud faults do not execute, quiet fault mutates returned value only, and all five conditions execute."
+  - id: "C2-detection-recovery-separation"
+    statement: "Detection, clean-run-relative recovery, and repetition are separate quantities."
+    acceptance_criteria: "Independent fixture measures detection and state agreement per scripted policy, including a negative no-retry baseline; no inference about model behavior."
+  - id: "C3-paper-level-agent-contrast"
+    statement: "Paper contrasts fault detection and recovery for matched reasoning/instruct agents on BFCL multi-turn."
+    acceptance_criteria: "Requires legal BFCL environments, matched real models, clean paired baselines, blind detection coding, task-clustered analysis and paper-comparable trajectories; synthetic cannot pass."

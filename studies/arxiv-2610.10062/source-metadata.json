@@ -1,0 +1,16 @@
+{
+  "source_url": "https://arxiv.org/abs/2610.10062",
+  "source_kind": "arxiv",
+  "authoritative": true,
+  "captured_at": "2026-10-09",
+  "arxiv_id": "2610.10062",
+  "canonical_url": "https://arxiv.org/abs/2610.10062",
+  "title": "Loud Failures, Quiet Failures: Fault Detection and Recovery in Tool-Using Language Model Agents",
+  "authors": [
+    "Obada Kraishan"
+  ],
+  "submitted_on": "2026-10-07",
+  "version": "v1",
+  "pdf_pages": 8,
+  "notes": "ArXiv abstract, full HTML and PDF reviewed. PDF IEEE copyright restriction. No third-party code, figures, data or PDF copied."
+}
