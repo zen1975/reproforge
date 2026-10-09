@@ -20,15 +20,29 @@ Verified readout modes:
 
 Evaluator truth, candidate identity, relation provenance and state transitions remain outside the model.
 
+A real model-backed boundary run has also been executed:
+
+- model: `Qwen/Qwen2.5-0.5B-Instruct`
+- resolved revision: `7ae557604adf67be50417f59c2c2f167def9a775`
+- matched items: 4
+- conditions: T / G / TG / BAG / A
+- valid candidate outputs: 20/20
+- accuracy: 0.5 in every condition
+- TG-BAG: 0 pp
+- G-A: 0 pp
+- observed behavior: the model emitted `c0` on all 20 decisions
+
+This is negative boundary evidence. A valid decision interface does not imply that a 0.5B model is actually using graph evidence. Do not tune this frozen fixture to manufacture a graph effect.
+
 The author repository has no declared repository license. Do not copy or redistribute it.
 
 ## Local/heavy next step
 
-Run one pinned model/readout on one legal public-data slice first. Do not start broad model sweeps.
+Run one paper-relevant pinned model/readout on one legal public-data slice first. Do not start broad model sweeps.
 
 Record dataset/split, model/revision, readout mode, inference settings, raw outputs, invalid/unsupported outcomes, paired metrics and bootstrap results.
 
-Do not tune against either frozen synthetic fixture.
+Do not retune against any frozen fixture.
 
 ## Real implementation direction
 
