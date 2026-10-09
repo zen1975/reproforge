@@ -22,7 +22,9 @@ ReproForge independently verifies:
 9. anchor-only condition removes entity text/edges;
 10. native selection, constrained generation and candidate scoring map back to the same candidate contract;
 11. paired accuracy differences;
-12. paper-declared 1,000-resample paired target bootstrap with seed `20261001` and endpoints 24/974.\n13. real Qwen2.5-0.5B-Instruct revision `7ae557604adf67be50417f59c2c2f167def9a775` executed across T/G/TG/BAG/A on four independent matched items;\n14. model output validity was 1.0, but it selected `c0` for every decision: all condition accuracies = 0.5, TG-BAG = 0 pp, G-A = 0 pp.
+12. paper-declared 1,000-resample paired target bootstrap with seed `20261001` and endpoints 24/974.
+13. real Qwen2.5-0.5B-Instruct revision `7ae557604adf67be50417f59c2c2f167def9a775` executed across T/G/TG/BAG/A on four independent matched items;
+14. model output validity was 1.0, but it selected `c0` for every decision: all condition accuracies = 0.5, TG-BAG = 0 pp, G-A = 0 pp.
 
 ## Not reproduced
 
