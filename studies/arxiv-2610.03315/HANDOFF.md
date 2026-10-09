@@ -5,7 +5,7 @@
 - Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction verdict: `PARTIAL`
 - Free/lightweight phase: complete
-- Frozen evaluations: `serializer-late-failure-stress-v1`, `litetraj-protocol-synthetic-v1`
+- Frozen evaluations: `serializer-late-failure-stress-v1`, `litetraj-protocol-synthetic-v1`, `litetraj-qwen0.5b-judge-analogue-v1`, `litetraj-qwen0.5b-judge-analogue-v2`
 
 ## Completed lightweight verification
 
@@ -18,21 +18,21 @@ ReproForge now independently executes the paper's lightweight evaluation shape:
 5. Detection Rate;
 6. group-level `Align.|Det.@1` and `Align.|Det.@3`;
 7. failure/negative boundary tests;
-8. CI on Python 3.11 and 3.12.
+8. CI on Python 3.11 and 3.12.\n9. real Qwen2.5-0.5B-Instruct single-call judge execution with resolved model revision `7ae557604adf67be50417f59c2c2f167def9a775`;\n10. 3/3 model-backed synthetic reports satisfied the structured contract, with Detection Rate = 1.0 and Align.|Det.@1/@3 = 1.0 on this tiny fixture.
 
 The synthetic fixture uses Jaccard similarity as an explicit independent analogue. The paper specifies the MMR equation but does not fully specify the similarity backend, so ReproForge does not claim this as an exact hidden implementation detail.
 
 ## Not reproduced
 
 - public Magentic-One-style and tau-retail benchmark results;
-- actual rubric-guided judge quality;
+- paper-comparable rubric-guided judge quality on the public evaluation distribution;
 - paper-level localization gains;
 - paper-level token/cost/runtime comparisons;
 - exact offline rule-generation LLM behavior.
 
 ## Next local/heavy work
 
-Use a legally obtained failed-trajectory slice and one pinned judge model first.
+The next meaningful step is no longer another synthetic judge run. Use a legally obtained failed-trajectory slice and a paper-comparable pinned judge model.
 
 Preserve:
 - dataset/split identity and hash;
@@ -47,7 +47,7 @@ Preserve:
 - Align.|Det.@1/@3;
 - parse/validation failures.
 
-Do not tune against either frozen synthetic fixture.
+Do not tune against any frozen synthetic/model-backed fixture. The perfect localization values on the three-case 0.5B fixture are not evidence of paper-level judge quality; the metric also tolerates extra predicted steps when a reference group is hit.
 
 ## Real implementation direction
 
