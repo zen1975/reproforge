@@ -30,5 +30,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: graphdecide-rq2-qwen0.5b-analogue-v2
-          path: graphdecide_rq2_qwen0.5b_analogue_v1.result.json
+          path: graphdecide_rq2_qwen0.5b_analogue_v2.result.json
           retention-days: 7
