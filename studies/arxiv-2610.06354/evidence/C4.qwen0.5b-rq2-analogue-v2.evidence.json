@@ -1,0 +1,30 @@
+{
+  "claim_id": "C4-matched-graph-text-contrasts",
+  "run_id": "graphdecide-rq2-qwen0.5b-analogue-v2",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "torch": "2.14.1+cpu",
+    "transformers": "4.57.6"
+  },
+  "workflow": {
+    "run_id": 37899838200,
+    "artifact_id": 11601674028,
+    "artifact_digest": "sha256:6a078c24e854bdaef3e25009cef282b0531e5e8fd439ee07dc5a569ca050bc8d"
+  },
+  "metrics": {
+    "items": 4,
+    "valid_rate": 1.0,
+    "accuracy": {
+      "T": 0.5,
+      "G": 0.5,
+      "TG": 0.5,
+      "BAG": 0.5,
+      "A": 0.5
+    },
+    "TG-BAG_pp": 0.0,
+    "G-A_pp": 0.0
+  },
+  "verdict": "PARTIAL",
+  "notes": "The real 0.5B model respected the candidate-output contract on every matched condition, but emitted c0 for all 20 decisions. Accuracy remained 0.5 in every condition and both paired contrasts were zero. This is negative boundary evidence: contract validity alone does not demonstrate graph-evidence utilization by a small model. No GraphDecide benchmark-performance claim is made."
+}
