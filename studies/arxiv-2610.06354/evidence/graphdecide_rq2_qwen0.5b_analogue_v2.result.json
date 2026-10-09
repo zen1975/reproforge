@@ -1,0 +1,44 @@
+{
+  "experiment_id": "graphdecide-rq2-qwen0.5b-analogue-v2",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "items": 4,
+  "conditions": ["T", "G", "TG", "BAG", "A"],
+  "accuracy": {
+    "T": 0.5,
+    "G": 0.5,
+    "TG": 0.5,
+    "BAG": 0.5,
+    "A": 0.5
+  },
+  "contrasts": {
+    "TG-BAG_pp": 0.0,
+    "G-A_pp": 0.0
+  },
+  "valid_rate": 1.0,
+  "rows": [
+    {"item_id":"i1","condition":"T","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i1","condition":"G","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i1","condition":"TG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i1","condition":"BAG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i1","condition":"A","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i2","condition":"T","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i2","condition":"G","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i2","condition":"TG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i2","condition":"BAG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i2","condition":"A","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i3","condition":"T","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i3","condition":"G","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i3","condition":"TG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i3","condition":"BAG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i3","condition":"A","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":true},
+    {"item_id":"i4","condition":"T","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i4","condition":"G","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i4","condition":"TG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i4","condition":"BAG","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false},
+    {"item_id":"i4","condition":"A","raw_output":"c0","choice":"c0","supported":true,"valid":true,"correct":false}
+  ],
+  "claim_scope": "Real-model boundary evidence on independent matched synthetic items; no GraphDecide benchmark performance claim."
+}
