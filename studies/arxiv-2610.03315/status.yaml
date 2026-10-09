@@ -2,19 +2,22 @@ study_id: arxiv-2610.03315
 lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
 free_light_phase_complete: true
-current_boundary: "Free/lightweight verification is complete: deterministic tiered allocation, independent MMR-shaped evidence selection, one-call judge input/output contract, Detection Rate, and Align.|Det.@1/@3 semantics are executable and tested on frozen synthetic fixtures. Remaining primary work is actual rubric-guided judge inference plus legal public-trajectory benchmark reproduction, cost, and runtime."
-next_step: "Run a pinned judge model on a legal Magentic-One-style or tau-retail-style evaluation slice using the frozen protocol, preserve full judge inputs/outputs, and compare localization/alignment, token use, cost, and runtime against the declared baseline."
+current_boundary: "Free/lightweight verification is complete and the one-call contract has now been exercised by a real pinned Qwen2.5-0.5B-Instruct revision on three independent synthetic trajectories: structured-report validity, Detection Rate, and Align.|Det.@1/@3 all executed successfully. Remaining primary work is legal public-trajectory benchmark reproduction with a paper-comparable judge, plus cost/runtime comparison."
+next_step: "Run a paper-comparable pinned judge on a legally obtained Magentic-One-style or tau-retail-style evaluation slice using the frozen protocol, preserve full inputs/outputs, and compare localization/alignment, token use, cost, and runtime against the declared baseline."
 handoff:
   path: studies/arxiv-2610.03315/HANDOFF.md
   ready: true
 blockers:
   - "Public failed-trajectory benchmark assets are not redistributed by ReproForge; obtain a legally usable evaluation slice."
-  - "Judge-model reproduction requires pinned model/API or local model access and may incur compute/API cost."
+  - "Paper-comparable judge reproduction still requires an appropriate pinned model/API or local model and may incur compute/API cost; the completed 0.5B run is boundary evidence, not paper-scale judge reproduction."
   - "The paper does not fully specify the similarity backend used inside MMR; the lightweight fixture labels Jaccard as an independent analogue rather than an exact paper constant."
 frozen_evaluations:
   - "serializer-late-failure-stress-v1"
   - "litetraj-protocol-synthetic-v1"
+  - "litetraj-qwen0.5b-judge-analogue-v1"
+  - "litetraj-qwen0.5b-judge-analogue-v2"
 entrypoints:
   - "studies/arxiv-2610.03315/experiments/run_serializer_stress.py"
   - "studies/arxiv-2610.03315/experiments/run_litetraj_protocol.py"
-updated_at: "2026-10-08"
+  - "studies/arxiv-2610.03315/experiments/run_model_backed_judge_analogue.py"
+updated_at: "2026-10-09"
