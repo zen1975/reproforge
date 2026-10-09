@@ -2,8 +2,8 @@ study_id: arxiv-2610.06354
 lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
 free_light_phase_complete: true
-current_boundary: "Free/lightweight verification is complete: model-independent RQ1/RQ3 mechanism, RQ2 matched T/G/TG/BAG/A condition construction, candidate/readout invariants, held-out-label isolation, and the paper-declared paired 1,000-target bootstrap convention are independently executable on frozen synthetic fixtures. Remaining primary work is legal public-data/model execution."
-next_step: "Run at least one pinned public-data RQ1 or RQ2 slice with a declared supported model/readout configuration, then compare paper-style accuracy/paired contrasts while preserving dataset, model revision, interface mode, and raw outputs."
+current_boundary: "Free/lightweight verification is complete and a real pinned Qwen2.5-0.5B-Instruct revision has been executed behind the RQ2 matched-condition contract. It produced valid candidate outputs for all 20 decisions but collapsed to c0, yielding 0.5 accuracy in T/G/TG/BAG/A and zero paired contrasts. This is negative boundary evidence: interface validity does not imply graph-evidence utilization. Remaining primary work is legal public-data execution with paper-relevant model/readout configurations."
+next_step: "Run at least one pinned public-data RQ1 or RQ2 slice with a paper-relevant supported model/readout configuration, then compare paper-style accuracy/paired contrasts while preserving dataset, model revision, interface mode, and raw outputs."
 handoff:
   path: studies/arxiv-2610.06354/HANDOFF.md
   ready: true
@@ -14,7 +14,10 @@ blockers:
 frozen_evaluations:
   - graphdecide-mechanism-v1
   - graphdecide-rq2-synthetic-v1
+  - graphdecide-rq2-qwen0.5b-analogue-v1
+  - graphdecide-rq2-qwen0.5b-analogue-v2
 entrypoints:
   - studies/arxiv-2610.06354/experiments/run_graphdecide_mechanism.py
   - studies/arxiv-2610.06354/experiments/run_graphdecide_rq2_protocol.py
-updated_at: "2026-10-08"
+  - studies/arxiv-2610.06354/experiments/run_rq2_model_backed_analogue.py
+updated_at: "2026-10-09"
