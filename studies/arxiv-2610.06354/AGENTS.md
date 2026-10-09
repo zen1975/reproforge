@@ -5,7 +5,7 @@
 - Reproduction: `PARTIAL`
 - Free/light phase: complete
 - Working label: `GraphDecide`
-- Frozen: `graphdecide-mechanism-v1`, `graphdecide-rq2-synthetic-v1`
+- Frozen: `graphdecide-mechanism-v1`, `graphdecide-rq2-synthetic-v1`, `graphdecide-rq2-qwen0.5b-analogue-v1`, `graphdecide-rq2-qwen0.5b-analogue-v2`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
