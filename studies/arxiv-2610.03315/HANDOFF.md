@@ -18,7 +18,9 @@ ReproForge now independently executes the paper's lightweight evaluation shape:
 5. Detection Rate;
 6. group-level `Align.|Det.@1` and `Align.|Det.@3`;
 7. failure/negative boundary tests;
-8. CI on Python 3.11 and 3.12.\n9. real Qwen2.5-0.5B-Instruct single-call judge execution with resolved model revision `7ae557604adf67be50417f59c2c2f167def9a775`;\n10. 3/3 model-backed synthetic reports satisfied the structured contract, with Detection Rate = 1.0 and Align.|Det.@1/@3 = 1.0 on this tiny fixture.
+8. CI on Python 3.11 and 3.12.
+9. real Qwen2.5-0.5B-Instruct single-call judge execution with resolved model revision `7ae557604adf67be50417f59c2c2f167def9a775`;
+10. 3/3 model-backed synthetic reports satisfied the structured contract, with Detection Rate = 1.0 and Align.|Det.@1/@3 = 1.0 on this tiny fixture.
 
 The synthetic fixture uses Jaccard similarity as an explicit independent analogue. The paper specifies the MMR equation but does not fully specify the similarity backend, so ReproForge does not claim this as an exact hidden implementation detail.
 
