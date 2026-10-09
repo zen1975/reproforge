@@ -1,0 +1,67 @@
+{
+  "experiment_id": "litetraj-qwen0.5b-judge-analogue-v2",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "case_count": 3,
+  "contract_valid_rate": 1.0,
+  "detection_rate": 1.0,
+  "align_detected_at_1": 1.0,
+  "align_detected_at_3": 1.0,
+  "rows": [
+    {
+      "id": "cancel-scope",
+      "raw_output": "```json\n{\n  \"rubric_scores\": {\n    \"cancellation\": 0,\n    \"order_cancelation\": 0,\n    \"watering_hose_cancellation\": 1\n  },\n  \"failure_categories\": [\n    \"policy_failure\"\n  ],\n  \"failure_steps\": [\n    31,\n    33,\n    35\n  ],\n  \"root_cause\": \"The user requested one-item cancellation\",\n  \"key_observations\": []\n}\n```",
+      "parsed": {
+        "rubric_scores": {
+          "cancellation": 0,
+          "order_cancelation": 0,
+          "watering_hose_cancellation": 1
+        },
+        "failure_categories": ["policy_failure"],
+        "failure_steps": [31, 33, 35],
+        "root_cause": "The user requested one-item cancellation",
+        "key_observations": []
+      },
+      "contract_valid": true,
+      "failure_steps": [31, 33, 35],
+      "reference": [33, 35]
+    },
+    {
+      "id": "retry-loop",
+      "raw_output": "```json\n{\n  \"rubric_scores\": {\n    \"account_balance\": 0,\n    \"retry_loop\": 1\n  },\n  \"failure_categories\": [\n    \"retry_loop\"\n  ],\n  \"failure_steps\": [\n    8,\n    9\n  ],\n  \"root_cause\": \"The failure occurred due to an API timeout or retry loop.\",\n  \"key_observations\": []\n}\n```",
+      "parsed": {
+        "rubric_scores": {
+          "account_balance": 0,
+          "retry_loop": 1
+        },
+        "failure_categories": ["retry_loop"],
+        "failure_steps": [8, 9],
+        "root_cause": "The failure occurred due to an API timeout or retry loop.",
+        "key_observations": []
+      },
+      "contract_valid": true,
+      "failure_steps": [8, 9],
+      "reference": [8, 9]
+    },
+    {
+      "id": "approval",
+      "raw_output": "```json\n{\n  \"rubric_scores\": {\n    \"success\": 0,\n    \"failure\": 2\n  },\n  \"failure_categories\": [\n    \"missing_approval\"\n  ],\n  \"failure_steps\": [\n    15,\n    16\n  ],\n  \"root_cause\": \"Approval status is missing\",\n  \"key_observations\": []\n}\n```",
+      "parsed": {
+        "rubric_scores": {
+          "success": 0,
+          "failure": 2
+        },
+        "failure_categories": ["missing_approval"],
+        "failure_steps": [15, 16],
+        "root_cause": "Approval status is missing",
+        "key_observations": []
+      },
+      "contract_valid": true,
+      "failure_steps": [15, 16],
+      "reference": [16]
+    }
+  ],
+  "claim_scope": "Real-model boundary evidence on independent synthetic cases; no paper benchmark or judge-quality reproduction claim."
+}
