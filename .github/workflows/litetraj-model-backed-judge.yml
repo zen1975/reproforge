@@ -26,9 +26,9 @@ jobs:
           python studies/arxiv-2610.03315/experiments/run_model_backed_judge_analogue.py \
             --model-id Qwen/Qwen2.5-0.5B-Instruct \
             --max-new-tokens 192 \
-            | tee litetraj_qwen0.5b_judge_analogue_v1.result.json
+            | tee litetraj_qwen0.5b_judge_analogue_v2.result.json
       - uses: actions/upload-artifact@v4
         with:
-          name: litetraj-qwen0.5b-judge-analogue-v1
+          name: litetraj-qwen0.5b-judge-analogue-v2
           path: litetraj_qwen0.5b_judge_analogue_v1.result.json
           retention-days: 7
