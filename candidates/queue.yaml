@@ -64,9 +64,9 @@ candidates:
     candidate_capability: "agent.harness-meta-skill-selector"
     why_reusable: "Turns execution feedback into reusable principles for constructing future agent harnesses without changing target-model weights."
     free_light_fit: "medium"
-    next_gate: "PDF_PROTOCOL_REVIEW"
-    status: "SOURCE_VERIFIED"
-    notes: "Strong architectural fit with ReproForge/Sitewright but likely broader evaluation work than the first two candidates."
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full HTML protocol reviewed. Paper uses the arXiv perpetual non-exclusive distribution license. Promoted for independent meta-skill schema, evidence-grounded bank mutation, freeze integrity, and retrieval-mode verification before benchmark-scale harness construction."
 
   - arxiv_id: "2610.06406"
     title: "What Did the Agent Actually Do? Evidence-Grounded Oversight for Long-Horizon Agents"

@@ -1,0 +1,33 @@
+schema_version: "0.1"
+paper:
+  title: "Learning Meta-Skills for Agent Harness Design in Test-Time AI4AI"
+  canonical_url: "https://arxiv.org/abs/2609.38143"
+  arxiv_id: "2609.38143"
+  authors:
+    - "Cheng Qian"
+    - "Kunlun Zhu"
+    - "Beibin Li"
+    - "Zhenhailong Wang"
+    - "Heng Ji"
+  license: "arXiv perpetual non-exclusive license"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "Independent bank/update contract implementation from the public paper protocol; no author harness implementation is copied."
+claims:
+  - id: "C1-meta-skill-schema"
+    statement: "A reusable Builder meta-skill has when, provide, and use fields, where use preserves Target responsibility for final judgment."
+    acceptance_criteria: "Validator rejects incomplete/empty fields and enforces the frozen structured representation."
+  - id: "C2-evidence-grounded-update"
+    statement: "Each learning batch permits at most one evidence-grounded ADD or REVISE; otherwise the bank is kept unchanged."
+    acceptance_criteria: "Every mutation must cite evidence from the current batch, ADD IDs must be new, REVISE IDs must already exist, and a second mutation in the same batch must fail."
+  - id: "C3-freeze-integrity"
+    statement: "After development learning, the bank is frozen for held-out test-time harness construction."
+    acceptance_criteria: "Any bank mutation after freeze is rejected while read-only full-bank/retrieval access remains allowed."
+  - id: "C4-selection-modes"
+    statement: "Test-time Builder support can receive either the full frozen bank or a fixed top-k relevant subset."
+    acceptance_criteria: "Independent deterministic selector must preserve the frozen bank and return no more than k relevant entries in retrieval mode."
+  - id: "C5-builder-enactment-benefit"
+    statement: "Having the Builder translate meta-skills into executable harness support outperforms no-skill construction and direct Target delivery on the paper benchmarks."
+    acceptance_criteria: "Requires paper/protocol-comparable Builder–Target harness execution on held-out tasks; mechanism tests alone do not satisfy this claim."

@@ -1,0 +1,18 @@
+study_id: arxiv-2609.38143
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "The public protocol is reviewed and an independent deterministic contract implements when/provide/use meta-skills, evidence-grounded ADD/REVISE with at most one mutation per batch, frozen-bank integrity, full-bank access and fixed top-k relevance selection. Workflow execution evidence and a model-backed update/selection boundary remain pending."
+next_step: "Execute and freeze the deterministic bank mechanism, then run one pinned small-model analogue for evidence-grounded KEEP/ADD/REVISE decisions without allowing the model to mutate the bank directly."
+handoff:
+  path: studies/arxiv-2609.38143/HANDOFF.md
+  ready: true
+blockers:
+  - "Paper-level Builder-enactment gains require GPT-5.6-Sol Builder and benchmark-scale Target execution on Harness-Bench/NewtonBench or protocol-comparable harness tasks."
+  - "Harness construction and Target execution budgets are substantially larger than the deterministic bank mechanism."
+frozen_evaluations:
+  - "meta-skill-bank-mechanism-v1"
+entrypoints:
+  - "studies/arxiv-2609.38143/experiments/run_meta_skill_bank.py"
+  - ".github/workflows/meta-skill-bank-mechanism.yml"
+updated_at: "2026-10-10"
