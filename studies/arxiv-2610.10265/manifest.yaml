@@ -1,0 +1,24 @@
+schema_version: "0.1"
+paper:
+  title: "Stale, Misattributed, or Late: Where Personal Memory Fails Before Generation"
+  canonical_url: "https://arxiv.org/abs/2610.10265"
+  arxiv_id: "2610.10265"
+  authors:
+    - "Haonan Deng"
+    - "Wichinpong Park Sinchaisri"
+  license: "arXiv perpetual non-exclusive license"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "Independent implementation from the paper-described memory-state and prompt-level evaluation semantics. No author implementation code is copied."
+claims:
+  - id: "C1-keyed-supersession"
+    statement: "Serial atomic updates sharing a slot key maintain at most one active value for that key while retaining superseded values as history."
+    acceptance_criteria: "Independent tests must show old values close on keyed updates, current value remains active, history is retained, and missed/false key assignment breaks the invariant in the expected distinct ways."
+  - id: "C2-prompt-failure-decomposition"
+    statement: "Prompt-level memory quality must distinguish current-value recall, stale exposure, wrong-person exposure, abstention, and deadline-clean retrieval."
+    acceptance_criteria: "A deterministic evaluator must independently expose these dimensions and allow multiple exposure errors to coexist."
+  - id: "C3-response-propagation"
+    statement: "Prompt-level memory errors can propagate into frozen model output."
+    acceptance_criteria: "Requires a frozen model-backed clean/stale/misattributed prompt contrast; deterministic store tests alone do not satisfy this claim."

@@ -1,0 +1,17 @@
+study_id: arxiv-2610.10265
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "The keyed-supersession invariant and prompt-level current/stale/wrong-person/abstention/deadline semantics are independently implemented and synthetic-tested. Paper benchmark rates, model key assignment, and response-level propagation remain unverified."
+next_step: "Run a frozen Qwen2.5-0.5B response-propagation analogue over clean, stale-co-injected, and wrong-person memory blocks while keeping memory truth and exposure labels external to the model."
+handoff:
+  path: studies/arxiv-2610.10265/HANDOFF.md
+  ready: true
+blockers:
+  - "Paper-scale rate reproduction requires the controlled benchmark generator or a protocol-equivalent independent corpus."
+  - "Open-domain key assignment and LongMemEval/LoCoMo comparisons require additional public-corpus setup and model inference."
+frozen_evaluations:
+  - "memory-validity-mechanism-v1"
+entrypoints:
+  - "studies/arxiv-2610.10265/experiments/run_memory_validity_mechanism.py"
+updated_at: "2026-10-10"

@@ -155,9 +155,9 @@ candidates:
     candidate_capability: "agent.memory-validity-auditor"
     why_reusable: "Pre-generation temporal validity, entity identity, abstention, and serving latency are independently auditable across agent memory implementations."
     free_light_fit: "high"
-    next_gate: "PDF_PROTOCOL_REVIEW"
-    status: "SOURCE_VERIFIED"
-    notes: "arXiv ID/title/date verified; full protocol/license review pending."
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full arXiv HTML protocol reviewed. Paper uses the arXiv perpetual non-exclusive license. Promoted for independent keyed-supersession, stale/misattribution/abstention/deadline metric verification; no author implementation copied."
 
   - arxiv_id: "2610.07782"
     title: "Persistent Memory in Multi-Agent LLM Inference: What It Costs, What It Buys, and When You Can Tell"

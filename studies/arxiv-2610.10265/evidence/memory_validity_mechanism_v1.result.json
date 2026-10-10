@@ -1,0 +1,15 @@
+{
+  "experiment_id": "memory-validity-mechanism-v1",
+  "all_pass": true,
+  "verified": [
+    "serial keyed supersession leaves one active value per key",
+    "superseded value remains in history",
+    "missed merge can leave current and stale values simultaneously active",
+    "false merge can close an unrelated current value",
+    "same-name wrong-person exposure is distinct from staleness",
+    "identity filtering can remove wrong-person exposure in the controlled case",
+    "unanswerable clean retrieval requires an empty relevant block",
+    "deadline-clean retrieval is distinct from prompt cleanliness"
+  ],
+  "claim_scope": "Independent memory-state and prompt-level metric semantics only; no benchmark-rate or response-model reproduction claim."
+}
