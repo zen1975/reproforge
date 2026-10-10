@@ -23,7 +23,7 @@ CASES=[
    {"skill_id":"revalidate-after-edit","when":"artifact changes after validation","provide":"version tracking and revalidation","use":"check current validation before submission; Target remains responsible for correction"}
   ],
   "evidence":[{"id":"e3","text":"One target mistyped a filename once; retry succeeded and no recurring support need was observed."}],
-  "expected":"KEEP","expected_id":null
+  "expected":"KEEP","expected_id":None
  },
  {
   "id":"revise-dependency","bank":[
@@ -48,7 +48,7 @@ CASES=[
    {"skill_id":"persist-experiment-state","when":"multi-step experiments require remembering tested settings","provide":"persistent experiment-state memory","use":"consult prior outcomes before the next experiment; Target remains responsible for scientific judgment"}
   ],
   "evidence":[{"id":"e8","text":"Target completed the task successfully using the existing experiment-state support; no new recurring burden or correction was observed."}],
-  "expected":"KEEP","expected_id":null
+  "expected":"KEEP","expected_id":None
  }
 ]
 
