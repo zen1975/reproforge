@@ -1,16 +1,16 @@
 study_id: arxiv-2610.07782
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The paper protocol and C1-C4 memory-ablation validity conditions are captured. An independent deterministic audit fixture is implemented to detect inert components, cross-run contamination, multi-axis/order confounds, effects below replicate-level measurement floor, and structurally uninformative independent-item regimes. Workflow execution evidence is pending."
-next_step: "Execute and freeze the deterministic audit workflow; if green, determine whether any additional free/lightweight paper-relevant verification remains before handoff to hardware/benchmark-scale reproduction."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete. The paper's C1-C4 memory-ablation validity conditions and structural applicability distinction are independently implemented and frozen. The audit accepted a clean single-axis/counterbalanced fixture, detected inert-component, contaminated-store, multi-axis/order-confounded and below-measurement-floor defects, and distinguished recall reachability from useful shared-state recall. Remaining meaningful work requires paper-scale serving hardware, model endpoints, persistent store, dataset pairs and replicate campaigns."
+next_step: "Reproduce the hardware/benchmark measurements only with comparable serving/model geometry and controlled paired runs: live memory probes, reset/isolation, order counterbalancing, replicate bands, peak-KV accounting and shared-state efficacy regimes."
 handoff:
   path: studies/arxiv-2610.07782/HANDOFF.md
   ready: true
 blockers:
-  - "Paper peak-KV and latency reproduction requires comparable serving hardware/model geometry and multi-agent execution."
-  - "Paper accuracy ablation requires the eight controlled dataset pairs, model-serving stack, persistent vector store, and replicate campaign."
-  - "Paper states implementation/audit tooling will be released; no unreleased code is assumed."
+  - "Peak-KV and latency reproduction requires comparable serving hardware/model geometry and multi-agent execution."
+  - "Accuracy ablation requires the paper's controlled dataset pairs, persistent vector store, model-serving stack and replicate campaign."
+  - "The paper states implementation/audit tooling will be released; no unreleased code is assumed."
 frozen_evaluations:
   - "persistent-memory-ablation-audit-v1"
 entrypoints:

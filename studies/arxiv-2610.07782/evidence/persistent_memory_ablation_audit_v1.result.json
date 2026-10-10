@@ -1,0 +1,40 @@
+{
+  "experiment_id": "persistent-memory-ablation-audit-v1",
+  "all_pass": true,
+  "clean": {
+    "c1_component_executed": true,
+    "c2_run_independence": true,
+    "c3_single_axis_and_counterbalanced": true,
+    "c4_large_effect_resolvable": true
+  },
+  "defect_detection": {
+    "c1_inert_component_detected": true,
+    "c2_contaminated_store_detected": true,
+    "c3_multi_axis_order_confound_detected": true,
+    "c4_below_measurement_floor_detected": true
+  },
+  "measurement_floor_fixture": {
+    "replicate_sd": 0.04355073669487884,
+    "approx_95_band": 0.08535944392196253,
+    "small_effect": 0.02,
+    "small_effect_resolvable": false,
+    "large_effect": 0.2,
+    "large_effect_resolvable": true
+  },
+  "structural_applicability": {
+    "independent_item_regime": {
+      "itt_reachability": 0.375,
+      "useful_reachability": 0.0,
+      "efficacy_testable": false
+    },
+    "shared_state_regime": {
+      "itt_reachability": 0.75,
+      "useful_reachability": 0.75,
+      "efficacy_testable": true
+    }
+  },
+  "workflow_run": 38046596329,
+  "artifact_id": 11668225187,
+  "artifact_digest": "sha256:2338d3b42a145913416a0e5191de7c20799b69fe3c133727dc8b2fc195c9a31e",
+  "claim_scope": "Independent deterministic audit semantics only; no COA-PKV, KV-cache, benchmark-accuracy, or paper hardware reproduction claim."
+}

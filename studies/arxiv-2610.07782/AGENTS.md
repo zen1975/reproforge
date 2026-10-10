@@ -1,36 +1,38 @@
 # Agent Guide — arXiv:2610.07782
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
+- Free/light phase: complete
 - Frozen: `persistent-memory-ablation-audit-v1`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
 ## Verified boundary
 
-The reusable target is an ablation-validity auditor:
+The frozen audit independently enforces:
 
 ```text
-C1 component executed
-C2 runs independent
-C3 only named axis varied + order counterbalanced
-C4 effect above replicate measurement floor
-+ regime actually allows useful memory recall
+C1 claimed component actually executes
+C2 no pre-run evaluation contamination
+C3 exactly one ablation axis + counterbalanced order
+C4 effect exceeds replicate-level measurement floor
+C5 benchmark regime contains useful prior state
 ```
+
+It detects all four injected measurement defects and rejects an independent-item regime where recall is reachable but prior traces are not useful.
 
 ## Local/heavy next step
 
-After frozen audit execution, move to hardware/benchmark-scale reproduction only if no further free/lightweight verification remains.
+Only move to paper-scale measurement with comparable serving/model geometry, datasets, persistent store and replicate execution.
 
 ## Real implementation direction
 
-A memory feature should not receive credit from an ablation unless:
+Never report a memory gain without separate evidence that:
 
-- the feature executed;
-- evaluation state was clean before both arms;
-- the arms differed only on that feature;
-- run order is not confounded;
-- the effect is resolvable above replicate variation;
-- the benchmark regime contains genuinely reusable prior state.
+- memory executed;
+- evaluation state was clean;
+- only memory changed;
+- temporal order was controlled;
+- the effect is above the reproducibility floor;
+- memory had something relevant to remember.

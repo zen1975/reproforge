@@ -2,44 +2,41 @@
 
 ## State
 
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
+- Free/light phase: complete
 
 ## Completed
 
-- full 13-page PDF reviewed;
-- CC BY 4.0 paper license verified;
-- C1-C4 ablation-validity conditions extracted;
-- independent deterministic audit implementation added;
-- structural distinction between independent-item and shared-state regimes encoded.
+- full 13-page PDF protocol review;
+- CC BY 4.0 paper license verification;
+- C1-C4 audit semantics independently implemented;
+- structural independent-item vs shared-state applicability check implemented;
+- frozen audit workflow executed and artifact retained;
+- all intended positive/negative fixture checks passed.
 
-## Frozen evaluation
+## Frozen evidence
 
 - `persistent-memory-ablation-audit-v1`
+- workflow `38046596329`
+- artifact `11668225187`
+- digest `sha256:2338d3b42a145913416a0e5191de7c20799b69fe3c133727dc8b2fc195c9a31e`
 
-The fixture is frozen before workflow execution. Do not modify it after observing results merely to force PASS.
-
-## Required current step
-
-Execute the workflow and retain:
-
-- result JSON;
-- workflow run ID;
-- artifact ID/digest;
-- any negative evidence.
+Do not weaken C1-C4 to make a future benchmark appear positive.
 
 ## Local/heavy continuation
 
-Paper-scale reproduction requires:
+A paper-relevant reproduction needs:
 
-- comparable model-serving architecture;
-- per-call token/KV accounting;
-- persistent trace store and live recall probe;
-- paired dataset arms;
-- trace reset/isolation;
-- order counterbalancing;
-- replicate campaigns;
-- paired and cluster bootstrap analysis.
+1. live counters proving persistent write and recall execute;
+2. pre-run contamination probes;
+3. condition resets;
+4. serialized arm diff restricted to the named memory axis;
+5. counterbalanced execution order;
+6. replicate-derived measurement floor;
+7. paired per-question effect analysis;
+8. cluster-aware aggregation where appropriate;
+9. actual peak-KV accounting under known model geometry;
+10. a regime where stored prior state can genuinely be useful.
 
-Keep **memory efficacy** separate from **decomposition working-set benefit**.
+Keep the decomposition working-set claim separate from persistent-memory efficacy.
