@@ -1,0 +1,17 @@
+{
+  "experiment_id": "memory-qwen0.5b-key-assignment-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "pairs": 12,
+  "valid_rate": 1.0,
+  "merge_recall": 1.0,
+  "false_merge_rate": 1.0,
+  "accuracy": 0.5,
+  "workflow_run": 38046345308,
+  "artifact_id": 11668015059,
+  "artifact_digest": "sha256:7696b991362f5bfd1bac93346ab6b1d75ecb3c32a43d062bc3b0fd01e23a1e0a",
+  "interpretation": "Negative boundary evidence: the model emitted MERGE on all 12 pairs. This gives perfect recall for true revisions but a 100% false-merge rate on distinct slots. Valid classification syntax does not imply usable slot identity resolution.",
+  "claim_scope": "Frozen synthetic key-assignment analogue only; no paper key-assigner, LongMemEval, or clean-retrieval-rate reproduction claim."
+}

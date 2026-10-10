@@ -1,17 +1,20 @@
 study_id: arxiv-2610.10265
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The keyed-supersession invariant and prompt-level current/stale/wrong-person/abstention/deadline semantics are independently implemented and synthetic-tested. Paper benchmark rates, model key assignment, and response-level propagation remain unverified."
-next_step: "Run a frozen Qwen2.5-0.5B response-propagation analogue over clean, stale-co-injected, and wrong-person memory blocks while keeping memory truth and exposure labels external to the model."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete: keyed-supersession and pre-generation memory metrics are independently implemented; a real Qwen2.5-0.5B response-propagation analogue retained the current value in all clean/stale/wrong-person conditions; a frozen 0.5B key-assignment analogue collapsed to MERGE on all 12 pairs, yielding 100% merge recall and 100% false-merge rate. Remaining meaningful work requires paper-relevant controlled/public corpora, larger/comparable models, and latency/benchmark evaluation."
+next_step: "Run protocol-comparable controlled benchmark and public-corpus key/identity evaluation with larger pinned models, preserving separate stale, misattribution, abstention, false-merge, missed-merge, and deadline metrics."
 handoff:
   path: studies/arxiv-2610.10265/HANDOFF.md
   ready: true
 blockers:
-  - "Paper-scale rate reproduction requires the controlled benchmark generator or a protocol-equivalent independent corpus."
-  - "Open-domain key assignment and LongMemEval/LoCoMo comparisons require additional public-corpus setup and model inference."
+  - "Paper benchmark-rate reproduction requires the controlled benchmark generator or a protocol-equivalent independent corpus."
+  - "LongMemEval/LoCoMo identity and key-assignment comparisons require public-corpus setup and larger/comparable model inference."
+  - "Paper response-propagation and latency claims use larger models and serving measurements beyond the current CPU boundary."
 frozen_evaluations:
   - "memory-validity-mechanism-v1"
+  - "memory-qwen0.5b-response-propagation-v1-negative"
+  - "memory-qwen0.5b-key-assignment-v1-merge-collapse"
 entrypoints:
   - "studies/arxiv-2610.10265/experiments/run_memory_validity_mechanism.py"
   - "studies/arxiv-2610.10265/experiments/run_qwen0.5b_response_propagation.py"

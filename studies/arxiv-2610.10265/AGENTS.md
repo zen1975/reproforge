@@ -1,10 +1,10 @@
 # Agent Guide — arXiv:2610.10265
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
-- Frozen: `memory-validity-mechanism-v1`
+- Free/light phase: complete
+- Frozen: `memory-validity-mechanism-v1`, `memory-qwen0.5b-response-propagation-v1-negative`, `memory-qwen0.5b-key-assignment-v1-merge-collapse`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
@@ -21,9 +21,16 @@ Independent verification covers:
 - abstention;
 - deadline-clean retrieval.
 
+Real 0.5B boundaries:
+
+- response-propagation fixture: current value selected in all 12 clean/stale/wrong-person runs;
+- key-assignment fixture: MERGE selected in all 12 pairs, giving 100% true-revision recall and 100% false merges.
+
+Do not tune frozen fixtures.
+
 ## Local/heavy next step
 
-After the frozen 0.5B response-propagation analogue, use public/protocol-comparable corpora for key assignment and identity evaluation.
+Use protocol-comparable/public corpora and larger pinned models for key/identity evaluation, response propagation, and serving latency.
 
 ## Real implementation direction
 
@@ -33,11 +40,12 @@ Keep separate observable states:
 
 ```text
 stored-state validity
-identity resolution
+slot/key identity
+entity identity
 answerability / abstention
 retrieval result
 deadline
 generated response
 ```
 
-Deletion is also separate from supersession/history retention.
+A system can have perfect merge recall while corrupting memory through false merges.

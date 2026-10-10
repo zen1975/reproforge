@@ -2,52 +2,58 @@
 
 ## State
 
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
+- Free/light phase: complete
 
 ## Completed
 
-- full public HTML protocol review;
-- arXiv license captured;
-- keyed-supersession state invariant independently implemented;
-- missed-merge and false-merge failure modes independently exercised;
-- prompt-level current/stale/wrong-person/abstention/deadline metrics implemented;
-- deterministic mechanism fixture passed.
+- public paper protocol review;
+- keyed-supersession invariant implementation;
+- missed-merge and false-merge mechanism tests;
+- current/stale/wrong-person/abstention/deadline metric implementation;
+- frozen Qwen2.5-0.5B response-propagation analogue;
+- frozen Qwen2.5-0.5B key-assignment analogue.
 
 ## Frozen evidence
 
 - `memory-validity-mechanism-v1`
+- `memory-qwen0.5b-response-propagation-v1-negative`
+- `memory-qwen0.5b-key-assignment-v1-merge-collapse`
 
-Do not tune against this fixture.
+Do not retune these fixtures.
 
-## Next lightweight experiment
+## Boundary results
 
-Use one pinned small open model with fixed prompts where only the memory block changes:
+Response propagation:
 
-1. clean current fact;
-2. current + stale fact;
-3. current + same-name wrong-person fact.
+- 12/12 outputs contained the current value;
+- 0/12 emitted the injected stale value;
+- 0/12 emitted the same-name wrong-person value.
 
-Keep target truth, memory labels, and scoring outside the model.
+Key assignment:
 
-Record whether generated text copies:
+- 12/12 valid classifications;
+- all 12 were `MERGE`;
+- merge recall 100%;
+- false-merge rate 100%;
+- accuracy 50%.
 
-- current value;
-- stale value;
-- wrong-person value;
-- none/abstention.
-
-A negative/null propagation result must be retained.
+The reusable lesson is that memory safety cannot be summarized by merge recall or final answer accuracy alone.
 
 ## Local/heavy continuation
 
-After the response-level boundary, paper-scale work can test:
+Next paper-relevant work should preserve distinct measurements for:
 
-- noisy key assignment;
-- controlled benchmark rates;
-- LongMemEval merge recall;
-- LoCoMo same-name identity ambiguity;
-- latency/prefill measurements.
+```text
+missed merge
+false merge
+stale exposure
+wrong-person exposure
+abstention
+clean retrieval
+deadline
+response propagation
+```
 
-Do not collapse these into one memory-accuracy score.
+Use public/protocol-comparable corpora and larger pinned models. Keep response generation downstream of the memory-state audit rather than using it as the only evaluator.

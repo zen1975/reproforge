@@ -1,0 +1,19 @@
+{
+  "experiment_id": "memory-qwen0.5b-response-propagation-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "cases": 4,
+  "conditions": ["clean", "stale_block", "wrong_block"],
+  "summary": {
+    "clean": {"n": 4, "current_rate": 1.0, "stale_rate": 0.0, "wrong_person_rate": 0.0},
+    "stale_block": {"n": 4, "current_rate": 1.0, "stale_rate": 0.0, "wrong_person_rate": 0.0},
+    "wrong_block": {"n": 4, "current_rate": 1.0, "stale_rate": 0.0, "wrong_person_rate": 0.0}
+  },
+  "workflow_run": 38046223429,
+  "artifact_id": 11667709358,
+  "artifact_digest": "sha256:63e1aedd8d8b34931f168a3521388c9ef499ebd21e7bb1c81dff6a1e298195f2",
+  "interpretation": "Negative boundary evidence: under this frozen 0.5B prompt contract, co-injected stale and same-name wrong-person facts did not propagate into the generated value. The model returned the externally defined current value in all 12 generations. Do not retune this fixture to manufacture propagation.",
+  "claim_scope": "Frozen response-propagation analogue only; no paper benchmark, key-assigner, LongMemEval, or LoCoMo reproduction claim."
+}
