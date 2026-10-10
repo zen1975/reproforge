@@ -1,0 +1,26 @@
+name: Persistent memory ablation audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.07782/experiments/run_ablation_audit.py"
+      - ".github/workflows/persistent-memory-ablation-audit.yml"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic C1-C4 audit fixture
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.07782/experiments/run_ablation_audit.py             | tee persistent_memory_ablation_audit_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: persistent-memory-ablation-audit-v1
+          path: persistent_memory_ablation_audit_v1.result.json
+          retention-days: 7

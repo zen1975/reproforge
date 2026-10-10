@@ -168,9 +168,9 @@ candidates:
     candidate_capability: "research.memory-ablation-validity-auditor"
     why_reusable: "Ablation design and statistical detection-power checks help prevent spurious claims of persistent memory utility."
     free_light_fit: "high"
-    next_gate: "PDF_PROTOCOL_REVIEW"
-    status: "SOURCE_VERIFIED"
-    notes: "arXiv ID/title/date verified; full protocol/license review pending."
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full 13-page PDF reviewed; paper license is CC BY 4.0. Promoted for independent C1-C4 ablation-validity auditing and structural memory-reachability tests. Paper says code/audit tooling will be released; no unpublished implementation is assumed."
 
   - arxiv_id: "2610.10507"
     title: "RECAST: Learning to Compute the Right Context through Adaptive Evidence Routing"

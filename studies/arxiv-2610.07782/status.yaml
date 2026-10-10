@@ -1,0 +1,19 @@
+study_id: arxiv-2610.07782
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "The paper protocol and C1-C4 memory-ablation validity conditions are captured. An independent deterministic audit fixture is implemented to detect inert components, cross-run contamination, multi-axis/order confounds, effects below replicate-level measurement floor, and structurally uninformative independent-item regimes. Workflow execution evidence is pending."
+next_step: "Execute and freeze the deterministic audit workflow; if green, determine whether any additional free/lightweight paper-relevant verification remains before handoff to hardware/benchmark-scale reproduction."
+handoff:
+  path: studies/arxiv-2610.07782/HANDOFF.md
+  ready: true
+blockers:
+  - "Paper peak-KV and latency reproduction requires comparable serving hardware/model geometry and multi-agent execution."
+  - "Paper accuracy ablation requires the eight controlled dataset pairs, model-serving stack, persistent vector store, and replicate campaign."
+  - "Paper states implementation/audit tooling will be released; no unreleased code is assumed."
+frozen_evaluations:
+  - "persistent-memory-ablation-audit-v1"
+entrypoints:
+  - "studies/arxiv-2610.07782/experiments/run_ablation_audit.py"
+  - ".github/workflows/persistent-memory-ablation-audit.yml"
+updated_at: "2026-10-10"
