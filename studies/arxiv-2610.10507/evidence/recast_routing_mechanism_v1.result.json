@@ -1,0 +1,20 @@
+{
+  "experiment_id": "recast-routing-mechanism-v1",
+  "all_pass": true,
+  "verified": [
+    "valid CALL_PRIMITIVE/SYNTHESIZE/ACCEPT_CONTEXT contracts",
+    "premature accept blocked for raw operands when a derived result is required",
+    "accept allowed after required derived evidence is present",
+    "failed execution recorded without adding evidence",
+    "evidence deduplication",
+    "malformed primitive rejected",
+    "incomplete synthesis constraint rejected",
+    "unknown action rejected",
+    "missing source provenance rejected",
+    "failure preserved in interaction history"
+  ],
+  "workflow_run": 38046764417,
+  "artifact_id": 11668100624,
+  "artifact_digest": "sha256:3bf32aa4e4e6d8b52db2e49fb6e2d237c526a285421cfd28dd9712c11e313eec",
+  "claim_scope": "Independent routing/state/provenance mechanism verification only; no trained RouterLM, CompilerLM quality, benchmark success, SFT or GRPO claim."
+}

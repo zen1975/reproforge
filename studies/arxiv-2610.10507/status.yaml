@@ -16,4 +16,6 @@ frozen_evaluations:
 entrypoints:
   - "studies/arxiv-2610.10507/experiments/run_routing_mechanism.py"
   - ".github/workflows/recast-routing-mechanism.yml"
+  - "studies/arxiv-2610.10507/experiments/run_qwen0.5b_router_analogue.py"
+  - ".github/workflows/recast-qwen0.5b-router.yml"
 updated_at: "2026-10-10"
