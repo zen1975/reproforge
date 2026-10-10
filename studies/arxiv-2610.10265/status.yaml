@@ -16,4 +16,6 @@ entrypoints:
   - "studies/arxiv-2610.10265/experiments/run_memory_validity_mechanism.py"
   - "studies/arxiv-2610.10265/experiments/run_qwen0.5b_response_propagation.py"
   - ".github/workflows/memory-qwen0.5b-response.yml"
+  - "studies/arxiv-2610.10265/experiments/run_qwen0.5b_key_assignment.py"
+  - ".github/workflows/memory-qwen0.5b-key-assignment.yml"
 updated_at: "2026-10-10"
