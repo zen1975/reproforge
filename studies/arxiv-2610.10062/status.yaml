@@ -15,4 +15,6 @@ frozen_evaluations:
   - "tool-fault-mechanism-synthetic-v1"
 entrypoints:
   - "studies/arxiv-2610.10062/experiments/run_tool_fault_mechanism_synthetic.py"
+  - "studies/arxiv-2610.10062/experiments/run_qwen0.5b_analogue.py"
+  - ".github/workflows/tool-fault-qwen0.5b-analogue.yml"
 updated_at: "2026-10-10"
