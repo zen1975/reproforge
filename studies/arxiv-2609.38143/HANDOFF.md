@@ -1,32 +1,40 @@
 # arXiv:2609.38143 — Continuation Handoff
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
+- Free/light phase: complete
 
 ## Completed
-- public paper protocol review;
-- arXiv license verified;
-- when/provide/use schema implemented;
-- evidence-grounded ADD/REVISE contract implemented;
-- one-mutation-per-batch guard implemented;
-- frozen bank implemented;
-- full-bank and top-k retrieval modes implemented.
+- public protocol review;
+- deterministic when/provide/use bank mechanism;
+- evidence-grounded ADD/REVISE contract;
+- one-mutation-per-batch guard;
+- frozen-bank integrity;
+- full-bank and fixed top-k selection;
+- real pinned Qwen2.5-0.5B update-proposal analogue.
 
-## Frozen evaluation
+## Frozen evidence
 - `meta-skill-bank-mechanism-v1`
+- `meta-skill-qwen0.5b-update-analogue-v1-negative`
 
-## Next lightweight step
-Run one pinned small-model update analogue.
+The 0.5B run produced 40% schema validity, 40% decision accuracy, 0% evidence grounding on expected mutations and 33.3% skill-ID accuracy on expected mutations.
 
-The model proposes only:
-- KEEP; or
-- ADD/REVISE with when/provide/use and cited evidence IDs.
-
-The external validator decides whether the proposal is admissible and applies the mutation.
-
-Retain malformed, ungrounded, over-specific, duplicate or no-update behavior as evidence.
+Do not retune this fixture.
 
 ## Local/heavy continuation
-Paper-level continuation requires fresh task-specific harness construction and Target execution over held-out benchmark tasks with fixed budgets and frozen bank.
+
+Run Builder harness construction and Target execution over held-out benchmark tasks with a frozen meta-skill bank.
+
+Preserve:
+
+- execution evidence IDs;
+- exact model/revision;
+- bank snapshot/hash;
+- selected meta-skills;
+- generated harness;
+- Target outcome;
+- update prohibition during held-out evaluation;
+- per-task budget and seeds.
+
+Model-generated bank updates remain proposals only; external validation owns bank integrity.

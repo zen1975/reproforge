@@ -1,0 +1,17 @@
+{
+  "experiment_id": "meta-skill-qwen0.5b-update-analogue-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "cases": 5,
+  "schema_valid_rate": 0.4,
+  "decision_accuracy": 0.4,
+  "grounded_rate_on_expected_mutations": 0.0,
+  "skill_id_accuracy_on_expected_mutations": 0.3333333333333333,
+  "workflow_run": 38047285509,
+  "artifact_id": 11667079783,
+  "artifact_digest": "sha256:77d21ccacfd085ea101bc8686317165fbf221c216c318a24ae2b342f544e2f1f",
+  "interpretation": "Negative boundary evidence. The 0.5B model can emit some valid ADD proposals but does not reliably distinguish KEEP/ADD/REVISE and fails evidence grounding on expected mutations. Model output must remain a proposal to an external validator, not direct bank mutation authority.",
+  "claim_scope": "Frozen 0.5B update-proposal analogue only; no Builder harness construction or benchmark-performance claim."
+}

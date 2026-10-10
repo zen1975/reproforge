@@ -1,17 +1,18 @@
 study_id: arxiv-2609.38143
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The public protocol is reviewed and an independent deterministic contract implements when/provide/use meta-skills, evidence-grounded ADD/REVISE with at most one mutation per batch, frozen-bank integrity, full-bank access and fixed top-k relevance selection. Workflow execution evidence and a model-backed update/selection boundary remain pending."
-next_step: "Execute and freeze the deterministic bank mechanism, then run one pinned small-model analogue for evidence-grounded KEEP/ADD/REVISE decisions without allowing the model to mutate the bank directly."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete. The deterministic meta-skill bank contract executed successfully, including evidence-grounded ADD/REVISE, one-mutation-per-batch, freeze integrity and fixed top-k selection. A real pinned Qwen2.5-0.5B update analogue achieved 40% schema validity, 40% decision accuracy, 0% evidence grounding on expected mutations and 33.3% skill-id accuracy on expected mutations, with KEEP/REVISE cases largely collapsing toward ADD. Remaining meaningful work requires benchmark-scale Builder harness construction and Target execution."
+next_step: "Run paper-relevant Builder/Target harness construction on held-out Harness-Bench/NewtonBench or a protocol-comparable benchmark with a frozen bank, preserving external bank-integrity and evidence-grounding checks."
 handoff:
   path: studies/arxiv-2609.38143/HANDOFF.md
   ready: true
 blockers:
-  - "Paper-level Builder-enactment gains require GPT-5.6-Sol Builder and benchmark-scale Target execution on Harness-Bench/NewtonBench or protocol-comparable harness tasks."
-  - "Harness construction and Target execution budgets are substantially larger than the deterministic bank mechanism."
+  - "Paper-level Builder-enactment gains require benchmark-scale harness construction and Target execution with paper-relevant/comparable model access."
+  - "The frozen 0.5B result is negative boundary evidence and must not be prompt-tuned into a stronger mutation result."
 frozen_evaluations:
   - "meta-skill-bank-mechanism-v1"
+  - "meta-skill-qwen0.5b-update-analogue-v1-negative"
 entrypoints:
   - "studies/arxiv-2609.38143/experiments/run_meta_skill_bank.py"
   - ".github/workflows/meta-skill-bank-mechanism.yml"

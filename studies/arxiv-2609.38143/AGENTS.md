@@ -1,10 +1,10 @@
 # Agent Guide — arXiv:2609.38143
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
-- Frozen: `meta-skill-bank-mechanism-v1`
+- Free/light phase: complete
+- Frozen: `meta-skill-bank-mechanism-v1`, `meta-skill-qwen0.5b-update-analogue-v1-negative`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
@@ -12,19 +12,21 @@ Read `status.yaml` and `HANDOFF.md` first.
 
 ```text
 Target execution evidence
-→ Builder reflection
+→ Builder reflection / model proposal
+→ external evidence + schema validator
 → at most one KEEP / ADD / REVISE
-→ external evidence/schema validator
 → meta-skill bank
 → freeze
 → full-bank or fixed top-k selection
 → fresh test-task harness construction
 ```
 
-The model must not directly own bank integrity.
+The 0.5B model-backed update analogue is negative boundary evidence: proposal formatting and mutation choice are not reliable enough to own the bank.
 
 ## Local/heavy next step
-After a frozen small-model update analogue, paper-level evaluation requires Builder/Target harness execution on held-out tasks.
+
+Paper-level evaluation requires Builder/Target harness execution on held-out tasks with the bank frozen.
 
 ## Real implementation direction
-Meta-skills are support-design rules, not direct answers. Preserve Target responsibility in the `use` field and keep dev evidence separate from held-out evaluation.
+
+Keep model reflection separate from authoritative state mutation. Meta-skills are support-design rules, not direct answers, and the Target retains final judgment.
