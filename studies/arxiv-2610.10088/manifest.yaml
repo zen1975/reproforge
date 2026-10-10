@@ -1,0 +1,27 @@
+schema_version: "0.1"
+paper:
+  title: "SkillSandbox: Skill Verification via Dynamic Scenario Synthesis"
+  canonical_url: "https://arxiv.org/abs/2610.10088"
+  arxiv_id: "2610.10088"
+  authors:
+    - "Serin Kim"
+    - "Kwangwook Seo"
+    - "Dokyung Song"
+    - "Jinyoung Yeo"
+    - "Dongha Lee"
+  license: "CC BY-NC-ND 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "Independent implementation from the paper description only. Linked anonymous author code was not copied into ReproForge."
+claims:
+  - id: "C1-scenario-validity"
+    statement: "Verification scenarios should be both skill-relevant and novel relative to the source experience."
+    acceptance_criteria: "A deterministic structured validator must distinguish relevance-preserving reconstruction from irrelevant or source-identical scenarios."
+  - id: "C2-paired-verifier"
+    statement: "Skill reusability can be scored from aligned with-skill/without-skill execution evidence using executability-weighted discounted utility."
+    acceptance_criteria: "Independent implementation must produce positive scores for helpful/faster skill use, negative scores for harmful/slower skill use, zero contribution when executability evidence is absent, and Keep iff R(k)>0."
+  - id: "C3-paper-scale-benefit"
+    statement: "Dynamically synthesized scenarios improve verification quality and downstream skill-library performance."
+    acceptance_criteria: "Requires ALFWorld/WebShop or protocol-comparable independent model rollouts; synthetic mechanism tests alone do not satisfy this claim."

@@ -1,0 +1,17 @@
+{
+  "experiment_id": "skillsandbox-verifier-mechanism-v1",
+  "gamma": 0.9,
+  "gamma_scope": "Analogue parameter only; public paper text constrains 0<gamma<1 but does not expose a numeric value in the inspected HTML.",
+  "scenario_checks": {
+    "relevant_novel": {"relevant": true, "novel": true, "valid": true},
+    "irrelevant_novel": {"relevant": false, "novel": true, "valid": false},
+    "relevant_not_novel": {"relevant": true, "novel": false, "valid": false}
+  },
+  "scores": {
+    "helpful": {"score": 0.07695, "verdict": "KEEP"},
+    "harmful": {"score": -0.175095, "verdict": "REJECT"},
+    "nonexec": {"score": 0.0, "verdict": "REJECT"}
+  },
+  "all_pass": true,
+  "claim_scope": "Independent mechanism verification only; no ALFWorld/WebShop or paper-scale performance claim."
+}

@@ -142,9 +142,9 @@ candidates:
     candidate_capability: "agent.skill-scenario-verifier"
     why_reusable: "A proposer/builder/verifier workflow can test reusable agent skills in novel scenarios by contrasting execution with and without the skill."
     free_light_fit: "medium"
-    next_gate: "PDF_PROTOCOL_REVIEW"
-    status: "SOURCE_VERIFIED"
-    notes: "arXiv ID/title/date verified; full protocol/license review pending."
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full arXiv protocol and CC BY-NC-ND 4.0 paper license reviewed. Anonymous author code is linked from the paper, but ReproForge does not copy it. Promoted for an independent scenario-validity and paired verifier mechanism implementation."
 
   - arxiv_id: "2610.10265"
     title: "Stale, Misattributed, or Late: Where Personal Memory Fails Before Generation"
