@@ -1,0 +1,26 @@
+name: RECAST routing mechanism
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.10507/experiments/run_routing_mechanism.py"
+      - ".github/workflows/recast-routing-mechanism.yml"
+
+jobs:
+  mechanism:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run routing mechanism fixture
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.10507/experiments/run_routing_mechanism.py             | tee recast_routing_mechanism_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: recast-routing-mechanism-v1
+          path: recast_routing_mechanism_v1.result.json
+          retention-days: 7
