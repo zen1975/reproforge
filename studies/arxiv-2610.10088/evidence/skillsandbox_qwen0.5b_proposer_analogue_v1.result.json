@@ -1,0 +1,17 @@
+{
+  "experiment_id": "skillsandbox-qwen0.5b-proposer-analogue-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "cases": 6,
+  "relevance_rate": 0.5,
+  "novelty_rate": 0.8333333333333334,
+  "format_valid_rate": 0.6666666666666666,
+  "scenario_valid_rate": 0.3333333333333333,
+  "workflow_run": 38046125196,
+  "artifact_id": 11667224961,
+  "artifact_digest": "sha256:242d3de5989157ec28583960b0ffd99e1bbcf7a60c6bac5a46fed68af652514c",
+  "interpretation": "The 0.5B proposer usually changed source-specific details but often failed to preserve the applicability condition or the frozen one-sentence contract. Only 2/6 outputs satisfied relevance, novelty, and format simultaneously. This is negative/partial boundary evidence for scenario synthesis.",
+  "claim_scope": "Frozen proposer analogue only; no Builder environment execution, ALFWorld/WebShop, or paper-scale synthesis claim."
+}

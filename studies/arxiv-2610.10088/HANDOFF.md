@@ -2,44 +2,56 @@
 
 ## State
 
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
+- Free/light phase: complete
 
 ## Completed
 
-- arXiv identity and paper license reviewed;
-- Proposer / Builder / Verifier roles extracted;
-- scenario relevance/novelty contract reconstructed;
-- executability-weighted discounted utility scoring reconstructed;
-- Keep/Reject boundary reconstructed;
-- independent synthetic mechanism test passed.
+- paper identity/license/protocol review;
+- independent scenario-validity semantics;
+- independent executability-weighted verifier semantics;
+- frozen synthetic verifier mechanism test;
+- real Qwen2.5-0.5B paired with-skill/without-skill execution;
+- real Qwen2.5-0.5B frozen Proposer analogue.
 
 ## Frozen evidence
 
 - `skillsandbox-verifier-mechanism-v1`
+- `skillsandbox-qwen0.5b-paired-analogue-v1`
+- `skillsandbox-qwen0.5b-proposer-analogue-v1`
 
-Do not retune against this fixture.
+Do not retune against any of them.
 
-## Next lightweight experiment
+## Boundary results
 
-Run one pinned open small model on a tiny paired skill-use analogue.
+Paired execution:
 
-Required separation:
+- helpful skill → KEEP, score 1.0;
+- harmful skill → REJECT, score 0.0.
 
-```text
-Scenario truth / success criterion
-Scenario construction
-Skill text
-Model execution
-Executability marker
-Verifier score
-```
+Proposer:
 
-Only the model execution is model-owned. Ground truth, matching, scoring, and verdict logic remain deterministic.
+- relevance 50.0%;
+- novelty 83.3%;
+- format validity 66.7%;
+- fully valid 33.3%.
 
-Preserve raw outputs for both with-skill and without-skill runs.
+The useful interpretation is that paired skill verification can work in a tiny 0.5B setting even when scenario synthesis itself is a weaker component.
 
-## Paper-level continuation
+## Local/heavy continuation
 
-Paper-scale reproduction requires dynamic scenario construction and paired agent rollouts on ALFWorld/WebShop or a protocol-comparable environment, with evaluation of downstream skill-library effects.
+Use a legal executable benchmark environment and preserve:
+
+- source experience;
+- distilled skill;
+- applicability conditions;
+- varied source-specific details;
+- Builder rejection reasons;
+- with-skill and without-skill trajectories;
+- executability;
+- utility and efficiency;
+- final KEEP/REJECT;
+- downstream library effect.
+
+Do not let the same model silently redefine ground truth or verifier criteria after execution.

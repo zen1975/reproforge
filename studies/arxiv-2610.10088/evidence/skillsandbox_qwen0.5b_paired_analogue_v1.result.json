@@ -1,0 +1,29 @@
+{
+  "experiment_id": "skillsandbox-qwen0.5b-paired-analogue-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "scenarios": 6,
+  "summary": {
+    "helpful": {
+      "score": 1.0,
+      "verdict": "KEEP",
+      "executability_rate": 1.0,
+      "mean_with_skill_reward": 1.0,
+      "mean_without_skill_reward": 0.0
+    },
+    "harmful": {
+      "score": 0.0,
+      "verdict": "REJECT",
+      "executability_rate": 0.5,
+      "mean_with_skill_reward": 0.5,
+      "mean_without_skill_reward": 0.0
+    }
+  },
+  "workflow_run": 38045966149,
+  "artifact_id": 11667209445,
+  "artifact_digest": "sha256:7583a39ccd196fc182a6f0150ddcd11fbe1fb3db2c79e7fc1a89e9918ab844b6",
+  "interpretation": "The 0.5B model followed the helpful skill on all six paired scenarios and changed an otherwise-wrong baseline action into the correct action. The harmful skill was only executed on half the cases and received zero external verifier score, yielding REJECT. This verifies the paired execution/verifier boundary, not paper benchmark performance.",
+  "claim_scope": "Frozen one-step paired analogue; no dynamic scenario synthesis, ALFWorld, WebShop, or paper-performance claim."
+}

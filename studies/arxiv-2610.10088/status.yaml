@@ -1,17 +1,19 @@
 study_id: arxiv-2610.10088
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "Paper identity/license and the core scenario-validity plus executability-weighted discounted verifier semantics are independently reconstructed and synthetic-tested. Dynamic LLM Proposer/Builder behavior and model-backed with-skill/without-skill rollouts remain unexecuted."
-next_step: "Freeze a tiny structured skill/scenario set and run a pinned small open model in paired with-skill/without-skill executions, while keeping scenario construction and scoring deterministic."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete: scenario-validity and verifier semantics are independently implemented; a real Qwen2.5-0.5B paired execution analogue correctly yielded KEEP for a helpful skill and REJECT for a harmful skill; a frozen 0.5B proposer analogue produced only 2/6 fully valid relevant+novel scenarios. Remaining meaningful work requires executable Builder environments and paper-relevant ALFWorld/WebShop or protocol-comparable rollouts."
+next_step: "Run dynamic Proposer/Builder/Verifier evaluation on a legal executable benchmark environment with paper-relevant or comparable models, preserving frozen scenario validity and paired scoring semantics."
 handoff:
   path: studies/arxiv-2610.10088/HANDOFF.md
   ready: true
 blockers:
-  - "Paper-scale claims require ALFWorld/WebShop or protocol-comparable agent rollouts and substantially larger/comparable models."
-  - "The paper-linked code is anonymous and is not copied into ReproForge."
+  - "Paper-scale claims require executable ALFWorld/WebShop or protocol-comparable environments and larger/comparable model rollouts."
+  - "The paper-linked author code is anonymous and is not copied into ReproForge."
 frozen_evaluations:
   - "skillsandbox-verifier-mechanism-v1"
+  - "skillsandbox-qwen0.5b-paired-analogue-v1"
+  - "skillsandbox-qwen0.5b-proposer-analogue-v1"
 entrypoints:
   - "studies/arxiv-2610.10088/experiments/run_verifier_mechanism.py"
   - "studies/arxiv-2610.10088/experiments/run_qwen0.5b_paired_analogue.py"

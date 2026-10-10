@@ -2,63 +2,112 @@
 
 ## Current verdict
 
-**PARTIAL / MECHANISM_VERIFIED**
+**PARTIAL / HEAVY_COMPUTE_READY**
 
-SkillSandbox verifies a distilled skill by constructing scenarios that are both skill-relevant and novel, then comparing the same executor with and without the skill. The paper scores retained aligned step pairs using executability-weighted discounted utility and keeps a skill only when the empirical reusability score is positive.
+The current free/lightweight boundary is complete.
 
-## Paper mechanism captured
+ReproForge independently reconstructed the scenario-validity and paired verifier semantics, then executed two real Qwen2.5-0.5B-Instruct boundary experiments:
 
-The inspected paper specifies:
+1. paired with-skill / without-skill execution;
+2. frozen Proposer-style scenario generation.
 
-- Proposer: preserve the skill's applicability condition while changing source-specific details;
-- Builder: instantiate an executable task/environment and reject invalid or duplicate scenarios until five valid scenarios are obtained;
-- Verifier: compare with-skill and without-skill trajectories in the same scenario;
-- aligned evidence: identical pre-action observations, temporal order preserved;
-- executability: only observed skill-implementing actions contribute;
-- utility/efficiency: terminal reward discounted by remaining actions;
-- verdict: `KEEP` iff `R(k) > 0`, otherwise `REJECT`.
+The paper's full ALFWorld/WebShop pipeline is not reproduced.
 
-The paper also explicitly distinguishes Recovery from Regression and evaluates held-out utility rather than assuming every distilled skill is beneficial.
+## Mechanism verification
 
-## Independent synthetic mechanism verification
+`skillsandbox-verifier-mechanism-v1` verifies:
 
-Experiment:
-
-`skillsandbox-verifier-mechanism-v1`
-
-Verified:
-
-- relevant + novel scenario → valid;
-- novel but irrelevant scenario → rejected;
-- relevant but source-identical scenario → rejected;
-- helpful/faster skill evidence → positive score / KEEP;
-- harmful/slower skill evidence → negative score / REJECT;
-- no executability evidence → zero contribution / REJECT.
+- relevant + novel scenario validity;
+- irrelevant scenario rejection;
+- source-identical scenario rejection;
+- executability gating;
+- helpful/faster evidence → positive / KEEP;
+- harmful/slower evidence → negative / REJECT;
+- non-executable evidence → zero / REJECT.
 
 Result: **PASS**
 
-A gamma of 0.9 is used only as an analogue parameter. The inspected public HTML states `0 < gamma < 1` but does not expose a numeric value; therefore no exact paper-gamma claim is made.
+## Real 0.5B paired execution boundary
 
-## Remaining lightweight work
+Experiment: `skillsandbox-qwen0.5b-paired-analogue-v1`
 
-A small real-model paired analogue is still justified.
+Model revision:
 
-The next frozen experiment should:
+`7ae557604adf67be50417f59c2c2f167def9a775`
 
-1. use independently authored structured scenarios;
-2. run the same pinned small model with and without one procedural skill;
-3. preserve identical initial scenario state;
-4. keep success truth and score calculation outside the model;
-5. record raw model decisions;
-6. retain negative or null skill effects without prompt tuning.
+Six frozen scenarios were run with the same model and same scenario state, changing only whether a procedural skill was present.
+
+Helpful skill:
+
+- executability: **1.0**
+- without-skill reward: **0.0**
+- with-skill reward: **1.0**
+- score: **1.0**
+- verdict: **KEEP**
+
+Harmful skill:
+
+- executability: **0.5**
+- without-skill reward: **0.0**
+- with-skill reward: **0.5**
+- score: **0.0**
+- verdict: **REJECT**
+
+Workflow: `38045966149`
+
+Artifact: `11667209445`
+
+Digest: `sha256:7583a39ccd196fc182a6f0150ddcd11fbe1fb3db2c79e7fc1a89e9918ab844b6`
+
+This confirms that the external paired verifier can distinguish a genuinely useful procedural instruction from one that is not reliably executed or beneficial in the frozen small-model analogue.
+
+It does **not** establish the paper's benchmark-level verifier accuracy.
+
+## Real 0.5B Proposer boundary
+
+Experiment: `skillsandbox-qwen0.5b-proposer-analogue-v1`
+
+Six frozen applicability/source-detail prompts were used. Relevance, novelty, and format were scored by deterministic external validators.
+
+Results:
+
+- relevance: **3/6 = 50.0%**
+- novelty: **5/6 = 83.3%**
+- format validity: **4/6 = 66.7%**
+- fully valid scenario: **2/6 = 33.3%**
+
+Workflow: `38046125196`
+
+Artifact: `11667224961`
+
+Digest: `sha256:242d3de5989157ec28583960b0ffd99e1bbcf7a60c6bac5a46fed68af652514c`
+
+Interpretation:
+
+The small model was better at changing source-specific details than at preserving the target applicability condition while satisfying the output contract.
+
+So the lightweight boundary suggests:
+
+`novel generation != valid skill-relevant scenario synthesis`
+
+This is retained as negative/partial evidence. The fixture is frozen and must not be prompt-tuned to manufacture a stronger result.
+
+## Current-environment closure
+
+Meaningful remaining work requires an executable Builder and multi-step agent environment, plus paper-relevant or comparable model rollouts.
+
+Therefore:
+
+- `HEAVY_COMPUTE_READY`
+- `free_light_phase_complete: true`
+- `reproduction_status: PARTIAL`
 
 ## What must not be claimed
 
 Do not claim:
 
 - ALFWorld/WebShop reproduction;
-- the paper's downstream SR gains;
-- the paper's verdict F1;
-- that scenario synthesis is already superior to source/random task verification.
-
-Those claims require model-backed benchmark evidence.
+- paper downstream success-rate gains;
+- paper verifier F1;
+- that 0.5B scenario synthesis is generally poor;
+- full SkillSandbox reproduction.
