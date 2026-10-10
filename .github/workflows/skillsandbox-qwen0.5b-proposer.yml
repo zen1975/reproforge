@@ -1,0 +1,31 @@
+name: SkillSandbox Qwen 0.5B proposer analogue
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.10088/experiments/run_qwen0.5b_proposer_analogue.py"
+      - ".github/workflows/skillsandbox-qwen0.5b-proposer.yml"
+
+jobs:
+  qwen-proposer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU model dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch>=2.3,<3"
+          python -m pip install "transformers>=4.51,<5"
+      - name: Run Qwen 0.5B proposer analogue
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.10088/experiments/run_qwen0.5b_proposer_analogue.py             --model-id Qwen/Qwen2.5-0.5B-Instruct             --max-new-tokens 48             | tee skillsandbox_qwen0.5b_proposer_analogue_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skillsandbox-qwen0.5b-proposer-analogue-v1
+          path: skillsandbox_qwen0.5b_proposer_analogue_v1.result.json
+          retention-days: 7
