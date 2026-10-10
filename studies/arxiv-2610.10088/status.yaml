@@ -14,4 +14,6 @@ frozen_evaluations:
   - "skillsandbox-verifier-mechanism-v1"
 entrypoints:
   - "studies/arxiv-2610.10088/experiments/run_verifier_mechanism.py"
+  - "studies/arxiv-2610.10088/experiments/run_qwen0.5b_paired_analogue.py"
+  - ".github/workflows/skillsandbox-qwen0.5b-paired.yml"
 updated_at: "2026-10-10"
