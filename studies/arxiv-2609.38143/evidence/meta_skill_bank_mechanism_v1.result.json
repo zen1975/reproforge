@@ -1,0 +1,18 @@
+{
+  "experiment_id": "meta-skill-bank-mechanism-v1",
+  "all_pass": true,
+  "verified": [
+    "when/provide/use schema",
+    "evidence-grounded ADD",
+    "evidence-grounded REVISE",
+    "at most one mutation per batch",
+    "ungrounded update rejection",
+    "top-k relevant selection",
+    "freeze blocks mutation",
+    "frozen bank remains readable and unchanged"
+  ],
+  "workflow_run": 38047109174,
+  "artifact_id": 11666859850,
+  "artifact_digest": "sha256:ce802c6717bbd9395d4d28c26e53fcdb133f6fdfe93094b94464a7f696fd508e",
+  "claim_scope": "Independent schema/update/freeze/selection semantics only; no Harness-Bench/NewtonBench or Builder-enactment performance claim."
+}

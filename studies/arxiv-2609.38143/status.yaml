@@ -15,4 +15,6 @@ frozen_evaluations:
 entrypoints:
   - "studies/arxiv-2609.38143/experiments/run_meta_skill_bank.py"
   - ".github/workflows/meta-skill-bank-mechanism.yml"
+  - "studies/arxiv-2609.38143/experiments/run_qwen0.5b_update_analogue.py"
+  - ".github/workflows/meta-skill-qwen0.5b-update.yml"
 updated_at: "2026-10-10"

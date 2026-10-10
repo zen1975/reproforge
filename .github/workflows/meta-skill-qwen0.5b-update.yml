@@ -1,0 +1,31 @@
+name: Meta-skill Qwen 0.5B update analogue
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2609.38143/experiments/run_qwen0.5b_update_analogue.py"
+      - ".github/workflows/meta-skill-qwen0.5b-update.yml"
+
+jobs:
+  qwen-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU model dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch>=2.3,<3"
+          python -m pip install "transformers>=4.51,<5"
+      - name: Run Qwen 0.5B meta-skill update analogue
+        run: |
+          set -o pipefail
+          python studies/arxiv-2609.38143/experiments/run_qwen0.5b_update_analogue.py             --model-id Qwen/Qwen2.5-0.5B-Instruct             --max-new-tokens 192             | tee meta_skill_qwen0.5b_update_analogue_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: meta-skill-qwen0.5b-update-analogue-v1
+          path: meta_skill_qwen0.5b_update_analogue_v1.result.json
+          retention-days: 7
