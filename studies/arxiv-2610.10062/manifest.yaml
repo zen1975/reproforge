@@ -1,0 +1,36 @@
+schema_version: "0.1"
+paper:
+  title: "Loud Failures, Quiet Failures: Fault Detection and Recovery in Tool-Using Language Model Agents"
+  canonical_url: "https://arxiv.org/abs/2610.10062"
+  arxiv_id: "2610.10062"
+  authors:
+    - "Obada Kraishan"
+  license: "arXiv perpetual non-exclusive license"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "The full paper and public author repository were inspected before implementation. ReproForge does not copy author implementation code. OFFICIAL_AUDIT evidence re-aggregates released scored data; the synthetic mechanism test is an independent implementation of paper-described fault and metric semantics."
+external_assets:
+  - kind: "CODE"
+    name: "Author repository"
+    source: "https://github.com/obadaKraishan/brittle-agents"
+    license: "MIT"
+    license_status: "VERIFIED"
+    redistributed: false
+  - kind: "DATASET"
+    name: "Released BFCL-derived trajectories and scored data"
+    source: "https://github.com/obadaKraishan/brittle-agents"
+    license: "Apache-2.0"
+    license_status: "VERIFIED"
+    redistributed: false
+claims:
+  - id: "C1-visibility-detection-gap"
+    statement: "Agents detect explicit-error tool failures substantially more often than well-formed silent corruptions."
+    acceptance_criteria: "Paper-level reproduction requires independently generated agent trials under comparable loud/quiet fault conditions. Released-data audit may verify published aggregation but does not satisfy independent behavioral reproduction."
+  - id: "C2-reasoning-detection-replanning"
+    statement: "Matched reasoning variants detect faults less often but replan more often than instruct siblings, without a clear recovery gain."
+    acceptance_criteria: "Paper-level reproduction requires matched within-family model execution and task-clustered analysis or a declared protocol-equivalent design."
+  - id: "C3-fault-injection-semantics"
+    statement: "A typed fault layer can inject one controlled fault while separating detection, replanning, recovery, and repeated-tool behavior."
+    acceptance_criteria: "Mechanism verification requires deterministic one-shot faults, quiet corruption that changes returned content while preserving result shape/type and successful underlying state transition, plus executable scoring semantics for replanning, repetition, and state agreement."

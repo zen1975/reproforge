@@ -1,0 +1,18 @@
+study_id: arxiv-2610.10062
+lifecycle: PROTOCOL_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Paper protocol, licenses, released-data headline aggregation, and independent synthetic fault/metric semantics are verified. A real small-model loud-vs-quiet analogue remains feasible in the lightweight environment and has not yet been executed."
+next_step: "Freeze a tiny tool-use task set, run a pinned open small model under clean/loud/quiet conditions, preserve raw tool traces, and test whether the model-backed analogue shows a detection gap without tuning against the result."
+handoff:
+  path: studies/arxiv-2610.10062/HANDOFF.md
+  ready: true
+blockers:
+  - "Paper-level reproduction requires independently generated multi-turn trajectories rather than only released-data re-aggregation."
+  - "The original model panel uses provider/API models and large Qwen variants; exact paper-scale collection is not a free CPU task."
+frozen_evaluations:
+  - "official-master-trials-headline-audit-v1"
+  - "tool-fault-mechanism-synthetic-v1"
+entrypoints:
+  - "studies/arxiv-2610.10062/experiments/run_tool_fault_mechanism_synthetic.py"
+updated_at: "2026-10-10"

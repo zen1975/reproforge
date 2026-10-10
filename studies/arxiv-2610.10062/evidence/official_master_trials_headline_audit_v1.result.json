@@ -1,0 +1,26 @@
+{
+  "experiment_id": "official-master-trials-headline-audit-v1",
+  "source_type": "OFFICIAL_AUDIT",
+  "author_repository_commit": "7abc4bc26e29fa4d1e7799e94bc7c2a96ce3fc66",
+  "source_path": "03_data_processing/outputs/master_trials.csv",
+  "rows": 1920,
+  "rq1": {
+    "clean_baseline": {"n": 306, "detection_rate": 0.2679738562091503},
+    "quiet": {"n": 374, "detection_rate": 0.5882352941176471},
+    "loud": {"n": 936, "detection_rate": 0.9134615384615384},
+    "timeout": {"n": 379, "detection_rate": 0.9155672823218998},
+    "missing_tool": {"n": 273, "detection_rate": 0.9120879120879121},
+    "schema_drift": {"n": 284, "detection_rate": 0.9119718309859155}
+  },
+  "rq2_matched": {
+    "pairs": 450,
+    "pooled_detection_reasoning_minus_instruct": -0.09333333333333334,
+    "pooled_replanning_reasoning_minus_instruct": 0.10444444444444445,
+    "family_detection_differences": {
+      "claude": -0.062111801242236024,
+      "deepseek": -0.03968253968253968,
+      "qwen": -0.1656441717791411
+    }
+  },
+  "interpretation": "Direct re-aggregation of released scored data matches headline paper values. This verifies aggregation, not independently generated model behavior."
+}

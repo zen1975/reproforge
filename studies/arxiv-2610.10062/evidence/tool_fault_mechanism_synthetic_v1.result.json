@@ -1,0 +1,26 @@
+{
+  "all_pass": true,
+  "boundary": "Synthetic mechanism/protocol verification only; does not reproduce model behavioral rates.",
+  "experiment_id": "tool-fault-mechanism-synthetic-v1",
+  "faults": {
+    "clean_fire_count": 0,
+    "timeout_fire_count": 1,
+    "missing_tool_fire_count": 1,
+    "schema_drift_fire_count": 1,
+    "silent_corruption_fire_count": 1
+  },
+  "quiet_corruption": {
+    "shape_type_preserved": true,
+    "payload_changed": true,
+    "state_matches_successful_call": true
+  },
+  "metric_checks": {
+    "replan_tool_change": true,
+    "replan_arg_change": true,
+    "no_replan_same_action": true,
+    "repetition_three_same": true,
+    "no_repetition_two_same": true,
+    "agreement_exact": true,
+    "agreement_partial": true
+  }
+}

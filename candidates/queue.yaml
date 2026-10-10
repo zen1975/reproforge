@@ -129,9 +129,9 @@ candidates:
     candidate_capability: "agent.tool-fault-auditor"
     why_reusable: "Independent tool fault observability, clean-run-relative recovery, and separated detection/replanning/repetition measures are reusable across tool-using agent workflows."
     free_light_fit: "high"
-    next_gate: "PDF_PROTOCOL_REVIEW"
-    status: "SOURCE_VERIFIED"
-    notes: "arXiv abstract/full HTML reviewed; author code MIT and separate data license identified. Highest candidate for next study; no paper benchmark reproduced."
+    next_gate: "MODEL_BACKED_ANALOGUE"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full paper protocol reviewed. Author repository pinned at 7abc4bc26e29fa4d1e7799e94bc7c2a96ce3fc66; code MIT and BFCL-derived data Apache-2.0. ReproForge independently re-aggregated the released 1,920-trial master table and matched headline RQ1/RQ2 rates, and executed an independent synthetic fault/metric semantics test. Next lightweight gate is a frozen real-small-model analogue."
 
   - arxiv_id: "2610.10088"
     title: "SkillSandbox: Skill Verification via Dynamic Scenario Synthesis"
