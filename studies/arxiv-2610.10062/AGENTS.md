@@ -1,24 +1,30 @@
 # Agent Guide — arXiv:2610.10062
 
 ## State
-- Lifecycle: `PROTOCOL_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
-- Frozen: `official-master-trials-headline-audit-v1`, `tool-fault-mechanism-synthetic-v1`
+- Free/light phase: complete
+- Frozen: `official-master-trials-headline-audit-v1`, `tool-fault-mechanism-synthetic-v1`, `tool-fault-qwen0.5b-analogue-v1-negative`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
 ## Verified boundary
 
-The paper protocol, author-code/data licensing, released-data headline aggregation, and independent typed-fault semantics have been verified.
+The paper protocol, licensing, released-data aggregation, typed-fault semantics, and a real 0.5B model-backed analogue have been executed.
 
-The released 1,920-trial table is audit evidence only. It does not independently reproduce model behavior.
+The 0.5B analogue is negative evidence:
+
+- 18 / 18 valid decisions;
+- clean / loud / quiet all collapsed to `VERIFY`;
+- loud-vs-quiet discrimination: 0 pp.
+
+Do not prompt-tune this fixture after observing the result.
 
 ## Local/heavy next step
 
-After the frozen 0.5B analogue, paper-level work requires independently generated multi-turn trajectories with comparable fault conditions and model families.
+Independently generate paper-relevant multi-turn trajectories with legal BFCL-compatible data/environment and larger/comparable model execution.
 
-Do not tune prompts or task fixtures against frozen results.
+Released author trajectories are audit evidence only.
 
 ## Real implementation direction
 
@@ -34,4 +40,4 @@ Agent action
 → repetition audit
 ```
 
-Keep detection, replanning, recovery, and repetition separate. A valid tool result or valid output format does not imply semantic correctness.
+Keep baseline false alarms explicit. A valid interface or an always-VERIFY policy does not demonstrate fault discrimination.

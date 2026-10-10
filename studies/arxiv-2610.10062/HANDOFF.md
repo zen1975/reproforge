@@ -2,9 +2,9 @@
 
 ## State
 
-- Lifecycle: `PROTOCOL_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction verdict: `PARTIAL`
-- Free/lightweight phase: **not complete**
+- Free/lightweight phase: complete
 
 ## Completed
 
@@ -16,7 +16,31 @@
 - headline RQ1 detection rates matched;
 - pooled and per-family RQ2 matched-pair differences matched;
 - independent synthetic one-shot fault injection test;
-- independent replanning/repetition/state-agreement semantics test.
+- independent replanning/repetition/state-agreement semantics test;
+- real pinned Qwen2.5-0.5B-Instruct boundary run on a frozen clean/loud/quiet analogue.
+
+## Real-model boundary result
+
+Experiment:
+
+`tool-fault-qwen0.5b-analogue-v1`
+
+Model revision:
+
+`7ae557604adf67be50417f59c2c2f167def9a775`
+
+Observed:
+
+- valid outputs: 18 / 18
+- every output: `VERIFY`
+- clean detection: 1.0
+- loud detection: 1.0
+- quiet detection: 1.0
+- loud - quiet: 0.0 pp
+
+This is negative boundary evidence.
+
+Do not alter the frozen prompt/tasks to force a positive loud-vs-quiet gap.
 
 ## Frozen evidence
 
@@ -24,47 +48,42 @@ Do not tune against:
 
 - `official-master-trials-headline-audit-v1`
 - `tool-fault-mechanism-synthetic-v1`
+- `tool-fault-qwen0.5b-analogue-v1-negative`
 
-Released author data is audit evidence, not a dev set.
+## Local/heavy continuation
 
-## Next required lightweight experiment
+The next meaningful step is independently generated multi-turn agent trajectories under paper-relevant conditions.
 
-Run a real small open model behind a frozen tiny tool environment.
+Preserve:
 
-Minimum conditions:
+- legal dataset/environment provenance;
+- exact environment revision;
+- model ID and immutable revision/hash where available;
+- clean/loud/quiet matched task identity;
+- raw assistant messages;
+- raw tool calls and tool results;
+- fault markers;
+- detection;
+- replanning;
+- recovery relative to an independent clean run;
+- repetition metrics;
+- seed and inference settings.
 
-1. clean;
-2. loud explicit error;
-3. quiet corruption with a valid-looking payload.
+Do not use released author trajectories as a substitute for new behavioral evidence.
 
-Requirements:
+## Real implementation direction
 
-- pin model ID and immutable revision;
-- freeze tasks/prompts before execution;
-- preserve raw assistant messages and tool calls;
-- use the same detection definition across conditions;
-- report valid tool-call rate separately from detection;
-- do not change prompts after seeing results;
-- retain a negative/no-gap result if that is what occurs.
+The reusable result is not "always verify."
 
-A Qwen2.5-0.5B-Instruct analogue is acceptable as a boundary experiment but must be labelled an analogue, not a reproduction of the paper's model panel.
+A production tool-fault auditor should preserve separate layers for:
 
-## Paper-level continuation
+```text
+tool result validity
+→ fault visibility
+→ semantic suspicion
+→ replanning
+→ recovery
+→ repetition / effort
+```
 
-Paper-level reproduction requires independently generating multi-turn trials with sufficiently comparable task environments, faults, and matched model conditions. The author's released trajectories can verify aggregation but cannot substitute for new trajectories.
-
-## Source configuration captured
-
-Author repository declares:
-
-- 24 frozen BFCL tasks;
-- 5 conditions;
-- 2 repetitions per cell;
-- max 15 tool calls;
-- temperature 1.0;
-- timeout / missing tool / schema drift as loud faults;
-- silent corruption as quiet;
-- repetition threshold: 3 consecutive same-tool calls;
-- recovery against the same model/task clean end state.
-
-Do not silently change these facts when making paper-comparable claims.
+A conservative response policy can make detection metrics look perfect while carrying no fault discrimination signal. Keep baseline false alarms visible.

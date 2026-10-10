@@ -2,9 +2,11 @@
 
 ## Current verdict
 
-**PARTIAL / PROTOCOL_VERIFIED**
+**PARTIAL / HEAVY_COMPUTE_READY**
 
-The paper's fault taxonomy, measurement decomposition, released-data aggregation, and core injection/scoring semantics are now independently checked. The study is **not** reproduced at paper level because ReproForge has not independently generated comparable model trajectories.
+The current free/lightweight boundary is complete. ReproForge has independently checked the paper protocol and core fault semantics, re-aggregated the released 1,920-trial scored table, and executed a real pinned 0.5B model analogue.
+
+This is **not** paper-level reproduction because comparable multi-turn model trajectories have not been independently regenerated.
 
 ## Source and provenance
 
@@ -16,43 +18,29 @@ The paper's fault taxonomy, measurement decomposition, released-data aggregation
 - BFCL dataset revision declared by author: `61fc0608cfd831fcfbbaa676ebdfef0ed963eeda`
 - Gorilla environment commit declared by author: `6ea57973c7a6097fd7c5915698c54c17c5b1b6c8`
 
-## Paper protocol captured
-
-The design uses five conditions: clean, timeout, missing tool, schema drift, and silent corruption. Timeout, missing tool, and schema drift surface explicit errors; silent corruption returns a well-formed but wrong value.
-
-The paper separates:
-
-- detection;
-- replanning;
-- recovery relative to the same model's independent clean end state;
-- repeated use of the same tool;
-- effort relative to the model/task clean baseline.
-
 ## Official released-data audit
 
-ReproForge re-aggregated the released `master_trials.csv` directly rather than trusting the paper tables or author analysis outputs.
+Direct re-aggregation of the released `master_trials.csv` produced:
 
-Observed from 1,920 rows:
-
-- clean target-success baseline detection: 82 / 306 = **26.797%**
-- quiet silent-corruption detection: 220 / 374 = **58.824%**
-- loud-fault detection: 855 / 936 = **91.346%**
-- timeout: 347 / 379 = **91.557%**
-- missing tool: 249 / 273 = **91.209%**
-- schema drift: 259 / 284 = **91.197%**
+- clean baseline detection: **26.797%** (82 / 306)
+- quiet silent-corruption detection: **58.824%** (220 / 374)
+- loud-fault detection: **91.346%** (855 / 936)
+- timeout: **91.557%**
+- missing tool: **91.209%**
+- schema drift: **91.197%**
 
 Matched reasoning-vs-instruct audit:
 
 - matched pairs: **450**
-- pooled detection difference: **-9.333 percentage points**
-- pooled replanning difference: **+10.444 percentage points**
-- Claude detection difference: **-6.211 points**
-- DeepSeek detection difference: **-3.968 points**
-- Qwen detection difference: **-16.564 points**
+- pooled detection difference: **-9.333 pp**
+- pooled replanning difference: **+10.444 pp**
+- Claude detection difference: **-6.211 pp**
+- DeepSeek detection difference: **-3.968 pp**
+- Qwen detection difference: **-16.564 pp**
 
-These match the released paper results to displayed precision.
+These match the released paper outputs to displayed precision.
 
-This is an **OFFICIAL_AUDIT**, not independent model reproduction.
+This remains an **OFFICIAL_AUDIT**, not independently generated model behavior.
 
 ## Independent synthetic mechanism verification
 
@@ -60,36 +48,92 @@ Experiment: `tool-fault-mechanism-synthetic-v1`
 
 Verified:
 
-- clean condition injects no fault;
-- each non-clean condition fires exactly once;
-- loud faults do not apply the underlying successful state mutation at the faulted call;
-- silent corruption applies the successful underlying state transition;
-- silent corruption alters the returned payload while preserving structure/type;
-- replanning is triggered by tool or argument change;
-- three consecutive same-tool calls satisfy the repetition rule;
-- exact and partial state-agreement semantics execute as declared.
+- one-shot fault firing;
+- explicit-error loud faults;
+- well-formed quiet corruption;
+- quiet corruption preserves payload structure/type;
+- quiet corruption keeps the underlying successful state mutation;
+- replanning semantics;
+- repetition threshold;
+- exact and partial state-agreement semantics.
 
 Result: **PASS**
 
-## Remaining lightweight work
+## Real 0.5B model-backed boundary
 
-A real small-model analogue is still justified before this study can be closed at the current-environment boundary.
+Experiment: `tool-fault-qwen0.5b-analogue-v1`
 
-The next experiment must be frozen before execution and should compare at least:
+Model:
 
-- clean;
-- one loud explicit-error condition;
-- quiet well-formed corruption.
+`Qwen/Qwen2.5-0.5B-Instruct`
 
-It should preserve raw model outputs and tool traces, and must not be prompt-tuned after observing whether a loud/quiet gap appears.
+Resolved revision:
 
-## What must not be claimed yet
+`7ae557604adf67be50417f59c2c2f167def9a775`
+
+Environment:
+
+- PyTorch `2.14.1+cpu`
+- Transformers `4.57.6`
+- GitHub Actions CPU runner
+
+Frozen fixture:
+
+- 6 tasks
+- clean / loud / quiet
+- 18 decisions total
+- fixed ACCEPT / RETRY / VERIFY interface
+
+Result:
+
+- valid outputs: **18 / 18**
+- clean: **VERIFY 6 / 6**
+- loud: **VERIFY 6 / 6**
+- quiet: **VERIFY 6 / 6**
+- clean detection rate: **1.0**
+- loud detection rate: **1.0**
+- quiet detection rate: **1.0**
+- loud - quiet: **0.0 pp**
+
+Workflow: `38045644197`
+
+Artifact: `11666539238`
+
+Artifact digest:
+
+`sha256:1b1640beb999e672af4c0617b09cb7efa18020754dc06cb42d26a7c6fcdd08a1`
+
+Interpretation:
+
+This is **negative boundary evidence**.
+
+The model obeyed the decision interface but did not discriminate between normal results, explicit failures, and silent corruption. It collapsed to a conservative `VERIFY` policy for every case.
+
+Therefore:
+
+`valid decision interface != fault-type discrimination`
+
+The frozen fixture must not be prompt-tuned to manufacture a loud/quiet effect.
+
+## Current-environment closure
+
+The remaining meaningful work is no longer another prompt variation on the 0.5B fixture.
+
+The next step is independently generated, paper-relevant multi-turn trajectories using a legal BFCL-compatible environment and larger/comparable model execution.
+
+Therefore the study is:
+
+- `HEAVY_COMPUTE_READY`
+- `free_light_phase_complete: true`
+- `reproduction_status: PARTIAL`
+
+## What must not be claimed
 
 Do not claim:
 
-- paper-level reproduction;
-- independent confirmation of the 91.3% vs 58.8% behavioral rates;
-- confirmation that reasoning models generally detect less;
-- confirmation of paper recovery effects.
+- full paper reproduction;
+- independent confirmation of the paper's 91.3% vs 58.8% behavioral gap;
+- that 0.5B models reproduce the paper phenomenon;
+- general reasoning-vs-instruct conclusions from the 0.5B analogue.
 
-Those require independently generated trajectories.
+The 0.5B result is specifically a negative boundary result.

@@ -1,0 +1,20 @@
+{
+  "experiment_id": "tool-fault-qwen0.5b-analogue-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "tasks": 6,
+  "conditions": ["clean", "loud", "quiet"],
+  "metrics": {
+    "clean": {"n": 6, "valid_rate": 1.0, "detection_rate": 1.0, "choices": {"ACCEPT": 0, "RETRY": 0, "VERIFY": 6}},
+    "loud": {"n": 6, "valid_rate": 1.0, "detection_rate": 1.0, "choices": {"ACCEPT": 0, "RETRY": 0, "VERIFY": 6}},
+    "quiet": {"n": 6, "valid_rate": 1.0, "detection_rate": 1.0, "choices": {"ACCEPT": 0, "RETRY": 0, "VERIFY": 6}}
+  },
+  "loud_minus_quiet_detection_pp": 0.0,
+  "workflow_run": 38045644197,
+  "artifact_id": 11666539238,
+  "artifact_digest": "sha256:1b1640beb999e672af4c0617b09cb7efa18020754dc06cb42d26a7c6fcdd08a1",
+  "interpretation": "Negative boundary evidence: the 0.5B model obeyed the decision interface but collapsed to VERIFY in every clean, loud, and quiet case. No loud-vs-quiet discrimination was observed. Do not tune the frozen fixture to manufacture a positive effect.",
+  "claim_scope": "Frozen small-model analogue only; no BFCL or paper-panel reproduction claim."
+}
