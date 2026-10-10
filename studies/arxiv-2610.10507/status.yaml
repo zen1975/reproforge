@@ -1,18 +1,19 @@
 study_id: arxiv-2610.10507
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The full paper and published RouterLM action contract are reviewed. An independent state-machine fixture implements CALL_PRIMITIVE/SYNTHESIZE/ACCEPT_CONTEXT validation, evidence provenance and deduplication, execution feedback/history, fail-closed failures, synthesis-constraint completeness, and external accept-sufficiency for computed evidence. Workflow execution evidence is pending."
-next_step: "Execute and freeze the routing mechanism workflow, then run a pinned small-model RouterLM analogue over frozen primitive/synthesis/accept cases without changing external sufficiency truth."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete. The RECAST routing/state/provenance mechanism independently passes its frozen contract tests. A real pinned Qwen2.5-0.5B Router analogue achieved 87.5% valid structured actions but only 12.5% routing accuracy, 0% primitive-subtype accuracy, and 100% premature ACCEPT_CONTEXT on the computed-evidence guard case, with ACCEPT collapse across every parseable case. Remaining meaningful work requires trained/larger RouterLM execution, CompilerLM/AnswerLM integration, benchmark environments and SFT/GRPO-scale compute."
+next_step: "Run paper-relevant RouterLM training/inference with larger pinned models and benchmark environments, preserving the frozen external sufficiency/provenance contract and explicitly measuring premature-accept, action, primitive, compiler and answer-stage errors."
 handoff:
   path: studies/arxiv-2610.10507/HANDOFF.md
   ready: true
 blockers:
   - "Paper-scale routing performance uses Qwen3.5-9B SFT+GRPO and eight A100 80GB GPUs."
   - "CompilerLM/AnswerLM and benchmark reproduction require model/service access and six in-domain plus held-out benchmark environments."
-  - "Mechanism verification does not establish the reported 75.6%/79.3% success rates."
+  - "The frozen 0.5B result is negative boundary evidence and must not be prompt-tuned into a positive result."
 frozen_evaluations:
   - "recast-routing-mechanism-v1"
+  - "recast-qwen0.5b-router-analogue-v1-accept-collapse"
 entrypoints:
   - "studies/arxiv-2610.10507/experiments/run_routing_mechanism.py"
   - ".github/workflows/recast-routing-mechanism.yml"

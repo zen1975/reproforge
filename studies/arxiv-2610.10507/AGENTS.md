@@ -1,35 +1,42 @@
 # Agent Guide — arXiv:2610.10507
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
-- Frozen: `recast-routing-mechanism-v1`
+- Free/light phase: complete
+- Frozen: `recast-routing-mechanism-v1`, `recast-qwen0.5b-router-analogue-v1-accept-collapse`
 
 Read `status.yaml` and `HANDOFF.md` first.
 
 ## Verified boundary
 
-Target architecture:
+Deterministic mechanism PASS:
 
 ```text
-Task + source profile + evidence + history
-→ Router action
-   ├─ CALL_PRIMITIVE
-   ├─ SYNTHESIZE
-   └─ ACCEPT_CONTEXT
-→ external executor / validator
+Task/source/evidence/history
+→ exactly one Router action
+→ external executor
 → evidence + provenance + feedback
 → next round
-→ frozen AnswerLM only after ACCEPT
+→ AnswerLM only after valid ACCEPT
 ```
 
-RouterLM does not own source truth, operation execution truth or final sufficiency truth in ReproForge evaluation.
+Real 0.5B boundary:
+
+- 87.5% structured-contract validity;
+- 12.5% action accuracy;
+- 0% primitive subtype accuracy;
+- premature ACCEPT on the computed-result guard;
+- ACCEPT collapse on every parseable case.
+
+Do not prompt-tune frozen fixtures.
 
 ## Local/heavy next step
 
-After mechanism execution and frozen small-model router analogue, training-scale SFT/GRPO requires heavy compute.
+Paper-relevant continuation requires trained/larger RouterLM, real primitives, CompilerLM, AnswerLM and benchmark-scale evaluation.
 
 ## Real implementation direction
 
-Never equate "tool executed successfully" with "evidence sufficient." Preserve operation provenance and block ACCEPT until the task-specific evidence contract is satisfied.
+Never let a fluent `reason` field override the audited action.
+
+A router can verbally recognize missing evidence and still terminate incorrectly. Keep sufficiency and provenance validators outside the model.

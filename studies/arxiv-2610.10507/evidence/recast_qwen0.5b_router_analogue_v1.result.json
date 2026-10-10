@@ -1,0 +1,18 @@
+{
+  "experiment_id": "recast-qwen0.5b-router-analogue-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "cases": 8,
+  "valid_contract_rate": 0.875,
+  "action_accuracy": 0.125,
+  "primitive_accuracy_on_primitive_cases": 0.0,
+  "premature_accept_rate": 1.0,
+  "workflow_run": 38046855731,
+  "artifact_id": 11668455566,
+  "artifact_digest": "sha256:cd81ba35b33ed569c82387d8b7086b0c0ffd2b9cdee01a9ae237bcbb657c87c8",
+  "observed_pattern": "The model selected ACCEPT_CONTEXT on every parseable case. Only the case with already-sufficient final evidence was correct. One SYNTHESIZE case produced truncated invalid JSON. In several wrong ACCEPT_CONTEXT cases, the reason text explicitly stated that evidence was missing or computation was still required.",
+  "interpretation": "Negative boundary evidence: a valid structured interface and semantically aware reason text do not imply correct evidence-routing action selection. The 0.5B model collapsed to premature context acceptance.",
+  "claim_scope": "Frozen 0.5B routing analogue only; no SFT/GRPO, compiler quality, AnswerLM, or paper benchmark claim."
+}
