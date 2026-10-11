@@ -15,4 +15,6 @@ frozen_evaluations:
   - "mass-rsi-loop-mechanism-v1"
 entrypoints:
   - "studies/arxiv-2610.12176/experiments/run_rsi_loop_mechanism.py"
+  - "studies/arxiv-2610.12176/experiments/run_qwen0.5b_workflow_eval_analogue.py"
+  - ".github/workflows/mass-qwen0.5b-workflow-eval.yml"
 updated_at: "2026-10-11"
