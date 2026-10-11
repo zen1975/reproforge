@@ -1,0 +1,18 @@
+study_id: arxiv-2610.12176
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Full public protocol and license/provenance boundaries are reviewed. An independent mechanism fixture verifies generation boundaries, homogeneous executor/evaluator/optimizer roles, elite-one workflow retention with non-monotonic proposal execution, train/test isolation, task-local trajectory ranking, validation separation, held-out external evaluation, and recursive model-generation transition. No model training or role-improvement claim has yet been independently reproduced."
+next_step: "Run frozen small-model analogues for workflow proposal/self-evaluation behavior and evaluator agreement without training, then determine whether any additional CPU-level behavioral boundary remains before moving to LoRA/GPU-scale recursive training."
+handoff:
+  path: studies/arxiv-2610.12176/HANDOFF.md
+  ready: true
+blockers:
+  - "Paper-level recursive improvement uses Qwen3.6-27B, two MASS cycles, 17.2M supervised tokens in cycle 1, long-context LoRA training, multi-agent trajectories, and large benchmark execution."
+  - "Official SakanaAI/mass MASS-specific code has no public OSS license; it may be inspected but is not copied or redistributed."
+  - "The official repository documents protocol differences from the paper, including fixed-reference workflow search instead of direct incumbent comparison and reconstructed second-cycle budget/trajectory tournament details."
+frozen_evaluations:
+  - "mass-rsi-loop-mechanism-v1"
+entrypoints:
+  - "studies/arxiv-2610.12176/experiments/run_rsi_loop_mechanism.py"
+updated_at: "2026-10-11"

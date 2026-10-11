@@ -1,0 +1,17 @@
+{
+  "experiment_id": "mass-rsi-loop-mechanism-v1",
+  "all_pass": true,
+  "checks": {
+    "elite_retains_best_seen": true,
+    "all_proposals_executed": true,
+    "non_monotonic_execution_preserved": true,
+    "train_test_disjoint": true,
+    "only_train_tasks_enter_selection": true,
+    "train_validation_disjoint": true,
+    "self_eval_drives_inner_loop": true,
+    "external_eval_held_out": true,
+    "homogeneous_roles_per_generation": true,
+    "recursive_model_transition": true
+  },
+  "claim_scope": "Independent RSI-loop/protocol verification only; no model training, benchmark, evaluator-improvement, or coordination-internalization claim."
+}

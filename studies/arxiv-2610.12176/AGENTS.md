@@ -1,0 +1,21 @@
+# Agent Guide — arXiv:2610.12176
+
+State:
+- Lifecycle: MECHANISM_VERIFIED
+- Reproduction: PARTIAL
+- Free/light phase: incomplete
+- Frozen: mass-rsi-loop-mechanism-v1
+
+Verified boundary:
+workflow proposal -> execution -> self-evaluation -> elite retention -> trajectory generation -> self-ranking -> SFT -> new model generation -> same new model becomes executor/evaluator/optimizer.
+
+External evaluation is not part of the inner improvement loop.
+
+License boundary:
+The paper is CC BY 4.0. The official SakanaAI/mass repository is inspectable, but its NOTICE says MASS-specific code has no public open-source license. Do not copy or redistribute it.
+
+Next lightweight step:
+Use a pinned small open model only for proposal/self-evaluation analogues. External code owns structural validity, state transitions, and held-out truth.
+
+Scientific stop rule:
+Do not call a result recursive self-improvement unless an independently updated model improves a later improvement role under held-out evidence. Interface validity or one-generation prompt search is insufficient.
