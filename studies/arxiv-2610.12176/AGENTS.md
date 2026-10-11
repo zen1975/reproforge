@@ -19,3 +19,7 @@ Use a pinned small open model only for proposal/self-evaluation analogues. Exter
 
 Scientific stop rule:
 Do not call a result recursive self-improvement unless an independently updated model improves a later improvement role under held-out evidence. Interface validity or one-generation prompt search is insufficient.
+
+## Local/heavy next step
+
+Paper-level work requires at least one real next-generation model update followed by held-out tests of executor, optimizer, and evaluator improvement. The lightweight analogue must not be promoted into an RSI claim without that weight-update boundary.
