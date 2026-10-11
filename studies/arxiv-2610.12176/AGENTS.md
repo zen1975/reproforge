@@ -23,3 +23,7 @@ Do not call a result recursive self-improvement unless an independently updated 
 ## Local/heavy next step
 
 Paper-level work requires at least one real next-generation model update followed by held-out tests of executor, optimizer, and evaluator improvement. The lightweight analogue must not be promoted into an RSI claim without that weight-update boundary.
+
+## Real implementation direction
+
+Treat MASS as a gated state machine: model proposals and self-judgments are evidence inputs, while generation transitions, split isolation, checkpoint selection, external evaluation, and promotion to a new model generation remain externally auditable state changes. A successor model is not accepted as recursively improved until held-out role-specific evidence supports the transition.
