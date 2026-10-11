@@ -217,7 +217,7 @@ candidates:
     source_url: "https://arxiv.org/abs/2610.08761"
     source_verified: true
     priority: "A"
-    candidate_capability: "evaluation.judge-drift-auditor"
+    candidate_capability: "research.judge-drift-auditor"
     why_reusable: "Joint policy and judge refinement motivates reusable audits of judge drift, disagreement and calibration."
     free_light_fit: "medium"
     next_gate: "PDF_PROTOCOL_REVIEW"
