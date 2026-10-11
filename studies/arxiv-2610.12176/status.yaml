@@ -3,7 +3,7 @@ lifecycle: MECHANISM_VERIFIED
 reproduction_status: PARTIAL
 free_light_phase_complete: false
 current_boundary: "Full public protocol and license/provenance boundaries are reviewed. An independent mechanism fixture verifies generation boundaries, homogeneous executor/evaluator/optimizer roles, elite-one workflow retention with non-monotonic proposal execution, train/test isolation, task-local trajectory ranking, validation separation, held-out external evaluation, and recursive model-generation transition. No model training or role-improvement claim has yet been independently reproduced."
-next_step: "Run frozen small-model analogues for workflow proposal/self-evaluation behavior and evaluator agreement without training, then determine whether any additional CPU-level behavioral boundary remains before moving to LoRA/GPU-scale recursive training."
+next_step: "Run the frozen Qwen2.5-0.5B one-cycle LoRA analogue trained only on coordination-rich task-solving traces, then compare evaluator and optimizer behavior before/after without exposing evaluator labels during training."
 handoff:
   path: studies/arxiv-2610.12176/HANDOFF.md
   ready: true
@@ -17,4 +17,6 @@ entrypoints:
   - "studies/arxiv-2610.12176/experiments/run_rsi_loop_mechanism.py"
   - "studies/arxiv-2610.12176/experiments/run_qwen0.5b_workflow_eval_analogue.py"
   - ".github/workflows/mass-qwen0.5b-workflow-eval.yml"
+  - "studies/arxiv-2610.12176/experiments/run_qwen0.5b_one_cycle_lora.py"
+  - ".github/workflows/mass-qwen0.5b-one-cycle.yml"
 updated_at: "2026-10-11"
