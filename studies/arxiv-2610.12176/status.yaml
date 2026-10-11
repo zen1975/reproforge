@@ -1,9 +1,9 @@
 study_id: arxiv-2610.12176
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "Full public protocol and license/provenance boundaries are reviewed. An independent mechanism fixture verifies generation boundaries, homogeneous executor/evaluator/optimizer roles, elite-one workflow retention with non-monotonic proposal execution, train/test isolation, task-local trajectory ranking, validation separation, held-out external evaluation, and recursive model-generation transition. No model training or role-improvement claim has yet been independently reproduced."
-next_step: "Run the frozen Qwen2.5-0.5B one-cycle LoRA analogue trained only on coordination-rich task-solving traces, then compare evaluator and optimizer behavior before/after without exposing evaluator labels during training."
+free_light_phase_complete: true
+current_boundary: "Free/lightweight verification is complete. The MASS RSI loop contract is independently verified; a frozen Qwen2.5-0.5B workflow/evaluator analogue produced 100% parseable evaluator outputs but 50% accuracy and only 25% structurally valid workflow proposals in its standalone run. A separate one-cycle LoRA analogue trained only on coordination-rich task-solving traces produced no within-run cross-role improvement: evaluator accuracy stayed 50% -> 50% and optimizer valid-workflow rate stayed 0% -> 0%. These are negative/partial boundary results, not evidence against paper-scale MASS."
+next_step: "Reproduce at least one protocol-comparable recursive model generation with a substantially larger model, multi-agent task execution, trajectory selection, weight update, and held-out role-specific evaluation. Cross-role improvement must be demonstrated after an actual model update before any RSI reproduction claim."
 handoff:
   path: studies/arxiv-2610.12176/HANDOFF.md
   ready: true
@@ -11,8 +11,11 @@ blockers:
   - "Paper-level recursive improvement uses Qwen3.6-27B, two MASS cycles, 17.2M supervised tokens in cycle 1, long-context LoRA training, multi-agent trajectories, and large benchmark execution."
   - "Official SakanaAI/mass MASS-specific code has no public OSS license; it may be inspected but is not copied or redistributed."
   - "The official repository documents protocol differences from the paper, including fixed-reference workflow search instead of direct incumbent comparison and reconstructed second-cycle budget/trajectory tournament details."
+  - "The lightweight one-cycle analogue is intentionally frozen after observing a null cross-role transfer result; do not tune prompts, examples, or step count against that outcome."
 frozen_evaluations:
   - "mass-rsi-loop-mechanism-v1"
+  - "mass-qwen0.5b-workflow-eval-analogue-v1"
+  - "mass-qwen0.5b-one-cycle-lora-v1-null-transfer"
 entrypoints:
   - "studies/arxiv-2610.12176/experiments/run_rsi_loop_mechanism.py"
   - "studies/arxiv-2610.12176/experiments/run_qwen0.5b_workflow_eval_analogue.py"

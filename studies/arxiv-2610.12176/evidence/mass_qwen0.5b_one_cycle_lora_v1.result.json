@@ -1,0 +1,32 @@
+{
+  "experiment_id": "mass-qwen0.5b-one-cycle-lora-v1",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "resolved_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "torch_version": "2.14.1+cpu",
+  "transformers_version": "4.57.6",
+  "training": {
+    "source": "coordination-rich task-solving traces only",
+    "examples": 4,
+    "steps": 4,
+    "learning_rate": 0.00002,
+    "losses": [4.554328441619873, 5.124195098876953, 4.200761318206787, 4.522956371307373]
+  },
+  "before": {
+    "evaluator": {"valid_rate": 1.0, "accuracy": 0.5},
+    "optimizer": {"valid_workflow_rate": 0.0}
+  },
+  "after": {
+    "evaluator": {"valid_rate": 1.0, "accuracy": 0.5},
+    "optimizer": {"valid_workflow_rate": 0.0}
+  },
+  "delta": {
+    "evaluator_accuracy": 0.0,
+    "optimizer_valid_workflow_rate": 0.0
+  },
+  "workflow_run": 38125358438,
+  "artifact_id": 11697580235,
+  "artifact_digest": "sha256:6134421ddd72c077a13b578748e6410ed19f39f7405b348fe46df3d3e0b93ae2",
+  "interpretation": "Null cross-role transfer in the frozen tiny analogue. Task-solving-only coordination traces did not improve held-out evaluator accuracy or workflow structural validity. This is not a paper-scale RSI result and does not refute MASS.",
+  "baseline_warning": "The separate standalone workflow/evaluator experiment observed 25% optimizer structural validity. This one-cycle experiment observed 0% in its own pre-training baseline. Transfer conclusions use only within-run paired before/after values.",
+  "claim_scope": "Tiny synthetic one-cycle LoRA analogue only; no paper-scale recursive self-improvement claim."
+}
