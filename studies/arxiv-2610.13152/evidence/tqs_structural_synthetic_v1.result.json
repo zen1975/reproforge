@@ -1,0 +1,55 @@
+{
+  "assertions": {
+    "OEC_is_bounded": true,
+    "PED_detects_failed_repetition": true,
+    "SCP_detects_no_edit": true,
+    "TTE_separates_loop": true,
+    "all_features_bounded": true,
+    "same_length_baseline_tie": true
+  },
+  "assertions_passed": 6,
+  "assertions_total": 6,
+  "claim_scope": "Published TTE, SCP, PED equations and OEC analogue; not full TQS, no training/held-out corpus",
+  "environment": {
+    "dependencies": "Python standard library only",
+    "platform": "Linux x86_64",
+    "python": "3.13.5"
+  },
+  "experiment_id": "tqs-structural-components-synthetic-v1",
+  "experiment_kind": "independent_synthetic_mechanism_test",
+  "features": {
+    "clean": {
+      "OEC": 0.269727891103149,
+      "PED": 0.5,
+      "SCP": 1,
+      "TTE": 0.5189897882678477
+    },
+    "loop": {
+      "OEC": 1.1102230246251565e-16,
+      "PED": 0,
+      "SCP": 0,
+      "TTE": 0
+    }
+  },
+  "fixture_sha256": "d15d23173788d0cedd498f7519a43f51f7853bb8600161eb0e8a13b78957dc69",
+  "fixtures": {
+    "baseline_step_count": {
+      "clean": 12,
+      "loop": 12
+    },
+    "steps_per_trace": 12,
+    "trace_count": 2
+  },
+  "limitations": [
+    "No public corpus processed",
+    "No author implementation copied",
+    "No TQS composite or IAC/PSN/DPI",
+    "OEC initial-window convention is an independent analogue",
+    "No training or paper-level accuracy reproduction",
+    "Frozen after first observation; do not tune against these fixtures"
+  ],
+  "paper_reproduced": false,
+  "seed": 20261013,
+  "source_arxiv": "2610.13152",
+  "source_sha256": "bfd7db1595cc6804ea6e1f4dca305df6525b5739911e8db8f08c2bad7113a41b"
+}

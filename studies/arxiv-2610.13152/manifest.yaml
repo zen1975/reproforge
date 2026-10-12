@@ -1,0 +1,38 @@
+schema_version: "0.1"
+paper:
+  title: "Quality, Not Just Outcome: A Structural Scoring Framework for Selecting Coding-Agent Trajectories for Supervised Fine-Tuning"
+  canonical_url: "https://arxiv.org/abs/2610.13152"
+  arxiv_id: "2610.13152"
+  authors: ["Sida Li", "Yuanxin Liu", "Shicheng Li", "Linli Yao", "Xu Sun", "Haoli Bai", "Xiaohui Li"]
+  license: "arXiv non-exclusive distribution license"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Only four published structural component equations reconstructed; independent synthetic fixture. No author code, dataset or paper assets copied."
+external_assets:
+  - kind: "CODE"
+    name: "Author TQS reference repository"
+    source: "https://github.com/DuHeng0128/TQS"
+    license: "MIT"
+    license_status: "VERIFIED"
+    redistributed: false
+  - kind: "DATASET"
+    name: "CoderForge-Preview trajectory corpus"
+    source: "Paper arXiv:2610.13152"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+  - kind: "MODEL"
+    name: "Qwen3-Coder-30B-A3B-Instruct"
+    source: "Paper arXiv:2610.13152"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-structural-mechanism"
+    statement: "Published TTE/SCP/PED components can be independently computed and distinguish an error loop from a convergent trace of equal length."
+    acceptance_criteria: "Execute deterministic synthetic fixtures; 6 predefined assertions and 10 regression tests pass; preserve source and fixture hashes; distinguish length-only baseline."
+  - id: "C2-full-protocol"
+    statement: "The seven-component TQS and selection protocol can rank public trajectories and improve downstream SFT."
+    acceptance_criteria: "Requires complete component implementation, licensed corpus, fixed selection baselines, actual SFT and held-out SWE-Bench Verified evaluation. Not tested here."

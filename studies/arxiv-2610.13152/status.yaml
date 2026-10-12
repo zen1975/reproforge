@@ -1,0 +1,18 @@
+study_id: arxiv-2610.13152
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Independent synthetic mechanism test executed: 6/6 predefined assertions and 10/10 local unit tests pass; TTE/SCP/PED distinguish equal-length clean and failed-loop traces. No public corpus, full TQS, IAC/PSN/DPI, SFT, or paper benchmark reproduced."
+next_step: "Implement remaining published TQS components and source-aligned parsers, obtain licensed public corpus, run paired failure/success and ranking baselines, add unseen frozen evaluation; do not tune on observed synthetic fixtures."
+handoff:
+  path: studies/arxiv-2610.13152/HANDOFF.md
+  ready: false
+blockers:
+  - "Full IAC lexicon and dirty-pattern extraction details require author code/protocol audit."
+  - "CoderForge-Preview access/license and Qwen3-Coder-30B-A3B SFT compute are not yet verified."
+  - "CI green and protocol-equivalent evaluation must be confirmed before HEAVY_COMPUTE_READY."
+frozen_evaluations:
+  - "tqs-structural-components-synthetic-v1"
+entrypoints:
+  - "studies/arxiv-2610.13152/experiments/run_structural_audit.py"
+updated_at: "2026-10-13"
