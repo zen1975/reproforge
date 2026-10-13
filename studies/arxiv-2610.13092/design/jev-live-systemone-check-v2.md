@@ -89,6 +89,19 @@ Pre-registered rule consequence: the control is outside the window, so the rule 
 
 Reading guard: these pilot numbers are for calibration and harness validation; they are not the test result and must not be quoted as the C-vs-J finding.
 
+### Pilot 2 outcome (generator g2, calibration iteration 1; unseen seeds 1100-1103; evidence kept)
+
+Files: `evidence/jev_v2_pilot2_{jev,control}.result.json`, `evidence/jev_v2_pilot2_analysis.json` (CI-verified). Spend $0.030 (Jev) + $0.132 (control); no infrastructure failures or invalid responses.
+
+| | Jev | Control |
+|---|---|---|
+| Difficulty window (initial error, stress) | **22.9% - inside** | **2.1% - outside (pilot 1: 6.3%)** |
+| Final success, stress natural | 80.2% | 97.9% |
+| Forced-trap recovery (primary C5) | 79.2% | 93.8% |
+| Decision latency / call | 0.20 s | 1.53 s |
+
+The rule's remedy (harder generator) made the control *easier*, not harder: its initial errors fell from 6.3% to 2.1% while Jev stayed inside the window. Per-family: Jev floors on `injected` (100% initial error, 8% success) and is at 67% on `numeric`; the redesigned `premature` family does not discriminate (0 premature completions for either arm); control's remaining weaknesses are small (indirection 83% final success, literal forced recovery 67%). Reaching >=10% control error would require stressors that push Jev toward the floor, defeating the "both arms non-degenerate" purpose of the window. Pilot-only numbers; not the test result.
+
 ## 7. Metrics and decision rules (pre-registered)
 
 Per arm and per stressor family:
