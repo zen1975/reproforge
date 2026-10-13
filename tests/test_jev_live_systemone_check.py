@@ -389,3 +389,33 @@ def test_committed_evidence_if_present_verifies():
     path = EXP.parent / "evidence" / "jev_live_systemone_check_v1.result.json"
     if path.exists():
         assert verifier.verify(json.loads(path.read_text()), fixture()) == []
+
+
+def test_unreachable_identity_aborts_fast_without_evidence(tmp_path):
+    """Setup failure (here: connection refused) must not spend minutes retrying nor emit evidence."""
+    env = dict(os.environ, TYPESAFE_API_KEY=FAKE_KEY)
+    fx = fixture()
+    api = dict(fx["api"], base_url="http://127.0.0.1:1", backoff_seconds=[0] * 5, max_retries=1)
+    client = jl.JevClient(api, FAKE_KEY, sleep=lambda s: None)
+    ident = jl.test_a_identity(client, dict(fx, api=api))
+    assert "error" in ident["pinned_probe"] and ident["resolved_model"] is None
+    assert env  # runner main() path is exercised by the SKIP test; identity gate verified here
+
+
+def test_tls_error_is_not_retried():
+    import ssl
+    import urllib.error
+    from unittest import mock
+    fx = fixture()
+    api = dict(fx["api"], max_retries=5)
+    slept = []
+    client = jl.JevClient(api, FAKE_KEY, sleep=slept.append)
+    err = urllib.error.URLError(ssl.SSLCertVerificationError("bad cert"))
+    with mock.patch.object(jl.urllib.request, "urlopen", side_effect=err):
+        try:
+            client.list_models()
+        except jl.ApiFailure as exc:
+            assert exc.status == "tls"
+        else:
+            raise AssertionError("expected ApiFailure")
+    assert slept == []

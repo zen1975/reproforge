@@ -15,6 +15,7 @@ import argparse
 import hashlib
 import json
 import os
+import ssl
 import statistics
 import sys
 import time
@@ -195,6 +196,10 @@ def make_decision(choice, *, valid, probabilities=None, confidence=None, latency
     }
 
 
+def progress(msg: str) -> None:
+    print(f"[{time.strftime('%H:%M:%S')}] {msg}", file=sys.stderr, flush=True)
+
+
 def cost_usd(usage: dict, pricing: dict) -> float:
     return (
         usage.get("input_tokens", 0) * pricing["usd_per_million_input_tokens"]
@@ -239,6 +244,7 @@ class JevClient:
                     }
             except urllib.error.HTTPError as err:
                 detail = err.read()[:2000].decode("utf-8", "replace")
+                progress(f"HTTP {err.code} on {method} {path} (retry {retries})")
                 if err.code in self.cfg["retry_statuses"] and retries < self.cfg["max_retries"]:
                     wait = self.cfg["backoff_seconds"][retries]
                     ra = err.headers.get("retry-after")
@@ -250,6 +256,8 @@ class JevClient:
                     continue
                 raise ApiFailure(err.code, detail) from None
             except (urllib.error.URLError, TimeoutError) as err:
+                if isinstance(getattr(err, "reason", None), ssl.SSLError):
+                    raise ApiFailure("tls", str(err)[:300]) from None  # not transient: fail fast
                 if retries < self.cfg["max_retries"]:
                     wait = self.cfg["backoff_seconds"][retries]
                     self._sleep(wait)
@@ -269,6 +277,7 @@ class JevClient:
         try:
             r = self._request("POST", self.cfg["systemone_path"], body)
         except ApiFailure as err:
+            progress(f"API failure: {err.status}")
             return make_decision(None, valid=False, infra=True, error=f"{err.status}: {err.detail}"[:500])
         ans = (r["json"].get("answers") or {}).get(name) or {}
         choice = ans.get("choice")
@@ -605,11 +614,22 @@ def main(argv=None) -> int:
         }, indent=2, sort_keys=True))
         return 0
     client = JevClient(fixture["api"], key)
+    progress("Test A: identity")
     identity = test_a_identity(client, fixture)
+    pinned = identity.get("pinned_probe") or {}
+    if "error" in pinned or "error" in (identity.get("models_list") or {}):
+        # Setup failure (bad key, TLS, network): not an experimental result; produce no evidence.
+        print(json.dumps({"experiment_id": EXPERIMENT_ID, "status": "ABORTED_IDENTITY_FAILED",
+                          "models_list_error": (identity.get("models_list") or {}).get("error"),
+                          "pinned_probe_error": pinned.get("error")}, indent=2), file=sys.stderr)
+        return 3
     selector = LiveSelector(client, fixture["api"]["pinned_model"])
     repeats = fixture["design"]["repeats"]
+    progress("Test B")
     b_rows = run_test_b(fixture, selector, repeats)
+    progress(f"Test B done ({len(b_rows)} decisions); Test C")
     c_rows = run_test_c(fixture, selector, repeats)
+    progress(f"Test C done ({len(c_rows)} attempts)")
     b_agg = aggregate_test_b(b_rows, fixture["pricing"])
     c_agg = aggregate_test_c(c_rows)
     result = {
