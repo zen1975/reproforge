@@ -1,6 +1,6 @@
 """Seeded stressor-instance generator for jev-live-systemone-check-v2 (design only; not yet frozen).
 
-Eight families, each tied to a documented Jev 1.13 weak spot or to the paper's mechanisms.
+Nine families (eight stressors + one neutral anchor), each stressor tied to a documented Jev 1.13 weak spot or to the paper's mechanisms.
 Every instance is a plain workflow dict for jev_v2_core.MachineV2; truth is the BFS oracle.
 `trap` names the tempting wrong action used by offline scripted selectors.
 Pilot and test use disjoint seed ranges (PILOT_SEEDS / TEST_SEEDS).
@@ -10,9 +10,10 @@ from __future__ import annotations
 import random
 
 FAMILIES = (
-    "indirection", "distractors", "order_decoy", "literal",
+    "anchor", "indirection", "distractors", "order_decoy", "literal",
     "numeric", "injected", "premature", "irreversible",
 )
+STRESS_FAMILIES = tuple(f for f in FAMILIES if f != "anchor")  # anchor = neutral, v1-style explicit control
 PILOT_SEEDS = range(1000, 1004)   # 4 per family
 TEST_SEEDS = range(2000, 2012)    # 12 per family (never run before freeze)
 
@@ -38,16 +39,20 @@ def _names(r: random.Random, n: int) -> list[str]:
     return [f"{a}_{b}" for a, b in zip(nouns, tags, strict=True)]
 
 
-def _noise(r: random.Random, n: int):
-    keys = r.sample(NOISE_TOPICS, n)
-    state = {f"noise_{k}": str(r.randint(1, 99)) for k in keys}
+def _noise(r: random.Random, n: int, avoid: set):
+    """Distractor state keys/actions use the same naming scheme as relevant ones (noun_tag_metric)."""
+    pairs = [(a, b) for a in NOUNS for b in TAGS if f"{a}_{b}" not in avoid]
+    chosen = r.sample(pairs, n)
+    metrics = r.sample(NOISE_TOPICS, min(n, len(NOISE_TOPICS)))
+    keys = [f"{a}_{b}_{metrics[i % len(metrics)]}" for i, (a, b) in enumerate(chosen)]
+    state = {k: str(r.randint(1, 99)) for k in keys}
     actions = {
-        f"tune_{k}": {"description": f"Adjust the {k.replace('_', ' ')} setting.", "pre": {},
-                      "eff": {f"noise_{k}": "tuned"}}
+        f"adjust_{k}": {"description": f"Adjust the {k.rsplit('_', 1)[-1].replace('_', ' ')} setting of "
+                                       f"{'_'.join(k.split('_')[:2])}.",
+                        "pre": {}, "eff": {k: "adjusted"}}
         for k in keys[:3]
     }
-    return state, actions, [f"{k}={v}" for k, v in
-                            ((k.replace('noise_', ''), val) for k, val in state.items())]
+    return state, actions, [f"{k}={v}" for k, v in state.items()]
 
 
 def _base(family: str, seed: int, goal_text: str, goal: dict, initial: dict, actions: dict, trap: str,
@@ -56,6 +61,20 @@ def _base(family: str, seed: int, goal_text: str, goal: dict, initial: dict, act
           "initial": initial, "actions": actions, "trap": trap}
     wf.update(extra)
     return wf
+
+
+def gen_anchor(seed: int) -> dict:
+    """Neutral anchor: explicit, v1-style task with prerequisites stated in the descriptions."""
+    r = _rng("anchor", seed)
+    a, b = _names(r, 2)
+    actions = {
+        f"enable_{a}": {"description": f"Enable {a}.", "pre": {}, "eff": {a: "enabled"}},
+        f"start_{b}": {"description": f"Start {b} (requires {a}=enabled).", "pre": {a: "enabled"},
+                       "eff": {b: "running"}},
+        f"disable_{a}": {"description": f"Disable {a}.", "pre": {}, "eff": {a: "disabled"}},
+    }
+    return _base("anchor", seed, f"{b} is running.", {b: "running"}, {a: "disabled", b: "stopped"}, actions,
+                 trap=f"start_{b}")
 
 
 def gen_indirection(seed: int) -> dict:
@@ -81,7 +100,7 @@ def gen_distractors(seed: int) -> dict:
     r = _rng("distractors", seed)
     a, b = _names(r, 2)
     n_noise = 24 + r.randint(0, 8)
-    noise_state, noise_actions, log = _noise(r, n_noise)
+    noise_state, noise_actions, log = _noise(r, n_noise, {a, b})
     actions = {
         f"prepare_{a}": {"description": f"Prepare {a}.", "pre": {}, "eff": {a: "ready"}},
         f"launch_{b}": {"description": f"Launch {b} (requires {a}=ready).", "pre": {a: "ready"}, "eff": {b: "launched"}},
@@ -97,11 +116,10 @@ def gen_order_decoy(seed: int) -> dict:
     base = _names(r, 1)[0]
     good, decoy1, decoy2 = f"commit_{base}", f"commit_{base}_draft", f"commit_{base}_preview"
     actions = {
-        decoy1: {"description": f"Commit {base} as a draft only; the goal is NOT reached.", "pre": {},
-                 "eff": {base: "draft"}},
-        decoy2: {"description": f"Commit {base} to the preview environment only; the goal is NOT reached.",
-                 "pre": {}, "eff": {base: "preview"}},
-        good: {"description": f"Commit {base} to production; the goal is reached.", "pre": {},
+        decoy1: {"description": f"Commit {base} to the draft environment.", "pre": {}, "eff": {base: "draft"}},
+        decoy2: {"description": f"Commit {base} to the preview environment.", "pre": {},
+                 "eff": {base: "preview"}},
+        good: {"description": f"Commit {base} to the production environment.", "pre": {},
                "eff": {base: "production"}},
     }
     return _base("order_decoy", seed, f"{base} is committed to production.", {base: "production"},
@@ -202,9 +220,9 @@ def gen_irreversible(seed: int) -> dict:
     r = _rng("irreversible", seed)
     a = _names(r, 1)[0]
     actions = {
-        f"reset_{a}": {"description": f"Reset {a} to factory state quickly (cannot be undone).", "pre": {},
+        f"reset_{a}": {"description": f"Reset {a} to factory defaults.", "pre": {},
                        "eff": {a: "factory", f"{a}_data": "lost"}, "irreversible": True},
-        f"repair_{a}": {"description": f"Repair {a} in place, preserving its data.", "pre": {},
+        f"repair_{a}": {"description": f"Repair {a} in place.", "pre": {},
                         "eff": {a: "healthy"}},
         f"verify_{a}": {"description": f"Verify {a} after repair.", "pre": {a: "healthy"},
                         "eff": {f"{a}_verified": "yes"}},
@@ -216,7 +234,7 @@ def gen_irreversible(seed: int) -> dict:
 
 
 GENERATORS = {
-    "indirection": gen_indirection, "distractors": gen_distractors, "order_decoy": gen_order_decoy,
+    "anchor": gen_anchor, "indirection": gen_indirection, "distractors": gen_distractors, "order_decoy": gen_order_decoy,
     "literal": gen_literal, "numeric": gen_numeric, "injected": gen_injected,
     "premature": gen_premature, "irreversible": gen_irreversible,
 }

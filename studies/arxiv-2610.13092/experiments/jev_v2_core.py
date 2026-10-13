@@ -157,11 +157,23 @@ def on_path_actions(wf: dict, machine: MachineV2) -> set[str]:
     return result
 
 
-def candidate_order(wf: dict, order_idx: int, n_orders: int = 3) -> list[str]:
-    """Deterministic cyclic rotation of [instance actions + shared actions] (abstain stays last)."""
+def truth_at_start(wf: dict) -> str:
+    on = sorted(on_path_actions(wf, MachineV2(wf)))
+    return on[0]
+
+
+def candidate_order(wf: dict, order_idx: int) -> list[str]:
+    """Three fixed position conditions over [instance actions + shared actions] (abstain stays last):
+    0 = trap first, 1 = step-0 truth first, 2 = neither truth nor trap first. Rest keeps base order."""
     names = list(wf["actions"]) + list(SHARED_ACTIONS)
-    shift = (len(names) * order_idx) // n_orders
-    return names[shift:] + names[:shift]
+    truth, trap = truth_at_start(wf), wf["trap"]
+    if order_idx == 0:
+        front = trap
+    elif order_idx == 1:
+        front = truth
+    else:
+        front = next(n for n in names if n not in (truth, trap))
+    return [front] + [n for n in names if n != front]
 
 
 def build_criteria(wf: dict, order_idx: int) -> dict:
@@ -172,11 +184,16 @@ def build_criteria(wf: dict, order_idx: int) -> dict:
     return crit
 
 
-def run_episode_v2(wf: dict, selector, order_idx: int, pricing: dict, extra_steps: int = 3) -> dict:
+def run_episode_v2(wf: dict, selector, order_idx: int, pricing: dict, arm: str, extra_steps: int = 3,
+                   forced_first: bool = False) -> dict:
+    """forced_first=True is a forced-error recovery probe: step 0 is the instance's trap action, chosen by
+    the harness (no selector call), so every arm continues from the identical error state."""
     machine = MachineV2(wf)
     start_distance = distance_to_goal(wf, machine.state, machine.history)
     budget = (start_distance or 0) + 1 + extra_steps
     criteria = build_criteria(wf, order_idx)
+    order_list = list(criteria)
+    truth0 = truth_at_start(wf)
     t0 = time.perf_counter()
     steps, calls = [], []
     initial_correct = None
@@ -184,12 +201,15 @@ def run_episode_v2(wf: dict, selector, order_idx: int, pricing: dict, extra_step
     recovery_attempted = premature = infra = done_ok = False
     for step_no in range(budget):
         on_path_set = on_path_actions(wf, machine)
-        d = selector.choose(machine.render(), ACTION_INSTRUCTIONS, criteria,
-                            oracle={"on_path": on_path_set, "goal_met": machine.goal_met()})
-        calls.append(d)
+        if forced_first and step_no == 0:
+            d = v1.make_decision(wf["trap"], valid=True)  # harness-forced error: not a selector decision
+        else:
+            d = selector.choose(machine.render(), ACTION_INSTRUCTIONS, criteria,
+                                oracle={"on_path": on_path_set, "goal_met": machine.goal_met()})
+            calls.append(d)
         choice = d["choice"]
         on_path = bool(choice) and choice in on_path_set
-        if step_no == 0:
+        if step_no == 0 and not forced_first:
             initial_correct = on_path
         rec = {"step": step_no, "choice": choice, "valid_response": d["valid"], "on_path": on_path, "outcome": None}
         stop = False
@@ -235,7 +255,9 @@ def run_episode_v2(wf: dict, selector, order_idx: int, pricing: dict, extra_step
     usage = {"input_tokens": sum(c["usage"].get("input_tokens", 0) for c in calls),
              "output_tokens": sum(c["usage"].get("output_tokens", 0) for c in calls)}
     return {
-        "workflow_id": wf["id"], "family": wf["family"], "order_idx": order_idx, "category": wf["family"],
+        "arm": arm, "episode_type": "forced_trap" if forced_first else "natural",
+        "workflow_id": wf["id"], "family": wf["family"], "order_idx": order_idx,
+        "truth_pos": order_list.index(truth0), "trap_pos": order_list.index(wf["trap"]),
         "start_distance": start_distance, "step_budget": budget,
         "initial_choice_correct": initial_correct,
         "prerequisite_valid": violations == 0, "prerequisite_violations": violations,
@@ -243,9 +265,9 @@ def run_episode_v2(wf: dict, selector, order_idx: int, pricing: dict, extra_step
         "recovery_success": bool(deviations > 0 and success), "premature_completion": premature,
         "verification_calls": verif_calls, "verification_wrong": verif_wrong,
         "invalid_responses": invalid, "infrastructure_failure": infra, "final_success": success,
-        "number_of_steps": len(steps), "jev_calls": len(calls),
-        "jev_decision_latency_total_s": sum(c["latency_s"] for c in calls if c["valid"]),
+        "number_of_steps": len(steps), "n_selector_calls": len(calls),
+        "decision_latency_total_s": sum(c["latency_s"] for c in calls if c["valid"]),
         "retry_wait_total_s": sum(c["retry_wait_s"] for c in calls),
-        "workflow_latency_total_s": wall, "usage": usage, "jev_cost_usd": v1.cost_usd(usage, pricing),
+        "workflow_latency_total_s": wall, "usage": usage, "cost_usd": v1.cost_usd(usage, pricing),
         "models": sorted({c["model"] for c in calls if c["model"]}), "steps": steps,
     }
