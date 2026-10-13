@@ -50,7 +50,9 @@ Provenance: executed locally at git head `1f2be8f` with the then-uncommitted run
 
 Key policy: `TYPESAFE_API_KEY` is **never** stored in the GitHub repository or Actions secrets (public repo); it was used only in a local process environment. Rotate it. v1 inputs and evidence must not be edited; any change (harder cases, thresholds, prompts) is `jev-live-systemone-check-v2`. `reproduction_status` stays `PARTIAL`: ALFWorld/AndroidWorld are not run.
 
-Next lightweight experiment (steps 1-3: generator, arms, analysis implemented; pilot 1 run and kept - control outside the pre-registered difficulty window, so calibration/pilot 2 is required before freeze; test NOT run). Pilot 1 summary in the design doc, section 6.: `design/jev-live-systemone-check-v2.md` (Jev vs a named LLM candidate-interface control on a stressor fixture, pilot/test split, pre-registered rules).
+`jev-live-systemone-check-v2` is **complete**: pilot 1 (g1), pilot 2 (g2), then the frozen g2 test (seeds 3000-3011; pin `f76ba2b6...`, pre-registration committed before the run) was run once per arm and its sanitized evidence is committed (`evidence/jev_v2_test_{jev,control}.result.json`, `jev_v2_test_analysis.json`; CI-verified). Result summary in `design/jev-live-systemone-check-v2.md` section 12 and `report.md`: primary forced-trap recovery Jev 87.2% vs LLM candidate-interface control (claude-haiku-5-5) 97.2% (+10.1 pt, CI [3.5, 17.4]); the gap is almost entirely the `injected` family; Jev ~85% faster per decision but not better on delivered success. The control stayed outside the difficulty window (disclosed). v2 files listed in `jev_v2_freeze.json` must not be edited. Keys: local-only (Keychain), never in GitHub; rotate both and delete the Keychain entries.
+
+Next possible work (not started, needs a new experiment id): v3 with the B arm and auxiliary-overhead (T3A/FastAgent-style) mechanisms, harder/redesigned families (`premature`, `order_decoy`, `anchor` are non-discriminating), then the real ALFWorld/AndroidWorld reproduction.
 
 ## Verified lightweight boundary
 

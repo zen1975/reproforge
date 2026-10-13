@@ -209,3 +209,18 @@ No further meaningful free/lightweight experiment should replace the actual Jev/
 | Delivered success | 24/24; about 0.74 s and $7.8e-05 (assumed $0.042/Mtok input) per delivered success |
 
 **Interpretation boundary.** Everything is at ceiling, so this check shows only that the real API responds as documented and handles this small, explicit-state fixture correctly. It cannot show that faster decisions do or do not make better agents: no first-decision error, recovery or premature completion ever occurred live, and there was no control, so the paper's decision-vs-delivered-success gap and B/C/J separation remain untested with real Jev. Descriptive only; a harder v2 fixture would be needed. It is not an ALFWorld/AndroidWorld reproduction, `reproduction_status` stays `PARTIAL`, and no claim is made about the paper's effect sizes.
+
+## Live Jev stress test v2 (run locally, frozen and pre-registered)
+
+`jev-live-systemone-check-v2` compares real Jev (`jev-1.13.0`) with a separately named **LLM candidate-interface control (claude-haiku-5-5, not Jev)** on 9 generated families (neutral `anchor` + 8 stressors on Jev's documented weak spots), 3 candidate orders, natural and forced-trap episodes (648 episodes per arm). The generator was frozen after two pilots and pre-registered (pin `f76ba2b6...`, commit before the run), then run once per arm on never-seen seeds. Both arms completed (648/648, no infrastructure failures); spend US$0.09 + US$0.38. Sanitized evidence is committed unmodified and CI verifies integrity (`evidence/jev_v2_test_*.json`); keys stayed local.
+
+| Pre-registered endpoint | Jev | Control | Difference (control - Jev) |
+|---|---|---|---|
+| **Primary: forced-trap recovery, recoverable families** | 87.2% | 97.2% | +10.1 pt, 95% CI [3.5, 17.4], exact McNemar p=4.9e-06 |
+| Initial choice correct, stress natural | 79.9% | 95.5% | +15.6 pt, CI [8.7, 22.9] |
+| Final success, stress natural | 84.0% | 98.6% | +14.6 pt, CI [7.6, 21.9] |
+| `anchor` / `irreversible` negative control | 100% / 0% | 100% / 0% | non-discriminating / as designed |
+| Decision latency per call | 0.19 s | 1.52 s | reference only (different providers) |
+| Time / cost per delivered success (natural) | 1.10 s / $1.5e-04 | 6.34 s / $5.6e-04 | reference only |
+
+**Interpretation boundary.** On this stress fixture Jev is about 85% faster per decision but **not** better on delivered success: the speed advantage did not become an agent advantage, consistent with (but not a test of) the paper's caution. The success gap is concentrated in the `injected` family (Jev 14-19% vs 97%) plus `numeric` initial choices; excluding `injected`, forced-trap recovery is 96.8% vs 97.2%, and `indirection` favours Jev. The control stayed outside the pre-registered difficulty window (disclosed before the run), `order_decoy`/`premature`/`anchor` did not discriminate, the control is stochastic with one run, and statistics are descriptive. This is **not** an ALFWorld/AndroidWorld reproduction and says nothing about the paper's effect sizes; `reproduction_status` stays `PARTIAL`. B arm and auxiliary-overhead mechanisms (T3A/FastAgent-type) are untested.

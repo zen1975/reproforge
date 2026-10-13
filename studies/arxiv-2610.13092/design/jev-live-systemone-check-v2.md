@@ -151,3 +151,24 @@ Interpretation guards: a Jev decision advantage never reads as an agent advantag
 3. B arm and auxiliary-overhead mechanisms deferred to v3 (assumed; not objected to).
 
 Implementation note: v1 is frozen, so v2 gets its own core (`jev_v2_core.py`, a superset of the v1 machine adding hidden state keys, custom prerequisite messages, irreversible actions, log/distractor rendering and candidate rotation) and a seeded generator (`jev_v2_generator.py`). Control API details (structured output, temperature, parameters of the pinned model) must be checked against current Anthropic docs before step 2.
+
+## 12. Test outcome (frozen g2, seeds 3000-3011, run once per arm, 2026-10-14)
+
+Files (sanitized, committed unmodified; CI-verified): `evidence/jev_v2_test_jev.result.json` (sha256 `dcbc276bf8533cab3cfeca60ad1ec397aeedbcea8e0508a9caf4429be4c696ad`), `evidence/jev_v2_test_control.result.json` (`39c8650b4e8d83b8dd7957d6e555254d4152aea2d241c0483371f57c9b57a96d`), `evidence/jev_v2_test_analysis.json` (`19e9cf0385acfee06a977b9ee05fce9a54f9a15a6c8ccb980bfa79ec9dddf23c`). Freeze pin `f76ba2b6...` matched; both arms COMPLETED, 648/648 rows, 0 infrastructure failures, 0 invalid responses. Spend US$0.087 (Jev) + US$0.380 (control) of the US$5 cap. Keys were never written to the repo; evidence was leak-checked against both keys. No re-run, no post-hoc changes.
+
+| Pre-registered endpoint (control - Jev, instance-cluster bootstrap 95% CI, exact McNemar) | Jev | Control | Diff | 95% CI | discordant (control-only / Jev-only), p |
+|---|---|---|---|---|---|
+| **Primary: forced-trap recovery, recoverable families (n=288)** | 87.2% | 97.2% | +10.1 pt | [3.5, 17.4] | 35 / 6, p=4.9e-06 |
+| Initial choice correct, stress natural (n=288) | 79.9% | 95.5% | +15.6 pt | [8.7, 22.9] | 52 / 7, p=1.4e-09 |
+| Final success, stress natural (n=288) | 84.0% | 98.6% | +14.6 pt | [7.6, 21.9] | 45 / 3, p=1.3e-10 |
+| `anchor` natural initial / final (n=36) | 100% / 100% | 100% / 100% | 0 | - | non-discriminating (ceiling) |
+| `irreversible` forced-trap (negative control, n=36) | 0% | 0% | 0 | - | behaved as designed |
+| Decision latency / call (natural) | 0.19 s | 1.52 s | | [1.29, 1.36] on the diff | reference only (different providers) |
+| Time per delivered success (natural) | 1.10 s | 6.34 s | | | reference only |
+| Cost per delivered success (natural; Jev cost = tokens x assumed $0.042/Mtok) | $1.5e-04 | $5.6e-04 | | | reference only |
+
+Transfer classification (Jev vs control, delivered-success based): decision latency -87%, task latency -85%, delivered time -83% => class `TRANSFERRED` for time. Because success rates differ (84% vs 98.6% natural stress), this speed result must be read together with the success gap, as pre-registered rule 1 requires.
+
+Where the gap comes from (derived from `by_family`): it is concentrated. `injected` (instruction embedded in a log/distractor): Jev initial correct 0/36, final success 13.9% natural / 19.4% forced, control 97.2% on both. `numeric`: Jev initial correct 21/36 and natural final success 58.3% (forced-trap recovery 100%: once pushed off the trap Jev recovers). `distractors` initial 29/36 vs 32/36 but final success 100% for both. Excluding `injected` the primary endpoint is 96.8% (Jev) vs 97.2% (control), i.e. no meaningful difference. `indirection` went the other way (Jev 100%, control 91.7% final success). `literal` forced-trap recovery 77.8% vs 88.9%. `order_decoy` and `premature` non-discriminating (100% both; 0 premature completions in either arm, as in the pilots). Order effect (initial correct, control - Jev): trap-first +25.0 pt, truth-first +14.6 pt, neither +7.3 pt (CI includes 0). Jev abstained on 23/324 natural first decisions (control 1/324).
+
+Reading (binding, per the pre-registration): this is a stress test on Jev 1.13's documented weak spots, not an ALFWorld/AndroidWorld reproduction and not an estimate of the paper's effect sizes. Findings: (1) on this fixture the LLM candidate-interface control (claude-haiku-5-5) is at or above Jev on delivered success, so Jev's decision speed advantage does **not** become an agent advantage here (the paper's own "faster decisions do not make better agents" caution is consistent with this, but this is not a test of the paper's claim); (2) the deficit is largely one stressor family (`injected`) plus `numeric` initial choice; (3) recovery from a forced wrong first action is good for Jev outside `injected` and `literal`; (4) the control stayed outside the pre-registered difficulty window (initial error 4.5% on stress natural), so natural-episode comparisons mostly measure Jev errors, as disclosed before the run; (5) one run per arm, stochastic control, descriptive statistics only, no multiplicity adjustment. B arm and auxiliary-overhead mechanisms (T3A/FastAgent-type) remain untested (v3).

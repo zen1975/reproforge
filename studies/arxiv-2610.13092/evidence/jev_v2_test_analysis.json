@@ -1,0 +1,544 @@
+{
+  "bootstrap": {
+    "cluster": "instance",
+    "resamples": 2000,
+    "seed": 20261014
+  },
+  "by_family": {
+    "anchor": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__anchor_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__anchor_natural"
+      }
+    },
+    "distractors": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__distractors_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__distractors_natural"
+      }
+    },
+    "indirection": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          -0.25,
+          0.0
+        ],
+        "control": 0.9166666666666666,
+        "diff_control_minus_jev": -0.08333333333333337,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 3,
+          "p_exact_two_sided": 0.25
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__indirection_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          -0.25,
+          0.0
+        ],
+        "control": 0.9166666666666666,
+        "diff_control_minus_jev": -0.08333333333333337,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 3,
+          "p_exact_two_sided": 0.25
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__indirection_natural"
+      }
+    },
+    "injected": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.5277777777777778,
+          1.0
+        ],
+        "control": 0.9722222222222222,
+        "diff_control_minus_jev": 0.7777777777777778,
+        "jev": 0.19444444444444445,
+        "mcnemar": {
+          "control_only": 28,
+          "jev_only": 0,
+          "p_exact_two_sided": 7.450580596923828e-09
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__injected_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.6388888888888888,
+          1.0
+        ],
+        "control": 0.9722222222222222,
+        "diff_control_minus_jev": 0.8333333333333333,
+        "jev": 0.1388888888888889,
+        "mcnemar": {
+          "control_only": 30,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.862645149230957e-09
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__injected_natural"
+      }
+    },
+    "irreversible": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 0.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 0.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__irreversible_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__irreversible_natural"
+      }
+    },
+    "literal": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          -0.13888888888888884,
+          0.38888888888888884
+        ],
+        "control": 0.8888888888888888,
+        "diff_control_minus_jev": 0.11111111111111105,
+        "jev": 0.7777777777777778,
+        "mcnemar": {
+          "control_only": 7,
+          "jev_only": 3,
+          "p_exact_two_sided": 0.34375
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__literal_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__literal_natural"
+      }
+    },
+    "numeric": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__numeric_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.2222222222222222,
+          0.6111111111111112
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.41666666666666663,
+        "jev": 0.5833333333333334,
+        "mcnemar": {
+          "control_only": 15,
+          "jev_only": 0,
+          "p_exact_two_sided": 6.103515625e-05
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__numeric_natural"
+      }
+    },
+    "order_decoy": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__order_decoy_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__order_decoy_natural"
+      }
+    },
+    "premature": {
+      "forced_trap_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__premature_forced"
+      },
+      "natural_final_success": {
+        "ci95_cluster_bootstrap": [
+          0.0,
+          0.0
+        ],
+        "control": 1.0,
+        "diff_control_minus_jev": 0.0,
+        "jev": 1.0,
+        "mcnemar": {
+          "control_only": 0,
+          "jev_only": 0,
+          "p_exact_two_sided": 1.0
+        },
+        "n_instance_clusters": 12,
+        "n_pairs": 36,
+        "name": "final_success__premature_natural"
+      }
+    }
+  },
+  "by_order": {
+    "0": {
+      "ci95_cluster_bootstrap": [
+        0.07291666666666663,
+        0.21875
+      ],
+      "control": 0.9479166666666666,
+      "diff_control_minus_jev": 0.14583333333333326,
+      "jev": 0.8020833333333334,
+      "mcnemar": {
+        "control_only": 15,
+        "jev_only": 1,
+        "p_exact_two_sided": 0.000518798828125
+      },
+      "n_instance_clusters": 96,
+      "n_pairs": 96,
+      "name": "initial_correct__order0"
+    },
+    "1": {
+      "ci95_cluster_bootstrap": [
+        0.15625,
+        0.34375
+      ],
+      "control": 0.9791666666666666,
+      "diff_control_minus_jev": 0.25,
+      "jev": 0.7291666666666666,
+      "mcnemar": {
+        "control_only": 25,
+        "jev_only": 1,
+        "p_exact_two_sided": 8.046627044677734e-07
+      },
+      "n_instance_clusters": 96,
+      "n_pairs": 96,
+      "name": "initial_correct__order1"
+    },
+    "2": {
+      "ci95_cluster_bootstrap": [
+        -0.01041666666666674,
+        0.15625
+      ],
+      "control": 0.9375,
+      "diff_control_minus_jev": 0.07291666666666663,
+      "jev": 0.8645833333333334,
+      "mcnemar": {
+        "control_only": 12,
+        "jev_only": 5,
+        "p_exact_two_sided": 0.143463134765625
+      },
+      "n_instance_clusters": 96,
+      "n_pairs": 96,
+      "name": "initial_correct__order2"
+    }
+  },
+  "claim_scope": "Stress test on Jev 1.13's documented weak spots plus a neutral anchor, with a paired comparison against a named LLM candidate-interface control. Not an ALFWorld/AndroidWorld reproduction and not an estimate of the paper's effect sizes; descriptive only.",
+  "contrasts": [
+    {
+      "ci95_cluster_bootstrap": [
+        0.08680555555555558,
+        0.22916666666666663
+      ],
+      "control": 0.9548611111111112,
+      "diff_control_minus_jev": 0.15625,
+      "jev": 0.7986111111111112,
+      "mcnemar": {
+        "control_only": 52,
+        "jev_only": 7,
+        "p_exact_two_sided": 1.3589917802203644e-09
+      },
+      "n_instance_clusters": 96,
+      "n_pairs": 288,
+      "name": "decision_initial_correct__stress_natural"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        0.0,
+        0.0
+      ],
+      "control": 1.0,
+      "diff_control_minus_jev": 0.0,
+      "jev": 1.0,
+      "mcnemar": {
+        "control_only": 0,
+        "jev_only": 0,
+        "p_exact_two_sided": 1.0
+      },
+      "n_instance_clusters": 12,
+      "n_pairs": 36,
+      "name": "decision_initial_correct__anchor_natural"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        0.07638888888888895,
+        0.21875
+      ],
+      "control": 0.9861111111111112,
+      "diff_control_minus_jev": 0.14583333333333337,
+      "jev": 0.8402777777777778,
+      "mcnemar": {
+        "control_only": 45,
+        "jev_only": 3,
+        "p_exact_two_sided": 1.312585595769633e-10
+      },
+      "n_instance_clusters": 96,
+      "n_pairs": 288,
+      "name": "final_success__stress_natural"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        0.0,
+        0.0
+      ],
+      "control": 1.0,
+      "diff_control_minus_jev": 0.0,
+      "jev": 1.0,
+      "mcnemar": {
+        "control_only": 0,
+        "jev_only": 0,
+        "p_exact_two_sided": 1.0
+      },
+      "n_instance_clusters": 12,
+      "n_pairs": 36,
+      "name": "final_success__anchor_natural"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        0.03472222222222221,
+        0.17361111111111116
+      ],
+      "control": 0.9722222222222222,
+      "diff_control_minus_jev": 0.10069444444444442,
+      "jev": 0.8715277777777778,
+      "mcnemar": {
+        "control_only": 35,
+        "jev_only": 6,
+        "p_exact_two_sided": 4.873598300036974e-06
+      },
+      "n_instance_clusters": 96,
+      "n_pairs": 288,
+      "name": "recovery_final_success__forced_trap_recoverable_PRIMARY_C5"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        0.0,
+        0.0
+      ],
+      "control": 0.0,
+      "diff_control_minus_jev": 0.0,
+      "jev": 0.0,
+      "mcnemar": {
+        "control_only": 0,
+        "jev_only": 0,
+        "p_exact_two_sided": 1.0
+      },
+      "n_instance_clusters": 12,
+      "n_pairs": 36,
+      "name": "recovery_final_success__forced_trap_irreversible_negative_control"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        0.00036147231273062736,
+        0.00045835999519230767
+      ],
+      "control": 0.0005629828125000001,
+      "diff_control_minus_jev": 0.00040838277652877704,
+      "jev": 0.000154600035971223,
+      "n_instance_clusters": 108,
+      "n_pairs": 324,
+      "name": "cost_per_delivered_success_usd__natural"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        4.845646484836879,
+        5.657953818891824
+      ],
+      "control": 6.336185113675162,
+      "diff_control_minus_jev": 5.239823540840675,
+      "jev": 1.0963615728344869,
+      "n_instance_clusters": 108,
+      "n_pairs": 324,
+      "name": "time_per_delivered_success_s__natural"
+    },
+    {
+      "ci95_cluster_bootstrap": [
+        1.2945102510972908,
+        1.3595625797011697
+      ],
+      "control": 1.5197434442233926,
+      "diff_control_minus_jev": 1.3254496718414785,
+      "jev": 0.19429377238191411,
+      "n_instance_clusters": 108,
+      "n_pairs": 324,
+      "name": "decision_latency_per_call_s__natural"
+    }
+  ],
+  "experiment_id": "jev-live-systemone-check-v2",
+  "interpretation_guards": [
+    "A Jev decision advantage is not an agent advantage unless delivered-success metrics agree.",
+    "Both arms near 0% or 100% means non-discriminating, not support.",
+    "Stressor families target Jev's documented weak spots; read them as a stress test, not a C-vs-J verdict."
+  ],
+  "n_paired_units": 648,
+  "phase": "test",
+  "transfer_classification": {
+    "class_time": "TRANSFERRED",
+    "jev_vs_control_pct": {
+      "decision_latency": -87.21535709725,
+      "delivered_time": -82.69681909279689,
+      "task_latency": -84.96786158686729
+    },
+    "note": "Jev relative to control. OVERHEAD_ABSORPTION is not designed to occur (no auxiliary overhead); speed/cost compare different providers and are reference values."
+  }
+}
