@@ -101,8 +101,10 @@ Interpretation guards: a Jev decision advantage never reads as an agent advantag
 4. Freeze + pre-registration commit (hashes pinned).
 5. Test run (local, once per arm), sanitized evidence committed, CI verification, docs/status update.
 
-## 11. Open decisions (owner: user)
+## 11. Decisions (2026-10-14, user)
 
-1. **Control model/provider.** Recommended: `claude-haiku-5-5` via the Anthropic API (cheap, fast, closest to a "small fast selector"; needs a local `ANTHROPIC_API_KEY`). The paper's own controls used GPT-5.6 Luna, whose availability is unverified here. Whatever is chosen is labelled "LLM candidate-interface control (<exact model id>)", never as a Jev reproduction.
-2. **Spend cap.** Recommended: US$5 total for pilot + test across both arms (expected actual spend is far lower).
-3. Confirm that deferring the B arm and auxiliary-overhead mechanisms to v3 is acceptable.
+1. **Control = `claude-haiku-5-5` via the Anthropic API directly** (user supplies `ANTHROPIC_API_KEY` in the local environment only; key validity and model availability were checked on 2026-10-14 via the model list, no spend). Labelled "LLM candidate-interface control (claude-haiku-5-5)", never as Jev. The `claude -p` headless route was considered and rejected for the primary control (no temperature control, CLI startup in latency, nominal cost); speed/cost are therefore comparable at API level.
+2. **Spend cap: US$5** total for pilot + test across both arms (runner-enforced).
+3. B arm and auxiliary-overhead mechanisms deferred to v3 (assumed; not objected to).
+
+Implementation note: v1 is frozen, so v2 gets its own core (`jev_v2_core.py`, a superset of the v1 machine adding hidden state keys, custom prerequisite messages, irreversible actions, log/distractor rendering and candidate rotation) and a seeded generator (`jev_v2_generator.py`). Control API details (structured output, temperature, parameters of the pinned model) must be checked against current Anthropic docs before step 2.
