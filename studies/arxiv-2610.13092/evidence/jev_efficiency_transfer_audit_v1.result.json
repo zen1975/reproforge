@@ -1,0 +1,59 @@
+{
+  "experiment_id": "jev-efficiency-transfer-audit-v1",
+  "all_pass": true,
+  "paper_aggregate_audit": {
+    "reported_range_compatible": true,
+    "all_rounded_table_matches": true,
+    "decision_cost_reduction_range_pct": [66.02972399150744, 78.44036697247707],
+    "decision_time_reduction_range_pct": [73.84987893462468, 81.49171270718232],
+    "key_rows": {
+      "ReAct": {
+        "delivery_class_cost": "TRANSFERRED",
+        "delivery_class_time": "TRANSFERRED",
+        "computed_cost_per_success_b": 7.937448979591837,
+        "computed_cost_per_success_j": 3.9575129533678752
+      },
+      "Reflexion": {
+        "delivery_class_cost": "TRANSFERRED",
+        "delivery_class_time": "TRANSFERRED",
+        "computed_cost_per_success_b": 9.002394014962594,
+        "computed_cost_per_success_j": 6.172842639593909
+      },
+      "T3A": {
+        "delivery_class_cost": "DELIVERY_PARADOX",
+        "delivery_class_time": "DELIVERY_PARADOX",
+        "task_cost_delta_pct": -17.097264437689972,
+        "computed_cost_per_success_b": 68.6952,
+        "computed_cost_per_success_j": 73.9612987012987,
+        "computed_time_per_success_b": 370.62,
+        "computed_time_per_success_j": 430.16415584415586
+      },
+      "AutoDroid": {
+        "delivery_class_cost": "TRANSFERRED",
+        "delivery_class_time": "DELIVERY_PARADOX",
+        "computed_time_per_success_b": 1398.4246153846152,
+        "computed_time_per_success_j": 1503.5431578947369
+      },
+      "FastAgent": {
+        "delivery_class_cost": "TRANSFERRED",
+        "delivery_class_time": "OVERHEAD_ABSORPTION",
+        "task_time_delta_pct": 0.6851604278074852,
+        "computed_time_per_success_b": 239.35999999999999,
+        "computed_time_per_success_j": 377.7837837837838
+      }
+    }
+  },
+  "independent_mechanism_fixture": {
+    "all_pass": true,
+    "checks": {
+      "direct_transfer_detected": true,
+      "overhead_absorption_detected": true,
+      "delivery_paradox_detected": true,
+      "better_initial_can_end_worse": true
+    }
+  },
+  "workflow_run": 38431488012,
+  "artifact_id": 11831980273,
+  "artifact_digest": "sha256:ce25ab6a5af50d10821a5e874b4bba34d7c0e38817cfdb02e1c2f7e1f37b5750",
+  "claim_scope": "Published aggregate arithmetic plus independent accounting semantics only. No Jev API execution, ALFWorld/AndroidWorld rerun, GPT-5.6 Luna trajectory reproduction, or paper-level reproduction claim."
+}

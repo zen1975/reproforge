@@ -177,3 +177,22 @@ The operational chain is:
 `decision efficiency -> workflow overhead -> recovery -> completion -> resource per delivered success`
 
 A local optimizer is only useful when the final delivered outcome improves on the metric the system actually cares about.
+
+## Frozen CI audit result
+
+The machine-run audit completed successfully.
+
+- workflow: `38431488012`
+- artifact: `11831980273`
+- digest: `sha256:ce25ab6a5af50d10821a5e874b4bba34d7c0e38817cfdb02e1c2f7e1f37b5750`
+- result: **PASS**
+
+Recomputed from published rounded aggregates:
+
+- decision-cost reduction range: **66.03–78.44%**
+- decision-time reduction range: **73.85–81.49%**
+- all published successful-delivery values matched within fixed rounding tolerance.
+
+The independent fixture also correctly detected direct transfer, overhead absorption, delivery paradox, and a recovery case where better initial success still produced worse final success.
+
+No further meaningful free/lightweight experiment should replace the actual Jev/environment rerun. Therefore the study is now **HEAVY_COMPUTE_READY / PARTIAL** with `free_light_phase_complete: true`.

@@ -1,43 +1,77 @@
 # arXiv:2610.13092 — Continuation Handoff
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
+- Free/light phase: complete
 
 ## Completed
-- full arXiv HTML protocol and appendix review;
+- full arXiv protocol and appendices reviewed;
 - paper license verified as CC BY-NC-ND 4.0;
 - anonymous experimental-code provenance recorded;
 - code-license uncertainty recorded;
-- B/C/J causal comparison contract frozen;
-- successful-delivery accounting reconstructed independently;
-- recovery/completion contract reconstructed independently;
-- deterministic aggregate/mechanism audit added.
+- B/C/J causal-comparison contract frozen;
+- published decision-level reduction ranges independently recomputed;
+- resource-per-delivered-success arithmetic independently reconstructed;
+- synthetic transfer/recovery semantics frozen;
+- CI artifact persisted.
 
 ## Frozen evaluation
 - `jev-efficiency-transfer-audit-v1`
 
-## Next lightweight step
+Workflow run:
 
-Run the deterministic audit in CI and freeze the artifact.
+`38431488012`
 
-Then stop unless a genuinely new free/lightweight source becomes available.
+Artifact:
 
-Do not replace a Jev rerun with a generic small LLM and call it equivalent. The paper's core empirical claim concerns actual Jev integration.
+`11831980273`
+
+Digest:
+
+`sha256:ce25ab6a5af50d10821a5e874b4bba34d7c0e38817cfdb02e1c2f7e1f37b5750`
+
+## Verified lightweight boundary
+
+Published aggregate audit:
+
+- decision cost reduction range: **66.03–78.44%**
+- decision time reduction range: **73.85–81.49%**
+- rounded successful-delivery table reconstruction: **PASS**
+
+Key transfer classifications:
+
+- ReAct: cost/time **TRANSFERRED**
+- Reflexion: cost/time **TRANSFERRED**
+- T3A: cost/time **DELIVERY_PARADOX**
+- AutoDroid: cost **TRANSFERRED**, time **DELIVERY_PARADOX**
+- FastAgent: cost **TRANSFERRED**, time **OVERHEAD_ABSORPTION**
+
+T3A is the clearest paradox:
+
+- task cost per attempt: about **-17.1%**
+- cost per delivered success: about **68.70 -> 73.96 mUSD**
+
+FastAgent exposes time overhead:
+
+- task time: roughly unchanged/slightly worse
+- time per delivered success: about **239.4 -> 377.8 s**
 
 ## Local/heavy continuation
 
-A protocol-relevant continuation requires:
+The next scientifically valid step is a real-system rerun.
 
-1. Jev API/model access matching or documenting divergence from `jev-1.13.0`;
-2. the paper's LLM decision/auxiliary model or a declared comparable substitute;
-3. ALFWorld valid_unseen execution;
+Minimum contract:
+
+1. Jev access matching `jev-1.13.0` or explicitly documented divergence;
+2. GPT-5.6 Luna or a declared substitute for decision/auxiliary LLM calls;
+3. ALFWorld valid_unseen tasks;
 4. AndroidWorld fixed task instances/device environment;
-5. B/J and, where applicable, C controls;
-6. repeated runs on fixed tasks;
+5. B/J and applicable C controls;
+6. three repeated runs on fixed tasks;
 7. task-cluster paired uncertainty;
-8. full cost/time accounting including failures;
-9. completion and recovery traces.
+8. complete decision, auxiliary, environment and failed-attempt resource accounting;
+9. recovery and completion traces;
+10. cost/time per delivered success.
 
-The primary acceptance metric is not local decision speed. It is resources per delivered successful outcome while preserving task success.
+Do not substitute a generic small LLM for Jev and call that a reproduction of the core empirical claim.

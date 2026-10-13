@@ -1,19 +1,24 @@
 study_id: arxiv-2610.13092
-lifecycle: MECHANISM_VERIFIED
+lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
-free_light_phase_complete: false
-current_boundary: "The full public protocol and appendices are reviewed. ReproForge independently separates local decision efficiency, task-level transfer, resource-per-delivered-success accounting, interface-vs-model contrasts, and recovery/completion effects. A deterministic audit recomputes the paper's published aggregate efficiency ranges and successful-delivery arithmetic from rounded table values, and an independent mechanism fixture verifies transfer, overhead-absorption, delivery-paradox and recovery semantics. No Jev API or benchmark trajectories have yet been rerun."
-next_step: "Run the frozen aggregate/mechanism audit in CI, persist its artifact, then assess whether any additional free/lightweight evidence is available without a Jev API credential or licensed experimental code before closing the current-environment boundary."
+free_light_phase_complete: true
+current_boundary: "Current free/lightweight verification is complete. The public protocol and appendices are fully reviewed; ReproForge independently separates local decision efficiency, task-level transfer, resource-per-delivered-success accounting, interface-vs-model contrasts, and recovery/completion effects. The frozen CI audit reproduces the paper's published decision-level reduction ranges from rounded aggregate tables and reconstructs successful-delivery arithmetic, including the T3A delivery paradox. Independent synthetic fixtures verify TRANSFERRED, OVERHEAD_ABSORPTION, DELIVERY_PARADOX, and better-initial-but-worse-final recovery semantics. No Jev API or benchmark trajectories were rerun."
+next_step: "Run a protocol-comparable real-system reproduction with actual Jev access and ALFWorld/AndroidWorld environments, preserving B/J and applicable C controls, repeated fixed-task runs, full failure-inclusive accounting, and held-out completion/recovery evidence."
 handoff:
   path: studies/arxiv-2610.13092/HANDOFF.md
   ready: true
 blockers:
   - "Paper-scale rerun requires jev-1.13.0 access plus GPT-5.6 Luna calls and the ALFWorld/AndroidWorld execution environments."
   - "The paper links experimental code through anonymous.4open.science, but a code license could not be independently verified; ReproForge does not copy or redistribute it."
-  - "AndroidWorld reproduction also depends on the benchmark/device environment and fixed task instances."
+  - "AndroidWorld reproduction depends on the benchmark/device environment and fixed task instances."
+  - "Replacing Jev with a generic small language model would not reproduce the core empirical comparison and is therefore not accepted as the next step."
 frozen_evaluations:
   - "jev-efficiency-transfer-audit-v1"
 entrypoints:
   - "studies/arxiv-2610.13092/experiments/run_efficiency_transfer_audit.py"
   - ".github/workflows/jev-efficiency-transfer-audit.yml"
+evidence:
+  workflow_run: 38431488012
+  artifact_id: 11831980273
+  artifact_digest: "sha256:ce25ab6a5af50d10821a5e874b4bba34d7c0e38817cfdb02e1c2f7e1f37b5750"
 updated_at: "2026-10-14"
