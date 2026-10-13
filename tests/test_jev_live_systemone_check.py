@@ -16,7 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EXP = ROOT / "studies" / "arxiv-2610.13092" / "experiments"
 RUNNER = EXP / "run_jev_live_systemone_check.py"
-WORKFLOW = ROOT / ".github" / "workflows" / "jev-live-systemone-check.yml"
+WORKFLOWS = ROOT / ".github" / "workflows"
+VERIFY_WORKFLOW = WORKFLOWS / "jev-live-evidence-verify.yml"
+VERIFIER = EXP / "verify_jev_live_evidence.py"
 
 spec = importlib.util.spec_from_file_location("jev_live", RUNNER)
 jl = importlib.util.module_from_spec(spec)
@@ -87,6 +89,9 @@ class Scripted:
         self.verify = verify  # None => honest
 
     def choose(self, state, instructions, criteria, oracle=None):
+        if oracle is None:  # Test B call: no oracle context
+            c = self.choices.pop(0) if self.choices else "abstain"
+            return jl.make_decision(c, valid=True, usage={"input_tokens": 100, "output_tokens": 5})
         if oracle["on_path"] is None:
             ans = self.verify or ("goal_met" if oracle["goal_met"] else "goal_not_met")
             return jl.make_decision(ans, valid=True, usage={"input_tokens": 100, "output_tokens": 5})
@@ -287,17 +292,100 @@ def test_no_credential_skips_without_output_files(tmp_path):
 
 
 def test_no_api_key_literal_in_repo_sources():
-    for path in (RUNNER, EXP / "jev_live_systemone_check_v1.fixture.json", WORKFLOW):
+    for path in (RUNNER, EXP / "jev_live_systemone_check_v1.fixture.json", VERIFY_WORKFLOW):
         text = path.read_text()
         assert "Bearer " not in text.replace("Bearer {self._key}", "")
         assert "sk-" not in text
-        assert "TYPESAFE_API_KEY" in text or path.suffix == ".json"
 
 
-def test_workflow_is_dispatch_only_and_uses_secret_reference():
-    text = WORKFLOW.read_text()
-    assert "workflow_dispatch" in text
-    assert "push:" not in text and "pull_request" not in text and "schedule:" not in text
-    assert "secrets.TYPESAFE_API_KEY" in text
-    assert "set -o pipefail" in text or "| tee" not in text
+def test_no_workflow_uses_typesafe_secret_or_key():
+    """Policy: the Jev key is never stored in GitHub; only local runs use it."""
+    for wf_path in WORKFLOWS.glob("*.yml"):
+        text = wf_path.read_text()
+        assert "TYPESAFE_API_KEY" not in text, wf_path.name
+        assert "secrets.TYPESAFE" not in text, wf_path.name
+    assert not (WORKFLOWS / "jev-live-systemone-check.yml").exists()
+
+
+def test_verify_workflow_is_secretless_and_read_only():
+    text = VERIFY_WORKFLOW.read_text()
+    assert "secrets." not in text
     assert "contents: read" in text
+    assert "verify_jev_live_evidence.py" in text
+
+
+# ----------------------------------------------------------------- evidence verifier
+vspec = importlib.util.spec_from_file_location("jev_verify", VERIFIER)
+verifier = importlib.util.module_from_spec(vspec)
+vspec.loader.exec_module(verifier)
+
+
+def build_result_via_fake_server():
+    fx = fixture()
+    srv = start_server()
+    try:
+        api = dict(fx["api"], base_url=f"http://127.0.0.1:{srv.server_port}", backoff_seconds=[0] * 5)
+        client = jl.JevClient(api, FAKE_KEY, sleep=lambda s: None)
+        identity = jl.test_a_identity(client, dict(fx, api=api))
+        sel = jl.LiveSelector(client, fx["api"]["pinned_model"])
+        reps = fx["design"]["repeats"]
+        b_rows = jl.run_test_b(fx, sel, reps)
+        c_rows = jl.run_test_c(fx, sel, reps)
+    finally:
+        srv.shutdown()
+    b_agg = jl.aggregate_test_b(b_rows, fx["pricing"])
+    c_agg = jl.aggregate_test_c(c_rows)
+    result = {
+        "experiment_id": jl.EXPERIMENT_ID, "status": "LIVE_RUN_COMPLETED",
+        "fixture_sha256": fx["_sha256"], "execution_environment": "local",
+        "test_a_identity": json.loads(json.dumps(identity)),
+        "test_b": {"aggregate": b_agg, "rows": b_rows}, "test_c": {"aggregate": c_agg, "rows": c_rows},
+        "reference_policies_non_model": jl.run_reference_policies(fx),
+        "classification": jl.classify(identity, b_agg, c_agg, fx), "claim_scope": jl.CLAIM_SCOPE,
+    }
+    return fx, json.loads(json.dumps(result))
+
+
+def test_verifier_accepts_untampered_result_and_rejects_tampering():
+    fx, result = build_result_via_fake_server()
+    assert verifier.verify(result, fx) == []
+    import copy
+    bad = copy.deepcopy(result)
+    bad["test_c"]["rows"][0]["final_success"] = not bad["test_c"]["rows"][0]["final_success"]
+    assert verifier.verify(bad, fx), "edited row must break aggregate consistency"
+    bad = copy.deepcopy(result)
+    bad["fixture_sha256"] = "0" * 64
+    assert verifier.verify(bad, fx)
+    bad = copy.deepcopy(result)
+    bad["test_b"]["rows"][0]["truth"] = "something_else"
+    assert verifier.verify(bad, fx)
+    bad = copy.deepcopy(result)
+    bad["test_a_identity"]["pinned_probe"]["headers"]["set-cookie"] = "x"
+    assert verifier.verify(bad, fx)
+    bad = copy.deepcopy(result)
+    bad["note"] = "Authorization: Bearer abcdef123456"
+    assert verifier.verify(bad, fx)
+
+
+def test_verifier_accepts_poor_results_it_checks_integrity_not_quality():
+    fx = fixture()
+    sel = Scripted(["abstain"] * 1000, verify="goal_not_met")
+    b_rows = jl.run_test_b(fx, sel, fx["design"]["repeats"])
+    assert b_agg_ok(fx, b_rows)
+
+
+def b_agg_ok(fx, b_rows):
+    agg = jl.aggregate_test_b(b_rows, fx["pricing"])
+    return agg["exact_choice_accuracy"] == 0.0 and agg["abstain_rate"] == 1.0
+
+
+def test_verifier_reports_not_run_without_evidence(tmp_path):
+    proc = subprocess.run([sys.executable, str(VERIFIER), str(tmp_path / "missing.json")],
+                          check=False, capture_output=True, text=True)
+    assert proc.returncode == 0 and json.loads(proc.stdout)["status"] == "NOT_RUN"
+
+
+def test_committed_evidence_if_present_verifies():
+    path = EXP.parent / "evidence" / "jev_live_systemone_check_v1.result.json"
+    if path.exists():
+        assert verifier.verify(json.loads(path.read_text()), fixture()) == []

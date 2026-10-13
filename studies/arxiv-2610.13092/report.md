@@ -199,6 +199,6 @@ No further meaningful free/lightweight experiment should replace the actual Jev/
 
 ## Live Jev check (prepared, not run)
 
-`jev-live-systemone-check-v1` is a frozen, key-gated live protocol check against the real Jev API (`jev-1.13.0`). **Status: NOT_RUN** - no `TYPESAFE_API_KEY` was available, so there are no live results, and the aggregate-audit close above remains provisional rather than superseded. The harness (fixture hash pin, state machine, metrics, CI wiring) is verified offline against a fake server only; that verifies the harness, not Jev.
+`jev-live-systemone-check-v1` is a frozen, locally-run live protocol check against the real Jev API (`jev-1.13.0`). **Status: NOT_RUN** - no live run has been executed yet (the key is used only on the local machine, never stored in GitHub), so there are no live results, and the aggregate-audit close above remains provisional rather than superseded. The harness (fixture hash pin, state machine, metrics, evidence integrity verifier) is verified offline against a fake server only; that verifies the harness, not Jev.
 
 Even after a successful run this would be an actual-Jev System One *protocol check on a toy workflow*: it cannot establish the paper's ALFWorld/AndroidWorld effect sizes, and `reproduction_status` stays `PARTIAL`. Results will be descriptive, reported at decision, attempt, recovery/completion and delivered-success levels, with failed and invalid attempts retained. See `HANDOFF.md` for how to run it.

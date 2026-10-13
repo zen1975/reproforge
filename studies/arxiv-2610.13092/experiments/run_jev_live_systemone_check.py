@@ -5,7 +5,9 @@ Calls the real TypeSafe Jev API (POST /v1/systemone) on a frozen candidate-choic
 identity (Test A). No generic LLM is used. Without TYPESAFE_API_KEY the runner prints a
 SKIPPED_NO_CREDENTIAL status and exits 0 without producing evidence.
 
-The API key is read only from the environment and is never written to any output.
+Execution policy: run LOCALLY only. The API key is read only from the environment, is never
+stored in GitHub (repository or Actions secrets), and is never written to any output. Only the
+sanitized result JSON is committed; CI merely verifies it (verify_jev_live_evidence.py).
 """
 from __future__ import annotations
 
@@ -26,7 +28,12 @@ FIXTURE_PATH = HERE / "jev_live_systemone_check_v1.fixture.json"
 # sha256 of the raw fixture bytes. Changing the fixture after the first live run => v2.
 FIXTURE_SHA256 = "7883f4ff7f09a3e20483a5d6a323e500e6cafb5224b2d09a319335d8bcaf3a06"
 EXPERIMENT_ID = "jev-live-systemone-check-v1"
-DROPPED_HEADERS = {"set-cookie", "authorization", "proxy-authorization"}
+# Response headers kept in evidence (allowlist; everything else is dropped as unsanitized).
+KEPT_HEADERS = frozenset({
+    "content-type", "date", "retry-after", "x-typesafe-request-id", "x-request-id",
+    "x-ratelimit-limit-requests", "x-ratelimit-remaining-requests",
+    "x-ratelimit-limit-tokens", "x-ratelimit-remaining-tokens",
+})
 
 CLAIM_SCOPE = (
     "Actual Jev (TypeSafe System One) live protocol check on a small frozen fixture. "
@@ -225,7 +232,7 @@ class JevClient:
                 with urllib.request.urlopen(req, timeout=self.cfg["timeout_seconds"]) as resp:
                     payload = resp.read()
                     latency = time.perf_counter() - t0
-                    hdrs = {k.lower(): v for k, v in resp.headers.items() if k.lower() not in DROPPED_HEADERS}
+                    hdrs = {k.lower(): v for k, v in resp.headers.items() if k.lower() in KEPT_HEADERS}
                     return {
                         "status": resp.status, "headers": hdrs, "json": json.loads(payload),
                         "latency_s": latency, "retries": retries, "retry_wait_s": waited,
@@ -522,6 +529,8 @@ def run_reference_policies(fixture: dict, repeats: int = 1) -> dict:
     out = {}
     for name in ("oracle_on_path", "first_candidate", "declare_done_immediately"):
         rows = run_test_c(fixture, ReferenceSelector(name), repeats)
+        for r in rows:
+            r["workflow_latency_total_s"] = 0.0  # local CPU time is not workflow latency; keeps output deterministic
         out[name] = {"aggregate": aggregate_test_c(rows),
                      "note": "Non-model deterministic reference; latency and cost are zero by construction."}
     return out
@@ -571,6 +580,17 @@ def test_a_identity(client: JevClient, fixture: dict) -> dict:
     return identity
 
 
+def git_provenance() -> dict:
+    import subprocess
+    def run(*a):
+        try:
+            return subprocess.run(["git", *a], cwd=HERE, capture_output=True, text=True,
+                                  check=False, timeout=10).stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            return ""
+    return {"head": run("rev-parse", "HEAD") or None, "dirty": bool(run("status", "--porcelain"))}
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", help="write result JSON to this path (only when a live run happens)")
@@ -596,7 +616,8 @@ def main(argv=None) -> int:
         "experiment_id": EXPERIMENT_ID, "status": "LIVE_RUN_COMPLETED",
         "fixture_sha256": fixture["_sha256"],
         "runner_sha256": sha256_bytes(Path(__file__).read_bytes()),
-        "git_sha": os.environ.get("GITHUB_SHA"), "github_run_id": os.environ.get("GITHUB_RUN_ID"),
+        "execution_environment": "local",
+        "git": git_provenance(),
         "test_a_identity": identity,
         "test_b": {"aggregate": b_agg, "rows": b_rows},
         "test_c": {"aggregate": c_agg, "rows": c_rows},

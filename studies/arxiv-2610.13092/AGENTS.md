@@ -4,7 +4,7 @@
 - Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
 - Free/light phase: complete (provisional; see status.yaml `next_step`)
-- Frozen: `jev-efficiency-transfer-audit-v1`; `jev-live-systemone-check-v1` (inputs frozen, NOT_RUN: needs `TYPESAFE_API_KEY`)
+- Frozen: `jev-efficiency-transfer-audit-v1`; `jev-live-systemone-check-v1` (inputs frozen, NOT_RUN)
 
 Read `status.yaml`, `report.md`, and `HANDOFF.md` first.
 
@@ -21,6 +21,10 @@ For ALFWorld, preserve the B/C/J interpretation:
 - B-vs-C: candidate-interface effect;
 - C-vs-J: decision-model effect under shared candidate interface;
 - B-vs-J: system integration effect.
+
+## Secret policy (Jev live check)
+
+`TYPESAFE_API_KEY` is used only in a local process environment. Never put it in the repository, GitHub Actions secrets, workflows, logs or committed artifacts. Commit only the sanitized evidence JSON; CI only verifies its integrity.
 
 ## License boundary
 
