@@ -72,6 +72,23 @@ Sizing: 9 families x 12 test instances = 108 instances; x 3 orders = 324 natural
 
 **Control adapter (step 2, implemented offline).** Pinned from current Anthropic docs via the `claude-api` skill (2026-10-14): `claude-haiku-5-5` accepts only default sampling (`temperature` must be 1, `top_p` 0.99; others 400), so none are sent; a forced `tool_choice` on a `strict` enum-valued tool is accepted and skips thinking, which makes the control a fast selector comparable to Jev's role; `output_config.effort` is pinned to `low`; usage comes from `response.usage`, the request id from the SDK's `_request_id`; price is $0.10 / $0.50 per MTok for prompts up to 100K tokens (newer tokenizer, about 30% more tokens than Haiku 4.5); SDK retries are disabled (`max_retries=0`) so backoff is logged separately from latency; there is no server-side refusal fallback for this model (a refusal is recorded as an invalid response). The candidate list is rendered into the control prompt in the same order Jev receives. Code: `experiments/jev_v2_arms.py` (arms, spend guard), tested against fake clients only.
 
+### Pilot 1 outcome (2026-10-14; evidence kept, never overwritten)
+
+Files: `evidence/jev_v2_pilot_{jev,control}.result.json`, `evidence/jev_v2_pilot_analysis.json` (CI-verified). 36 pilot instances x 3 orders x {natural, forced_trap} = 216 episodes per arm, no infrastructure failures, spend $0.025 (Jev) + $0.114 (control).
+
+| | Jev (`jev-1.13.0`) | Control (`claude-haiku-5-5`) |
+|---|---|---|
+| Difficulty window (initial error, stress families) | **30.2% - inside [10%, 60%]** | **6.3% - outside (below 10%)** |
+| Initial correct, stress natural | 69.8% | 93.8% |
+| Final success, stress natural | 88.5% | 100% |
+| Forced-trap recovery (primary C5, recoverable) | 83.3% | 99.0% |
+| Decision latency / call | 0.19 s | 1.58 s |
+| Cost per delivered success (natural) | $1.2e-04 | $5.0e-04 |
+
+Pre-registered rule consequence: the control is outside the window, so the rule requires adjusting generator difficulty, regenerating **unseen** test seeds and repeating the pilot. Pilot-only observations (descriptive, n=36 instances, stressors chosen from Jev's weak-spot list, difficulty not yet calibrated for the control): Jev's errors concentrate in `indirection` (50% initial error, 17% forced-trap recovery), `injected` (50%) and `numeric` (42%); Jev abstains on 14/108 natural first decisions (control 0/108), which the window definition counts as an error but which is reported separately; `anchor` is 100% for both arms; order effects are small (Jev initial error 31% / 28% / 22% for trap-first / truth-first / neither). Design defect found: in `premature`, Jev (12/12) and Haiku (42%) fail by attaching the receipt *before* submitting, so the family exercises a prerequisite violation, not premature completion (premature completions: 0 for both arms) - the family needs redesign so that the "looks complete" state is reachable without a prerequisite error.
+
+Reading guard: these pilot numbers are for calibration and harness validation; they are not the test result and must not be quoted as the C-vs-J finding.
+
 ## 7. Metrics and decision rules (pre-registered)
 
 Per arm and per stressor family:

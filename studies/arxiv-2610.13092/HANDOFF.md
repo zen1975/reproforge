@@ -50,7 +50,7 @@ Provenance: executed locally at git head `1f2be8f` with the then-uncommitted run
 
 Key policy: `TYPESAFE_API_KEY` is **never** stored in the GitHub repository or Actions secrets (public repo); it was used only in a local process environment. Rotate it. v1 inputs and evidence must not be edited; any change (harder cases, thresholds, prompts) is `jev-live-systemone-check-v2`. `reproduction_status` stays `PARTIAL`: ALFWorld/AndroidWorld are not run.
 
-Next lightweight experiment (steps 1-2 implemented and offline-tested; pilot/test NOT run): `design/jev-live-systemone-check-v2.md` (Jev vs a named LLM candidate-interface control on a stressor fixture, pilot/test split, pre-registered rules).
+Next lightweight experiment (steps 1-3: generator, arms, analysis implemented; pilot 1 run and kept - control outside the pre-registered difficulty window, so calibration/pilot 2 is required before freeze; test NOT run). Pilot 1 summary in the design doc, section 6.: `design/jev-live-systemone-check-v2.md` (Jev vs a named LLM candidate-interface control on a stressor fixture, pilot/test split, pre-registered rules).
 
 ## Verified lightweight boundary
 
