@@ -11,7 +11,10 @@ on:
       - "studies/arxiv-2610.13092/experiments/verify_jev_live_evidence.py"
       - "studies/arxiv-2610.13092/experiments/verify_jev_v2_evidence.py"
       - "studies/arxiv-2610.13092/experiments/jev_v2_*.py"
+      - "studies/arxiv-2610.13092/experiments/jev_v3*.py"
+      - "studies/arxiv-2610.13092/experiments/verify_jev_v3_evidence.py"
       - "studies/arxiv-2610.13092/evidence/jev_v2_*.json"
+      - "studies/arxiv-2610.13092/evidence/jev_v3*.json"
       - ".github/workflows/jev-live-evidence-verify.yml"
 
 permissions:
@@ -29,3 +32,5 @@ jobs:
         run: python studies/arxiv-2610.13092/experiments/verify_jev_live_evidence.py
       - name: Verify committed v2 evidence (pilot + frozen test evidence)
         run: python studies/arxiv-2610.13092/experiments/verify_jev_v2_evidence.py
+      - name: Verify committed v3a evidence (NOT_RUN until a local run is committed)
+        run: python studies/arxiv-2610.13092/experiments/verify_jev_v3_evidence.py
