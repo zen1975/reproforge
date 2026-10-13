@@ -288,7 +288,6 @@ def test_no_credential_skips_without_output_files(tmp_path):
     assert proc.returncode == 0
     assert json.loads(proc.stdout)["status"] == "SKIPPED_NO_CREDENTIAL"
     assert not out.exists()
-    assert not (EXP.parent / "evidence" / "jev_live_systemone_check_v1.result.json").exists()
 
 
 def test_no_api_key_literal_in_repo_sources():

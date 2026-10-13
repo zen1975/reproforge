@@ -197,8 +197,15 @@ The independent fixture also correctly detected direct transfer, overhead absorp
 
 No further meaningful free/lightweight experiment should replace the actual Jev/environment rerun. Therefore the study is now **HEAVY_COMPUTE_READY / PARTIAL** with `free_light_phase_complete: true`.
 
-## Live Jev check (prepared, not run)
+## Live Jev check (run locally, ceiling result)
 
-`jev-live-systemone-check-v1` is a frozen, locally-run live protocol check against the real Jev API (`jev-1.13.0`). **Status: NOT_RUN** - no live run has been executed yet (the key is used only on the local machine, never stored in GitHub), so there are no live results, and the aggregate-audit close above remains provisional rather than superseded. The harness (fixture hash pin, state machine, metrics, evidence integrity verifier) is verified offline against a fake server only; that verifies the harness, not Jev.
+`jev-live-systemone-check-v1` was run once against the real Jev API (`jev-1.13.0`, resolved for both the pinned ID and the `jev-latest` alias) on 2026-10-14. The key was used only in a local environment and never stored in GitHub; the sanitized result (sha256 `35fa635c0d8b9b97a6eea34ef3fdf1643340bed493d6370dbe3cee400d325fdd`) is committed unmodified and CI verifies its integrity.
 
-Even after a successful run this would be an actual-Jev System One *protocol check on a toy workflow*: it cannot establish the paper's ALFWorld/AndroidWorld effect sizes, and `reproduction_status` stays `PARTIAL`. Results will be descriptive, reported at decision, attempt, recovery/completion and delivered-success levels, with failed and invalid attempts retained. See `HANDOFF.md` for how to run it.
+| Level | Result |
+|---|---|
+| Decision (Test B, 36 decisions, 6 categories) | 36/36 valid and exact; 0 abstentions; mean 0.19 s/call, p95 0.26 s |
+| Attempt (Test C, 24 attempts, 8 workflows x 3) | initial choice correct 24/24; prerequisite-valid 24/24 |
+| Recovery / completion | 0 deviations, so recovery rate undefined; 0 premature completions; verification correct throughout |
+| Delivered success | 24/24; about 0.74 s and $7.8e-05 (assumed $0.042/Mtok input) per delivered success |
+
+**Interpretation boundary.** Everything is at ceiling, so this check shows only that the real API responds as documented and handles this small, explicit-state fixture correctly. It cannot show that faster decisions do or do not make better agents: no first-decision error, recovery or premature completion ever occurred live, and there was no control, so the paper's decision-vs-delivered-success gap and B/C/J separation remain untested with real Jev. Descriptive only; a harder v2 fixture would be needed. It is not an ALFWorld/AndroidWorld reproduction, `reproduction_status` stays `PARTIAL`, and no claim is made about the paper's effect sizes.
