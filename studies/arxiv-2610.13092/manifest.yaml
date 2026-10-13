@@ -1,0 +1,39 @@
+schema_version: "0.1"
+paper:
+  title: "When Faster Decisions Do Not Make Better Agents: An Empirical Study of Jev in Agent Workflows"
+  canonical_url: "https://arxiv.org/abs/2610.13092"
+  arxiv_id: "2610.13092"
+  authors:
+    - "Yuchen Ling"
+    - "Shengcheng Yu"
+    - "Zhenyu Chen"
+    - "Chunrong Fang"
+  license: "CC BY-NC-ND 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "DERIVED"
+  official_code_used: false
+  notes: "Independent implementation of the published accounting and mechanism contracts. The paper links experimental code at anonymous.4open.science, but ReproForge does not copy it because a code license was not independently verified."
+external_assets:
+  - kind: "CODE"
+    name: "Anonymous experimental repository"
+    source: "https://anonymous.4open.science/r/jev-emp-5BF4/"
+    license: "UNVERIFIED"
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-local-decision-efficiency"
+    statement: "Jev substantially reduces action-selection cost and latency across the five evaluated agent families."
+    acceptance_criteria: "Published aggregate audit must reproduce the reported decision-level reduction range from the paper tables within rounding tolerance."
+  - id: "C2-task-level-efficiency-transfer"
+    statement: "Local action-selection savings transfer unevenly to total task cost and latency because auxiliary reasoning, interaction and environment work can absorb them."
+    acceptance_criteria: "Independent accounting must distinguish decision resources, auxiliary resources, environment/other time, and total task resources; it must flag cases where local savings fail to become task-level savings."
+  - id: "C3-successful-delivery-efficiency"
+    statement: "Per-attempt savings do not guarantee lower resource cost per delivered success when completion rates fall."
+    acceptance_criteria: "Auditor must compute total resource / successful executions and detect the lower-attempt-cost but higher-cost-per-success paradox."
+  - id: "C4-interface-vs-model"
+    statement: "ALFWorld B/C/J comparisons separate candidate-list interface effects from the Jev decision-model effect."
+    acceptance_criteria: "Protocol must preserve B-vs-C as interface contrast and C-vs-J as decision-model contrast rather than attributing both to Jev."
+  - id: "C5-recovery-and-completion"
+    statement: "Failed recovery and premature completion can turn local decision errors into task-level failures."
+    acceptance_criteria: "Mechanism fixture must separately represent initial decision error, recovery opportunity, recovery outcome and completion verification; final outcome cannot be inferred from first-trial success alone."

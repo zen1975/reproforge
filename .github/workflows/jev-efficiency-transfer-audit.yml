@@ -1,0 +1,26 @@
+name: Jev efficiency transfer audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.13092/experiments/run_efficiency_transfer_audit.py"
+      - ".github/workflows/jev-efficiency-transfer-audit.yml"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run frozen audit
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.13092/experiments/run_efficiency_transfer_audit.py | tee jev_efficiency_transfer_audit_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jev-efficiency-transfer-audit-v1
+          path: jev_efficiency_transfer_audit_v1.result.json
+          retention-days: 7

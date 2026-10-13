@@ -1,7 +1,7 @@
 schema_version: "1.0.0"
 screening_window:
   from: "2026-09-24"
-  to: "2026-10-11"
+  to: "2026-10-14"
 candidates:
   - arxiv_id: "2610.06354"
     title: "GraphDecide: Benchmarking System One Models on Graph Tasks"
@@ -249,3 +249,16 @@ candidates:
     next_gate: "MECHANISM_DESIGN"
     status: "PROMOTED_TO_STUDY"
     notes: "Full arXiv HTML protocol reviewed on 2026-10-11. Paper license is CC BY 4.0. Official repository SakanaAI/mass is pinned for protocol/provenance inspection, but its NOTICE states that MASS-specific code has no public open-source license, so no official code is copied or redistributed. Promoted for independent RSI-loop, elite-retention, self-evaluation/external-evaluation separation, trajectory-selection and recursion-contract verification."
+
+  - arxiv_id: "2610.13092"
+    title: "When Faster Decisions Do Not Make Better Agents: An Empirical Study of Jev in Agent Workflows"
+    submitted_on: "2026-10-09"
+    source_url: "https://arxiv.org/abs/2610.13092"
+    source_verified: true
+    priority: "A+"
+    candidate_capability: "agent.efficiency-transfer-auditor"
+    why_reusable: "Separates local decision-model savings from task-level successful-delivery efficiency, interface effects, recovery costs and completion failures; reusable for deciding where System One models should and should not replace generative decision makers."
+    free_light_fit: "high"
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Full arXiv HTML protocol and appendices reviewed on 2026-10-14. Paper license is CC BY-NC-ND 4.0. Experimental code is linked through an anonymous 4open.science repository, but a code license could not be independently verified, so ReproForge does not copy or redistribute it. Promoted for independent efficiency-transfer accounting, B/C/J interface separation, successful-delivery accounting, recovery/completion boundary verification and published-aggregate audit."
