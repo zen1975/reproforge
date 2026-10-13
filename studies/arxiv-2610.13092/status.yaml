@@ -17,8 +17,4 @@ frozen_evaluations:
 entrypoints:
   - "studies/arxiv-2610.13092/experiments/run_efficiency_transfer_audit.py"
   - ".github/workflows/jev-efficiency-transfer-audit.yml"
-evidence:
-  workflow_run: 38431488012
-  artifact_id: 11831980273
-  artifact_digest: "sha256:ce25ab6a5af50d10821a5e874b4bba34d7c0e38817cfdb02e1c2f7e1f37b5750"
 updated_at: "2026-10-14"
