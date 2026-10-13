@@ -1,0 +1,16 @@
+{
+  "experiment_id": "jev-live-systemone-check-v2",
+  "generator_version": "g2",
+  "freeze_sha256": "f76ba2b61a5814d82b487861f0c01cfc2375af91d125704365bce3e142fd951f",
+  "files": [
+    "jev_v2_core.py",
+    "jev_v2_generator.py",
+    "jev_v2_arms.py",
+    "jev_v2_run.py",
+    "jev_v2_analysis.py"
+  ],
+  "pinned_on": "2026-10-14",
+  "test_seeds": "3000-3011 (never run before this pin)",
+  "spend_cap_usd_total": 5.0,
+  "note": "Pins code + generator + analysis plan for the single test run. Any change to the files listed => new experiment id (v3). Pre-registration: design/jev-live-systemone-check-v2-preregistration.md"
+}

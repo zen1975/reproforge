@@ -155,17 +155,27 @@ def test_verify_dir_not_run_then_verified_then_invalid(tmp_path):
     assert ver.verify_dir(tmp_path)["status"] == "EVIDENCE_INVALID"
 
 
-def test_cli_skips_without_key_and_refuses_test_phase_before_freeze(tmp_path):
+def test_cli_skips_without_key(tmp_path):
     env = {k: v for k, v in os.environ.items() if k not in ("TYPESAFE_API_KEY", "ANTHROPIC_API_KEY")}
     out = tmp_path / "x.json"
     p = subprocess.run([sys.executable, str(EXP / "jev_v2_run.py"), "--arm", "jev", "--phase", "pilot", "--out",
                         str(out)], check=False, env=env, capture_output=True, text=True)
     assert p.returncode == 0 and json.loads(p.stdout)["status"] == "SKIPPED_NO_CREDENTIAL" and not out.exists()
-    env2 = dict(env, TYPESAFE_API_KEY="fake-key-not-used")
-    p = subprocess.run([sys.executable, str(EXP / "jev_v2_run.py"), "--arm", "jev", "--phase", "test", "--out",
-                        str(out)], check=False, env=env2, capture_output=True, text=True)
-    assert p.returncode == 4 and not out.exists()
-    assert run.FREEZE_SHA256 is None
+
+
+def test_test_phase_is_refused_when_freeze_hash_does_not_match(tmp_path, monkeypatch):
+    monkeypatch.setenv("TYPESAFE_API_KEY", "fake-key-not-used")
+    monkeypatch.setattr(run, "FREEZE_SHA256", "0" * 64)
+    assert run.main(["--arm", "jev", "--phase", "test", "--out", str(tmp_path / "x.json")]) == 4
+    monkeypatch.setattr(run, "FREEZE_SHA256", None)
+    assert run.main(["--arm", "jev", "--phase", "test", "--out", str(tmp_path / "x.json")]) == 4
+    assert not (tmp_path / "x.json").exists()
+
+
+def test_pinned_freeze_hash_matches_the_frozen_files():
+    pin = json.loads((EXP / "jev_v2_freeze.json").read_text())
+    assert pin["freeze_sha256"] == run.FREEZE_SHA256 == run.freeze_sha256(), "frozen files changed after the pin"
+    assert pin["generator_version"] == gen.GENERATOR_VERSION and set(pin["files"]) == set(run.FREEZE_FILES)
 
 
 def test_no_secret_literals_and_freeze_hash_is_stable():

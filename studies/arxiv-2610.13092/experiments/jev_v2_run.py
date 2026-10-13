@@ -26,8 +26,11 @@ import jev_v2_generator_g1 as gen_g1  # noqa: E402  (kept only so pilot-1 eviden
 
 v1 = core.v1
 EXPERIMENT_ID = "jev-live-systemone-check-v2"
-FREEZE_FILES = ("jev_v2_core.py", "jev_v2_generator.py", "jev_v2_arms.py", "jev_v2_run.py")
-FREEZE_SHA256 = None  # pinned at design step 4 (freeze + pre-registration); `test` phase refused until then
+FREEZE_FILES = ("jev_v2_core.py", "jev_v2_generator.py", "jev_v2_arms.py", "jev_v2_run.py", "jev_v2_analysis.py")
+# Pinned in jev_v2_freeze.json (a separate, unhashed file, so pinning cannot change the hash it pins).
+# `test` phase is refused until a pin exists and matches the files above.
+_PIN = HERE / "jev_v2_freeze.json"
+FREEZE_SHA256 = json.loads(_PIN.read_text())["freeze_sha256"] if _PIN.exists() else None
 SPEND_CAP_USD = 5.0
 ORDERS = (0, 1, 2)
 KEY_ENV = {"jev": "TYPESAFE_API_KEY", "control": "ANTHROPIC_API_KEY"}
