@@ -16,6 +16,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+control = [
+  "anthropic>=1,<2",  # LLM candidate-interface control for jev-live-systemone-check-v2 (local runs only)
+]
 dev = [
   "pytest>=8.3,<9",
   "ruff>=0.8,<1",
