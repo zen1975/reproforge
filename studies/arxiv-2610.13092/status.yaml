@@ -3,18 +3,22 @@ lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
 free_light_phase_complete: true
 current_boundary: "Current free/lightweight verification is complete. The public protocol and appendices are fully reviewed; ReproForge independently separates local decision efficiency, task-level transfer, resource-per-delivered-success accounting, interface-vs-model contrasts, and recovery/completion effects. The frozen CI audit reproduces the paper's published decision-level reduction ranges from rounded aggregate tables and reconstructs successful-delivery arithmetic, including the T3A delivery paradox. Independent synthetic fixtures verify TRANSFERRED, OVERHEAD_ABSORPTION, DELIVERY_PARADOX, and better-initial-but-worse-final recovery semantics. No Jev API or benchmark trajectories were rerun."
-next_step: "Run a protocol-comparable real-system reproduction with actual Jev access and ALFWorld/AndroidWorld environments, preserving B/J and applicable C controls, repeated fixed-task runs, full failure-inclusive accounting, and held-out completion/recovery evidence."
+next_step: "(1) Supply TYPESAFE_API_KEY as a GitHub Actions repository secret (pbpaste | tr -d '\\r\\n' | gh secret set TYPESAFE_API_KEY -R zen1975/reproforge), then dispatch .github/workflows/jev-live-systemone-check.yml once; persist the artifact unmodified. Only after a successful live run set free_light_phase_complete back to false, add the live check as a lightweight verification, and re-evaluate. (2) Then run a protocol-comparable real-system reproduction with actual Jev access and ALFWorld/AndroidWorld environments, preserving B/J and applicable C controls, repeated fixed-task runs, full failure-inclusive accounting, and held-out completion/recovery evidence."
 handoff:
   path: studies/arxiv-2610.13092/HANDOFF.md
   ready: true
 blockers:
+  - "jev-live-systemone-check-v1 is NOT_RUN: no TYPESAFE_API_KEY is available locally or as a repository secret, and a third-party guide reported TypeSafe paused new signups on 2026-09-22 (unverified against official sources), so key availability is uncertain."
   - "Paper-scale rerun requires jev-1.13.0 access plus GPT-5.6 Luna calls and the ALFWorld/AndroidWorld execution environments."
   - "The paper links experimental code through anonymous.4open.science, but a code license could not be independently verified; ReproForge does not copy or redistribute it."
   - "AndroidWorld reproduction depends on the benchmark/device environment and fixed task instances."
   - "Replacing Jev with a generic small language model would not reproduce the core empirical comparison and is therefore not accepted as the next step."
 frozen_evaluations:
   - "jev-efficiency-transfer-audit-v1"
+  - "jev-live-systemone-check-v1"
 entrypoints:
   - "studies/arxiv-2610.13092/experiments/run_efficiency_transfer_audit.py"
   - ".github/workflows/jev-efficiency-transfer-audit.yml"
+  - "studies/arxiv-2610.13092/experiments/run_jev_live_systemone_check.py"
+  - ".github/workflows/jev-live-systemone-check.yml"
 updated_at: "2026-10-14"

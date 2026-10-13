@@ -1,0 +1,30 @@
+name: Jev live System One check
+
+# Manual only: every run spends real API credit and a second "first run" would undermine the freeze.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-check:
+    runs-on: ubuntu-latest
+    env:
+      TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run frozen live check (skips safely when the secret is absent)
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.13092/experiments/run_jev_live_systemone_check.py \
+            --out jev_live_systemone_check_v1.result.json | tee jev_live_systemone_check_v1.stdout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jev-live-systemone-check-v1
+          path: jev_live_systemone_check_v1.result.json
+          if-no-files-found: ignore
+          retention-days: 30

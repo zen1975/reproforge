@@ -1,0 +1,257 @@
+{
+  "experiment_id": "jev-live-systemone-check-v1",
+  "fixture_version": "v1",
+  "freeze_note": "All inputs of this experiment live in this file. Its sha256 is pinned in run_jev_live_systemone_check.py. Any change after the first live run must become jev-live-systemone-check-v2.",
+  "api": {
+    "base_url": "https://api.typesafe.ai",
+    "models_path": "/v1/models",
+    "systemone_path": "/v1/systemone",
+    "pinned_model": "jev-1.13.0",
+    "alias_probe": "jev-latest",
+    "docs": ["https://docs.typesafe.ai/api.md", "https://docs.typesafe.ai/models.md"],
+    "docs_retrieved": "2026-10-14",
+    "api_key_env": "TYPESAFE_API_KEY",
+    "timeout_seconds": 30,
+    "retry_statuses": [429, 529],
+    "max_retries": 5,
+    "backoff_seconds": [1, 2, 4, 8, 16]
+  },
+  "pricing": {
+    "usd_per_million_input_tokens": 0.042,
+    "usd_per_million_output_tokens": 0.0,
+    "source": "https://docs.typesafe.ai/models.md",
+    "note": "The response carries token usage only; cost is computed client-side from usage and this assumed price."
+  },
+  "design": {
+    "repeats": 3,
+    "step_budget_extra": 3,
+    "abstain_option": "abstain",
+    "protocol_pass_min_valid_choice_rate": 0.95,
+    "note": "Thresholds apply to protocol validity only. Choice accuracy, success rate, latency and cost are reported descriptively with no pass/fail threshold."
+  },
+  "prompts": {
+    "action_instructions": "You are the action selector in a software workflow. Choose the single best next action toward the stated goal given the current state. Respect prerequisites: an action whose prerequisites are not met will fail. Choose 'abstain' only if no candidate action is applicable or the information given is insufficient.",
+    "verification_instructions": "Based only on the current state, are ALL conditions of the stated goal satisfied right now? Answer goal_met only if every condition holds; otherwise answer goal_not_met.",
+    "verification_criteria": {
+      "goal_met": "Every condition of the goal is satisfied in the current state.",
+      "goal_not_met": "At least one condition of the goal is not yet satisfied."
+    },
+    "abstain_description": "No candidate is applicable, or the information is insufficient to choose."
+  },
+  "test_b_cases": [
+    {
+      "id": "B01", "category": "clear_action_selection",
+      "state": "Goal: Send the finished invoice to the client.\nCurrent state:\n- invoice: finalized, PDF generated\n- sent_to_client: no",
+      "candidates": {
+        "send_invoice_email": "Email the finalized invoice PDF to the client.",
+        "edit_invoice_lines": "Modify the line items on the invoice.",
+        "delete_invoice": "Permanently delete the invoice."
+      },
+      "truth": "send_invoice_email"
+    },
+    {
+      "id": "B02", "category": "clear_action_selection",
+      "state": "Goal: Get the stalled print queue printing again.\nCurrent state:\n- printer: online, paper and toner fine\n- print_queue: stuck, 14 jobs waiting, no progress for 20 minutes",
+      "candidates": {
+        "restart_print_queue": "Clear the stuck job and restart the print queue service.",
+        "power_off_printer": "Switch the printer off.",
+        "order_toner": "Order replacement toner."
+      },
+      "truth": "restart_print_queue"
+    },
+    {
+      "id": "B03", "category": "prerequisite_violation",
+      "state": "Goal: Deploy the build to production.\nCurrent state:\n- build: compiled\n- tests: not run\n- deploy policy: deploy_to_production fails unless tests have passed",
+      "candidates": {
+        "deploy_to_production": "Deploy the build to production (requires tests=passed).",
+        "run_test_suite": "Run the full automated test suite on the build.",
+        "rollback_release": "Roll back the most recent production release."
+      },
+      "truth": "run_test_suite"
+    },
+    {
+      "id": "B04", "category": "prerequisite_violation",
+      "state": "Goal: Open the vault.\nCurrent state:\n- badge: not scanned\n- vault: closed\n- rule: open_vault is rejected unless the badge has been scanned and accepted",
+      "candidates": {
+        "open_vault": "Open the vault door (requires an accepted badge scan).",
+        "scan_badge": "Scan the access badge at the reader.",
+        "call_security": "Raise a security alert."
+      },
+      "truth": "scan_badge"
+    },
+    {
+      "id": "B05", "category": "ambiguous_candidate_label",
+      "state": "Goal: Turn on Wi-Fi on the tablet.\nCurrent state:\n- airplane_mode: off\n- wifi_radio: off\n- cellular_data: on",
+      "candidates": {
+        "toggle_wireless_switch": "The switch labelled 'Wireless'. In this UI it controls cellular data (currently on).",
+        "toggle_network_switch": "The switch labelled 'Network'. In this UI it controls the Wi-Fi radio (currently off)."
+      },
+      "truth": "toggle_network_switch"
+    },
+    {
+      "id": "B06", "category": "ambiguous_candidate_label",
+      "state": "Goal: Mute the conference room microphone so remote attendees stop hearing the room.\nCurrent state:\n- speaker_volume: 60%\n- microphone: live",
+      "candidates": {
+        "press_audio_button": "The control labelled 'Audio'. In this UI it adjusts the room speaker volume.",
+        "press_input_button": "The control labelled 'Input'. In this UI it mutes or unmutes the microphone."
+      },
+      "truth": "press_input_button"
+    },
+    {
+      "id": "B07", "category": "recovery_required",
+      "state": "Goal: Move the existing team meeting to Friday while keeping its attendees and agenda.\nCurrent state:\n- meeting: cancelled (previous step cancelled it by mistake)\n- attendees: notified of cancellation\nRecent history: cancel_meeting -> OK",
+      "candidates": {
+        "undo_last_action": "Revert the most recent action, restoring the cancelled meeting with its attendees and agenda.",
+        "create_new_meeting_friday": "Create a brand-new Friday meeting from scratch (attendees and agenda are NOT carried over).",
+        "send_apology_email": "Email attendees an apology."
+      },
+      "truth": "undo_last_action"
+    },
+    {
+      "id": "B08", "category": "recovery_required",
+      "state": "Goal: Store the log file in the 'logs-prod' bucket.\nCurrent state:\n- log_file: present\n- bucket 'logs-prod': does not exist\nRecent history: upload_log -> ERROR 404 bucket 'logs-prod' not found",
+      "candidates": {
+        "upload_log": "Upload the log file to 'logs-prod' (fails while the bucket does not exist).",
+        "create_bucket_logs_prod": "Create the bucket 'logs-prod'.",
+        "declare_done": "Declare the goal complete and end the workflow."
+      },
+      "truth": "create_bucket_logs_prod"
+    },
+    {
+      "id": "B09", "category": "premature_completion_trap",
+      "state": "Goal: Publish the article AND notify subscribers.\nCurrent state:\n- article: published\n- subscribers_notified: no",
+      "candidates": {
+        "declare_done": "Declare the goal complete and end the workflow.",
+        "notify_subscribers": "Send the notification email to all subscribers.",
+        "unpublish_article": "Take the article offline."
+      },
+      "truth": "notify_subscribers"
+    },
+    {
+      "id": "B10", "category": "premature_completion_trap",
+      "state": "Goal: Back up the database AND verify the backup.\nCurrent state:\n- backup: created\n- backup_verified: no",
+      "candidates": {
+        "declare_done": "Declare the goal complete and end the workflow.",
+        "verify_backup": "Run the integrity check on the created backup.",
+        "delete_backup": "Delete the backup."
+      },
+      "truth": "verify_backup"
+    },
+    {
+      "id": "B11", "category": "completion_verification",
+      "state": "Goal: Wi-Fi is on AND connected to 'HomeNet'.\nCurrent state:\n- wifi_radio: on\n- connected_network: HomeNet",
+      "candidates": {
+        "declare_done": "Declare the goal complete and end the workflow.",
+        "toggle_network_switch": "Flip the Wi-Fi radio switch.",
+        "reconnect_network": "Disconnect and reconnect to the network."
+      },
+      "truth": "declare_done"
+    },
+    {
+      "id": "B12", "category": "completion_verification",
+      "state": "Goal: The invoice is sent AND the receipt is logged.\nCurrent state:\n- invoice_sent: yes\n- receipt_logged: yes",
+      "candidates": {
+        "declare_done": "Declare the goal complete and end the workflow.",
+        "send_invoice_email": "Email the invoice to the client again.",
+        "log_receipt": "Add the receipt to the ledger again."
+      },
+      "truth": "declare_done"
+    }
+  ],
+  "shared_actions": {
+    "undo_last_action": "Revert the most recent state-changing action.",
+    "declare_done": "Declare the goal complete and end the workflow (completion is then verified)."
+  },
+  "test_c_workflows": [
+    {
+      "id": "W1_projector", "category": "prerequisite_violation",
+      "goal_text": "The projector is on.",
+      "goal": {"projector": "on"},
+      "initial": {"power_strip": "off", "projector": "off"},
+      "actions": {
+        "switch_on_power_strip": {"description": "Switch on the power strip.", "pre": {}, "eff": {"power_strip": "on"}},
+        "power_on_projector": {"description": "Press the projector power button (requires power_strip=on).", "pre": {"power_strip": "on"}, "eff": {"projector": "on"}},
+        "switch_off_power_strip": {"description": "Switch off the power strip.", "pre": {}, "eff": {"power_strip": "off"}}
+      }
+    },
+    {
+      "id": "W2_wifi_label", "category": "ambiguous_candidate_label",
+      "goal_text": "Wi-Fi is on and cellular data stays on.",
+      "goal": {"wifi": "on", "cellular": "on"},
+      "initial": {"airplane_mode": "off", "wifi": "off", "cellular": "on"},
+      "actions": {
+        "toggle_wireless_switch": {"description": "The switch labelled 'Wireless'. In this UI it flips cellular data.", "pre": {}, "eff": {"cellular": "@flip"}},
+        "toggle_network_switch": {"description": "The switch labelled 'Network'. In this UI it flips the Wi-Fi radio.", "pre": {}, "eff": {"wifi": "@flip"}}
+      }
+    },
+    {
+      "id": "W3_deploy", "category": "prerequisite_violation",
+      "goal_text": "Tests have passed and the build is deployed to production.",
+      "goal": {"tests": "passed", "deployed": "yes"},
+      "initial": {"tests": "not_run", "deployed": "no"},
+      "actions": {
+        "run_test_suite": {"description": "Run the automated test suite.", "pre": {}, "eff": {"tests": "passed"}},
+        "deploy_to_production": {"description": "Deploy to production (requires tests=passed).", "pre": {"tests": "passed"}, "eff": {"deployed": "yes"}},
+        "rollback_release": {"description": "Roll back the production release (requires deployed=yes).", "pre": {"deployed": "yes"}, "eff": {"deployed": "no"}}
+      }
+    },
+    {
+      "id": "W4_publish_notify", "category": "premature_completion_trap",
+      "goal_text": "The article is published and subscribers are notified.",
+      "goal": {"article": "published", "subscribers_notified": "yes"},
+      "initial": {"article": "draft", "subscribers_notified": "no"},
+      "actions": {
+        "save_draft": {"description": "Save the article as a draft.", "pre": {}, "eff": {"article": "draft_saved"}},
+        "publish_article": {"description": "Publish the article to the site.", "pre": {}, "eff": {"article": "published"}},
+        "notify_subscribers": {"description": "Email subscribers about the article (requires article=published).", "pre": {"article": "published"}, "eff": {"subscribers_notified": "yes"}}
+      }
+    },
+    {
+      "id": "W5_backup_verify", "category": "completion_verification",
+      "goal_text": "A backup exists and it has been verified.",
+      "goal": {"backup": "created", "backup_verified": "yes"},
+      "initial": {"backup": "none", "backup_verified": "no"},
+      "actions": {
+        "create_backup": {"description": "Create a database backup.", "pre": {}, "eff": {"backup": "created"}},
+        "verify_backup": {"description": "Run the integrity check (requires backup=created).", "pre": {"backup": "created"}, "eff": {"backup_verified": "yes"}},
+        "delete_backup": {"description": "Delete the backup (requires backup=created).", "pre": {"backup": "created"}, "eff": {"backup": "none", "backup_verified": "no"}}
+      }
+    },
+    {
+      "id": "W6_reschedule", "category": "recovery_required",
+      "goal_text": "The existing meeting is moved to Friday and its attendees remain invited.",
+      "goal": {"meeting": "friday", "attendees": "invited"},
+      "initial": {"meeting": "thursday", "attendees": "invited"},
+      "actions": {
+        "reschedule_meeting_to_friday": {"description": "Move the existing meeting to Friday, keeping attendees (requires meeting=thursday).", "pre": {"meeting": "thursday"}, "eff": {"meeting": "friday"}},
+        "cancel_meeting": {"description": "Cancel the meeting and notify attendees (requires meeting=thursday).", "pre": {"meeting": "thursday"}, "eff": {"meeting": "cancelled", "attendees": "notified_cancelled"}},
+        "restore_cancelled_meeting": {"description": "Restore a cancelled meeting to Thursday with attendees (requires meeting=cancelled).", "pre": {"meeting": "cancelled"}, "eff": {"meeting": "thursday", "attendees": "invited"}},
+        "create_new_meeting_friday": {"description": "Create a new Friday meeting from scratch; attendees are not carried over.", "pre": {}, "eff": {"meeting": "friday", "attendees": "not_invited"}}
+      }
+    },
+    {
+      "id": "W7_vault", "category": "recovery_required",
+      "goal_text": "The vault is open and the alarm is calm.",
+      "goal": {"vault": "open", "alarm": "calm"},
+      "initial": {"badge": "unscanned", "vault": "closed", "alarm": "calm"},
+      "actions": {
+        "scan_badge": {"description": "Scan the access badge.", "pre": {}, "eff": {"badge": "accepted"}},
+        "open_vault": {"description": "Open the vault (requires badge=accepted).", "pre": {"badge": "accepted"}, "eff": {"vault": "open"}},
+        "call_security": {"description": "Raise a security alert.", "pre": {}, "eff": {"alarm": "raised"}},
+        "stand_down_alarm": {"description": "Stand down a raised alarm.", "pre": {"alarm": "raised"}, "eff": {"alarm": "calm"}}
+      }
+    },
+    {
+      "id": "W8_upload", "category": "recovery_required",
+      "goal_text": "The log file is uploaded to the 'logs-prod' bucket.",
+      "goal": {"uploaded": "yes"},
+      "initial": {"bucket": "missing", "log": "present", "uploaded": "no"},
+      "actions": {
+        "create_bucket_logs_prod": {"description": "Create the bucket 'logs-prod'.", "pre": {}, "eff": {"bucket": "exists"}},
+        "upload_log": {"description": "Upload the log to 'logs-prod' (requires bucket=exists and log=present).", "pre": {"bucket": "exists", "log": "present"}, "eff": {"uploaded": "yes"}},
+        "delete_log": {"description": "Delete the local log file (requires log=present).", "pre": {"log": "present"}, "eff": {"log": "absent"}},
+        "restore_log": {"description": "Restore a deleted log file (requires log=absent).", "pre": {"log": "absent"}, "eff": {"log": "present"}}
+      }
+    }
+  ]
+}

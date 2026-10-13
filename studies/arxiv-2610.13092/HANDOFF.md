@@ -31,6 +31,21 @@ Digest:
 
 `sha256:ce25ab6a5af50d10821a5e874b4bba34d7c0e38817cfdb02e1c2f7e1f37b5750`
 
+## Pending frozen evaluation: `jev-live-systemone-check-v1` (NOT_RUN)
+
+Real Jev (TypeSafe System One) live protocol check. Inputs are frozen; **no live run has happened** (no API key available at preparation time), so there is no result and nothing here counts as evidence.
+
+- fixture: `experiments/jev_live_systemone_check_v1.fixture.json` (sha256 pinned in the runner; the runner refuses a modified fixture)
+- runner: `experiments/run_jev_live_systemone_check.py` (stdlib only; prints `SKIPPED_NO_CREDENTIAL` and exits 0 without a key; writes no evidence when skipped)
+- workflow: `.github/workflows/jev-live-systemone-check.yml` (`workflow_dispatch` only, to avoid repeated paid "first runs")
+- API contract (official docs, retrieved 2026-10-14): `POST https://api.typesafe.ai/v1/systemone`, Bearer key, `model` pinned to `jev-1.13.0` (`jev-latest` only probed), Choice question with `criteria`; response has `model`, `answers`, `usage` (token counts only). **No latency or cost fields**: latency is client-side, cost is `input_tokens x $0.042/Mtok` (assumed price, source recorded in the fixture). No native abstention: an explicit `abstain` option is part of every Choice.
+- Test A identity (models list, pinned + alias probes), Test B (12 cases x 3 repeats, six categories), Test C (8 deterministic workflows x 3 repeats with prerequisite errors, undo-based recovery and a Jev-answered completion-verification step), non-model reference policies for context.
+- Metrics are kept at four levels: decision -> attempt -> recovery/completion -> delivered success (cost and time per delivered success, failures in the numerator).
+- No LLM candidate-interface control in v1 (B-vs-C / C-vs-J not tested). A control, if added, must be its own experiment id, named "LLM candidate-interface control", never "Jev".
+- Harness self-checks (`tests/test_jev_live_systemone_check.py`) use a local fake server and scripted selectors. They validate the harness only.
+
+To run: `pbpaste | tr -d '\r\n' | gh secret set TYPESAFE_API_KEY -R zen1975/reproforge`, then `gh workflow run jev-live-systemone-check.yml -R zen1975/reproforge`. Persist the artifact unmodified; do not tune prompts, cases or thresholds after seeing it (changes => v2). Only after a successful run: set `free_light_phase_complete: false`, add the live check as a lightweight verification, re-evaluate. `reproduction_status` stays `PARTIAL` regardless: ALFWorld/AndroidWorld are not run.
+
 ## Verified lightweight boundary
 
 Published aggregate audit:

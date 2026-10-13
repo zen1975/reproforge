@@ -196,3 +196,9 @@ Recomputed from published rounded aggregates:
 The independent fixture also correctly detected direct transfer, overhead absorption, delivery paradox, and a recovery case where better initial success still produced worse final success.
 
 No further meaningful free/lightweight experiment should replace the actual Jev/environment rerun. Therefore the study is now **HEAVY_COMPUTE_READY / PARTIAL** with `free_light_phase_complete: true`.
+
+## Live Jev check (prepared, not run)
+
+`jev-live-systemone-check-v1` is a frozen, key-gated live protocol check against the real Jev API (`jev-1.13.0`). **Status: NOT_RUN** - no `TYPESAFE_API_KEY` was available, so there are no live results, and the aggregate-audit close above remains provisional rather than superseded. The harness (fixture hash pin, state machine, metrics, CI wiring) is verified offline against a fake server only; that verifies the harness, not Jev.
+
+Even after a successful run this would be an actual-Jev System One *protocol check on a toy workflow*: it cannot establish the paper's ALFWorld/AndroidWorld effect sizes, and `reproduction_status` stays `PARTIAL`. Results will be descriptive, reported at decision, attempt, recovery/completion and delivered-success levels, with failed and invalid attempts retained. See `HANDOFF.md` for how to run it.

@@ -1,10 +1,10 @@
 # Agent Guide — arXiv:2610.13092
 
 ## State
-- Lifecycle: `MECHANISM_VERIFIED`
+- Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: incomplete
-- Frozen: `jev-efficiency-transfer-audit-v1`
+- Free/light phase: complete (provisional; see status.yaml `next_step`)
+- Frozen: `jev-efficiency-transfer-audit-v1`; `jev-live-systemone-check-v1` (inputs frozen, NOT_RUN: needs `TYPESAFE_API_KEY`)
 
 Read `status.yaml`, `report.md`, and `HANDOFF.md` first.
 
