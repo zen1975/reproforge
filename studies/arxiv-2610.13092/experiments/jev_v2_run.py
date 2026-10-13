@@ -22,6 +22,7 @@ sys.path.insert(0, str(HERE))
 import jev_v2_arms as arms  # noqa: E402
 import jev_v2_core as core  # noqa: E402
 import jev_v2_generator as gen  # noqa: E402
+import jev_v2_generator_g1 as gen_g1  # noqa: E402  (kept only so pilot-1 evidence stays verifiable)
 
 v1 = core.v1
 EXPERIMENT_ID = "jev-live-systemone-check-v2"
@@ -46,13 +47,17 @@ def freeze_sha256() -> str:
     return h.hexdigest()
 
 
-def instances_for(phase: str) -> list[dict]:
-    seeds = gen.PILOT_SEEDS if phase == "pilot" else gen.TEST_SEEDS
-    return gen.generate(seeds)
+GENERATORS = {"g1": gen_g1, "g2": gen}
 
 
-def expected_rows(phase: str) -> int:
-    return len(instances_for(phase)) * len(ORDERS) * 2  # natural + forced_trap per instance and order
+def instances_for(phase: str, version: str = gen.GENERATOR_VERSION) -> list[dict]:
+    g = GENERATORS[version]
+    seeds = g.PILOT_SEEDS if phase == "pilot" else g.TEST_SEEDS
+    return g.generate(seeds)
+
+
+def expected_rows(phase: str, version: str = gen.GENERATOR_VERSION) -> int:
+    return len(instances_for(phase, version)) * len(ORDERS) * 2  # natural + forced_trap per instance and order
 
 
 # ------------------------------------------------------------------ summaries
@@ -155,6 +160,7 @@ def run_phase(selector, arm: str, instances: list[dict], pricing: dict, progress
 def build_evidence(arm: str, phase: str, rows: list[dict], status: str, identity: dict, spent: float) -> dict:
     return {
         "experiment_id": EXPERIMENT_ID, "phase": phase, "arm": arm, "status": status,
+        "generator_version": gen.GENERATOR_VERSION,
         "arm_label": "Jev (jev-1.13.0)" if arm == "jev" else f"LLM candidate-interface control ({arms.CONTROL_MODEL})",
         "freeze_sha256": freeze_sha256(), "execution_environment": "local",
         "spend_usd": spent, "spend_cap_usd": SPEND_CAP_USD,

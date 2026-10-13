@@ -146,12 +146,12 @@ def test_paired_analysis_and_verification():
 def test_verify_dir_not_run_then_verified_then_invalid(tmp_path):
     assert ver.verify_dir(tmp_path)["status"] == "NOT_RUN"
     jev, ctrl = pair()
-    (tmp_path / "jev_v2_pilot_jev.result.json").write_text(json.dumps(jev))
-    (tmp_path / "jev_v2_pilot_control.result.json").write_text(json.dumps(ctrl))
-    (tmp_path / "jev_v2_pilot_analysis.json").write_text(json.dumps(an.analyze(jev, ctrl)))
+    (tmp_path / "jev_v2_pilot2_jev.result.json").write_text(json.dumps(jev))
+    (tmp_path / "jev_v2_pilot2_control.result.json").write_text(json.dumps(ctrl))
+    (tmp_path / "jev_v2_pilot2_analysis.json").write_text(json.dumps(an.analyze(jev, ctrl)))
     assert ver.verify_dir(tmp_path)["status"] == "EVIDENCE_VERIFIED"
     jev["rows"][0]["cost_usd"] += 1
-    (tmp_path / "jev_v2_pilot_jev.result.json").write_text(json.dumps(jev))
+    (tmp_path / "jev_v2_pilot2_jev.result.json").write_text(json.dumps(jev))
     assert ver.verify_dir(tmp_path)["status"] == "EVIDENCE_INVALID"
 
 

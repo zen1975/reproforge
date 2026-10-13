@@ -171,3 +171,29 @@ def test_no_verdict_text_leaks_into_instances():
         blob = " ".join(sp["description"] for sp in wf["actions"].values()) + core.MachineV2(wf).render()
         for tell in ("NOT reached", "goal is reached", "noise", "trap"):
             assert tell not in blob, (wf["id"], tell)
+
+
+def test_g2_premature_is_independent_steps_and_displays_complete():
+    for wf in gen.generate(gen.PILOT_SEEDS, ["premature"]):
+        assert all(sp["pre"] == {} for sp in wf["actions"].values())
+        assert "complete" in core.MachineV2(wf).render() and not core.MachineV2(wf).goal_met()
+        assert wf["trap"] == "declare_done"
+
+
+def test_g2_indirection_dependencies_live_in_the_log_not_in_action_text():
+    for wf in gen.generate(gen.PILOT_SEEDS, ["indirection"]):
+        assert not any("needs" in sp["description"] or "requires" in sp["description"]
+                       for sp in wf["actions"].values())
+        assert len(wf["log_lines"]) == len(wf["actions"]) - 1 and core.distance_to_goal(
+            wf, core.MachineV2(wf).state, []) >= 4
+
+
+def test_generator_versions_are_distinct_and_g1_is_kept_for_pilot1_evidence():
+    g1 = _load("jev_v2_generator_g1")
+    assert g1.PILOT_SEEDS != gen.PILOT_SEEDS and g1.TEST_SEEDS != gen.TEST_SEEDS
+    assert gen.GENERATOR_VERSION == "g2" and gen.generate(gen.PILOT_SEEDS) != g1.generate(g1.PILOT_SEEDS)
+
+
+def test_committed_v2_evidence_verifies_under_its_own_generator_version():
+    ver = _load("verify_jev_v2_evidence")
+    assert ver.verify_dir()["status"] in ("EVIDENCE_VERIFIED", "NOT_RUN")

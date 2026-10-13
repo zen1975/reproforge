@@ -17,27 +17,28 @@ EVIDENCE = HERE.parent / "evidence"
 
 
 def verify_dir(evidence_dir: Path = EVIDENCE) -> dict:
-    report, errors, found = {}, [], False
-    for phase in ("pilot", "test"):
-        files = {arm: evidence_dir / f"jev_v2_{phase}_{arm}.result.json" for arm in ("jev", "control")}
+    """Tags: `pilot` (generator g1), `pilot2` (g2 calibration), `test`. Files: jev_v2_<tag>_{jev,control}.result.json
+    and jev_v2_<tag>_analysis.json."""
+    report, errors = {}, []
+    tags = sorted({p.name.split("_")[2] for p in evidence_dir.glob("jev_v2_*_*.json")}) if evidence_dir.exists() else []
+    for tag in tags:
         evs = {}
-        for arm, path in files.items():
+        for arm in ("jev", "control"):
+            path = evidence_dir / f"jev_v2_{tag}_{arm}.result.json"
             if path.exists():
-                found = True
                 evs[arm] = json.loads(path.read_text())
                 errs = an.verify_arm(evs[arm])
-                report[f"{phase}_{arm}"] = "OK" if not errs else errs
+                report[f"{tag}_{arm}"] = "OK" if not errs else errs
                 errors += errs
-        analysis_path = evidence_dir / f"jev_v2_{phase}_analysis.json"
+        analysis_path = evidence_dir / f"jev_v2_{tag}_analysis.json"
         if analysis_path.exists():
-            found = True
             if len(evs) == 2:
                 errs = an.verify_analysis(json.loads(analysis_path.read_text()), evs["jev"], evs["control"])
             else:
                 errs = ["analysis present without both arm evidence files"]
-            report[f"{phase}_analysis"] = "OK" if not errs else errs
+            report[f"{tag}_analysis"] = "OK" if not errs else errs
             errors += errs
-    status = "NOT_RUN" if not found else ("EVIDENCE_VERIFIED" if not errors else "EVIDENCE_INVALID")
+    status = "NOT_RUN" if not report else ("EVIDENCE_VERIFIED" if not errors else "EVIDENCE_INVALID")
     return {"status": status, "report": report}
 
 

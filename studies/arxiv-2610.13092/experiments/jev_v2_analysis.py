@@ -180,10 +180,14 @@ def verify_arm(ev: dict) -> list[str]:
         for probe in ("pinned_probe", "alias_probe"):
             req(set((ident.get(probe) or {}).get("headers", {})) <= run.v1.KEPT_HEADERS, "non-allowlisted headers")
     rows = ev.get("rows", [])
+    version = ev.get("generator_version", "g1")  # pilot-1 evidence predates the field and used g1
+    req(version in run.GENERATORS, "unknown generator version")
+    if errs:
+        return errs
     complete = ev.get("status") == "COMPLETED"
     if complete:
-        req(len(rows) == ev.get("expected_rows") == run.expected_rows(phase), "row count != expected")
-    insts = {w["id"]: w for w in run.instances_for(phase)}
+        req(len(rows) == ev.get("expected_rows") == run.expected_rows(phase, version), "row count != expected")
+    insts = {w["id"]: w for w in run.instances_for(phase, version)}
     seen = set()
     for r in rows:
         k = _key(r)
