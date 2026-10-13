@@ -50,6 +50,8 @@ Provenance: executed locally at git head `1f2be8f` with the then-uncommitted run
 
 Key policy: `TYPESAFE_API_KEY` is **never** stored in the GitHub repository or Actions secrets (public repo); it was used only in a local process environment. Rotate it. v1 inputs and evidence must not be edited; any change (harder cases, thresholds, prompts) is `jev-live-systemone-check-v2`. `reproduction_status` stays `PARTIAL`: ALFWorld/AndroidWorld are not run.
 
+Next lightweight experiment (design only, not implemented): `design/jev-live-systemone-check-v2.md` (Jev vs a named LLM candidate-interface control on a stressor fixture, pilot/test split, pre-registered rules).
+
 ## Verified lightweight boundary
 
 Published aggregate audit:
