@@ -96,3 +96,17 @@ Unchanged four levels (decision -> attempt -> recovery/completion -> delivered s
 2. **Spend caps:** proposed US$5 for v3a (estimate US$1-2: B arm with a short rationale, plus C and J re-run on fresh seeds) and US$15 for v3b (estimate US$5-10: nine cells, an extra generation per step). Both estimates are unmeasured; the pilot will replace them with measured values before the test is allowed to start.
 3. **Keys - DECIDED (user, 2026-10-14): reuse the existing keys** (Keychain entries `TYPESAFE_API_KEY` / `ANTHROPIC_API_KEY`, unchanged). Local-only policy unchanged; rotation and Keychain deletion move to after v3a/v3b instead of after v2.
 4. **B-arm definition** (section 4: command reference with descriptions in fixed order, free text with short rationale, strict parser, invalid => step consumed). This is an analogue, not the paper's B; accept or amend before pre-registration. (Not yet answered by the user; offline implementation proceeds on this definition, which is reversible.)
+
+## 12. v3a pilot outcome (frozen g2 generator, fresh seeds 5000-5003; evidence kept; NOT the test result)
+
+Files: `evidence/jev_v3a_pilot_{jev,control,b}.result.json`, `evidence/jev_v3a_pilot_analysis.json` (CI-verified; leak-checked against both keys). 216 episodes per arm, all COMPLETED, no infrastructure failures. Measured spend: Jev US$0.029, control US$0.128, B US$0.126 (so a 3x test run is about US$0.9 in total, far inside the proposed US$5 cap). Wall time: Jev ~5 min, control ~22 min, B ~23 min (test would be ~3x).
+
+| (pilot, n=36 instances) | B | C | J |
+|---|---|---|---|
+| Initial choice correct, stress natural | 100% | 94.8% | 83.3% |
+| Final success, stress natural | 100% | 100% | 88.5% |
+| Forced-trap recovery (recoverable) | 100% | 97.9% | 82.3% |
+| Decision latency / call | 1.33 s | 1.42 s | 0.19 s |
+| Input / output tokens per call | 620 / 147 | 1166 / 38 | 664 / 76 |
+
+Observations (descriptive, pilot only): (1) B parses cleanly - its only 34 invalid responses are all in the `irreversible` forced-trap negative control, where no valid action exists and B has no abstain token (expected); (2) B is at the ceiling on natural episodes, so the B-vs-C contrast has little room on this fixture (C - B initial -5.2 pt, CI excludes 0; final success 0 pt); (3) the C - J forced-trap recovery gap (+15.6 pt) points the same way as v2 (+10.1 pt); (4) decision-level saving of J vs B is about -85% latency and J does not use fewer input tokens (the per-token cost basis differs by provider); (5) because B and C are both at or near ceiling the interface effect cannot be separated from noise at this n unless the test uses its larger n; this is a known limitation to disclose in the pre-registration, not a reason to retune. No parameter was changed after seeing these numbers.
