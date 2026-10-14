@@ -3,8 +3,8 @@
 ## State
 - Lifecycle: `HEAVY_COMPUTE_READY`
 - Reproduction: `PARTIAL`
-- Free/light phase: complete (provisional; see status.yaml `next_step`)
-- Frozen: `jev-efficiency-transfer-audit-v1`; `jev-live-systemone-check-v1` (run locally; ceiling result; evidence committed)
+- Free/light phase: complete
+- Frozen: `jev-efficiency-transfer-audit-v1`; `jev-live-systemone-check-v1`; `jev-live-systemone-check-v2`; `jev-live-systemone-check-v3a`; `jev-live-systemone-check-v3b`
 
 Read `status.yaml`, `report.md`, and `HANDOFF.md` first.
 
