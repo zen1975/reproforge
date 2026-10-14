@@ -38,3 +38,5 @@ jobs:
         run: python studies/arxiv-2610.13092/experiments/verify_jev_v3_evidence.py
       - name: Verify committed v3b evidence (NOT_RUN until a local run is committed)
         run: python studies/arxiv-2610.13092/experiments/verify_jev_v3b_evidence.py
+      - name: Re-derive closure metrics from committed v3a evidence
+        run: python studies/arxiv-2610.13092/experiments/jev_closure_metrics.py --prefix jev_v3a_test --arms jev control b --check studies/arxiv-2610.13092/evidence/jev_v3a_test_metrics.json

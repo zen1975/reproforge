@@ -110,3 +110,21 @@ Files: `evidence/jev_v3a_pilot_{jev,control,b}.result.json`, `evidence/jev_v3a_p
 | Input / output tokens per call | 620 / 147 | 1166 / 38 | 664 / 76 |
 
 Observations (descriptive, pilot only): (1) B parses cleanly - its only 34 invalid responses are all in the `irreversible` forced-trap negative control, where no valid action exists and B has no abstain token (expected); (2) B is at the ceiling on natural episodes, so the B-vs-C contrast has little room on this fixture (C - B initial -5.2 pt, CI excludes 0; final success 0 pt); (3) the C - J forced-trap recovery gap (+15.6 pt) points the same way as v2 (+10.1 pt); (4) decision-level saving of J vs B is about -85% latency and J does not use fewer input tokens (the per-token cost basis differs by provider); (5) because B and C are both at or near ceiling the interface effect cannot be separated from noise at this n unless the test uses its larger n; this is a known limitation to disclose in the pre-registration, not a reason to retune. No parameter was changed after seeing these numbers.
+
+## 13. v3a frozen test outcome (seeds 4000-4011; pre-registered; run once per arm)
+
+Files: `evidence/jev_v3a_test_{jev,control,b}.result.json`, `evidence/jev_v3a_test_analysis.json`, `evidence/jev_v3a_test_metrics.json` (derived per-arm/per-family closure metrics; CI re-derives them with `--check`). All three arms COMPLETED, 648 episodes each, 0 infrastructure failures; invalid responses: Jev 0, C 0, B 118 (35 in `irreversible` forced-trap, 6 in `literal` forced-trap, 2 in `premature` natural; no abstain action in B). Spend: Jev $0.087, C $0.382, B $0.377 (all under caps). Evidence and logs leak-checked against both Keychain keys (0 hits); frozen v2 and v3a pins intact; verifier `EVIDENCE_VERIFIED`.
+
+| (n=108 instances, 648 episodes/arm) | B | C | J |
+|---|---|---|---|
+| Initial choice correct, stress natural (n=288) | 99.3% | 96.2% | 82.6% |
+| Final success, stress natural | 100% | 100% | 86.8% |
+| **Forced-trap recovery, recoverable families (primary, n=288)** | 99.0% | 96.5% | 84.4% |
+| Decision latency / call (mean) | 1.41 s | 1.36 s | 0.20 s |
+| Time per delivered success (all episodes) | 6.98 s | 6.38 s | 1.18 s |
+
+- **P2 (C minus J, recovery): replicated.** +12.2 pt (cluster-bootstrap 95% CI [5.6, 19.4], McNemar C-only 40 / J-only 5, p = 7.9e-08); v2 was +10.1 pt CI [3.5, 17.4]. Same direction, CI excludes 0, so by the pre-registered rule the v2 control-minus-Jev gap replicated in this fixture.
+- **P1 (C minus B, recovery): -2.4 pt, CI [-6.3, +0.7], p = 0.09 - not distinguishable from 0; B and C are both near ceiling, so the fixture was not sufficiently discriminative for the B-vs-C contrast.** This must not be read as "interface effect = 0". On stress-natural initial choice B was slightly better than C (99.3% vs 96.2%, CI [-5.9, -0.3] for C-B, p = 0.022); final success was 100% for both. B is an analogue, not the paper's B.
+- **Failure concentration (Jev).** Almost the whole Jev gap is in `injected` (initial 2.8%, natural final 19.4%, forced-trap recovery 11.1%, vs 100% for B and C; McNemar p < 1e-8) plus `numeric` natural (75%). Excluding `injected` (exploratory, not pre-registered), recoverable forced-trap recovery is Jev 94.8% vs C 96.0% vs B 98.8%. `indirection` (97.2% vs 100%) and `anchor`, `order_decoy`, `premature` do not discriminate. `literal` is lowest for every arm on recovery (J 66.7%, C 77.8%, B 91.7%); `irreversible` forced-trap is 0% for all arms by design (negative control).
+- **Resource transfer (reference only; different providers).** Decision latency J vs C -86.0%; task latency -83.6%; delivered time per success -81.5%: class `TRANSFERRED` for time, with the caveat that there was no auxiliary overhead in v3a (`OVERHEAD_ABSORPTION` is not testable here; that is v3b). C vs B: `NO_LOCAL_SAVING`.
+- **Interpretation.** A C4-style B/C/J decomposition was tested in a controlled analogue. Jev's decision-latency/cost advantage is large and held on fresh seeds; its end-to-end reliability gap against the LLM candidate-interface control is concentrated in specific workflow conditions (chiefly `injected`) rather than uniform. A decision-level advantage is not an agent advantage. Not a reproduction of the paper; `reproduction_status` stays PARTIAL.

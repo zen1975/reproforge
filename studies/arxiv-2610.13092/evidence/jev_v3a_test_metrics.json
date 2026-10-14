@@ -1,0 +1,282 @@
+{
+  "arms": {
+    "b": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "distractors": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "irreversible": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.0
+        },
+        "literal": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.9166666666666666
+        },
+        "numeric": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "order_decoy": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "premature": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.9444444444444444,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "cost_per_success_usd": 0.0006194873563218391,
+        "decision_cost_usd": 0.3772678,
+        "episode_count": 648,
+        "final_success_rate": 0.9398148148148148,
+        "final_success_rate_natural": 1.0,
+        "forced_trap_recoverable_episode_count": 288,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.9938271604938271,
+        "invalid_responses": 118,
+        "mean_decision_latency_s": 1.4064793932428168,
+        "median_decision_latency_s": 1.3309809339583203,
+        "natural_episode_count": 324,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 0.8803680981595092,
+        "recovery_success_rate": 0.9895833333333334,
+        "selector_calls": 2784,
+        "time_per_success_s": 6.981256887180886,
+        "total_input_tokens": 1705233,
+        "total_output_tokens": 413489
+      },
+      "resolved_model": "claude-haiku-5-5",
+      "status": "COMPLETED"
+    },
+    "control": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "distractors": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.8333333333333334,
+          "recovery_final_success_forced_trap": 0.9444444444444444
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.8888888888888888,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "irreversible": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.0
+        },
+        "literal": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.7777777777777778
+        },
+        "numeric": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.9722222222222222,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "order_decoy": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "premature": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "cost_per_success_usd": 0.0006350207641196014,
+        "decision_cost_usd": 0.3822825,
+        "episode_count": 648,
+        "final_success_rate": 0.9290123456790124,
+        "final_success_rate_natural": 1.0,
+        "forced_trap_recoverable_episode_count": 288,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.9660493827160493,
+        "invalid_responses": 0,
+        "mean_decision_latency_s": 1.3604569606560237,
+        "median_decision_latency_s": 1.339820094875904,
+        "natural_episode_count": 324,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 0.8635014836795252,
+        "recovery_success_rate": 0.9652777777777778,
+        "selector_calls": 2823,
+        "time_per_success_s": 6.380996910933421,
+        "total_input_tokens": 3280570,
+        "total_output_tokens": 108451
+      },
+      "resolved_model": "claude-haiku-5-5",
+      "status": "COMPLETED"
+    },
+    "jev": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "distractors": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.8333333333333334,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.9722222222222222
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 0.19444444444444445,
+          "initial_choice_accuracy": 0.027777777777777776,
+          "recovery_final_success_forced_trap": 0.1111111111111111
+        },
+        "irreversible": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.0
+        },
+        "literal": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 0.6666666666666666
+        },
+        "numeric": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 0.75,
+          "initial_choice_accuracy": 0.75,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "order_decoy": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "premature": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "cost_per_success_usd": 0.00016437005671077505,
+        "decision_cost_usd": 0.08695176,
+        "episode_count": 648,
+        "final_success_rate": 0.816358024691358,
+        "final_success_rate_natural": 0.8827160493827161,
+        "forced_trap_recoverable_episode_count": 288,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.845679012345679,
+        "invalid_responses": 0,
+        "mean_decision_latency_s": 0.1975559324097953,
+        "median_decision_latency_s": 0.19028238044540471,
+        "natural_episode_count": 324,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 0.6818181818181818,
+        "recovery_success_rate": 0.84375,
+        "selector_calls": 3151,
+        "time_per_success_s": 1.1781100578222414,
+        "total_input_tokens": 2070280,
+        "total_output_tokens": 235908
+      },
+      "resolved_model": "jev-1.13.0",
+      "status": "COMPLETED"
+    }
+  },
+  "caveats": [
+    "median_decision_latency_s = median over episodes of (episode decision latency / episode selector calls); per-call latencies are not stored in the rows.",
+    "Jev cost = input tokens x assumed US$0.042/Mtok (the API returns no cost field); other arms use list prices.",
+    "cost_per_success and time_per_success keep failures in the numerator (total over all episodes / successes).",
+    "recovery_success_rate = final success on forced_trap episodes of the eight recoverable families (irreversible is the negative control and excluded); recovery_success_among_deviations is also given.",
+    "Auxiliary cost/time columns appear only when rows carry aux fields (v3b)."
+  ],
+  "source": "jev_v3a_test"
+}

@@ -1,0 +1,1531 @@
+{
+  "arm_summary": {
+    "B": {
+      "cost_total_usd": 0.3772678,
+      "decision_latency_per_call_s": 1.4064793932428168,
+      "input_tokens_per_call": 612.5118534482758,
+      "invalid_responses": 118,
+      "natural_success_rate": 1.0,
+      "output_tokens_per_call": 148.52334770114942,
+      "selector_calls": 2784
+    },
+    "C": {
+      "cost_total_usd": 0.3822825,
+      "decision_latency_per_call_s": 1.3604569606560237,
+      "input_tokens_per_call": 1162.0864328728303,
+      "invalid_responses": 0,
+      "natural_success_rate": 1.0,
+      "output_tokens_per_call": 38.416932341480695,
+      "selector_calls": 2823
+    },
+    "J": {
+      "cost_total_usd": 0.08695176,
+      "decision_latency_per_call_s": 0.1975559324097953,
+      "input_tokens_per_call": 657.0231672484925,
+      "invalid_responses": 0,
+      "natural_success_rate": 0.8827160493827161,
+      "output_tokens_per_call": 74.86766105998096,
+      "selector_calls": 3151
+    }
+  },
+  "bootstrap": {
+    "cluster": "instance",
+    "resamples": 2000,
+    "seed": 20261014
+  },
+  "claim_scope": "Three-arm contrast on the frozen v2 stress fixture (generator g2, fresh seeds): B = free-generation baseline analogue, C = LLM candidate-interface control, J = Jev. B is an analogue, not the paper's B. Not an ALFWorld/AndroidWorld reproduction and not an estimate of the paper's effect sizes; descriptive only.",
+  "experiment_id": "jev-live-systemone-check-v3a",
+  "interpretation_guards": [
+    "B is an analogue, not the paper's B; B-vs-C is an interface contrast, C-vs-J a decision-model contrast, J-vs-B must not be attributed to Jev alone.",
+    "A decision-level (speed/token) advantage is not an agent advantage unless delivered-success metrics agree.",
+    "Both compared cells near 0% or 100% means non-discriminating, not support.",
+    "B rows for the three order_idx values are independent replicates, not order conditions."
+  ],
+  "pairings": {
+    "C_vs_B": {
+      "by_family": {
+        "anchor": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__anchor_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__anchor_natural"
+          }
+        },
+        "distractors": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 0.9444444444444444,
+            "ci95_cluster_bootstrap": [
+              -0.16666666666666663,
+              0.0
+            ],
+            "diff_C_minus_B": -0.05555555555555558,
+            "mcnemar": {
+              "B_only": 2,
+              "C_only": 0,
+              "p_exact_two_sided": 0.5
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__distractors_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__distractors_natural"
+          }
+        },
+        "indirection": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__indirection_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__indirection_natural"
+          }
+        },
+        "injected": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__injected_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__injected_natural"
+          }
+        },
+        "irreversible": {
+          "forced_trap_final_success": {
+            "B": 0.0,
+            "C": 0.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__irreversible_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__irreversible_natural"
+          }
+        },
+        "literal": {
+          "forced_trap_final_success": {
+            "B": 0.9166666666666666,
+            "C": 0.7777777777777778,
+            "ci95_cluster_bootstrap": [
+              -0.41666666666666663,
+              0.08333333333333326
+            ],
+            "diff_C_minus_B": -0.13888888888888884,
+            "mcnemar": {
+              "B_only": 8,
+              "C_only": 3,
+              "p_exact_two_sided": 0.2265625
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__literal_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__literal_natural"
+          }
+        },
+        "numeric": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__numeric_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__numeric_natural"
+          }
+        },
+        "order_decoy": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__order_decoy_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__order_decoy_natural"
+          }
+        },
+        "premature": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__premature_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "C": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "C_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_B:final_success__premature_natural"
+          }
+        }
+      },
+      "contrasts": [
+        {
+          "B": 0.9930555555555556,
+          "C": 0.9618055555555556,
+          "ci95_cluster_bootstrap": [
+            -0.05902777777777779,
+            -0.003472222222222321
+          ],
+          "diff_C_minus_B": -0.03125,
+          "mcnemar": {
+            "B_only": 11,
+            "C_only": 2,
+            "p_exact_two_sided": 0.0224609375
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "C_vs_B:decision_initial_correct__stress_natural"
+        },
+        {
+          "B": 1.0,
+          "C": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "C_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "C_vs_B:decision_initial_correct__anchor_natural"
+        },
+        {
+          "B": 1.0,
+          "C": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "C_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "C_vs_B:final_success__stress_natural"
+        },
+        {
+          "B": 1.0,
+          "C": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "C_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "C_vs_B:final_success__anchor_natural"
+        },
+        {
+          "B": 0.9895833333333334,
+          "C": 0.9652777777777778,
+          "ci95_cluster_bootstrap": [
+            -0.0625,
+            0.00694444444444442
+          ],
+          "diff_C_minus_B": -0.02430555555555558,
+          "mcnemar": {
+            "B_only": 10,
+            "C_only": 3,
+            "p_exact_two_sided": 0.09228515625
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "C_vs_B:recovery_final_success__forced_trap_recoverable_PRIMARY_C5"
+        },
+        {
+          "B": 0.0,
+          "C": 0.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "C_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "C_vs_B:recovery_final_success__forced_trap_irreversible_negative_control"
+        },
+        {
+          "B": 0.0005146188271604939,
+          "C": 0.0005562993827160494,
+          "ci95_cluster_bootstrap": [
+            2.379074074074076e-05,
+            5.819537037037031e-05
+          ],
+          "diff_C_minus_B": 4.1680555555555546e-05,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_B:cost_per_delivered_success_usd__natural"
+        },
+        {
+          "B": 5.757410429778,
+          "C": 5.781426677076906,
+          "ci95_cluster_bootstrap": [
+            -0.2640855203369741,
+            0.3338027151539906
+          ],
+          "diff_C_minus_B": 0.02401624729890628,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_B:time_per_delivered_success_s__natural"
+        },
+        {
+          "B": 1.4036843485707418,
+          "C": 1.4050170359039638,
+          "ci95_cluster_bootstrap": [
+            -0.06798528832985107,
+            0.07075558815362859
+          ],
+          "diff_C_minus_B": 0.0013326873332220046,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_B:decision_latency_per_call_s__natural"
+        },
+        {
+          "B": 0.0022675736961451248,
+          "C": 0.0,
+          "ci95_cluster_bootstrap": [
+            -0.0069124423963133645,
+            0.0
+          ],
+          "diff_C_minus_B": -0.0022675736961451248,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_B:invalid_responses_per_call__natural"
+        }
+      ],
+      "n_paired_units": 648
+    },
+    "C_vs_J": {
+      "by_family": {
+        "anchor": {
+          "forced_trap_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__anchor_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__anchor_natural"
+          }
+        },
+        "distractors": {
+          "forced_trap_final_success": {
+            "C": 0.9444444444444444,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              -0.16666666666666663,
+              0.0
+            ],
+            "diff_C_minus_J": -0.05555555555555558,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 2,
+              "p_exact_two_sided": 0.5
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__distractors_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__distractors_natural"
+          }
+        },
+        "indirection": {
+          "forced_trap_final_success": {
+            "C": 1.0,
+            "J": 0.9722222222222222,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.08333333333333337
+            ],
+            "diff_C_minus_J": 0.02777777777777779,
+            "mcnemar": {
+              "C_only": 1,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__indirection_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__indirection_natural"
+          }
+        },
+        "injected": {
+          "forced_trap_final_success": {
+            "C": 1.0,
+            "J": 0.1111111111111111,
+            "ci95_cluster_bootstrap": [
+              0.7777777777777778,
+              1.0
+            ],
+            "diff_C_minus_J": 0.8888888888888888,
+            "mcnemar": {
+              "C_only": 32,
+              "J_only": 0,
+              "p_exact_two_sided": 4.656612873077393e-10
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__injected_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 0.19444444444444445,
+            "ci95_cluster_bootstrap": [
+              0.6111111111111112,
+              0.9722222222222222
+            ],
+            "diff_C_minus_J": 0.8055555555555556,
+            "mcnemar": {
+              "C_only": 29,
+              "J_only": 0,
+              "p_exact_two_sided": 3.725290298461914e-09
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__injected_natural"
+          }
+        },
+        "irreversible": {
+          "forced_trap_final_success": {
+            "C": 0.0,
+            "J": 0.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__irreversible_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__irreversible_natural"
+          }
+        },
+        "literal": {
+          "forced_trap_final_success": {
+            "C": 0.7777777777777778,
+            "J": 0.6666666666666666,
+            "ci95_cluster_bootstrap": [
+              -0.1388888888888889,
+              0.38888888888888884
+            ],
+            "diff_C_minus_J": 0.11111111111111116,
+            "mcnemar": {
+              "C_only": 7,
+              "J_only": 3,
+              "p_exact_two_sided": 0.34375
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__literal_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__literal_natural"
+          }
+        },
+        "numeric": {
+          "forced_trap_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__numeric_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 0.75,
+            "ci95_cluster_bootstrap": [
+              0.11111111111111116,
+              0.38888888888888884
+            ],
+            "diff_C_minus_J": 0.25,
+            "mcnemar": {
+              "C_only": 9,
+              "J_only": 0,
+              "p_exact_two_sided": 0.00390625
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__numeric_natural"
+          }
+        },
+        "order_decoy": {
+          "forced_trap_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__order_decoy_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__order_decoy_natural"
+          }
+        },
+        "premature": {
+          "forced_trap_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__premature_forced"
+          },
+          "natural_final_success": {
+            "C": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_C_minus_J": 0.0,
+            "mcnemar": {
+              "C_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "C_vs_J:final_success__premature_natural"
+          }
+        }
+      },
+      "contrasts": [
+        {
+          "C": 0.9618055555555556,
+          "J": 0.8263888888888888,
+          "ci95_cluster_bootstrap": [
+            0.07291666666666663,
+            0.19791666666666674
+          ],
+          "diff_C_minus_J": 0.13541666666666674,
+          "mcnemar": {
+            "C_only": 46,
+            "J_only": 7,
+            "p_exact_two_sided": 4.003196174551249e-08
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "C_vs_J:decision_initial_correct__stress_natural"
+        },
+        {
+          "C": 1.0,
+          "J": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_J": 0.0,
+          "mcnemar": {
+            "C_only": 0,
+            "J_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "C_vs_J:decision_initial_correct__anchor_natural"
+        },
+        {
+          "C": 1.0,
+          "J": 0.8680555555555556,
+          "ci95_cluster_bootstrap": [
+            0.07291666666666663,
+            0.19791666666666663
+          ],
+          "diff_C_minus_J": 0.13194444444444442,
+          "mcnemar": {
+            "C_only": 38,
+            "J_only": 0,
+            "p_exact_two_sided": 7.275957614183426e-12
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "C_vs_J:final_success__stress_natural"
+        },
+        {
+          "C": 1.0,
+          "J": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_J": 0.0,
+          "mcnemar": {
+            "C_only": 0,
+            "J_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "C_vs_J:final_success__anchor_natural"
+        },
+        {
+          "C": 0.9652777777777778,
+          "J": 0.84375,
+          "ci95_cluster_bootstrap": [
+            0.05555555555555547,
+            0.19444444444444442
+          ],
+          "diff_C_minus_J": 0.12152777777777779,
+          "mcnemar": {
+            "C_only": 40,
+            "J_only": 5,
+            "p_exact_two_sided": 7.878384167270269e-08
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "C_vs_J:recovery_final_success__forced_trap_recoverable_PRIMARY_C5"
+        },
+        {
+          "C": 0.0,
+          "J": 0.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_J": 0.0,
+          "mcnemar": {
+            "C_only": 0,
+            "J_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "C_vs_J:recovery_final_success__forced_trap_irreversible_negative_control"
+        },
+        {
+          "C": 0.0005562993827160494,
+          "J": 0.00014936360139860142,
+          "ci95_cluster_bootstrap": [
+            0.00036595857987975586,
+            0.00044922963462043595
+          ],
+          "diff_C_minus_J": 0.000406935781317448,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_J:cost_per_delivered_success_usd__natural"
+        },
+        {
+          "C": 5.781426677076906,
+          "J": 1.0708675029266748,
+          "ci95_cluster_bootstrap": [
+            4.369926094598736,
+            5.057881527787057
+          ],
+          "diff_C_minus_J": 4.710559174150232,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_J:time_per_delivered_success_s__natural"
+        },
+        {
+          "C": 1.4050170359039638,
+          "J": 0.1972700388890709,
+          "ci95_cluster_bootstrap": [
+            1.171956931352395,
+            1.256432383190995
+          ],
+          "diff_C_minus_J": 1.2077469970148929,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_J:decision_latency_per_call_s__natural"
+        },
+        {
+          "C": 0.0,
+          "J": 0.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_C_minus_J": 0.0,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "C_vs_J:invalid_responses_per_call__natural"
+        }
+      ],
+      "n_paired_units": 648
+    },
+    "J_vs_B": {
+      "by_family": {
+        "anchor": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__anchor_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__anchor_natural"
+          }
+        },
+        "distractors": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__distractors_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__distractors_natural"
+          }
+        },
+        "indirection": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 0.9722222222222222,
+            "ci95_cluster_bootstrap": [
+              -0.08333333333333337,
+              0.0
+            ],
+            "diff_J_minus_B": -0.02777777777777779,
+            "mcnemar": {
+              "B_only": 1,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__indirection_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__indirection_natural"
+          }
+        },
+        "injected": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 0.1111111111111111,
+            "ci95_cluster_bootstrap": [
+              -1.0,
+              -0.75
+            ],
+            "diff_J_minus_B": -0.8888888888888888,
+            "mcnemar": {
+              "B_only": 32,
+              "J_only": 0,
+              "p_exact_two_sided": 4.656612873077393e-10
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__injected_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 0.19444444444444445,
+            "ci95_cluster_bootstrap": [
+              -0.9722222222222222,
+              -0.6111111111111112
+            ],
+            "diff_J_minus_B": -0.8055555555555556,
+            "mcnemar": {
+              "B_only": 29,
+              "J_only": 0,
+              "p_exact_two_sided": 3.725290298461914e-09
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__injected_natural"
+          }
+        },
+        "irreversible": {
+          "forced_trap_final_success": {
+            "B": 0.0,
+            "J": 0.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__irreversible_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__irreversible_natural"
+          }
+        },
+        "literal": {
+          "forced_trap_final_success": {
+            "B": 0.9166666666666666,
+            "J": 0.6666666666666666,
+            "ci95_cluster_bootstrap": [
+              -0.5277777777777778,
+              0.05555555555555558
+            ],
+            "diff_J_minus_B": -0.25,
+            "mcnemar": {
+              "B_only": 12,
+              "J_only": 3,
+              "p_exact_two_sided": 0.03515625
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__literal_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__literal_natural"
+          }
+        },
+        "numeric": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__numeric_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 0.75,
+            "ci95_cluster_bootstrap": [
+              -0.38888888888888884,
+              -0.11111111111111116
+            ],
+            "diff_J_minus_B": -0.25,
+            "mcnemar": {
+              "B_only": 9,
+              "J_only": 0,
+              "p_exact_two_sided": 0.00390625
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__numeric_natural"
+          }
+        },
+        "order_decoy": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__order_decoy_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__order_decoy_natural"
+          }
+        },
+        "premature": {
+          "forced_trap_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__premature_forced"
+          },
+          "natural_final_success": {
+            "B": 1.0,
+            "J": 1.0,
+            "ci95_cluster_bootstrap": [
+              0.0,
+              0.0
+            ],
+            "diff_J_minus_B": 0.0,
+            "mcnemar": {
+              "B_only": 0,
+              "J_only": 0,
+              "p_exact_two_sided": 1.0
+            },
+            "n_instance_clusters": 12,
+            "n_pairs": 36,
+            "name": "J_vs_B:final_success__premature_natural"
+          }
+        }
+      },
+      "contrasts": [
+        {
+          "B": 0.9930555555555556,
+          "J": 0.8263888888888888,
+          "ci95_cluster_bootstrap": [
+            -0.23611111111111116,
+            -0.09722222222222232
+          ],
+          "diff_J_minus_B": -0.16666666666666674,
+          "mcnemar": {
+            "B_only": 50,
+            "J_only": 2,
+            "p_exact_two_sided": 6.123990203832363e-13
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "J_vs_B:decision_initial_correct__stress_natural"
+        },
+        {
+          "B": 1.0,
+          "J": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_J_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "J_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "J_vs_B:decision_initial_correct__anchor_natural"
+        },
+        {
+          "B": 1.0,
+          "J": 0.8680555555555556,
+          "ci95_cluster_bootstrap": [
+            -0.19444444444444442,
+            -0.07291666666666663
+          ],
+          "diff_J_minus_B": -0.13194444444444442,
+          "mcnemar": {
+            "B_only": 38,
+            "J_only": 0,
+            "p_exact_two_sided": 7.275957614183426e-12
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "J_vs_B:final_success__stress_natural"
+        },
+        {
+          "B": 1.0,
+          "J": 1.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_J_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "J_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "J_vs_B:final_success__anchor_natural"
+        },
+        {
+          "B": 0.9895833333333334,
+          "J": 0.84375,
+          "ci95_cluster_bootstrap": [
+            -0.21875,
+            -0.07986111111111105
+          ],
+          "diff_J_minus_B": -0.14583333333333337,
+          "mcnemar": {
+            "B_only": 45,
+            "J_only": 3,
+            "p_exact_two_sided": 1.312585595769633e-10
+          },
+          "n_instance_clusters": 96,
+          "n_pairs": 288,
+          "name": "J_vs_B:recovery_final_success__forced_trap_recoverable_PRIMARY_C5"
+        },
+        {
+          "B": 0.0,
+          "J": 0.0,
+          "ci95_cluster_bootstrap": [
+            0.0,
+            0.0
+          ],
+          "diff_J_minus_B": 0.0,
+          "mcnemar": {
+            "B_only": 0,
+            "J_only": 0,
+            "p_exact_two_sided": 1.0
+          },
+          "n_instance_clusters": 12,
+          "n_pairs": 36,
+          "name": "J_vs_B:recovery_final_success__forced_trap_irreversible_negative_control"
+        },
+        {
+          "B": 0.0005146188271604939,
+          "J": 0.00014936360139860142,
+          "ci95_cluster_bootstrap": [
+            -0.0004032226175308642,
+            -0.00032965412829324167
+          ],
+          "diff_J_minus_B": -0.00036525522576189246,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "J_vs_B:cost_per_delivered_success_usd__natural"
+        },
+        {
+          "B": 5.757410429778,
+          "J": 1.0708675029266748,
+          "ci95_cluster_bootstrap": [
+            -5.011917779464325,
+            -4.370465155752022
+          ],
+          "diff_J_minus_B": -4.686542926851326,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "J_vs_B:time_per_delivered_success_s__natural"
+        },
+        {
+          "B": 1.4036843485707418,
+          "J": 0.1972700388890709,
+          "ci95_cluster_bootstrap": [
+            -1.2639507057624977,
+            -1.1566522110094775
+          ],
+          "diff_J_minus_B": -1.2064143096816708,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "J_vs_B:decision_latency_per_call_s__natural"
+        },
+        {
+          "B": 0.0022675736961451248,
+          "J": 0.0,
+          "ci95_cluster_bootstrap": [
+            -0.0070921985815602835,
+            0.0
+          ],
+          "diff_J_minus_B": -0.0022675736961451248,
+          "n_instance_clusters": 108,
+          "n_pairs": 324,
+          "name": "J_vs_B:invalid_responses_per_call__natural"
+        }
+      ],
+      "n_paired_units": 648
+    }
+  },
+  "phase": "test",
+  "replication_of_v2_primary": {
+    "replicated": true,
+    "rule": "direction matches and the cluster-bootstrap 95% CI excludes 0",
+    "v2_ci95": [
+      0.03472222222222221,
+      0.17361111111111116
+    ],
+    "v2_diff_control_minus_jev": 0.10069444444444442,
+    "v3a_ci95": [
+      0.05555555555555547,
+      0.19444444444444442
+    ],
+    "v3a_diff_C_minus_J": 0.12152777777777779
+  },
+  "transfer_classification": {
+    "C_vs_B": {
+      "class_time": "NO_LOCAL_SAVING",
+      "pct_change": {
+        "decision_latency": 0.09494209539195886,
+        "delivered_time": 0.41713627318789026,
+        "task_latency": 0.41713627318789026
+      }
+    },
+    "J_vs_B": {
+      "class_time": "TRANSFERRED",
+      "pct_change": {
+        "decision_latency": -85.94626782795328,
+        "delivered_time": -81.40018822719286,
+        "task_latency": -83.58164763264556
+      }
+    },
+    "J_vs_C": {
+      "class_time": "TRANSFERRED",
+      "pct_change": {
+        "decision_latency": -85.95959807973782,
+        "delivered_time": -81.47745249156898,
+        "task_latency": -83.6498500388541
+      }
+    },
+    "note": "No auxiliary overhead in v3a: OVERHEAD_ABSORPTION is not testable here; speed/cost compare different providers (reference values only)."
+  }
+}
