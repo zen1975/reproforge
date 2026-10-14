@@ -1,0 +1,12 @@
+{
+  "experiment_id": "jev-live-systemone-check-v3b",
+  "generator_version": "g2 (frozen v2 generator, unchanged; families anchor, injected, indirection only)",
+  "freeze_sha256": "7876bc9b2751a4d1336f63d24e4ad003ff9beeddcd0d036ad6b92c9424b148e7",
+  "files": ["jev_v3b_arms.py", "jev_v3b_run.py", "jev_v3b_analysis.py"],
+  "v3a_freeze_sha256": "c7ac3d0e61a40f0b7d31d56ea31b0c61f095e50b68d2a46134002b496cdbe60a",
+  "v2_freeze_sha256": "f76ba2b61a5814d82b487861f0c01cfc2375af91d125704365bce3e142fd951f",
+  "pinned_on": "2026-10-14",
+  "test_seeds": "6000-6011 (never run before this pin)",
+  "spend_cap_usd_per_cell": {"jev": 0.2, "control": 0.5, "b": 0.7, "auxiliary_per_O1_cell": 0.4},
+  "note": "Pins the v3b auxiliary wrapper, runner and analysis for the single test run (6 cells: arm x {O0,O1}); v2 and v3a files stay pinned by their own freeze files. Any change to the listed files => new experiment id. Pre-registration: design/jev-live-systemone-check-v3b-preregistration.md"
+}

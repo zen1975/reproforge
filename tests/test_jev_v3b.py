@@ -1,6 +1,7 @@
 """Offline checks for jev-live-systemone-check-v3b (auxiliary stage, runner, analysis, verifier). No keys, no network."""
 import copy
 import importlib.util
+import json
 import os
 import subprocess
 import sys
@@ -248,3 +249,11 @@ def test_classification_rule_covers_absorption_and_delivery_paradox():
 
 def test_committed_v3b_evidence_if_any_is_valid():
     assert an.verify_dir()["status"] in ("NOT_RUN", "EVIDENCE_VERIFIED")
+
+
+def test_pinned_v3b_freeze_hash_matches_the_frozen_files():
+    pin = json.loads((EXP / "jev_v3b_freeze.json").read_text())
+    assert pin["freeze_sha256"] == run.freeze_sha256() == run.FREEZE_SHA256
+    assert pin["files"] == list(run.FREEZE_FILES)
+    assert pin["v3a_freeze_sha256"] == v3run.FREEZE_SHA256 and pin["v2_freeze_sha256"] == v3run.v2run.FREEZE_SHA256
+    assert run.pins_intact()
