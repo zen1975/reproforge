@@ -40,3 +40,8 @@ jobs:
         run: python studies/arxiv-2610.13092/experiments/verify_jev_v3b_evidence.py
       - name: Re-derive closure metrics from committed v3a evidence
         run: python studies/arxiv-2610.13092/experiments/jev_closure_metrics.py --prefix jev_v3a_test --arms jev control b --check studies/arxiv-2610.13092/evidence/jev_v3a_test_metrics.json
+      - name: Re-derive closure metrics from committed v3b evidence (skipped until committed)
+        run: |
+          if [ -f studies/arxiv-2610.13092/evidence/jev_v3b_test_metrics.json ]; then
+            python studies/arxiv-2610.13092/experiments/jev_closure_metrics.py --prefix jev_v3b_test --arms jev_O0 jev_O1 control_O0 control_O1 b_O0 b_O1 --check studies/arxiv-2610.13092/evidence/jev_v3b_test_metrics.json
+          fi

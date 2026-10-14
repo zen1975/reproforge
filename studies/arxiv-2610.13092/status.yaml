@@ -2,13 +2,13 @@ study_id: arxiv-2610.13092
 lifecycle: HEAVY_COMPUTE_READY
 reproduction_status: PARTIAL
 free_light_phase_complete: true
-current_boundary: "Free/lightweight verification is complete, now including a second, frozen and pre-registered actual-Jev stress test (jev-live-systemone-check-v2, run once locally 2026-10-14 against a named claude-haiku-5-5 LLM candidate-interface control: forced-trap recovery 87.2% Jev vs 97.2% control, gap concentrated in the injected family; Jev ~85% faster per decision but not better on delivered success; control outside the difficulty window, disclosed; not ALFWorld/AndroidWorld) and one actual-Jev live protocol check (jev-live-systemone-check-v1, run locally 2026-10-14, sanitized evidence committed, integrity-verified in CI). The published-aggregate audit and synthetic fixtures still verify the accounting/mechanism contract. The live check resolved jev-1.13.0 and scored 36/36 on Test B and 24/24 final successes on Test C, but at ceiling: zero deviations, so the recovery, premature-completion and better-first-but-worse-final mechanisms were NOT exercised live, and there was no control. It is a toy-workflow protocol check, not an ALFWorld/AndroidWorld reproduction and not evidence about the paper's effect sizes or about Jev generalizing."
-next_step: "(1) Optional lightweight follow-up as a NEW experiment id (jev-live-systemone-check-v3; v1 and v2 stay frozen): B arm and auxiliary-overhead (T3A/FastAgent-style) mechanisms, redesigned non-discriminating families (premature, order_decoy, anchor). Keep keys local-only and rotate the v2 keys. (2) Then run a protocol-comparable real-system reproduction with actual Jev access and ALFWorld/AndroidWorld environments, preserving B/J and applicable C controls, repeated fixed-task runs, full failure-inclusive accounting, and held-out completion/recovery evidence."
+current_boundary: "Free/lightweight verification is complete, now including a B/C/J analogue (v3a, replicated C-vs-J gap, B-vs-C non-discriminating) and an auxiliary-overhead experiment (v3b, Jev delivered-time advantage largely absorbed by a shared auxiliary stage; reliability gap concentrated in injected), plus a second, frozen and pre-registered actual-Jev stress test (jev-live-systemone-check-v2, run once locally 2026-10-14 against a named claude-haiku-5-5 LLM candidate-interface control: forced-trap recovery 87.2% Jev vs 97.2% control, gap concentrated in the injected family; Jev ~85% faster per decision but not better on delivered success; control outside the difficulty window, disclosed; not ALFWorld/AndroidWorld) and one actual-Jev live protocol check (jev-live-systemone-check-v1, run locally 2026-10-14, sanitized evidence committed, integrity-verified in CI). The published-aggregate audit and synthetic fixtures still verify the accounting/mechanism contract. The live check resolved jev-1.13.0 and scored 36/36 on Test B and 24/24 final successes on Test C, but at ceiling: zero deviations, so the recovery, premature-completion and better-first-but-worse-final mechanisms were NOT exercised live, and there was no control. It is a toy-workflow protocol check, not an ALFWorld/AndroidWorld reproduction and not evidence about the paper's effect sizes or about Jev generalizing."
+next_step: "Lightweight verification is closed (v1, v2, v3a, v3b frozen; no more toy families, prompt tuning or control models). Next: a protocol-comparable real-system reproduction with actual Jev access and ALFWorld/AndroidWorld environments, preserving B/J and applicable C controls, repeated fixed-task runs, full failure-inclusive accounting, and held-out completion/recovery evidence. Rotate both API keys and delete the Keychain entries."
 handoff:
   path: studies/arxiv-2610.13092/HANDOFF.md
   ready: true
 blockers:
-  - "Jev live checks v1 (ceiling) and v2 (stress test vs a named LLM control; control outside the difficulty window) are toy-workflow evidence only; the B arm and auxiliary-overhead mechanisms are untested (v3). Keys stay local-only (never GitHub secrets) and must be rotated."
+  - "Jev live checks v1-v3b are controlled toy-workflow analogues only (B is an analogue, auxiliary stage is an analogue); they do not reproduce the paper. Keys stay local-only (never GitHub secrets) and must be rotated."
   - "Paper-scale rerun requires jev-1.13.0 access plus GPT-5.6 Luna calls and the ALFWorld/AndroidWorld execution environments."
   - "The paper links experimental code through anonymous.4open.science, but a code license could not be independently verified; ReproForge does not copy or redistribute it."
   - "AndroidWorld reproduction depends on the benchmark/device environment and fixed task instances."
@@ -17,6 +17,8 @@ frozen_evaluations:
   - "jev-efficiency-transfer-audit-v1"
   - "jev-live-systemone-check-v1"
   - "jev-live-systemone-check-v2"
+  - "jev-live-systemone-check-v3a"
+  - "jev-live-systemone-check-v3b"
 entrypoints:
   - "studies/arxiv-2610.13092/experiments/run_efficiency_transfer_audit.py"
   - ".github/workflows/jev-efficiency-transfer-audit.yml"
@@ -25,5 +27,9 @@ entrypoints:
   - "studies/arxiv-2610.13092/experiments/jev_v2_run.py"
   - "studies/arxiv-2610.13092/experiments/jev_v2_analysis.py"
   - "studies/arxiv-2610.13092/experiments/verify_jev_v2_evidence.py"
+  - "studies/arxiv-2610.13092/experiments/jev_v3_run.py"
+  - "studies/arxiv-2610.13092/experiments/jev_v3b_run.py"
+  - "studies/arxiv-2610.13092/experiments/verify_jev_v3_evidence.py"
+  - "studies/arxiv-2610.13092/experiments/verify_jev_v3b_evidence.py"
   - ".github/workflows/jev-live-evidence-verify.yml"
 updated_at: "2026-10-14"

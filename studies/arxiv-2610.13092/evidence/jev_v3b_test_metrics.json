@@ -1,0 +1,342 @@
+{
+  "arms": {
+    "b_O0": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "aux_cost_usd": 0.0,
+        "aux_input_tokens": 0,
+        "aux_latency_total_s": 0.0,
+        "aux_output_tokens": 0,
+        "aux_share_of_task_time": 0.0,
+        "cost_per_success_usd": 0.0006558935185185184,
+        "decision_cost_usd": 0.141673,
+        "episode_count": 216,
+        "final_success_rate": 1.0,
+        "final_success_rate_natural": 1.0,
+        "forced_trap_recoverable_episode_count": 108,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 1.0,
+        "invalid_responses": 1,
+        "mean_decision_latency_s": 1.485689812447783,
+        "median_decision_latency_s": 1.4598559499425479,
+        "natural_episode_count": 108,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 1.0,
+        "recovery_success_rate": 1.0,
+        "selector_calls": 1117,
+        "time_per_success_s": 7.697000637180584,
+        "total_cost_per_success_usd": 0.0006558935185185184,
+        "total_cost_usd": 0.141673,
+        "total_input_tokens": 551695,
+        "total_output_tokens": 173007
+      },
+      "resolved_model": "claude-haiku-5-5",
+      "status": "COMPLETED"
+    },
+    "b_O1": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "aux_cost_usd": 0.0856552,
+        "aux_input_tokens": 255392,
+        "aux_latency_total_s": 1306.6926058205863,
+        "aux_output_tokens": 120232,
+        "aux_share_of_task_time": 0.4389235513608294,
+        "cost_per_success_usd": 0.000681926388888889,
+        "decision_cost_usd": 0.1472961,
+        "episode_count": 216,
+        "final_success_rate": 1.0,
+        "final_success_rate_natural": 1.0,
+        "forced_trap_recoverable_episode_count": 108,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 1.0,
+        "invalid_responses": 1,
+        "mean_decision_latency_s": 1.492606489836068,
+        "median_decision_latency_s": 1.448908221041347,
+        "natural_episode_count": 108,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 1.0,
+        "recovery_success_rate": 1.0,
+        "selector_calls": 1117,
+        "time_per_success_s": 13.782588758268233,
+        "total_cost_per_success_usd": 0.0010784782407407408,
+        "total_cost_usd": 0.23295130000000003,
+        "total_input_tokens": 666571,
+        "total_output_tokens": 161278
+      },
+      "resolved_model": "claude-haiku-5-5",
+      "status": "COMPLETED"
+    },
+    "control_O0": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.9722222222222222,
+          "recovery_final_success_forced_trap": 0.9722222222222222
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.8055555555555556,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "aux_cost_usd": 0.0,
+        "aux_input_tokens": 0,
+        "aux_latency_total_s": 0.0,
+        "aux_output_tokens": 0,
+        "aux_share_of_task_time": 0.0,
+        "cost_per_success_usd": 0.0006487437209302326,
+        "decision_cost_usd": 0.13947990000000002,
+        "episode_count": 216,
+        "final_success_rate": 0.9953703703703703,
+        "final_success_rate_natural": 1.0,
+        "forced_trap_recoverable_episode_count": 108,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.9259259259259259,
+        "invalid_responses": 0,
+        "mean_decision_latency_s": 1.4234481279446838,
+        "median_decision_latency_s": 1.3544262562521907,
+        "natural_episode_count": 108,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 0.9913793103448276,
+        "recovery_success_rate": 0.9907407407407407,
+        "selector_calls": 1137,
+        "time_per_success_s": 7.529461606990865,
+        "total_cost_per_success_usd": 0.0006487437209302326,
+        "total_cost_usd": 0.13947990000000002,
+        "total_input_tokens": 1176044,
+        "total_output_tokens": 43751
+      },
+      "resolved_model": "claude-haiku-5-5",
+      "status": "COMPLETED"
+    },
+    "control_O1": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 0.9166666666666666,
+          "recovery_final_success_forced_trap": 1.0
+        }
+      },
+      "overall": {
+        "aux_cost_usd": 0.0862164,
+        "aux_input_tokens": 257739,
+        "aux_latency_total_s": 1378.865165632902,
+        "aux_output_tokens": 120885,
+        "aux_share_of_task_time": 0.4656306649402575,
+        "cost_per_success_usd": 0.0006889097222222223,
+        "decision_cost_usd": 0.1488045,
+        "episode_count": 216,
+        "final_success_rate": 1.0,
+        "final_success_rate_natural": 1.0,
+        "forced_trap_recoverable_episode_count": 108,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.9722222222222222,
+        "invalid_responses": 0,
+        "mean_decision_latency_s": 1.407518992248273,
+        "median_decision_latency_s": 1.3317097673322376,
+        "natural_episode_count": 108,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 1.0,
+        "recovery_success_rate": 1.0,
+        "selector_calls": 1124,
+        "time_per_success_s": 13.709653394278272,
+        "total_cost_per_success_usd": 0.0010880597222222223,
+        "total_cost_usd": 0.2350209,
+        "total_input_tokens": 1271500,
+        "total_output_tokens": 43309
+      },
+      "resolved_model": "claude-haiku-5-5",
+      "status": "COMPLETED"
+    },
+    "jev_O0": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 0.1111111111111111,
+          "initial_choice_accuracy": 0.0,
+          "recovery_final_success_forced_trap": 0.08333333333333333
+        }
+      },
+      "overall": {
+        "aux_cost_usd": 0.0,
+        "aux_input_tokens": 0,
+        "aux_latency_total_s": 0.0,
+        "aux_output_tokens": 0,
+        "aux_share_of_task_time": 0.0,
+        "cost_per_success_usd": 0.00023575740397350993,
+        "decision_cost_usd": 0.035599368,
+        "episode_count": 216,
+        "final_success_rate": 0.6990740740740741,
+        "final_success_rate_natural": 0.7037037037037037,
+        "forced_trap_recoverable_episode_count": 108,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.6666666666666666,
+        "invalid_responses": 0,
+        "mean_decision_latency_s": 0.20215714736584764,
+        "median_decision_latency_s": 0.20062840216702343,
+        "natural_episode_count": 108,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 0.5486111111111112,
+        "recovery_success_rate": 0.6944444444444444,
+        "selector_calls": 1490,
+        "time_per_success_s": 2.0012325046889794,
+        "total_cost_per_success_usd": 0.00023575740397350993,
+        "total_cost_usd": 0.035599368,
+        "total_input_tokens": 847604,
+        "total_output_tokens": 103577
+      },
+      "resolved_model": "jev-1.13.0",
+      "status": "COMPLETED"
+    },
+    "jev_O1": {
+      "by_family": {
+        "anchor": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 0.8611111111111112,
+          "initial_choice_accuracy": 0.6388888888888888,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "indirection": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 1.0,
+          "initial_choice_accuracy": 1.0,
+          "recovery_final_success_forced_trap": 1.0
+        },
+        "injected": {
+          "N_episodes": 72,
+          "N_instances": 12,
+          "final_success_natural": 0.3055555555555556,
+          "initial_choice_accuracy": 0.1388888888888889,
+          "recovery_final_success_forced_trap": 0.3333333333333333
+        }
+      },
+      "overall": {
+        "aux_cost_usd": 0.1024347,
+        "aux_input_tokens": 297157,
+        "aux_latency_total_s": 1543.5377171990258,
+        "aux_output_tokens": 145438,
+        "aux_share_of_task_time": 0.8495407790857328,
+        "cost_per_success_usd": 0.00022583711111111114,
+        "decision_cost_usd": 0.036585612,
+        "episode_count": 216,
+        "final_success_rate": 0.75,
+        "final_success_rate_natural": 0.7222222222222222,
+        "forced_trap_recoverable_episode_count": 108,
+        "infrastructure_failures": 0,
+        "initial_choice_accuracy": 0.5925925925925926,
+        "invalid_responses": 0,
+        "mean_decision_latency_s": 0.19924464307953244,
+        "median_decision_latency_s": 0.1968609703738669,
+        "natural_episode_count": 108,
+        "premature_completion_rate": 0.0,
+        "recovery_success_among_deviations": 0.6447368421052632,
+        "recovery_success_rate": 0.7777777777777778,
+        "selector_calls": 1369,
+        "time_per_success_s": 11.215483511277629,
+        "total_cost_per_success_usd": 0.0008581500740740741,
+        "total_cost_usd": 0.139020312,
+        "total_input_tokens": 871086,
+        "total_output_tokens": 99816
+      },
+      "resolved_model": "jev-1.13.0",
+      "status": "COMPLETED"
+    }
+  },
+  "caveats": [
+    "median_decision_latency_s = median over episodes of (episode decision latency / episode selector calls); per-call latencies are not stored in the rows.",
+    "Jev cost = input tokens x assumed US$0.042/Mtok (the API returns no cost field); other arms use list prices.",
+    "cost_per_success and time_per_success keep failures in the numerator (total over all episodes / successes).",
+    "recovery_success_rate = final success on forced_trap episodes of the eight recoverable families (irreversible is the negative control and excluded); recovery_success_among_deviations is also given.",
+    "Auxiliary cost/time columns appear only when rows carry aux fields (v3b)."
+  ],
+  "source": "jev_v3b_test"
+}
