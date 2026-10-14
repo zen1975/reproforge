@@ -1,0 +1,11 @@
+{
+  "experiment_id": "jev-live-systemone-check-v3a",
+  "generator_version": "g2 (frozen v2 generator, unchanged)",
+  "freeze_sha256": "c7ac3d0e61a40f0b7d31d56ea31b0c61f095e50b68d2a46134002b496cdbe60a",
+  "files": ["jev_v3_arms.py", "jev_v3_run.py", "jev_v3_analysis.py"],
+  "v2_freeze_sha256": "f76ba2b61a5814d82b487861f0c01cfc2375af91d125704365bce3e142fd951f",
+  "pinned_on": "2026-10-14",
+  "test_seeds": "4000-4011 (never run before this pin)",
+  "spend_cap_usd_per_arm": {"jev": 0.5, "control": 1.5, "b": 3.0},
+  "note": "Pins the v3a B-arm analogue, runner and analysis for the single test run; the v2 files stay pinned by jev_v2_freeze.json. Any change to the listed files => new experiment id. Pre-registration: design/jev-live-systemone-check-v3a-preregistration.md"
+}

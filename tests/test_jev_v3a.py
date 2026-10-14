@@ -166,16 +166,22 @@ def test_seeds_are_disjoint_from_every_earlier_run_and_the_v2_pin_is_intact():
     assert not pilot_ids & test_ids and not (pilot_ids | test_ids) & v2_ids
 
 
-def test_runner_skips_without_key_and_refuses_test_without_matching_pin(tmp_path):
+def test_runner_skips_without_key_and_refuses_test_when_the_pin_does_not_match(tmp_path, monkeypatch):
     env = {k: v for k, v in os.environ.items() if k not in ("TYPESAFE_API_KEY", "ANTHROPIC_API_KEY")}
     out = tmp_path / "x.json"
     r = subprocess.run([sys.executable, str(EXP / "jev_v3_run.py"), "--arm", "b", "--phase", "test", "--out", str(out)],
                        check=False, env=env, capture_output=True, text=True)
     assert r.returncode == 0 and "SKIPPED_NO_CREDENTIAL" in r.stdout and not out.exists()
-    env["ANTHROPIC_API_KEY"] = "sk-test-not-a-real-key"
-    r = subprocess.run([sys.executable, str(EXP / "jev_v3_run.py"), "--arm", "b", "--phase", "test", "--out", str(out)],
-                       check=False, env=env, capture_output=True, text=True)
-    assert r.returncode == 4 and "REFUSED" in r.stderr and not out.exists()  # no v3a pin yet
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-test-not-a-real-key")
+    monkeypatch.setattr(run, "FREEZE_SHA256", "0" * 64)  # a wrong pin must refuse before any client is built
+    assert run.main(["--arm", "b", "--phase", "test", "--out", str(out)]) == 4 and not out.exists()
+
+
+def test_pinned_v3a_freeze_hash_matches_the_frozen_files():
+    pin = json.loads((EXP / "jev_v3a_freeze.json").read_text())
+    assert pin["freeze_sha256"] == run.freeze_sha256() == run.FREEZE_SHA256
+    assert pin["files"] == list(run.FREEZE_FILES) and pin["v2_freeze_sha256"] == v2run.FREEZE_SHA256
+    assert run.v2_pin_intact()
 
 
 # ---------------------------------------------------------------- end to end (scripted selectors)
@@ -277,7 +283,9 @@ def test_verifier_detects_tampering():
 
 def test_test_evidence_requires_the_pin():
     ev = evidence("jev", Oracle(), phase="test")
-    assert any("pinned v3a freeze hash" in e for e in an.verify_arm(ev))  # no pin yet
+    assert an.verify_arm(ev) == []
+    ev["freeze_sha256"] = "0" * 64
+    assert any("pinned v3a freeze hash" in e for e in an.verify_arm(ev))
 
 
 def test_committed_v3a_evidence_if_any_is_valid():
