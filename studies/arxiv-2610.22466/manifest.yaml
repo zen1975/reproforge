@@ -1,0 +1,32 @@
+schema_version: "0.1"
+paper:
+  title: "Harness-Delta Attribution: Dissecting Gains From Harness Evolution"
+  canonical_url: "https://arxiv.org/abs/2610.22466"
+  arxiv_id: "2610.22466"
+  authors: ["Wenxuan Ding","Qin Lu","Changlong Yu","Sha Li","Shuowei Jin","Xin Liu","Zhenyu Shi","Greg Durrett"]
+  license: "CC BY 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Independent implementation of HDA score attribution arithmetic and a local paired-bootstrap analogue. No author code, benchmark, model, or dataset was copied. This is a synthetic mechanism test, not reproduction of the paper's 25 model-framework-benchmark settings."
+external_assets:
+  - kind: "CODE"
+    name: "Author repository (inspected only; not used)"
+    source: "https://github.com/Wenwen-D/HarnessDeltaAttribution"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-attribution-conservation"
+    statement: "The independent HDA arithmetic decomposes a positive observed gain into O, T, and G components whose raw sum equals the observed gain."
+    acceptance_criteria: "On frozen hda-synthetic-v1, delta equals 0.4, O equals 0.15, T equals 0.15, G equals 0.10, and the absolute identity error is below 1e-12."
+  - id: "C2-significance-gate"
+    statement: "No attribution is assigned when the gain is not significant or is not positive."
+    acceptance_criteria: "The zero-gain and non-positive-gain tests must return attribution_assigned=false."
+  - id: "C3-share-caps"
+    statement: "Reported O and T shares follow the paper's cap ordering and reported shares sum to 100 percent."
+    acceptance_criteria: "The boundary test confirms O is capped to 100 percent, T to the remaining percentage, and G is the remainder."
+  - id: "C4-heldout-separation"
+    statement: "Held-out transfer is reported separately from search-set attribution and is never used for tuning."
+    acceptance_criteria: "The synthetic result stores held-out scores separately and marks used_for_tuning=false; it is explicitly labeled as non-evidence of real generalization."
