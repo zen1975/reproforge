@@ -1,0 +1,30 @@
+schema_version: "0.1"
+paper:
+  title: "FAOPs: Normal Forms and an Algebra for AI Agent Workflows"
+  canonical_url: "https://arxiv.org/abs/2610.22061"
+  arxiv_id: "2610.22061"
+  authors:
+    - "Ali Mohammadi Shanghooshabad"
+  license: "CC BY 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Independent bounded static-checking mechanism inspired by the published normal-form contracts. The paper describes SkillBase and an executor but does not link a public implementation in the paper body. This implementation is not the author toolchain and does not claim to reproduce a reported empirical result."
+external_assets: []
+claims:
+  - id: "C1-atomic-leaves"
+    statement: "FNF-1 can reject a declared leaf that bundles more than one mutating effect."
+    acceptance_criteria: "The frozen synthetic suite must accept a zero/one-effect leaf and reject a leaf declaring two effects."
+  - id: "C2-dataflow"
+    statement: "FNF-2 can reject reads that are not guaranteed to be available in the workflow state."
+    acceptance_criteria: "The frozen synthetic suite must detect unproduced fields at ordinary steps, call sites, and after branches/loops whose outputs are not guaranteed."
+  - id: "C3-canonical-call-graph"
+    statement: "FNF-3 can reject unresolved procedure references, duplicate registry identifiers, and cyclic calls."
+    acceptance_criteria: "Each of the three negative fixtures must produce the corresponding machine-readable violation."
+  - id: "C4-least-privilege"
+    statement: "FNF-4 can reject a tool or called procedure whose declared scope exceeds the caller's scope."
+    acceptance_criteria: "The frozen synthetic suite must reject both a direct out-of-scope tool and a callee scope escalation."
+  - id: "C5-termination-and-bounds"
+    statement: "The independent extension checks can require a finite loop cap and explicit action time/cost bounds."
+    acceptance_criteria: "When enabled, the verifier must reject an unbounded loop and action leaves missing either non-negative time or cost bounds."

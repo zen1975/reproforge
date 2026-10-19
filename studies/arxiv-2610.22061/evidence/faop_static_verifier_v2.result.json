@@ -1,0 +1,27 @@
+{
+  "case_count": 14,
+  "case_names": [
+    "valid-linear-workflow",
+    "multiple-effects",
+    "unproduced-field",
+    "unknown-call-target",
+    "recursive-call-cycle",
+    "tool-outside-scope",
+    "callee-scope-escalation",
+    "unbounded-loop",
+    "missing-time-cost-bounds",
+    "branch-output-not-guaranteed",
+    "duplicate-registry-id",
+    "callee-input-not-available",
+    "loop-body-output-not-guaranteed",
+    "call-output-flow"
+  ],
+  "evaluation_id": "faop-static-verifier-synthetic-v2",
+  "fixture_sha256": "480b3d4764a01acd792967f744b4b63cf045f9752f87d7592f735e7d4b4f4c71",
+  "mechanism_case_accuracy": 1.0,
+  "mechanism_cases_correct": 14,
+  "paper_benchmark": false,
+  "shape_only_baseline_accept_count": 14,
+  "shape_only_baseline_false_accepts": 12,
+  "verifier_sha256": "b8388f99c38bd8665e02c8d939abb7875efc398f603d945660d2e71a8db723ed"
+}

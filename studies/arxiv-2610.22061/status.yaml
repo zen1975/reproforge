@@ -1,0 +1,20 @@
+study_id: arxiv-2610.22061
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Independent Python verifier covers a bounded FAOP-like IR subset and passed 14 frozen synthetic mechanism cases. It checks declared atomicity, dataflow, registry/call cycles, tool scope, loop caps, and time/cost declarations; it does not implement the complete FAOP compiler or the author's executor."
+next_step: "Extend protocol-equivalent tests for call-boundary state isolation, output guarantees, declared type compatibility, and semantics-preserving normalization rewrites. Keep the current synthetic evaluation frozen; use a new evaluation id for any changed fixtures or acceptance rules."
+handoff:
+  path: studies/arxiv-2610.22061/HANDOFF.md
+  ready: false
+blockers:
+  - "Full paper protocol-equivalence is not yet established; this is a bounded independent mechanism implementation only."
+  - "The paper's compiler/executor and any empirical corpus analysis are not available as a public linked artifact in the paper body."
+  - "Declared effect/scope metadata is not verified against runtime side effects or tool enforcement."
+frozen_evaluations:
+  - "faop-static-verifier-synthetic-v2"
+entrypoints:
+  - "capabilities/agent.faop-workflow-static-verifier/verifier.py:verify_registry"
+  - "studies/arxiv-2610.22061/experiments/run_static_verifier.py"
+  - "tests/test_faop_static_verifier.py"
+updated_at: "2026-10-19"

@@ -320,6 +320,59 @@
           "kind": "python"
         }
       ]
+    },
+    {
+      "id": "agent.faop-workflow-static-verifier",
+      "version": "0.1.0",
+      "name": "FAOP Workflow Static Verifier",
+      "summary": "Experimental deterministic checker for a bounded FAOP-like workflow IR, covering declared effect atomicity, state-field availability, canonical calls, least-privilege scope, and optional loop/time/cost bounds.",
+      "status": "experimental",
+      "task_classes": [
+        "agent-workflow-static-analysis",
+        "workflow-compiler-validation",
+        "agent-tool-scope-audit"
+      ],
+      "interface": {
+        "inputs": {
+          "workflows": "array[workflow-ir]",
+          "require_termination": "boolean",
+          "require_bounds": "boolean"
+        },
+        "outputs": {
+          "valid": "boolean",
+          "normal_forms": "object[FNF-1..FNF-4 -> boolean]",
+          "extensions": "object[+V,+B -> boolean]",
+          "highest_normal_form": "integer",
+          "violations": "array[{code,workflow_id,step_id,message}]"
+        }
+      },
+      "runtime": {
+        "kind": "python",
+        "entrypoint": "capabilities/agent.faop-workflow-static-verifier/verifier.py:verify_registry",
+        "deterministic": true,
+        "requirements": []
+      },
+      "evidence": {
+        "reproduction_status": "PARTIAL",
+        "studies": [
+          "studies/arxiv-2610.22061"
+        ],
+        "evidence_paths": [
+          "studies/arxiv-2610.22061/fixtures/faop_static_v2.json",
+          "studies/arxiv-2610.22061/evidence/faop_static_verifier_v2.result.json",
+          "studies/arxiv-2610.22061/evidence/faop_static_verifier_v2.evidence.json"
+        ]
+      },
+      "implementation": {
+        "path": "capabilities/agent.faop-workflow-static-verifier/verifier.py",
+        "license": "Apache-2.0"
+      },
+      "adapters": [
+        {
+          "kind": "python",
+          "entrypoint": "capabilities/agent.faop-workflow-static-verifier/verifier.py:verify_registry"
+        }
+      ]
     }
   ]
 }

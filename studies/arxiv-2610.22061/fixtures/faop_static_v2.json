@@ -1,0 +1,120 @@
+{
+  "evaluation_id": "faop-static-verifier-synthetic-v2",
+  "paper_benchmark": false,
+  "cases": [
+    {
+      "name": "valid-linear-workflow",
+      "workflows": [
+        {"id":"main.v1","inputs":["request"],"outputs":["report"],"scope":["crm.read","files.write"],"steps":[
+          {"id":"load","kind":"action","reads":["request"],"writes":["customer"],"effects":["http.get"],"tool":"crm.read","time_bound_ms":100,"cost_bound_usd":0.01},
+          {"id":"write","kind":"action","reads":["customer"],"writes":["report"],"effects":["file.write"],"tool":"files.write","time_bound_ms":100,"cost_bound_usd":0.01}
+        ]}
+      ],
+      "require_termination": true,
+      "require_bounds": true,
+      "expected_valid": true,
+      "expected_codes": []
+    },
+    {
+      "name": "multiple-effects",
+      "workflows": [{"id":"main.v1","inputs":["request"],"outputs":["report"],"scope":["crm.read"],"steps":[{"id":"load","kind":"action","reads":["request"],"writes":["customer"],"effects":["http.get","llm.call"],"tool":"crm.read"}]}],
+      "expected_valid": false,
+      "expected_codes": ["FNF1_MULTIPLE_EFFECTS"]
+    },
+    {
+      "name": "unproduced-field",
+      "workflows": [{"id":"main.v1","inputs":["request"],"outputs":["report"],"scope":["files.write"],"steps":[{"id":"write","kind":"action","reads":["missing_customer"],"writes":["report"],"effects":["file.write"],"tool":"files.write"}]}],
+      "expected_valid": false,
+      "expected_codes": ["FNF2_UNPRODUCED_FIELD"]
+    },
+    {
+      "name": "unknown-call-target",
+      "workflows": [{"id":"main.v1","inputs":[],"outputs":[],"scope":[],"steps":[{"id":"call","kind":"call","target":"absent.v1"}]}],
+      "expected_valid": false,
+      "expected_codes": ["FNF3_UNKNOWN_CALL"]
+    },
+    {
+      "name": "recursive-call-cycle",
+      "workflows": [
+        {"id":"a.v1","inputs":[],"outputs":[],"scope":[],"steps":[{"id":"to-b","kind":"call","target":"b.v1"}]},
+        {"id":"b.v1","inputs":[],"outputs":[],"scope":[],"steps":[{"id":"to-a","kind":"call","target":"a.v1"}]}
+      ],
+      "expected_valid": false,
+      "expected_codes": ["FNF3_CALL_CYCLE"]
+    },
+    {
+      "name": "tool-outside-scope",
+      "workflows": [{"id":"main.v1","inputs":["request"],"outputs":["customer"],"scope":["crm.read"],"steps":[{"id":"load","kind":"action","reads":["request"],"writes":["customer"],"effects":["http.get"],"tool":"payments.write"}]}],
+      "expected_valid": false,
+      "expected_codes": ["FNF4_TOOL_OUT_OF_SCOPE"]
+    },
+    {
+      "name": "callee-scope-escalation",
+      "workflows": [
+        {"id":"parent.v1","inputs":["request"],"outputs":["customer"],"scope":["crm.read"],"steps":[{"id":"call-child","kind":"call","target":"child.v1"}]},
+        {"id":"child.v1","inputs":["request"],"outputs":["customer"],"scope":["payments.write"],"steps":[]}
+      ],
+      "expected_valid": false,
+      "expected_codes": ["FNF4_SCOPE_ESCALATION"]
+    },
+    {
+      "name": "unbounded-loop",
+      "workflows": [{"id":"main.v1","inputs":[],"outputs":[],"scope":[],"steps":[{"id":"repeat","kind":"loop","reads":[],"body":[]}]}],
+      "require_termination": true,
+      "expected_valid": false,
+      "expected_codes": ["V_UNBOUNDED_LOOP"]
+    },
+    {
+      "name": "missing-time-cost-bounds",
+      "workflows": [{"id":"main.v1","inputs":["request"],"outputs":["customer"],"scope":["crm.read"],"steps":[{"id":"load","kind":"action","reads":["request"],"writes":["customer"],"effects":["http.get"],"tool":"crm.read"}]}],
+      "require_bounds": true,
+      "expected_valid": false,
+      "expected_codes": ["B_MISSING_BOUND"]
+    },
+    {
+      "name": "branch-output-not-guaranteed",
+      "workflows": [{"id":"main.v1","inputs":["request"],"outputs":["report"],"scope":[],"steps":[
+        {"id":"branch","kind":"if","reads":["request"],"then":[{"id":"yes","kind":"value","reads":[],"writes":["token"]}],"else":[]},
+        {"id":"use","kind":"value","reads":["token"],"writes":["report"]}
+      ]}],
+      "expected_valid": false,
+      "expected_codes": ["FNF2_UNPRODUCED_FIELD"]
+    },
+    {
+      "name": "duplicate-registry-id",
+      "workflows": [
+        {"id":"main.v1","inputs":[],"outputs":[],"scope":[],"steps":[]},
+        {"id":"main.v1","inputs":[],"outputs":[],"scope":[],"steps":[]}
+      ],
+      "expected_valid": false,
+      "expected_codes": ["FNF3_DUPLICATE_ID"]
+    },
+    {
+      "name": "callee-input-not-available",
+      "workflows": [
+        {"id":"parent.v1","inputs":["request"],"outputs":["report"],"scope":[],"steps":[{"id":"call-child","kind":"call","target":"child.v1"}]},
+        {"id":"child.v1","inputs":["secret"],"outputs":["result"],"scope":[],"steps":[]}
+      ],
+      "expected_valid": false,
+      "expected_codes": ["FNF2_UNPRODUCED_FIELD"]
+    },
+    {
+      "name": "loop-body-output-not-guaranteed",
+      "workflows": [{"id":"main.v1","inputs":[],"outputs":["report"],"scope":[],"steps":[
+        {"id":"repeat","kind":"loop","max_iterations":3,"body":[{"id":"produce","kind":"value","reads":[],"writes":["token"]}]},
+        {"id":"use","kind":"value","reads":["token"],"writes":["report"]}
+      ]}],
+      "expected_valid": false,
+      "expected_codes": ["FNF2_UNPRODUCED_FIELD"]
+    }
+    ,{
+      "name": "call-output-flow",
+      "workflows": [
+        {"id":"parent.v1","inputs":["request"],"outputs":["report"],"scope":["crm.read"],"steps":[{"id":"call-child","kind":"call","target":"child.v1"},{"id":"use-customer","kind":"value","reads":["customer"],"writes":["report"]}]},
+        {"id":"child.v1","inputs":["request"],"outputs":["customer"],"scope":["crm.read"],"steps":[]}
+      ],
+      "expected_valid": true,
+      "expected_codes": []
+    }
+  ]
+}

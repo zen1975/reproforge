@@ -1,0 +1,36 @@
+arxiv_id: "2610.22061"
+canonical_url: "https://arxiv.org/abs/2610.22061"
+pdf_url: "https://arxiv.org/pdf/2610.22061"
+html_url: "https://arxiv.org/html/2610.22061v1"
+title: "FAOPs: Normal Forms and an Algebra for AI Agent Workflows"
+submitted_on: "2026-10-15"
+version: "v1"
+source_verified_on: "2026-10-19"
+primary_source_checked: true
+pdf_body_reviewed: true
+paper_license: "CC BY 4.0"
+paper_license_status: "VERIFIED"
+author_code:
+  publicly_linked_in_paper: false
+  license_status: "NOT_APPLICABLE_NO_CODE_USED"
+assets_used:
+  - kind: "PAPER"
+    source: "https://arxiv.org/abs/2610.22061"
+    license: "CC BY 4.0"
+    copied_into_repository: false
+  - kind: "DATASET"
+    source: null
+    license: null
+    used: false
+  - kind: "CODE"
+    source: null
+    license: null
+    used: false
+protocol_boundary:
+  paper_type: "theory-first formalism with worked synthetic example"
+  paper_reports_empirical_evaluation: false
+  reproduction_claim: "PARTIAL; independent subset mechanism tests only"
+  unknowns:
+    - "Author SkillBase implementation and executor source are not linked in the paper body."
+    - "No author benchmark or empirical result is reproduced by this study."
+    - "Declared effect labels and scopes are checked structurally; they are not proven to match real runtime behavior."

@@ -1,0 +1,20 @@
+{
+  "artifact_hashes": {
+    "fixture.json": "480b3d4764a01acd792967f744b4b63cf045f9752f87d7592f735e7d4b4f4c71",
+    "result.json": "34d07cd9fa71b48c6b5522a096bcd072be6627963b728b7c939485291f9e89d4",
+    "run_static_verifier.py": "c9c8a8a7e31ed386fef7cd6939128fc98c62757df01d1247685364add543b057",
+    "verifier.py": "b8388f99c38bd8665e02c8d939abb7875efc398f603d945660d2e71a8db723ed"
+  },
+  "claim_id": "C1-C5-independent-static-mechanism",
+  "metrics": {
+    "mechanism_case_accuracy": 1.0,
+    "mechanism_cases_correct": 14,
+    "paper_benchmark": false,
+    "shape_only_baseline_accept_count": 14,
+    "shape_only_baseline_false_accepts": 12,
+    "synthetic_cases": 14
+  },
+  "notes": "PASS applies only to this frozen, hand-authored synthetic mechanism suite. The shape-only baseline is intentionally limited to required top-level fields. This does not reproduce the paper's SkillBase compiler, prove declared effects match runtime behavior, or reproduce any empirical paper result.",
+  "run_id": "faop-static-verifier-synthetic-v2",
+  "verdict": "PASS"
+}
