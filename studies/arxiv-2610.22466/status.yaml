@@ -1,0 +1,21 @@
+study_id: arxiv-2610.22466
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Independent Python code implements the HDA score arithmetic and a local paired-bootstrap analogue. The frozen synthetic test passes, but no LLM, model weights, author code, public benchmark, or actual harness variants were run; compute matching and shortcut neutralization are represented by declared score vectors."
+next_step: "Build a protocol-equivalent evaluator using an independently licensed small benchmark or trace fixture. Verify asset access and license first; keep hda-synthetic-v1 frozen and use a new evaluation id for any changed fixture or acceptance rules."
+handoff:
+  path: studies/arxiv-2610.22466/HANDOFF.md
+  ready: false
+blockers:
+  - "Full paper-level reproduction requires 11 executor models, three harness-evolution frameworks, and four benchmark families; these runs were not performed."
+  - "The public author repository has no identified LICENSE/COPYING/NOTICE file, so its code is not used."
+  - "Compute-matching and shortcut-neutralization variants require task-specific construction and human review."
+  - "The paper's raw per-item logs and full execution trajectories are not included in the inspected author repository."
+frozen_evaluations:
+  - "hda-synthetic-v1"
+entrypoints:
+  - "capabilities/research.harness-delta-attribution-auditor/attribution.py:attribute_gains"
+  - "studies/arxiv-2610.22466/experiments/run_hda_synthetic.py"
+  - "tests/test_hda_attribution.py"
+updated_at: "2026-10-20"
