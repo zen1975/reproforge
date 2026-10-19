@@ -1,0 +1,36 @@
+schema_version: "0.1"
+id: "research.harness-delta-attribution-auditor"
+version: "0.1.0"
+name: "Harness Delta Attribution Auditor"
+summary: "Experimental deterministic score attribution for baseline and evolved agent harness evaluations."
+status: "experimental"
+task_classes: ["harness-evaluation", "reproducibility-auditing"]
+interface:
+  inputs:
+    baseline_scores: "array[number]"
+    compute_matched_baseline_scores: "array[number]"
+    evolved_scores: "array[number]"
+    neutralized_evolved_scores: "array[number]"
+    significant_positive_gain: "boolean"
+  outputs:
+    delta: "number"
+    raw_components: "object"
+    reported_shares_percent: "object"
+    attribution_assigned: "boolean"
+runtime:
+  kind: "python"
+  entrypoint: "capabilities/research.harness-delta-attribution-auditor/attribution.py:attribute_gains"
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: "PARTIAL"
+  studies: ["studies/arxiv-2610.22466"]
+  evidence_paths:
+    - "studies/arxiv-2610.22466/evidence/C1.synthetic-attribution.evidence.json"
+    - "studies/arxiv-2610.22466/evidence/C2.no-gain-guard.evidence.json"
+    - "studies/arxiv-2610.22466/evidence/hda_synthetic_v1.result.json"
+implementation:
+  path: "capabilities/research.harness-delta-attribution-auditor/attribution.py"
+  license: "Apache-2.0"
+adapters:
+  - kind: "python"
