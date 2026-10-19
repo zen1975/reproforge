@@ -1,0 +1,43 @@
+arxiv_id: "2610.22466"
+canonical_url: "https://arxiv.org/abs/2610.22466"
+pdf_url: "https://arxiv.org/pdf/2610.22466"
+html_url: "https://arxiv.org/html/2610.22466v1"
+title: "Harness-Delta Attribution: Dissecting Gains From Harness Evolution"
+submitted_on: "2026-10-15"
+version: "v1"
+source_verified_on: "2026-10-20"
+primary_source_checked: true
+pdf_body_reviewed: true
+paper_license: "CC BY 4.0"
+paper_license_status: "VERIFIED"
+author_code:
+  public_repository: "https://github.com/Wenwen-D/HarnessDeltaAttribution"
+  repository_access: "PUBLIC"
+  license_status: "UNKNOWN"
+  license_check: "The repository tree was inspected on 2026-10-20; no LICENSE, COPYING, or NOTICE file was present."
+  used: false
+assets_used:
+  - kind: "PAPER"
+    source: "https://arxiv.org/abs/2610.22466"
+    license: "CC BY 4.0"
+    copied_into_repository: false
+  - kind: "CODE"
+    source: "https://github.com/Wenwen-D/HarnessDeltaAttribution"
+    license: null
+    used: false
+    copied_into_repository: false
+  - kind: "DATASET"
+    source: null
+    license: null
+    used: false
+    copied_into_repository: false
+protocol_boundary:
+  paper_type: "Empirical evaluation protocol for harness-evolution gains"
+  reported_scope: "25 settings across 11 executor models, 3 harness-evolution frameworks, and 4 benchmarks"
+  paper_reports_empirical_evaluation: true
+  reproduction_claim: "PARTIAL; independent score-attribution mechanism test only"
+  unknowns:
+    - "The exact paired-bootstrap resample count and seed were not established from the inspected primary text; local settings are explicitly independent."
+    - "The author repository contains no identified license file; no author code is used."
+    - "The paper states that raw per-item logs and full execution trajectories are not included in the repository."
+    - "Task-specific compute matching and shortcut neutralization require human review and are represented only by synthetic score vectors in this study."
