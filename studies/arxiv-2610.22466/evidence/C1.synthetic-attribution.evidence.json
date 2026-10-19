@@ -1,0 +1,29 @@
+{
+  "claim_id": "C1-attribution-conservation",
+  "run_id": "hda-synthetic-v1-2026-10-20",
+  "artifact_hashes": {
+    "fixture_sha256": "9461af912572e5dfa21d830545ce272b2b2ff72eaf5b83f3d5912075b2d54c5e",
+    "implementation_sha256": "f42b5dfd5499238c0c5be74a4a5c99af5d65ded68dcf0699b01a33b6f39204fb",
+    "result_sha256": "d4377650e265688b1fd76f50612346644a7c41e098afaf1ebdec2ff64339fb96"
+  },
+  "metrics": {
+    "search_task_count": 40,
+    "heldout_task_count": 20,
+    "observed_gain": 0.4,
+    "O_overfitting": 0.15,
+    "T_test_time_scaling": 0.15,
+    "G_residual_upper_bound": 0.1,
+    "raw_identity_error": 0.0,
+    "reported_shares_percent": {
+      "O": 37.5,
+      "T": 37.5,
+      "G": 25.0
+    },
+    "paired_bootstrap_ci_lower": 0.25,
+    "paired_bootstrap_ci_upper": 0.55,
+    "all_expected_values_match": true,
+    "paper_reproduction": false
+  },
+  "verdict": "PASS",
+  "notes": "PASS applies only to the frozen synthetic arithmetic mechanism. The fixture is not a paper benchmark, and the held-out score is not evidence of real generalization."
+}

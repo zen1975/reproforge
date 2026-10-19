@@ -1,0 +1,15 @@
+{
+  "claim_id": "C2-significance-gate",
+  "run_id": "hda-no-gain-guard-v1",
+  "artifact_hashes": {
+    "implementation_sha256": "f42b5dfd5499238c0c5be74a4a5c99af5d65ded68dcf0699b01a33b6f39204fb",
+    "test_sha256": "eb11140dea17eb027a93b7ece617355838c3a519097d9354ba37e0455daf790b"
+  },
+  "metrics": {
+    "zero_gain_attribution_assigned": false,
+    "nonpositive_gain_attribution_assigned": false,
+    "expected": false
+  },
+  "verdict": "PASS",
+  "notes": "Validated by the frozen zero-gain and non-positive-gain unit tests. No attribution is assigned for these boundary cases."
+}

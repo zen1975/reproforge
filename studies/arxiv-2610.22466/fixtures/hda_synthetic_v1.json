@@ -1,0 +1,424 @@
+{
+  "evaluation_id": "hda-synthetic-v1",
+  "evaluation_type": "synthetic_mechanism_test_not_paper_benchmark",
+  "frozen": true,
+  "created_on": "2026-10-20",
+  "notes": "Constructed binary outcomes test the HDA score attribution arithmetic only. They are not model runs, not paper benchmark items, and not reported paper results. The prefix pattern is deliberately artificial. No tuning is permitted against this frozen fixture; any changes require a new evaluation id.",
+  "local_bootstrap_analogue": {
+    "method": "paired percentile bootstrap over per-task evolved-minus-baseline scores",
+    "resamples": 2000,
+    "seed": 20261020,
+    "alpha": 0.05,
+    "note": "The paper states that it uses paired bootstrap significance testing but the exact resample count and seed were not established from the inspected primary text. These are explicit independent local settings, not paper hyperparameters."
+  },
+  "search": [
+    {
+      "task_id": "s01",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s02",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s03",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s04",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s05",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s06",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s07",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s08",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s09",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s10",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s11",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s12",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s13",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s14",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s15",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s16",
+      "baseline": 1,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s17",
+      "baseline": 0,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s18",
+      "baseline": 0,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s19",
+      "baseline": 0,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s20",
+      "baseline": 0,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s21",
+      "baseline": 0,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s22",
+      "baseline": 0,
+      "compute_matched_baseline": 1,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s23",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s24",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s25",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s26",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 1
+    },
+    {
+      "task_id": "s27",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s28",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s29",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s30",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s31",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s32",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 1,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s33",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s34",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s35",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s36",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s37",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s38",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s39",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    },
+    {
+      "task_id": "s40",
+      "baseline": 0,
+      "compute_matched_baseline": 0,
+      "evolved": 0,
+      "neutralized_evolved": 0
+    }
+  ],
+  "heldout": [
+    {
+      "task_id": "h01",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h02",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h03",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h04",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h05",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h06",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h07",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h08",
+      "baseline": 1,
+      "evolved": 1
+    },
+    {
+      "task_id": "h09",
+      "baseline": 0,
+      "evolved": 1
+    },
+    {
+      "task_id": "h10",
+      "baseline": 0,
+      "evolved": 1
+    },
+    {
+      "task_id": "h11",
+      "baseline": 0,
+      "evolved": 1
+    },
+    {
+      "task_id": "h12",
+      "baseline": 0,
+      "evolved": 1
+    },
+    {
+      "task_id": "h13",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h14",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h15",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h16",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h17",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h18",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h19",
+      "baseline": 0,
+      "evolved": 0
+    },
+    {
+      "task_id": "h20",
+      "baseline": 0,
+      "evolved": 0
+    }
+  ],
+  "compute_units_per_task": {
+    "baseline": 1,
+    "compute_matched_baseline": 3,
+    "evolved": 3,
+    "neutralized_evolved": 3
+  },
+  "expected": {
+    "search_scores": {
+      "baseline": 0.4,
+      "compute_matched_baseline": 0.55,
+      "evolved": 0.8,
+      "neutralized_evolved": 0.65
+    },
+    "delta": 0.4,
+    "raw_components": {
+      "O_overfitting": 0.15,
+      "T_test_time_scaling": 0.15,
+      "G_residual_upper_bound": 0.1
+    },
+    "reported_shares_percent": {
+      "O": 37.5,
+      "T": 37.5,
+      "G": 25.0
+    },
+    "heldout_gain": 0.2
+  }
+}

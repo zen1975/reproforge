@@ -1,0 +1,81 @@
+{
+  "all_expected_values_match": true,
+  "artifact_hashes": {
+    "fixture_sha256": "9461af912572e5dfa21d830545ce272b2b2ff72eaf5b83f3d5912075b2d54c5e",
+    "implementation_sha256": "f42b5dfd5499238c0c5be74a4a5c99af5d65ded68dcf0699b01a33b6f39204fb"
+  },
+  "attribution": {
+    "attribution_assigned": true,
+    "delta": 0.4,
+    "interpretation": {
+      "G": "upper bound on generalizable improvement; not proof of transfer",
+      "O": "lower-bound estimate of detected overfitting",
+      "T": "gain explained by matched test-time compute"
+    },
+    "raw_components": {
+      "G_residual_upper_bound": 0.09999999999999998,
+      "O_overfitting": 0.15000000000000002,
+      "T_test_time_scaling": 0.15000000000000002
+    },
+    "raw_identity_error": 0.0,
+    "raw_shares_percent": {
+      "G": 24.999999999999993,
+      "O": 37.5,
+      "T": 37.5
+    },
+    "reported_shares_percent": {
+      "G": 25.0,
+      "O": 37.5,
+      "T": 37.5
+    },
+    "scores": {
+      "baseline": 0.4,
+      "compute_matched_baseline": 0.55,
+      "evolved": 0.8,
+      "neutralized_evolved": 0.65
+    },
+    "status": "ATTRIBUTED"
+  },
+  "compute_units_per_task": {
+    "baseline": 1,
+    "compute_matched_baseline": 3,
+    "evolved": 3,
+    "neutralized_evolved": 3
+  },
+  "evaluation_id": "hda-synthetic-v1",
+  "evaluation_type": "synthetic_mechanism_test_not_paper_benchmark",
+  "expected_values_match": {
+    "bootstrap_positive": true,
+    "components": true,
+    "delta": true,
+    "heldout_gain": true,
+    "reported_shares": true
+  },
+  "fixture_frozen": true,
+  "heldout_task_count": 20,
+  "heldout_transfer": {
+    "baseline_score": 0.4,
+    "evolved_score": 0.6,
+    "gain": 0.19999999999999996,
+    "interpretation": "Synthetic split-only illustration; not evidence of real generalization.",
+    "used_for_tuning": false
+  },
+  "limitations": [
+    "No LLM, model weights, author code, or published benchmark was run.",
+    "The bootstrap parameters are independent local analogue settings, not inferred paper settings.",
+    "Compute matching and overfitting neutralization are represented by declared synthetic score vectors, not executed harness variants.",
+    "The synthetic prefix fixture is for arithmetic and guard testing only; it does not support a real-world transfer claim."
+  ],
+  "paper_reproduction": false,
+  "search_significance": {
+    "alpha": 0.05,
+    "ci_lower": 0.25,
+    "ci_upper": 0.55,
+    "method": "paired_percentile_bootstrap_local_analogue",
+    "observed_gain": 0.4,
+    "resamples": 2000,
+    "seed": 20261020,
+    "significant_positive_gain": true
+  },
+  "search_task_count": 40
+}
