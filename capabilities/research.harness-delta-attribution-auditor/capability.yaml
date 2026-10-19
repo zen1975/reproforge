@@ -1,4 +1,3 @@
-schema_version: "0.1"
 id: "research.harness-delta-attribution-auditor"
 version: "0.1.0"
 name: "Harness Delta Attribution Auditor"
@@ -7,10 +6,10 @@ status: "experimental"
 task_classes: ["harness-evaluation", "reproducibility-auditing"]
 interface:
   inputs:
-    baseline_scores: "array[number]"
-    compute_matched_baseline_scores: "array[number]"
-    evolved_scores: "array[number]"
-    neutralized_evolved_scores: "array[number]"
+    baseline: "array[number]"
+    compute_matched_baseline: "array[number]"
+    evolved: "array[number]"
+    neutralized_evolved: "array[number]"
     significant_positive_gain: "boolean"
   outputs:
     delta: "number"

@@ -386,10 +386,10 @@
     ],
     "interface": {
       "inputs": {
-        "baseline_scores": "array[number]",
-        "compute_matched_baseline_scores": "array[number]",
-        "evolved_scores": "array[number]",
-        "neutralized_evolved_scores": "array[number]",
+        "baseline": "array[number]",
+        "compute_matched_baseline": "array[number]",
+        "evolved": "array[number]",
+        "neutralized_evolved": "array[number]",
         "significant_positive_gain": "boolean"
       },
       "outputs": {
