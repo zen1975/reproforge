@@ -1,0 +1,8 @@
+{
+  "fixture_id": "soma-synthetic-v1",
+  "calibration_split_id": "soma-synthetic-calibration-v1",
+  "test_split_id": "soma-synthetic-heldout-v1",
+  "persistent_case_count": 10,
+  "recovery_case_count": 10,
+  "threshold_grid": [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 6, 8, 12]
+}
