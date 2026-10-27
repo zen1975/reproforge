@@ -374,57 +374,108 @@
         }
       ]
     },
-  {
-    "id": "research.harness-delta-attribution-auditor",
-    "version": "0.1.0",
-    "name": "Harness Delta Attribution Auditor",
-    "summary": "Experimental deterministic score attribution for baseline and evolved agent harness evaluations.",
-    "status": "experimental",
-    "task_classes": [
-      "harness-evaluation",
-      "reproducibility-auditing"
-    ],
-    "interface": {
-      "inputs": {
-        "baseline": "array[number]",
-        "compute_matched_baseline": "array[number]",
-        "evolved": "array[number]",
-        "neutralized_evolved": "array[number]",
-        "significant_positive_gain": "boolean"
-      },
-      "outputs": {
-        "delta": "number",
-        "raw_components": "object",
-        "reported_shares_percent": "object",
-        "attribution_assigned": "boolean"
-      }
-    },
-    "runtime": {
-      "kind": "python",
-      "entrypoint": "capabilities/research.harness-delta-attribution-auditor/attribution.py:attribute_gains",
-      "deterministic": true,
-      "requirements": []
-    },
-    "evidence": {
-      "reproduction_status": "PARTIAL",
-      "studies": [
-        "studies/arxiv-2610.22466"
+    {
+      "id": "research.harness-delta-attribution-auditor",
+      "version": "0.1.0",
+      "name": "Harness Delta Attribution Auditor",
+      "summary": "Experimental deterministic score attribution for baseline and evolved agent harness evaluations.",
+      "status": "experimental",
+      "task_classes": [
+        "harness-evaluation",
+        "reproducibility-auditing"
       ],
-      "evidence_paths": [
-        "studies/arxiv-2610.22466/evidence/C1.synthetic-attribution.evidence.json",
-        "studies/arxiv-2610.22466/evidence/C2.no-gain-guard.evidence.json",
-        "studies/arxiv-2610.22466/evidence/hda_synthetic_v1.result.json"
+      "interface": {
+        "inputs": {
+          "baseline": "array[number]",
+          "compute_matched_baseline": "array[number]",
+          "evolved": "array[number]",
+          "neutralized_evolved": "array[number]",
+          "significant_positive_gain": "boolean"
+        },
+        "outputs": {
+          "delta": "number",
+          "raw_components": "object",
+          "reported_shares_percent": "object",
+          "attribution_assigned": "boolean"
+        }
+      },
+      "runtime": {
+        "kind": "python",
+        "entrypoint": "capabilities/research.harness-delta-attribution-auditor/attribution.py:attribute_gains",
+        "deterministic": true,
+        "requirements": []
+      },
+      "evidence": {
+        "reproduction_status": "PARTIAL",
+        "studies": [
+          "studies/arxiv-2610.22466"
+        ],
+        "evidence_paths": [
+          "studies/arxiv-2610.22466/evidence/C1.synthetic-attribution.evidence.json",
+          "studies/arxiv-2610.22466/evidence/C2.no-gain-guard.evidence.json",
+          "studies/arxiv-2610.22466/evidence/hda_synthetic_v1.result.json"
+        ]
+      },
+      "implementation": {
+        "path": "capabilities/research.harness-delta-attribution-auditor/attribution.py",
+        "license": "Apache-2.0"
+      },
+      "adapters": [
+        {
+          "kind": "python"
+        }
       ]
     },
-    "implementation": {
-      "path": "capabilities/research.harness-delta-attribution-auditor/attribution.py",
-      "license": "Apache-2.0"
-    },
-    "adapters": [
-      {
-        "kind": "python"
-      }
-    ]
-  }
+    {
+      "id": "research.trajectory-structure-auditor",
+      "version": "0.1.0",
+      "name": "Trajectory Structure Auditor",
+      "summary": "Experimental deterministic CPU-only structural diagnostics for coding-agent trajectories, derived independently from a subset of published TQS equations.",
+      "status": "experimental",
+      "task_classes": [
+        "agent-trajectory-evaluation",
+        "trajectory-structure-diagnostics",
+        "agent-training-data-curation"
+      ],
+      "interface": {
+        "inputs": {
+          "steps": "array[{action,observation,files,error}]"
+        },
+        "outputs": {
+          "OEC": "number|null",
+          "TTE": "number|null",
+          "SCP": "number",
+          "PED": "number|null"
+        }
+      },
+      "runtime": {
+        "kind": "python",
+        "entrypoint": "studies/arxiv-2610.13152/experiments/run_structural_audit.py:features",
+        "deterministic": true,
+        "requirements": []
+      },
+      "evidence": {
+        "reproduction_status": "PARTIAL",
+        "studies": [
+          "studies/arxiv-2610.13152"
+        ],
+        "evidence_paths": [
+          "studies/arxiv-2610.13152/evidence/C1.structural-synthetic.evidence.json",
+          "studies/arxiv-2610.13152/evidence/tqs_structural_synthetic_v1.result.json"
+        ]
+      },
+      "implementation": {
+        "path": "studies/arxiv-2610.13152/experiments/run_structural_audit.py",
+        "license": "Apache-2.0"
+      },
+      "adapters": [
+        {
+          "kind": "python"
+        },
+        {
+          "kind": "cli"
+        }
+      ]
+    }
   ]
 }

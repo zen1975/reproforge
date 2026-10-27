@@ -1,0 +1,20 @@
+{
+  "claim_id": "C1-structural-mechanism",
+  "run_id": "tqs-structural-components-synthetic-v1",
+  "artifact_hashes": {
+    "fixture_sha256": "d15d23173788d0cedd498f7519a43f51f7853bb8600161eb0e8a13b78957dc69",
+    "source_py_sha256": "bfd7db1595cc6804ea6e1f4dca305df6525b5739911e8db8f08c2bad7113a41b"
+  },
+  "metrics": {
+    "assertions_passed": 6,
+    "assertions_total": 6,
+    "clean_TTE": 0.5189897882678477,
+    "loop_TTE": 0,
+    "clean_SCP": 1,
+    "loop_SCP": 0,
+    "clean_PED": 0.5,
+    "loop_PED": 0
+  },
+  "verdict": "PASS",
+  "notes": "Independent synthetic structural-component test only; not paper-level reproduction. Observed fixtures frozen."
+}

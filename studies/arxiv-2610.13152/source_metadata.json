@@ -1,0 +1,22 @@
+{
+  "arxiv_id": "2610.13152",
+  "title": "Quality, Not Just Outcome: A Structural Scoring Framework for Selecting Coding-Agent Trajectories for Supervised Fine-Tuning",
+  "submitted_on": "2026-10-09",
+  "version": "v1",
+  "pdf": "https://arxiv.org/pdf/2610.13152",
+  "authors": [
+    "Sida Li",
+    "Yuanxin Liu",
+    "Shicheng Li",
+    "Linli Yao",
+    "Xu Sun",
+    "Haoli Bai",
+    "Xiaohui Li"
+  ],
+  "paper_license": "arXiv non-exclusive distribution license",
+  "official_repo": "https://github.com/DuHeng0128/TQS",
+  "official_repo_license": "MIT",
+  "official_code_used": false,
+  "corpus_license": "UNKNOWN",
+  "reviewed_on": "2026-10-13"
+}
