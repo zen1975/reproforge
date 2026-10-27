@@ -1,0 +1,18 @@
+{
+  "artifact_hashes": {
+    "fixture_sha256": "bbad791c25860041936715cc3476fb6fc09e15413f33823ca45f7ab089b8c663",
+    "implementation_sha256": "58458b5b2d3889f776de720cbdb9b379fa81a572b3813034f1a46f0e9737e180",
+    "runner_sha256": "2ad8545dbd1826915773489736aa39a5d07dffefc64a2fdc8131617118c88ee5"
+  },
+  "claim_id": "C1-objective-semantics",
+  "metrics": {
+    "consistent_all_properties_hold": true,
+    "printed_bound_violations": 10,
+    "printed_form_matches_stated_properties": false,
+    "printed_limit_alpha_to_0_holds": false,
+    "printed_limit_alpha_to_1_holds": false
+  },
+  "notes": "Printed Sec. 3.5 mixture weights do not satisfy the paper's own stated limits and H(alpha) bound; the GKD-consistent form does. Downstream analogues use the consistent form as a ReproForge interpretation.",
+  "run_id": "opst-mechanism-v1",
+  "verdict": "PASS"
+}

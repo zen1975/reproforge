@@ -1,0 +1,449 @@
+{
+  "artifact_hashes": {
+    "fixture_sha256": "bbad791c25860041936715cc3476fb6fc09e15413f33823ca45f7ab089b8c663",
+    "implementation_sha256": "58458b5b2d3889f776de720cbdb9b379fa81a572b3813034f1a46f0e9737e180",
+    "runner_sha256": "2ad8545dbd1826915773489736aa39a5d07dffefc64a2fdc8131617118c88ee5"
+  },
+  "claims": [
+    {
+      "claim_id": "C1-objective-semantics",
+      "gkd_consistent_form": {
+        "all_stated_properties_hold": true,
+        "alpha_to_0": {
+          "abs_error_d_over_alpha_vs_forward_kl": [
+            0.2526369069861776,
+            0.07214344628358038,
+            0.015125115310874349,
+            0.0015301340518478757,
+            0.00015319414963577138
+          ],
+          "alphas": [
+            0.2,
+            0.05,
+            0.01,
+            0.001,
+            0.0001
+          ],
+          "holds": true
+        },
+        "alpha_to_1": {
+          "abs_error_d_over_1_minus_alpha_vs_reverse_kl": [
+            0.31490918433407833,
+            0.09354952373267533,
+            0.01990642287952049,
+            0.0020214705077785666,
+            0.0002024646087308568
+          ],
+          "alphas": [
+            0.8,
+            0.95,
+            0.99,
+            0.999,
+            0.9999
+          ],
+          "holds": true
+        },
+        "bounded_by_h_alpha": {
+          "holds": true,
+          "rows": [
+            {
+              "alpha": 0.001,
+              "d": 0.001000574065011903,
+              "h_alpha": 0.007907255112232087,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.01,
+              "d": 0.009869790837528763,
+              "h_alpha": 0.056001534354847345,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.2,
+              "d": 0.14989345841551463,
+              "h_alpha": 0.5004024235381879,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.5,
+              "d": 0.23064548790411332,
+              "h_alpha": 0.6931471805599453,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.8,
+              "d": 0.15739179029204045,
+              "h_alpha": 0.5004024235381879,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.99,
+              "d": 0.010819617129147613,
+              "h_alpha": 0.056001534354847386,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.999,
+              "d": 0.0010998466652865032,
+              "h_alpha": 0.007907255112232094,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.001,
+              "d": 0.007907240273999772,
+              "h_alpha": 0.007907255112232087,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.01,
+              "d": 0.05600151707879731,
+              "h_alpha": 0.056001534354847345,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.2,
+              "d": 0.5004024021462963,
+              "h_alpha": 0.5004024235381879,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.5,
+              "d": 0.6931471581435322,
+              "h_alpha": 0.6931471805599453,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.8,
+              "d": 0.5004024021462963,
+              "h_alpha": 0.5004024235381879,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.99,
+              "d": 0.056001517078797344,
+              "h_alpha": 0.056001534354847386,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.999,
+              "d": 0.007907240273999777,
+              "h_alpha": 0.007907255112232094,
+              "pair": "near_degenerate",
+              "within_bound": true
+            }
+          ],
+          "violations": 0
+        },
+        "d_at_paper_alpha_positive_pair": 0.15739179029204045,
+        "forward_kl_q_p": 1.0021041990637507,
+        "reverse_kl_p_q": 1.1018681357942808
+      },
+      "printed_form": {
+        "all_stated_properties_hold": false,
+        "alpha_to_0": {
+          "abs_error_d_over_alpha_vs_forward_kl": [
+            1.377055714486591,
+            16.593017458307354,
+            104.19395755774339,
+            1095.7307985625155,
+            11012.529054581562
+          ],
+          "alphas": [
+            0.2,
+            0.05,
+            0.01,
+            0.001,
+            0.0001
+          ],
+          "holds": false
+        },
+        "alpha_to_1": {
+          "abs_error_d_over_1_minus_alpha_vs_reverse_kl": [
+            1.247103911988039,
+            15.340161210932187,
+            95.14555408234364,
+            996.9465486156944,
+            10015.874796131286
+          ],
+          "alphas": [
+            0.8,
+            0.95,
+            0.99,
+            0.999,
+            0.9999
+          ],
+          "holds": false
+        },
+        "bounded_by_h_alpha": {
+          "holds": false,
+          "rows": [
+            {
+              "alpha": 0.001,
+              "d": 1.0967329027615793,
+              "h_alpha": 0.007907255112232087,
+              "pair": "positive",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.01,
+              "d": 1.0519606175680714,
+              "h_alpha": 0.056001534354847345,
+              "pair": "positive",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.2,
+              "d": 0.4758319827100684,
+              "h_alpha": 0.5004024235381879,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.5,
+              "d": 0.23064548790411332,
+              "h_alpha": 0.6931471805599453,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.8,
+              "d": 0.46979440955646384,
+              "h_alpha": 0.5004024235381879,
+              "pair": "positive",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.99,
+              "d": 0.96247422218138,
+              "h_alpha": 0.056001534354847386,
+              "pair": "positive",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.999,
+              "d": 0.9980484167514895,
+              "h_alpha": 0.007907255112232094,
+              "pair": "positive",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.001,
+              "d": 6.900847491685929,
+              "h_alpha": 0.007907255112232087,
+              "pair": "near_degenerate",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.01,
+              "d": 4.559218859690946,
+              "h_alpha": 0.056001534354847345,
+              "pair": "near_degenerate",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.2,
+              "d": 1.332179014072901,
+              "h_alpha": 0.5004024235381879,
+              "pair": "near_degenerate",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.5,
+              "d": 0.6931471581435322,
+              "h_alpha": 0.6931471805599453,
+              "pair": "near_degenerate",
+              "within_bound": true
+            },
+            {
+              "alpha": 0.8,
+              "d": 1.3321790140729008,
+              "h_alpha": 0.5004024235381879,
+              "pair": "near_degenerate",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.99,
+              "d": 4.559218859690946,
+              "h_alpha": 0.056001534354847386,
+              "pair": "near_degenerate",
+              "within_bound": false
+            },
+            {
+              "alpha": 0.999,
+              "d": 6.900847491685929,
+              "h_alpha": 0.007907255112232094,
+              "pair": "near_degenerate",
+              "within_bound": false
+            }
+          ],
+          "violations": 10
+        },
+        "d_at_paper_alpha_positive_pair": 0.46979440955646384,
+        "forward_kl_q_p": 1.0021041990637507,
+        "reverse_kl_p_q": 1.1018681357942808
+      },
+      "printed_form_matches_stated_properties": false,
+      "verdict": "PASS"
+    },
+    {
+      "cases": 12,
+      "claim_id": "C2-sample-selection",
+      "evaluation_id": "opst-sample-selection-v1",
+      "kept_count": 5,
+      "kept_with_wrong_candidate_answer": [
+        "s06-consistent-generator-error"
+      ],
+      "matched": 12,
+      "rows": [
+        {
+          "consensus": 0.5,
+          "expected": "KEPT",
+          "id": "s01-frontier",
+          "keep": true,
+          "match": true,
+          "reason": "KEPT"
+        },
+        {
+          "consensus": null,
+          "expected": "UNVERIFIED",
+          "id": "s02-fresh-mismatch",
+          "keep": false,
+          "match": true,
+          "reason": "UNVERIFIED"
+        },
+        {
+          "consensus": null,
+          "expected": "UNVERIFIED",
+          "id": "s03-paraphrase-mismatch",
+          "keep": false,
+          "match": true,
+          "reason": "UNVERIFIED"
+        },
+        {
+          "consensus": 1.0,
+          "expected": "TRIVIAL",
+          "id": "s04-trivial",
+          "keep": false,
+          "match": true,
+          "reason": "TRIVIAL"
+        },
+        {
+          "consensus": 0.0,
+          "expected": "KEPT",
+          "id": "s05-zero-consensus",
+          "keep": true,
+          "match": true,
+          "reason": "KEPT"
+        },
+        {
+          "consensus": 0.25,
+          "expected": "KEPT",
+          "id": "s06-consistent-generator-error",
+          "keep": true,
+          "match": true,
+          "reason": "KEPT"
+        },
+        {
+          "consensus": null,
+          "expected": "DUPLICATE",
+          "id": "s07-prior-round-duplicate",
+          "keep": false,
+          "match": true,
+          "reason": "DUPLICATE"
+        },
+        {
+          "consensus": 0.5,
+          "expected": "KEPT",
+          "id": "s08-within-round-duplicate-first",
+          "keep": true,
+          "match": true,
+          "reason": "KEPT"
+        },
+        {
+          "consensus": null,
+          "expected": "DUPLICATE",
+          "id": "s09-within-round-duplicate-second",
+          "keep": false,
+          "match": true,
+          "reason": "DUPLICATE"
+        },
+        {
+          "consensus": 1.0,
+          "expected": "TRIVIAL",
+          "id": "s10-single-rollout-match",
+          "keep": false,
+          "match": true,
+          "reason": "TRIVIAL"
+        },
+        {
+          "consensus": 0.0,
+          "expected": "KEPT",
+          "id": "s11-single-rollout-miss",
+          "keep": true,
+          "match": true,
+          "reason": "KEPT"
+        },
+        {
+          "consensus": null,
+          "expected": "UNVERIFIED",
+          "id": "s12-both-checks-fail",
+          "keep": false,
+          "match": true,
+          "reason": "UNVERIFIED"
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "checks": {
+        "beta_1_teacher_equals_student": true,
+        "carry_over_closed_form_max_abs_error": 3.3306690738754696e-16,
+        "carry_over_matches_closed_form": true,
+        "returned_model_is_teacher_not_student": true,
+        "updates_per_gradient_step": true
+      },
+      "claim_id": "C3-ema-teacher",
+      "returned": [
+        0.401263060761621,
+        0.19747387847675751
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "checks": {
+        "padding_invariant": true,
+        "per_sample_mean_then_batch_mean": true,
+        "token_pooled_value_would_be": 0.0060248839495871485
+      },
+      "claim_id": "C4-loss-aggregation",
+      "verdict": "PASS"
+    }
+  ],
+  "environment": {
+    "dependencies": "standard library only",
+    "implementation": "CPython",
+    "python": "3.12.3"
+  },
+  "frozen_evaluations": [
+    "opst-objective-semantics-v1",
+    "opst-sample-selection-v1",
+    "opst-ema-loss-semantics-v1"
+  ],
+  "not_paper_evidence": "Deterministic mechanism checks only. No model, benchmark or paper-level accuracy was run.",
+  "paper_alpha": 0.8,
+  "run_id": "opst-mechanism-v1",
+  "study_id": "arxiv-2610.32770"
+}

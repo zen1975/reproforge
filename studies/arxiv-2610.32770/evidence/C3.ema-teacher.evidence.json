@@ -1,0 +1,24 @@
+{
+  "artifact_hashes": {
+    "fixture_sha256": "bbad791c25860041936715cc3476fb6fc09e15413f33823ca45f7ab089b8c663",
+    "implementation_sha256": "58458b5b2d3889f776de720cbdb9b379fa81a572b3813034f1a46f0e9737e180",
+    "runner_sha256": "2ad8545dbd1826915773489736aa39a5d07dffefc64a2fdc8131617118c88ee5"
+  },
+  "claim_id": "C3-ema-teacher",
+  "metrics": {
+    "checks": {
+      "beta_1_teacher_equals_student": true,
+      "carry_over_closed_form_max_abs_error": 3.3306690738754696e-16,
+      "carry_over_matches_closed_form": true,
+      "returned_model_is_teacher_not_student": true,
+      "updates_per_gradient_step": true
+    },
+    "returned": [
+      0.401263060761621,
+      0.19747387847675751
+    ]
+  },
+  "notes": "Weight bookkeeping of Algorithm 1 on toy vectors; EMA per gradient step, carry-over across rounds, teacher returned.",
+  "run_id": "opst-mechanism-v1",
+  "verdict": "PASS"
+}

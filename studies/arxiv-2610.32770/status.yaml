@@ -1,9 +1,9 @@
 study_id: arxiv-2610.32770
-lifecycle: INTAKE_VERIFIED
-reproduction_status: NOT_RUN
+lifecycle: MECHANISM_VERIFIED
+reproduction_status: PARTIAL
 free_light_phase_complete: false
-current_boundary: "Source, license and protocol reviewed; mechanism claims C1-C4 and their acceptance criteria are pre-registered in manifest.yaml with frozen fixtures. Nothing has been run yet."
-next_step: "Run studies/arxiv-2610.32770/experiments/run_opst_mechanism.py --write once and commit the evidence without changing the pre-registered criteria."
+current_boundary: "Pre-registered mechanism run opst-mechanism-v1 passed C1-C4 (standard library, deterministic). Finding: the printed skewed-JSD mixture weighting contradicts the paper's stated limits and H(alpha) bound; the GKD-consistent form satisfies them. Selection boundary: the consensus gate keeps zero-consensus samples and a consistently reproduced wrong answer passes both filters. No model, benchmark or paper-level result has been run."
+next_step: "Pre-register and run one CPU small-model analogue on GitHub Actions (wrong-answer robustness or placebo-PI contrast, see HANDOFF.md) under a new evaluation id, with all unpublished values labeled as ReproForge choices."
 handoff:
   path: studies/arxiv-2610.32770/HANDOFF.md
   ready: false
