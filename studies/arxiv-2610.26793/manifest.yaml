@@ -1,0 +1,47 @@
+schema_version: "0.1"
+paper:
+  title: "SOMA: Continuous Monitoring and Intervention for System Two Reasoning with System One Models"
+  canonical_url: "https://arxiv.org/abs/2610.26793"
+  arxiv_id: "2610.26793"
+  authors:
+    - "Ruizhi Qian"
+    - "Lei Shi"
+    - "Tianyu Hu"
+    - "Bo Yan"
+    - "Song Wang"
+    - "Yu Tian"
+  license: "arXiv.org perpetual non-exclusive distribution license"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Full arXiv HTML and appendices inspected. Controller and synthetic fixture are independent ReproForge implementations. No author code, PDF, figures, benchmark records, or model weights copied or redistributed. Paper-level reproduction remains PARTIAL."
+external_assets:
+  - kind: "MODEL"
+    name: "Jev System One hosted API"
+    source: "https://docs.typesafe.ai/"
+    license: "Hosted API; access governed by provider terms; no weights redistributed"
+    license_status: "RESTRICTED"
+    redistributed: false
+  - kind: "MODEL"
+    name: "Qwen3-8B and DeepSeek-R1-Distill-Llama-8B"
+    source: "Model families named in arXiv:2610.26793; immutable revisions are not specified in the paper"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+  - kind: "DATASET"
+    name: "GSM8K, MATH-500, AIME 2024-2025, AMC 2023, GPQA-Diamond, SUM, and UMWP"
+    source: "Dataset sources cited in the paper; no benchmark data fetched in this mechanism phase"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-remind-first-controller"
+    statement: "A deterministic controller accumulates monitor log-odds, issues a reminder at first positive evidence, and allows intervention only when evidence persists after the reminder."
+    acceptance_criteria: "Persistent cases must intervene only after a reminder; recovery cases must reset and avoid intervention; transitions must be deterministic and test-covered."
+  - id: "C2-threshold-calibration"
+    statement: "Threshold selection chooses the smallest threshold whose observed harm is within delta of minimum harm on a calibration split."
+    acceptance_criteria: "Calibration counts harm only for baseline-correct cases, chooses the smallest qualifying threshold, uses the published threshold grid, and proves calibration IDs are disjoint from the frozen test split."
+  - id: "C3-paper-level-performance"
+    statement: "SOMA reduces reasoning tokens while maintaining or improving answer accuracy and improves abstention on unanswerable questions under the paper protocol."
+    acceptance_criteria: "Paper-level reproduction requires authorized monitor access, pinned S2 revisions, legal benchmark access, disjoint splits, matched baselines, raw trajectories, and machine-checkable accuracy/token/abstention/cost evidence. Synthetic tests do not satisfy this criterion."

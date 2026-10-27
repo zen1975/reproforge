@@ -1,0 +1,22 @@
+id: "agent.soma-metacognitive-controller"
+version: "0.1.0"
+name: "SOMA Metacognitive Controller"
+summary: "Deterministic log-odds monitor with reminder-first intervention for persistent evidence."
+status: "experimental"
+interface:
+  inputs:
+    probability: "number in [0,1]"
+    threshold: "positive finite calibrated value"
+  outputs:
+    action: "CONTINUE|REMIND|INTERVENE|STOPPED"
+runtime:
+  kind: "python"
+  deterministic: true
+  requirements: []
+evidence:
+  reproduction_status: "PARTIAL"
+  studies:
+    - "studies/arxiv-2610.26793"
+implementation:
+  path: "studies/arxiv-2610.26793/experiments/controller.py"
+  license: "Apache-2.0"

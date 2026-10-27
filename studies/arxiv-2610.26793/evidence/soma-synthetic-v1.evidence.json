@@ -1,0 +1,16 @@
+{
+  "evidence_schema_version": "1.0",
+  "study_id": "arxiv-2610.26793",
+  "evidence_id": "soma-synthetic-mechanism-v1",
+  "evidence_type": "synthetic_mechanism_test",
+  "created_on": "2026-10-21",
+  "reproduction_status": "PARTIAL",
+  "paper_level_reproduction": false,
+  "result": {
+    "verdict": "PASS",
+    "scope": "synthetic controller mechanism only",
+    "soma_persistent_interventions": 10,
+    "soma_recovery_interventions": 0,
+    "no_reminder_recovery_interventions": 10
+  }
+}

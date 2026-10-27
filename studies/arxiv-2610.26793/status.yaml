@@ -1,0 +1,24 @@
+study_id: arxiv-2610.26793
+lifecycle: PROTOCOL_VERIFIED
+reproduction_status: PARTIAL
+free_light_phase_complete: false
+current_boundary: "Primary source, protocol, license/access record, independent controller, synthetic benchmark, and evidence are prepared. Capability registry registration and full validation remain incomplete."
+next_step: "Complete registry registration through the approved repository workflow, then run candidate/status validators, tests, and CI before considering HEAVY_COMPUTE_READY."
+handoff:
+  path: studies/arxiv-2610.26793/HANDOFF.md
+  ready: false
+blockers:
+  - "Capability registry registration is incomplete."
+  - "No hosted System One API call or 8B reasoning-model run was made."
+  - "Exact immutable S2 model revisions are not specified by the paper and must not be inferred."
+  - "Benchmark datasets and scoring dependencies were not fetched; access and licenses must be checked individually."
+  - "No paper-level accuracy, token savings, or abstention result has been reproduced."
+frozen_evaluations:
+  - soma-synthetic-calibration-v1
+  - soma-synthetic-test-v1
+  - soma-synthetic-mechanism-v1
+entrypoints:
+  - studies/arxiv-2610.26793/experiments/controller.py
+  - studies/arxiv-2610.26793/experiments/run_soma_synthetic.py
+  - tests/test_soma_controller.py
+updated_at: "2026-10-21"

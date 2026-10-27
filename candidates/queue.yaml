@@ -1,7 +1,7 @@
 schema_version: "1.0.0"
 screening_window:
   from: "2026-10-06"
-  to: "2026-10-20"
+  to: "2026-10-21"
 candidates:
   - arxiv_id: "2610.06354"
     title: "GraphDecide: Benchmarking System One Models on Graph Tasks"
@@ -471,8 +471,6 @@ candidates:
     status: "SOURCE_VERIFIED"
     notes: "arXiv identity and title/date checked. Code and data are announced for release but must be checked for actual availability and license before use."
 
-
-
   - arxiv_id: "2610.23845"
     title: "AI-Driven Reproducibility and Analytical Robustness in Scientific Discovery"
     submitted_on: "2026-10-16"
@@ -628,3 +626,42 @@ candidates:
     next_gate: "PDF_PROTOCOL_REVIEW"
     status: "SOURCE_VERIFIED"
     notes: "Primary arXiv identity, title, and date checked on 2026-10-20. The 48-page benchmark and linked code require license/access checks; a small independent mechanism test may be possible without importing them."
+
+  - arxiv_id: "2610.26632"
+    title: "When the harness decides success: state that cannot be re-observed"
+    submitted_on: "2026-10-19"
+    source_url: "https://arxiv.org/abs/2610.26632"
+    source_verified: true
+    priority: "A+"
+    candidate_capability: "agent.harness-state-reobservability-auditor"
+    why_reusable: "Separates context loss recoverable by re-observation from irreversible evidence loss, applicable to memory and truncation policies."
+    free_light_fit: "high"
+    next_gate: "PDF_PROTOCOL_REVIEW"
+    status: "SOURCE_VERIFIED"
+    notes: "Primary arXiv ID, title, and submission date checked 2026-10-21; pre-registration and code/license review pending."
+
+  - arxiv_id: "2610.26650"
+    title: "From Outcomes to Components: A Counterfactual Evaluation Framework for LLM-Proposed Repairs"
+    submitted_on: "2026-10-19"
+    source_url: "https://arxiv.org/abs/2610.26650"
+    source_verified: true
+    priority: "A+"
+    candidate_capability: "research.counterfactual-repair-attributor"
+    why_reusable: "Uses matched-state component substitutions to separate target-selection, update, and interaction effects."
+    free_light_fit: "medium"
+    next_gate: "PDF_PROTOCOL_REVIEW"
+    status: "SOURCE_VERIFIED"
+    notes: "Primary arXiv ID, title, and submission date checked 2026-10-21; simulator/data licensing pending."
+
+  - arxiv_id: "2610.26793"
+    title: "SOMA: Continuous Monitoring and Intervention for System Two Reasoning with System One Models"
+    submitted_on: "2026-10-19"
+    source_url: "https://arxiv.org/abs/2610.26793"
+    source_verified: true
+    priority: "A+"
+    candidate_capability: "agent.soma-metacognitive-controller"
+    why_reusable: "Separates a replaceable fast probability monitor from a deterministic controller that accumulates log-odds, reminds first, and takes over only on persistent post-reminder evidence."
+    free_light_fit: "high"
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "Primary metadata and full HTML protocol reviewed 2026-10-21. arXiv non-exclusive distribution license recorded; no author code, PDF, weights, or benchmark data redistributed. Independent controller and frozen synthetic evidence added; reproduction remains PARTIAL."
