@@ -263,7 +263,7 @@ candidates:
     status: "PROMOTED_TO_STUDY"
     notes: "Full arXiv HTML protocol and appendices reviewed on 2026-10-14. Paper license is CC BY-NC-ND 4.0. Experimental code is linked through an anonymous 4open.science repository, but a code license could not be independently verified, so ReproForge does not copy or redistribute it. Promoted for independent efficiency-transfer accounting, B/C/J interface separation, successful-delivery accounting, recovery/completion boundary verification and published-aggregate audit."
 
-- arxiv_id: "2610.22061"
+  - arxiv_id: "2610.22061"
     title: "FAOPs: Normal Forms and an Algebra for AI Agent Workflows"
     submitted_on: "2026-10-15"
     source_url: "https://arxiv.org/abs/2610.22061"
