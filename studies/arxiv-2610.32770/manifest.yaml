@@ -1,0 +1,41 @@
+schema_version: "0.1"
+paper:
+  title: "On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models"
+  canonical_url: "https://arxiv.org/abs/2610.32770"
+  arxiv_id: "2610.32770"
+  authors: ["Leon Sick", "Lukas Hoyer", "Yannick Strümpler", "Christian Reisswig", "Timo Ropinski", "Federico Tombari"]
+  license: "CC BY 4.0"
+  license_status: "VERIFIED"
+reproduction:
+  implementation_type: "INDEPENDENT"
+  official_code_used: false
+  notes: "Independent standard-library implementation of the OPST objective, sample-selection filters, EMA-teacher bookkeeping and loss aggregation, written from the v1 paper text (arXiv HTML and TeX e-print read on 2026-10-27). The paper links no code or data. No model, benchmark or paper-level training is run in this phase. Unpublished values (learning rate, optimizer, batch size, steps, G, T_gen, T_low, max length, LoRA vs full, topic lists, K views, hardware) are UNKNOWN and are not filled in; the TeX source contains commented-out hyperparameter lines that are not part of the published paper and are not used."
+external_assets:
+  - kind: "OTHER"
+    name: "Paper: arXiv:2610.32770v1 (read only; TeX e-print not redistributed)"
+    source: "https://arxiv.org/abs/2610.32770"
+    license: "CC BY 4.0"
+    license_status: "VERIFIED"
+    redistributed: false
+  - kind: "OTHER"
+    name: "Reference paper: GKD generalized JSD definition used to resolve the objective (Agarwal et al., arXiv:2306.13649, Eq. 1)"
+    source: "https://arxiv.org/abs/2306.13649"
+    license: null
+    license_status: "UNKNOWN"
+    redistributed: false
+claims:
+  - id: "C1-objective-semantics"
+    statement: "The paper states that its skewed JSD D_alpha recovers forward KL(q||p) as alpha->0 (scaled by 1/alpha), reverse KL(p||q) as alpha->1 (scaled by 1/(1-alpha)), and is upper-bounded by H(alpha). ReproForge checks which mixture weighting satisfies these stated properties: the printed one, q_bar=(1-alpha)q+alpha p, or the GKD-consistent one, q_bar=alpha q+(1-alpha)p."
+    acceptance_criteria: "Frozen opst-objective-semantics-v1. For each form, on p=[0.7,0.2,0.1], q=[0.1,0.3,0.6]: the absolute error of D/alpha vs KL(q||p) is strictly decreasing over alpha in [0.2,0.05,0.01,1e-3,1e-4] and its final relative error is <1e-2; the same for D/(1-alpha) vs KL(p||q) over alpha in [0.8,0.95,0.99,0.999,0.9999]; and 0<=D<=H(alpha)+1e-12 for alpha in [1e-3,1e-2,0.2,0.5,0.8,0.99,0.999] on that pair and on the near-degenerate pair p=[1-2e-9,1e-9,1e-9], q=[1e-9,1e-9,1-2e-9]. PASS if the GKD-consistent form satisfies all three; whether the printed form does is recorded as an observation either way."
+  - id: "C2-sample-selection"
+    statement: "Pseudo-verification keeps a sample only if the generator reproduces the candidate answer in a fresh context and after paraphrase; the consensus gate then discards only samples whose G student rollouts all agree with the candidate answer (c=1); problems duplicating earlier ones are removed."
+    acceptance_criteria: "Frozen opst-sample-selection-v1 (fixtures/opst_selection_v1.json, 12 cases): every decision reason (KEPT, UNVERIFIED, TRIVIAL, DUPLICATE) equals the fixture's expected value. Duplicate detection uses whitespace/case-normalized exact match, a ReproForge choice because the paper does not specify it."
+  - id: "C3-ema-teacher"
+    statement: "The EMA teacher starts at theta_0, is updated after every gradient step as phi_k=(1-beta)phi_{k-1}+beta theta_k, carries over across rounds, and is the returned model; beta=1 makes teacher equal student."
+    acceptance_criteria: "Frozen opst-ema-loss-semantics-v1: with theta_0=[0,1] and a student fixed at [1,-1] for 2 rounds x 5 steps, beta=1 returns the student, there are exactly 10 EMA updates, beta=0.05 matches the closed form theta*+(0.95)^10(theta_0-theta*) within 1e-12, and the returned model differs from the student."
+  - id: "C4-loss-aggregation"
+    statement: "The OPST loss averages D_alpha over unmasked tokens within each sample, then averages over the B samples of the batch."
+    acceptance_criteria: "Frozen opst-ema-loss-semantics-v1: adding masked padding tokens leaves the loss unchanged within 1e-15, and a 1-token sample with divergence d plus a 4-token zero-divergence sample give d/2 (not the token-pooled d/5) within 1e-15."
+  - id: "C5-paper-level-self-improvement"
+    statement: "OPST improves Gemma 4 E2B/E4B and Qwen3-4B-Base on MMLU, GPQA, GSM8K and HellaSwag from self-generated data, beats SFT on the same data, and is robust to wrong candidate answers."
+    acceptance_criteria: "Not tested in this phase. Requires model training and benchmark evaluation; see HANDOFF.md."

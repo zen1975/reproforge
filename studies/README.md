@@ -71,5 +71,6 @@ Do not tune against an evaluation after its result has been observed. Create a n
 | [`arxiv-2610.22061`](arxiv-2610.22061/) | FAOPs Workflow Normal Forms | `MECHANISM_VERIFIED` | `PARTIAL` | open |
 | [`arxiv-2610.22466`](arxiv-2610.22466/) | Harness-Delta Attribution | `MECHANISM_VERIFIED` | `PARTIAL` | open |
 | [`arxiv-2610.26793`](arxiv-2610.26793/) | SOMA Metacognitive Monitoring | `PROTOCOL_VERIFIED` | `PARTIAL` | open |
+| [`arxiv-2610.32770`](arxiv-2610.32770/) | On-Policy Self-Training (OPST) | `INTAKE_VERIFIED` | `NOT_RUN` | open |
 
 See `docs/STUDY_COMPLETION_POLICY.md`.

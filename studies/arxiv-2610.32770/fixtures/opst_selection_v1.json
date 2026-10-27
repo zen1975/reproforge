@@ -1,0 +1,21 @@
+{
+  "evaluation_id": "opst-sample-selection-v1",
+  "description": "Hand-written synthetic generator/student outcomes for OPST pseudo-verification, consensus gate and cross-round dedupe. Answers are labels, not model outputs. Not a paper benchmark.",
+  "prior_round_questions": [
+    "A train covers 120 km in 2 hours. What is its average speed in km/h?"
+  ],
+  "samples": [
+    {"id": "s01-frontier", "note": "verified, student split 2/4", "question": "Which group has order 6 and is non-abelian?", "candidate_answer": "B", "fresh_answer": "B", "paraphrase_answer": "B", "student_rollouts": ["B", "A", "B", "C"], "expected": "KEPT"},
+    {"id": "s02-fresh-mismatch", "note": "generator cannot reproduce its own answer in a fresh context", "question": "Which enzyme unwinds DNA at the replication fork?", "candidate_answer": "C", "fresh_answer": "A", "paraphrase_answer": "C", "student_rollouts": ["C", "A", "A", "A"], "expected": "UNVERIFIED"},
+    {"id": "s03-paraphrase-mismatch", "note": "answer depends on wording", "question": "How many prime numbers lie between 10 and 30?", "candidate_answer": "6", "fresh_answer": "6", "paraphrase_answer": "7", "student_rollouts": ["6", "7", "6", "5"], "expected": "UNVERIFIED"},
+    {"id": "s04-trivial", "note": "student already agrees on every rollout (c = 1)", "question": "What is 7 times 8?", "candidate_answer": "56", "fresh_answer": "56", "paraphrase_answer": "56", "student_rollouts": ["56", "56", "56", "56"], "expected": "TRIVIAL"},
+    {"id": "s05-zero-consensus", "note": "boundary: c = 0 is retained; the gate never rejects disagreement", "question": "Which logical fallacy assumes a conclusion in its premise?", "candidate_answer": "D", "fresh_answer": "D", "paraphrase_answer": "D", "student_rollouts": ["A", "B", "A", "C"], "expected": "KEPT"},
+    {"id": "s06-consistent-generator-error", "note": "boundary: candidate answer is wrong but the generator reproduces it consistently, so it passes verification and the gate", "question": "A shirt costs 40 after a 20% discount. What was the original price?", "candidate_answer": "48", "fresh_answer": "48", "paraphrase_answer": "48", "student_rollouts": ["50", "48", "50", "50"], "expected": "KEPT", "ground_truth_answer": "50"},
+    {"id": "s07-prior-round-duplicate", "note": "duplicate of a previous round's problem after whitespace/case normalization", "question": "a train covers 120 km in 2 hours.  What is its average speed in km/h?", "candidate_answer": "60", "fresh_answer": "60", "paraphrase_answer": "60", "student_rollouts": ["60", "50", "60", "60"], "expected": "DUPLICATE"},
+    {"id": "s08-within-round-duplicate-first", "note": "first occurrence is evaluated normally", "question": "What is the derivative of x^3?", "candidate_answer": "3x^2", "fresh_answer": "3x^2", "paraphrase_answer": "3x^2", "student_rollouts": ["3x^2", "x^2", "3x^2", "3x"], "expected": "KEPT"},
+    {"id": "s09-within-round-duplicate-second", "note": "second occurrence within the same round is dropped", "question": "What is the derivative of x^3? ", "candidate_answer": "3x^2", "fresh_answer": "3x^2", "paraphrase_answer": "3x^2", "student_rollouts": ["3x^2", "3x^2", "3x^2", "x^3"], "expected": "DUPLICATE"},
+    {"id": "s10-single-rollout-match", "note": "G = 1 edge: one matching rollout is full agreement", "question": "Which planet has the shortest orbital period?", "candidate_answer": "A", "fresh_answer": "A", "paraphrase_answer": "A", "student_rollouts": ["A"], "expected": "TRIVIAL"},
+    {"id": "s11-single-rollout-miss", "note": "G = 1 edge: one non-matching rollout is kept", "question": "Which hormone lowers blood glucose?", "candidate_answer": "C", "fresh_answer": "C", "paraphrase_answer": "C", "student_rollouts": ["B"], "expected": "KEPT"},
+    {"id": "s12-both-checks-fail", "note": "verification failure takes precedence over the gate", "question": "What is the capital of the smallest Baltic state?", "candidate_answer": "A", "fresh_answer": "B", "paraphrase_answer": "C", "student_rollouts": ["A", "A", "A", "A"], "expected": "UNVERIFIED"}
+  ]
+}

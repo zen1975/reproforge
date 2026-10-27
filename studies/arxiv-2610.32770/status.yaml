@@ -1,0 +1,21 @@
+study_id: arxiv-2610.32770
+lifecycle: INTAKE_VERIFIED
+reproduction_status: NOT_RUN
+free_light_phase_complete: false
+current_boundary: "Source, license and protocol reviewed; mechanism claims C1-C4 and their acceptance criteria are pre-registered in manifest.yaml with frozen fixtures. Nothing has been run yet."
+next_step: "Run studies/arxiv-2610.32770/experiments/run_opst_mechanism.py --write once and commit the evidence without changing the pre-registered criteria."
+handoff:
+  path: studies/arxiv-2610.32770/HANDOFF.md
+  ready: false
+blockers:
+  - "No author code or data is linked; paper-level reproduction needs Gemma 4 (gated) or Qwen3-4B-Base training and benchmark evaluation."
+  - "Learning rate, optimizer, batch size, steps, G, T_gen, LoRA vs full and topic lists are unpublished and must not be invented."
+frozen_evaluations:
+  - "opst-objective-semantics-v1"
+  - "opst-sample-selection-v1"
+  - "opst-ema-loss-semantics-v1"
+entrypoints:
+  - "studies/arxiv-2610.32770/experiments/opst_mechanism.py"
+  - "studies/arxiv-2610.32770/experiments/run_opst_mechanism.py"
+  - "tests/test_opst_mechanism.py"
+updated_at: "2026-10-27"

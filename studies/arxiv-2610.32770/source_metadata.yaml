@@ -1,0 +1,46 @@
+arxiv_id: "2610.32770"
+canonical_url: "https://arxiv.org/abs/2610.32770"
+pdf_url: "https://arxiv.org/pdf/2610.32770v1"
+html_url: "https://arxiv.org/html/2610.32770v1"
+title: "On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models"
+authors: ["Leon Sick", "Lukas Hoyer", "Yannick Strümpler", "Christian Reisswig", "Timo Ropinski", "Federico Tombari"]
+submitted_on: "2026-10-23"
+version: "v1"
+primary_category: "cs.CL"
+categories: ["cs.CL", "cs.AI", "cs.LG"]
+source_verified_on: "2026-10-27"
+metadata_source: "https://export.arxiv.org/api/query?id_list=2610.32770"
+primary_source_checked: true
+pdf_body_reviewed: true
+pdf_body_review_note: "Full v1 TeX e-print (main.tex incl. appendices A.1-A.8) and arXiv HTML read; e-print kept outside the repository."
+paper_license: "CC BY 4.0"
+paper_license_status: "VERIFIED"
+author_code:
+  public_repository: null
+  repository_access: "NONE_LINKED"
+  license_status: "NOT_APPLICABLE"
+  used: false
+assets_used:
+  - kind: "PAPER"
+    source: "https://arxiv.org/abs/2610.32770"
+    license: "CC BY 4.0"
+    copied_into_repository: false
+published_protocol_values:
+  alpha: 0.8
+  ema_beta: 0.05
+  samples_per_round: 285
+  rounds: 7
+  evaluated_model: "EMA teacher"
+  models: ["Gemma 4 E2B (IT)", "Gemma 4 E4B (IT)", "Qwen3-4B-Base", "Gemma 4 E2B/E4B VLM"]
+  evaluation: "lm-evaluation-harness task formulations; log-likelihood multiple-choice scoring without thinking; MMLU 5-shot"
+  prompt_templates: "Published in Appendix A.7/A.8 (not copied here)."
+unknown:
+  - "learning rate, optimizer, batch size, gradient steps per round"
+  - "G (student rollouts for the consensus gate), T_gen, T_low, max sequence length"
+  - "LoRA vs full fine-tuning; hardware and compute"
+  - "full topic descriptor lists (examples only)"
+  - "duplicate-detection method across rounds"
+  - "K augmented views for Visual OPST"
+source_notes:
+  - "Sec. 3.5 prints the skewed-JSD mixture as (1-alpha) q + alpha p; this weighting does not satisfy the limits and H(alpha) bound stated in the same paragraph (see C1)."
+  - "The TeX source contains commented-out hyperparameter lines that are not part of the published paper; they are not recorded or used."

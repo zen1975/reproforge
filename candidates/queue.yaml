@@ -1,7 +1,7 @@
 schema_version: "1.0.0"
 screening_window:
   from: "2026-10-06"
-  to: "2026-10-21"
+  to: "2026-10-23"
 candidates:
   - arxiv_id: "2610.06354"
     title: "GraphDecide: Benchmarking System One Models on Graph Tasks"
@@ -730,3 +730,16 @@ candidates:
     next_gate: "PDF_PROTOCOL_REVIEW"
     status: "SOURCE_VERIFIED"
     notes: "Primary source verified; robotics domain requires protocol separation for agent-harness analogues."
+
+  - arxiv_id: "2610.32770"
+    title: "On-Policy Self-Training: Data-Free Self-Improvement in Large Language Models"
+    submitted_on: "2026-10-23"
+    source_url: "https://arxiv.org/abs/2610.32770"
+    source_verified: true
+    priority: "A"
+    candidate_capability: "training.privileged-self-distillation-gate"
+    why_reusable: "Separates three reusable pieces of data-free self-training: a bounded skewed-JSD self-distillation objective, a well-posedness filter (fresh-context and paraphrase reproduction) and a student-frontier consensus gate, plus EMA-teacher bookkeeping; all are checkable without model weights."
+    free_light_fit: "medium"
+    next_gate: "MECHANISM_DESIGN"
+    status: "PROMOTED_TO_STUDY"
+    notes: "User-requested on 2026-10-27 (outside the daily window). arXiv metadata, v1 TeX e-print and HTML reviewed; paper CC BY 4.0; no code or data linked. Paper-level results need Gemma 4 E2B/E4B (gated) or Qwen3-4B-Base training, so the lightweight phase targets objective/filter/EMA semantics and a later small-model analogue."
