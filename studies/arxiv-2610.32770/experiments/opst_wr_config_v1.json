@@ -1,0 +1,32 @@
+{
+  "evaluation_id": "opst-wrong-answer-robustness-qwen0.5b-v1",
+  "values": {
+    "alpha": {"value": 0.8, "source": "paper", "note": "Sec. 3.5 / Sec. 4; used with the GKD-consistent mixture (C1 finding), a ReproForge interpretation"},
+    "ema_beta": {"value": 0.05, "source": "paper", "note": "EMA teacher updated after every gradient step; the EMA teacher is the evaluated model"},
+    "loss_aggregation": {"value": "per-sample masked token mean, then batch mean", "source": "paper"},
+    "filters": {"value": "disabled", "source": "paper", "note": "Table 5c disables pseudo-verification and the consensus gate before corrupting answers"},
+    "wrong_fractions": {"value": [0.0, 0.75], "source": "paper", "note": "Paper reports p in {0, 25, 50, 75}%; this analogue runs the end points only"},
+    "corruption_scope": {"value": "rationale value and answer letter replaced consistently", "source": "reproforge", "note": "Paper says only that candidate answers are replaced with wrong ones"},
+    "model_id": {"value": "Qwen/Qwen2.5-0.5B-Instruct", "source": "reproforge", "note": "Paper uses Gemma 4 E2B/E4B and Qwen3-4B-Base"},
+    "model_revision": {"value": "c89bee90d9f811437d9735454613c35b4a3c4dc8", "source": "reproforge"},
+    "dtype": {"value": "float32", "source": "reproforge"},
+    "task": {"value": "synthetic four-option arithmetic (fixtures/opst_wr_v1.json)", "source": "reproforge", "note": "Paper generates its own topic-seeded problems and evaluates on MMLU"},
+    "train_samples_per_seed": {"value": 64, "source": "reproforge"},
+    "heldout_samples": {"value": 200, "source": "reproforge"},
+    "rounds": {"value": 1, "source": "reproforge", "note": "Paper uses 7 rounds"},
+    "seeds": {"value": [101, 202, 303], "source": "reproforge"},
+    "adaptation": {"value": "LoRA r=8, lora_alpha=16, dropout=0, targets q_proj/k_proj/v_proj/o_proj", "source": "reproforge", "note": "Paper does not state LoRA vs full fine-tuning"},
+    "ema_scope": {"value": "LoRA parameters only (base weights frozen, so this equals EMA over all weights)", "source": "reproforge"},
+    "optimizer": {"value": "AdamW, lr=2e-4, weight_decay=0", "source": "reproforge"},
+    "batch_size": {"value": 4, "source": "reproforge"},
+    "epochs": {"value": 2, "source": "reproforge", "note": "64 samples x 2 epochs / batch 4 = 32 gradient steps"},
+    "rollout_max_new_tokens": {"value": 16, "source": "reproforge"},
+    "rollout_sampling": {"value": "temperature 1.0, top_p 1.0, top_k 0", "source": "reproforge"},
+    "solution_prompt": {"value": "Question block + 'Solution:'", "source": "reproforge"},
+    "teacher_privileged_format": {"value": "'Reference solution: <z>' line inserted before 'Solution:'", "source": "reproforge"},
+    "sft_target": {"value": "' ' + z after the solution prompt, cross-entropy on z tokens only", "source": "reproforge"},
+    "sft_evaluated_model": {"value": "trained student (no EMA)", "source": "reproforge"},
+    "eval_scoring": {"value": "next-token log-likelihood of ' A'/' B'/' C'/' D' after 'Answer:', renormalised over the four letters", "source": "reproforge", "note": "Paper scores multiple-choice benchmarks by log-likelihood over the closed option set without thinking"},
+    "torch_threads": {"value": "runner default", "source": "reproforge"}
+  }
+}

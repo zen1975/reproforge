@@ -1,0 +1,34 @@
+name: OPST wrong-answer analogue smoke
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "studies/arxiv-2610.32770/experiments/run_opst_wr_analogue.py"
+      - "studies/arxiv-2610.32770/experiments/opst_wr_config_v1.json"
+      - "studies/arxiv-2610.32770/fixtures/opst_wr_v1.json"
+      - ".github/workflows/opst-wr-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.14.1"
+          python -m pip install "transformers==5.18.0" "peft==0.21.2"
+      - name: Smoke both methods on a tiny random-init model (no held-out data)
+        run: |
+          set -o pipefail
+          for method in sft opst; do
+            python studies/arxiv-2610.32770/experiments/run_opst_wr_analogue.py --smoke --method "$method" --p 0.75 \
+              | tee "opst_wr_smoke_${method}.json"
+          done

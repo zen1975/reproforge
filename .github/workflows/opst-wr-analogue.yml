@@ -1,0 +1,93 @@
+name: OPST wrong-answer analogue
+
+# Dispatch only: the frozen run must not re-fire when files change.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "calibrate (base model on calibration split) or frozen (12 pre-registered cells)"
+        required: true
+        type: choice
+        options: [calibrate, frozen]
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate:
+    if: inputs.mode == 'calibrate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.14.1"
+          python -m pip install "transformers==5.18.0" "peft==0.21.2"
+      - name: Base-model calibration (calibration split only)
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.32770/experiments/run_opst_wr_analogue.py --calibrate | tee opst_wr_calibration_v1.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opst-wr-calibration-v1
+          path: opst_wr_calibration_v1.json
+          retention-days: 30
+
+  cells:
+    if: inputs.mode == 'frozen'
+    strategy:
+      fail-fast: false
+      matrix:
+        method: [sft, opst]
+        p: ["0.0", "0.75"]
+        seed: [101, 202, 303]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install CPU dependencies
+        run: |
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu "torch==2.14.1"
+          python -m pip install "transformers==5.18.0" "peft==0.21.2"
+      - name: Train and evaluate one cell
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.32770/experiments/run_opst_wr_analogue.py \
+            --method ${{ matrix.method }} --p ${{ matrix.p }} --seed ${{ matrix.seed }} \
+            | tee opst_wr_${{ matrix.method }}_p${{ matrix.p }}_seed${{ matrix.seed }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opst-wr-${{ matrix.method }}-p${{ matrix.p }}-seed${{ matrix.seed }}
+          path: opst_wr_${{ matrix.method }}_p${{ matrix.p }}_seed${{ matrix.seed }}.json
+          retention-days: 30
+
+  aggregate:
+    needs: cells
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: opst-wr-*-seed*
+          path: cells
+      - name: Apply pre-registered criteria
+        run: |
+          set -o pipefail
+          python studies/arxiv-2610.32770/experiments/aggregate_opst_wr.py cells --run-id ${{ github.run_id }} \
+            | tee opst_wr_qwen0.5b_v1.result.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: opst-wr-aggregate-v1
+          path: opst_wr_qwen0.5b_v1.result.json
+          retention-days: 30

@@ -1,0 +1,7994 @@
+{
+ "description": "Synthetic four-option arithmetic questions (3-digit addition, 2-digit x 1-digit multiplication). Distractors are gold +/- {1,2,9,10,11}. z = one-line rationale + answer letter; a wrong z replaces both the rationale value and the letter so they stay consistent. ReproForge construction, not paper data.",
+ "evaluation_id": "opst-wrong-answer-robustness-qwen0.5b-v1",
+ "splits": {
+  "calibration": [
+   {
+    "expression": "89 * 3",
+    "gold": "D",
+    "id": "calibration-000",
+    "options": [
+     "277",
+     "266",
+     "265",
+     "267"
+    ],
+    "question": "What is 89 * 3?"
+   },
+   {
+    "expression": "64 * 4",
+    "gold": "D",
+    "id": "calibration-001",
+    "options": [
+     "255",
+     "254",
+     "245",
+     "256"
+    ],
+    "question": "What is 64 * 4?"
+   },
+   {
+    "expression": "245 + 821",
+    "gold": "A",
+    "id": "calibration-002",
+    "options": [
+     "1066",
+     "1055",
+     "1068",
+     "1077"
+    ],
+    "question": "What is 245 + 821?"
+   },
+   {
+    "expression": "759 + 200",
+    "gold": "C",
+    "id": "calibration-003",
+    "options": [
+     "970",
+     "968",
+     "959",
+     "949"
+    ],
+    "question": "What is 759 + 200?"
+   },
+   {
+    "expression": "39 * 4",
+    "gold": "C",
+    "id": "calibration-004",
+    "options": [
+     "155",
+     "147",
+     "156",
+     "145"
+    ],
+    "question": "What is 39 * 4?"
+   },
+   {
+    "expression": "67 * 5",
+    "gold": "A",
+    "id": "calibration-005",
+    "options": [
+     "335",
+     "325",
+     "326",
+     "334"
+    ],
+    "question": "What is 67 * 5?"
+   },
+   {
+    "expression": "42 * 7",
+    "gold": "C",
+    "id": "calibration-006",
+    "options": [
+     "305",
+     "283",
+     "294",
+     "303"
+    ],
+    "question": "What is 42 * 7?"
+   },
+   {
+    "expression": "322 + 262",
+    "gold": "C",
+    "id": "calibration-007",
+    "options": [
+     "585",
+     "575",
+     "584",
+     "573"
+    ],
+    "question": "What is 322 + 262?"
+   },
+   {
+    "expression": "73 * 9",
+    "gold": "B",
+    "id": "calibration-008",
+    "options": [
+     "656",
+     "657",
+     "648",
+     "647"
+    ],
+    "question": "What is 73 * 9?"
+   },
+   {
+    "expression": "64 * 7",
+    "gold": "B",
+    "id": "calibration-009",
+    "options": [
+     "459",
+     "448",
+     "437",
+     "438"
+    ],
+    "question": "What is 64 * 7?"
+   },
+   {
+    "expression": "31 * 4",
+    "gold": "B",
+    "id": "calibration-010",
+    "options": [
+     "133",
+     "124",
+     "134",
+     "115"
+    ],
+    "question": "What is 31 * 4?"
+   },
+   {
+    "expression": "59 * 6",
+    "gold": "D",
+    "id": "calibration-011",
+    "options": [
+     "352",
+     "344",
+     "353",
+     "354"
+    ],
+    "question": "What is 59 * 6?"
+   },
+   {
+    "expression": "339 + 299",
+    "gold": "A",
+    "id": "calibration-012",
+    "options": [
+     "638",
+     "636",
+     "640",
+     "649"
+    ],
+    "question": "What is 339 + 299?"
+   },
+   {
+    "expression": "67 * 7",
+    "gold": "D",
+    "id": "calibration-013",
+    "options": [
+     "460",
+     "467",
+     "471",
+     "469"
+    ],
+    "question": "What is 67 * 7?"
+   },
+   {
+    "expression": "12 * 9",
+    "gold": "D",
+    "id": "calibration-014",
+    "options": [
+     "117",
+     "109",
+     "110",
+     "108"
+    ],
+    "question": "What is 12 * 9?"
+   },
+   {
+    "expression": "217 + 837",
+    "gold": "B",
+    "id": "calibration-015",
+    "options": [
+     "1063",
+     "1054",
+     "1065",
+     "1045"
+    ],
+    "question": "What is 217 + 837?"
+   },
+   {
+    "expression": "82 * 7",
+    "gold": "C",
+    "id": "calibration-016",
+    "options": [
+     "576",
+     "575",
+     "574",
+     "563"
+    ],
+    "question": "What is 82 * 7?"
+   },
+   {
+    "expression": "622 + 289",
+    "gold": "B",
+    "id": "calibration-017",
+    "options": [
+     "922",
+     "911",
+     "900",
+     "909"
+    ],
+    "question": "What is 622 + 289?"
+   },
+   {
+    "expression": "309 + 607",
+    "gold": "C",
+    "id": "calibration-018",
+    "options": [
+     "914",
+     "906",
+     "916",
+     "917"
+    ],
+    "question": "What is 309 + 607?"
+   },
+   {
+    "expression": "349 + 276",
+    "gold": "B",
+    "id": "calibration-019",
+    "options": [
+     "627",
+     "625",
+     "626",
+     "636"
+    ],
+    "question": "What is 349 + 276?"
+   },
+   {
+    "expression": "706 + 692",
+    "gold": "B",
+    "id": "calibration-020",
+    "options": [
+     "1389",
+     "1398",
+     "1387",
+     "1407"
+    ],
+    "question": "What is 706 + 692?"
+   },
+   {
+    "expression": "73 * 7",
+    "gold": "B",
+    "id": "calibration-021",
+    "options": [
+     "502",
+     "511",
+     "512",
+     "510"
+    ],
+    "question": "What is 73 * 7?"
+   },
+   {
+    "expression": "389 + 771",
+    "gold": "D",
+    "id": "calibration-022",
+    "options": [
+     "1162",
+     "1150",
+     "1151",
+     "1160"
+    ],
+    "question": "What is 389 + 771?"
+   },
+   {
+    "expression": "391 + 301",
+    "gold": "D",
+    "id": "calibration-023",
+    "options": [
+     "702",
+     "691",
+     "701",
+     "692"
+    ],
+    "question": "What is 391 + 301?"
+   },
+   {
+    "expression": "610 + 490",
+    "gold": "A",
+    "id": "calibration-024",
+    "options": [
+     "1100",
+     "1102",
+     "1110",
+     "1109"
+    ],
+    "question": "What is 610 + 490?"
+   },
+   {
+    "expression": "528 + 203",
+    "gold": "C",
+    "id": "calibration-025",
+    "options": [
+     "729",
+     "720",
+     "731",
+     "722"
+    ],
+    "question": "What is 528 + 203?"
+   },
+   {
+    "expression": "841 + 663",
+    "gold": "B",
+    "id": "calibration-026",
+    "options": [
+     "1493",
+     "1504",
+     "1515",
+     "1505"
+    ],
+    "question": "What is 841 + 663?"
+   },
+   {
+    "expression": "366 + 400",
+    "gold": "C",
+    "id": "calibration-027",
+    "options": [
+     "757",
+     "776",
+     "766",
+     "756"
+    ],
+    "question": "What is 366 + 400?"
+   },
+   {
+    "expression": "83 * 3",
+    "gold": "A",
+    "id": "calibration-028",
+    "options": [
+     "249",
+     "258",
+     "250",
+     "259"
+    ],
+    "question": "What is 83 * 3?"
+   },
+   {
+    "expression": "83 * 9",
+    "gold": "C",
+    "id": "calibration-029",
+    "options": [
+     "746",
+     "758",
+     "747",
+     "748"
+    ],
+    "question": "What is 83 * 9?"
+   },
+   {
+    "expression": "559 + 840",
+    "gold": "A",
+    "id": "calibration-030",
+    "options": [
+     "1399",
+     "1401",
+     "1389",
+     "1409"
+    ],
+    "question": "What is 559 + 840?"
+   },
+   {
+    "expression": "624 + 602",
+    "gold": "B",
+    "id": "calibration-031",
+    "options": [
+     "1215",
+     "1226",
+     "1235",
+     "1225"
+    ],
+    "question": "What is 624 + 602?"
+   },
+   {
+    "expression": "43 * 8",
+    "gold": "B",
+    "id": "calibration-032",
+    "options": [
+     "346",
+     "344",
+     "345",
+     "335"
+    ],
+    "question": "What is 43 * 8?"
+   },
+   {
+    "expression": "31 * 8",
+    "gold": "B",
+    "id": "calibration-033",
+    "options": [
+     "259",
+     "248",
+     "247",
+     "257"
+    ],
+    "question": "What is 31 * 8?"
+   },
+   {
+    "expression": "68 * 9",
+    "gold": "A",
+    "id": "calibration-034",
+    "options": [
+     "612",
+     "601",
+     "610",
+     "623"
+    ],
+    "question": "What is 68 * 9?"
+   },
+   {
+    "expression": "674 + 749",
+    "gold": "A",
+    "id": "calibration-035",
+    "options": [
+     "1423",
+     "1414",
+     "1434",
+     "1433"
+    ],
+    "question": "What is 674 + 749?"
+   },
+   {
+    "expression": "53 * 3",
+    "gold": "D",
+    "id": "calibration-036",
+    "options": [
+     "148",
+     "160",
+     "169",
+     "159"
+    ],
+    "question": "What is 53 * 3?"
+   },
+   {
+    "expression": "33 * 7",
+    "gold": "D",
+    "id": "calibration-037",
+    "options": [
+     "222",
+     "240",
+     "241",
+     "231"
+    ],
+    "question": "What is 33 * 7?"
+   },
+   {
+    "expression": "93 * 6",
+    "gold": "B",
+    "id": "calibration-038",
+    "options": [
+     "569",
+     "558",
+     "556",
+     "567"
+    ],
+    "question": "What is 93 * 6?"
+   },
+   {
+    "expression": "72 * 4",
+    "gold": "A",
+    "id": "calibration-039",
+    "options": [
+     "288",
+     "298",
+     "290",
+     "287"
+    ],
+    "question": "What is 72 * 4?"
+   },
+   {
+    "expression": "91 * 4",
+    "gold": "C",
+    "id": "calibration-040",
+    "options": [
+     "362",
+     "374",
+     "364",
+     "373"
+    ],
+    "question": "What is 91 * 4?"
+   },
+   {
+    "expression": "65 * 6",
+    "gold": "C",
+    "id": "calibration-041",
+    "options": [
+     "389",
+     "392",
+     "390",
+     "401"
+    ],
+    "question": "What is 65 * 6?"
+   },
+   {
+    "expression": "696 + 812",
+    "gold": "B",
+    "id": "calibration-042",
+    "options": [
+     "1507",
+     "1508",
+     "1497",
+     "1519"
+    ],
+    "question": "What is 696 + 812?"
+   },
+   {
+    "expression": "445 + 633",
+    "gold": "D",
+    "id": "calibration-043",
+    "options": [
+     "1068",
+     "1067",
+     "1089",
+     "1078"
+    ],
+    "question": "What is 445 + 633?"
+   },
+   {
+    "expression": "367 + 719",
+    "gold": "D",
+    "id": "calibration-044",
+    "options": [
+     "1076",
+     "1097",
+     "1085",
+     "1086"
+    ],
+    "question": "What is 367 + 719?"
+   },
+   {
+    "expression": "707 + 547",
+    "gold": "D",
+    "id": "calibration-045",
+    "options": [
+     "1263",
+     "1244",
+     "1253",
+     "1254"
+    ],
+    "question": "What is 707 + 547?"
+   },
+   {
+    "expression": "33 * 8",
+    "gold": "C",
+    "id": "calibration-046",
+    "options": [
+     "266",
+     "273",
+     "264",
+     "255"
+    ],
+    "question": "What is 33 * 8?"
+   },
+   {
+    "expression": "776 + 740",
+    "gold": "B",
+    "id": "calibration-047",
+    "options": [
+     "1518",
+     "1516",
+     "1526",
+     "1507"
+    ],
+    "question": "What is 776 + 740?"
+   },
+   {
+    "expression": "583 + 181",
+    "gold": "A",
+    "id": "calibration-048",
+    "options": [
+     "764",
+     "755",
+     "775",
+     "753"
+    ],
+    "question": "What is 583 + 181?"
+   },
+   {
+    "expression": "403 + 209",
+    "gold": "C",
+    "id": "calibration-049",
+    "options": [
+     "610",
+     "622",
+     "612",
+     "601"
+    ],
+    "question": "What is 403 + 209?"
+   },
+   {
+    "expression": "27 * 6",
+    "gold": "A",
+    "id": "calibration-050",
+    "options": [
+     "162",
+     "151",
+     "153",
+     "164"
+    ],
+    "question": "What is 27 * 6?"
+   },
+   {
+    "expression": "493 + 245",
+    "gold": "C",
+    "id": "calibration-051",
+    "options": [
+     "727",
+     "739",
+     "738",
+     "737"
+    ],
+    "question": "What is 493 + 245?"
+   },
+   {
+    "expression": "25 * 3",
+    "gold": "A",
+    "id": "calibration-052",
+    "options": [
+     "75",
+     "84",
+     "64",
+     "86"
+    ],
+    "question": "What is 25 * 3?"
+   },
+   {
+    "expression": "93 * 8",
+    "gold": "B",
+    "id": "calibration-053",
+    "options": [
+     "753",
+     "744",
+     "734",
+     "735"
+    ],
+    "question": "What is 93 * 8?"
+   },
+   {
+    "expression": "34 * 3",
+    "gold": "D",
+    "id": "calibration-054",
+    "options": [
+     "112",
+     "104",
+     "103",
+     "102"
+    ],
+    "question": "What is 34 * 3?"
+   },
+   {
+    "expression": "814 + 657",
+    "gold": "D",
+    "id": "calibration-055",
+    "options": [
+     "1473",
+     "1482",
+     "1480",
+     "1471"
+    ],
+    "question": "What is 814 + 657?"
+   },
+   {
+    "expression": "407 + 850",
+    "gold": "A",
+    "id": "calibration-056",
+    "options": [
+     "1257",
+     "1258",
+     "1268",
+     "1267"
+    ],
+    "question": "What is 407 + 850?"
+   },
+   {
+    "expression": "818 + 272",
+    "gold": "A",
+    "id": "calibration-057",
+    "options": [
+     "1090",
+     "1101",
+     "1080",
+     "1081"
+    ],
+    "question": "What is 818 + 272?"
+   },
+   {
+    "expression": "461 + 852",
+    "gold": "A",
+    "id": "calibration-058",
+    "options": [
+     "1313",
+     "1311",
+     "1315",
+     "1322"
+    ],
+    "question": "What is 461 + 852?"
+   },
+   {
+    "expression": "310 + 316",
+    "gold": "B",
+    "id": "calibration-059",
+    "options": [
+     "636",
+     "626",
+     "635",
+     "615"
+    ],
+    "question": "What is 310 + 316?"
+   },
+   {
+    "expression": "89 * 8",
+    "gold": "D",
+    "id": "calibration-060",
+    "options": [
+     "702",
+     "710",
+     "723",
+     "712"
+    ],
+    "question": "What is 89 * 8?"
+   },
+   {
+    "expression": "540 + 726",
+    "gold": "A",
+    "id": "calibration-061",
+    "options": [
+     "1266",
+     "1255",
+     "1264",
+     "1276"
+    ],
+    "question": "What is 540 + 726?"
+   },
+   {
+    "expression": "378 + 747",
+    "gold": "A",
+    "id": "calibration-062",
+    "options": [
+     "1125",
+     "1115",
+     "1127",
+     "1116"
+    ],
+    "question": "What is 378 + 747?"
+   },
+   {
+    "expression": "71 * 8",
+    "gold": "B",
+    "id": "calibration-063",
+    "options": [
+     "569",
+     "568",
+     "577",
+     "567"
+    ],
+    "question": "What is 71 * 8?"
+   },
+   {
+    "expression": "255 + 366",
+    "gold": "C",
+    "id": "calibration-064",
+    "options": [
+     "612",
+     "630",
+     "621",
+     "623"
+    ],
+    "question": "What is 255 + 366?"
+   },
+   {
+    "expression": "85 * 5",
+    "gold": "B",
+    "id": "calibration-065",
+    "options": [
+     "426",
+     "425",
+     "414",
+     "434"
+    ],
+    "question": "What is 85 * 5?"
+   },
+   {
+    "expression": "581 + 446",
+    "gold": "A",
+    "id": "calibration-066",
+    "options": [
+     "1027",
+     "1017",
+     "1026",
+     "1016"
+    ],
+    "question": "What is 581 + 446?"
+   },
+   {
+    "expression": "169 + 638",
+    "gold": "A",
+    "id": "calibration-067",
+    "options": [
+     "807",
+     "798",
+     "796",
+     "817"
+    ],
+    "question": "What is 169 + 638?"
+   },
+   {
+    "expression": "715 + 865",
+    "gold": "A",
+    "id": "calibration-068",
+    "options": [
+     "1580",
+     "1581",
+     "1579",
+     "1571"
+    ],
+    "question": "What is 715 + 865?"
+   },
+   {
+    "expression": "448 + 830",
+    "gold": "A",
+    "id": "calibration-069",
+    "options": [
+     "1278",
+     "1280",
+     "1288",
+     "1276"
+    ],
+    "question": "What is 448 + 830?"
+   },
+   {
+    "expression": "43 * 3",
+    "gold": "D",
+    "id": "calibration-070",
+    "options": [
+     "118",
+     "139",
+     "119",
+     "129"
+    ],
+    "question": "What is 43 * 3?"
+   },
+   {
+    "expression": "73 * 5",
+    "gold": "D",
+    "id": "calibration-071",
+    "options": [
+     "363",
+     "364",
+     "367",
+     "365"
+    ],
+    "question": "What is 73 * 5?"
+   },
+   {
+    "expression": "35 * 5",
+    "gold": "A",
+    "id": "calibration-072",
+    "options": [
+     "175",
+     "174",
+     "173",
+     "165"
+    ],
+    "question": "What is 35 * 5?"
+   },
+   {
+    "expression": "48 * 6",
+    "gold": "C",
+    "id": "calibration-073",
+    "options": [
+     "289",
+     "287",
+     "288",
+     "286"
+    ],
+    "question": "What is 48 * 6?"
+   },
+   {
+    "expression": "348 + 814",
+    "gold": "B",
+    "id": "calibration-074",
+    "options": [
+     "1153",
+     "1162",
+     "1172",
+     "1160"
+    ],
+    "question": "What is 348 + 814?"
+   },
+   {
+    "expression": "144 + 476",
+    "gold": "C",
+    "id": "calibration-075",
+    "options": [
+     "610",
+     "622",
+     "620",
+     "630"
+    ],
+    "question": "What is 144 + 476?"
+   },
+   {
+    "expression": "155 + 364",
+    "gold": "D",
+    "id": "calibration-076",
+    "options": [
+     "521",
+     "530",
+     "509",
+     "519"
+    ],
+    "question": "What is 155 + 364?"
+   },
+   {
+    "expression": "12 * 5",
+    "gold": "B",
+    "id": "calibration-077",
+    "options": [
+     "50",
+     "60",
+     "69",
+     "58"
+    ],
+    "question": "What is 12 * 5?"
+   },
+   {
+    "expression": "522 + 182",
+    "gold": "D",
+    "id": "calibration-078",
+    "options": [
+     "702",
+     "694",
+     "693",
+     "704"
+    ],
+    "question": "What is 522 + 182?"
+   },
+   {
+    "expression": "20 * 3",
+    "gold": "A",
+    "id": "calibration-079",
+    "options": [
+     "60",
+     "49",
+     "58",
+     "59"
+    ],
+    "question": "What is 20 * 3?"
+   },
+   {
+    "expression": "167 + 486",
+    "gold": "A",
+    "id": "calibration-080",
+    "options": [
+     "653",
+     "655",
+     "651",
+     "643"
+    ],
+    "question": "What is 167 + 486?"
+   },
+   {
+    "expression": "217 + 460",
+    "gold": "C",
+    "id": "calibration-081",
+    "options": [
+     "668",
+     "687",
+     "677",
+     "679"
+    ],
+    "question": "What is 217 + 460?"
+   },
+   {
+    "expression": "46 * 7",
+    "gold": "D",
+    "id": "calibration-082",
+    "options": [
+     "320",
+     "331",
+     "321",
+     "322"
+    ],
+    "question": "What is 46 * 7?"
+   },
+   {
+    "expression": "886 + 340",
+    "gold": "B",
+    "id": "calibration-083",
+    "options": [
+     "1235",
+     "1226",
+     "1237",
+     "1228"
+    ],
+    "question": "What is 886 + 340?"
+   },
+   {
+    "expression": "618 + 260",
+    "gold": "C",
+    "id": "calibration-084",
+    "options": [
+     "880",
+     "868",
+     "878",
+     "888"
+    ],
+    "question": "What is 618 + 260?"
+   },
+   {
+    "expression": "612 + 195",
+    "gold": "C",
+    "id": "calibration-085",
+    "options": [
+     "798",
+     "818",
+     "807",
+     "806"
+    ],
+    "question": "What is 612 + 195?"
+   },
+   {
+    "expression": "641 + 888",
+    "gold": "C",
+    "id": "calibration-086",
+    "options": [
+     "1540",
+     "1519",
+     "1529",
+     "1528"
+    ],
+    "question": "What is 641 + 888?"
+   },
+   {
+    "expression": "115 + 542",
+    "gold": "D",
+    "id": "calibration-087",
+    "options": [
+     "666",
+     "646",
+     "648",
+     "657"
+    ],
+    "question": "What is 115 + 542?"
+   },
+   {
+    "expression": "844 + 663",
+    "gold": "B",
+    "id": "calibration-088",
+    "options": [
+     "1509",
+     "1507",
+     "1517",
+     "1508"
+    ],
+    "question": "What is 844 + 663?"
+   },
+   {
+    "expression": "853 + 836",
+    "gold": "A",
+    "id": "calibration-089",
+    "options": [
+     "1689",
+     "1687",
+     "1699",
+     "1679"
+    ],
+    "question": "What is 853 + 836?"
+   },
+   {
+    "expression": "402 + 296",
+    "gold": "D",
+    "id": "calibration-090",
+    "options": [
+     "709",
+     "708",
+     "697",
+     "698"
+    ],
+    "question": "What is 402 + 296?"
+   },
+   {
+    "expression": "765 + 896",
+    "gold": "D",
+    "id": "calibration-091",
+    "options": [
+     "1659",
+     "1662",
+     "1671",
+     "1661"
+    ],
+    "question": "What is 765 + 896?"
+   },
+   {
+    "expression": "732 + 810",
+    "gold": "B",
+    "id": "calibration-092",
+    "options": [
+     "1553",
+     "1542",
+     "1544",
+     "1532"
+    ],
+    "question": "What is 732 + 810?"
+   },
+   {
+    "expression": "64 * 3",
+    "gold": "B",
+    "id": "calibration-093",
+    "options": [
+     "182",
+     "192",
+     "181",
+     "193"
+    ],
+    "question": "What is 64 * 3?"
+   },
+   {
+    "expression": "487 + 692",
+    "gold": "A",
+    "id": "calibration-094",
+    "options": [
+     "1179",
+     "1178",
+     "1169",
+     "1189"
+    ],
+    "question": "What is 487 + 692?"
+   },
+   {
+    "expression": "453 + 868",
+    "gold": "B",
+    "id": "calibration-095",
+    "options": [
+     "1311",
+     "1321",
+     "1322",
+     "1310"
+    ],
+    "question": "What is 453 + 868?"
+   },
+   {
+    "expression": "55 * 6",
+    "gold": "A",
+    "id": "calibration-096",
+    "options": [
+     "330",
+     "328",
+     "329",
+     "319"
+    ],
+    "question": "What is 55 * 6?"
+   },
+   {
+    "expression": "703 + 319",
+    "gold": "C",
+    "id": "calibration-097",
+    "options": [
+     "1024",
+     "1011",
+     "1022",
+     "1020"
+    ],
+    "question": "What is 703 + 319?"
+   },
+   {
+    "expression": "24 * 4",
+    "gold": "D",
+    "id": "calibration-098",
+    "options": [
+     "97",
+     "105",
+     "98",
+     "96"
+    ],
+    "question": "What is 24 * 4?"
+   },
+   {
+    "expression": "897 + 412",
+    "gold": "A",
+    "id": "calibration-099",
+    "options": [
+     "1309",
+     "1307",
+     "1320",
+     "1308"
+    ],
+    "question": "What is 897 + 412?"
+   },
+   {
+    "expression": "104 + 862",
+    "gold": "C",
+    "id": "calibration-100",
+    "options": [
+     "977",
+     "965",
+     "966",
+     "967"
+    ],
+    "question": "What is 104 + 862?"
+   },
+   {
+    "expression": "726 + 475",
+    "gold": "C",
+    "id": "calibration-101",
+    "options": [
+     "1199",
+     "1203",
+     "1201",
+     "1192"
+    ],
+    "question": "What is 726 + 475?"
+   },
+   {
+    "expression": "34 * 7",
+    "gold": "D",
+    "id": "calibration-102",
+    "options": [
+     "240",
+     "228",
+     "236",
+     "238"
+    ],
+    "question": "What is 34 * 7?"
+   },
+   {
+    "expression": "848 + 352",
+    "gold": "D",
+    "id": "calibration-103",
+    "options": [
+     "1199",
+     "1211",
+     "1201",
+     "1200"
+    ],
+    "question": "What is 848 + 352?"
+   },
+   {
+    "expression": "618 + 541",
+    "gold": "D",
+    "id": "calibration-104",
+    "options": [
+     "1170",
+     "1168",
+     "1149",
+     "1159"
+    ],
+    "question": "What is 618 + 541?"
+   },
+   {
+    "expression": "230 + 708",
+    "gold": "B",
+    "id": "calibration-105",
+    "options": [
+     "936",
+     "938",
+     "928",
+     "927"
+    ],
+    "question": "What is 230 + 708?"
+   },
+   {
+    "expression": "658 + 528",
+    "gold": "A",
+    "id": "calibration-106",
+    "options": [
+     "1186",
+     "1197",
+     "1175",
+     "1187"
+    ],
+    "question": "What is 658 + 528?"
+   },
+   {
+    "expression": "162 + 297",
+    "gold": "C",
+    "id": "calibration-107",
+    "options": [
+     "468",
+     "470",
+     "459",
+     "450"
+    ],
+    "question": "What is 162 + 297?"
+   },
+   {
+    "expression": "758 + 173",
+    "gold": "B",
+    "id": "calibration-108",
+    "options": [
+     "933",
+     "931",
+     "921",
+     "920"
+    ],
+    "question": "What is 758 + 173?"
+   },
+   {
+    "expression": "38 * 3",
+    "gold": "D",
+    "id": "calibration-109",
+    "options": [
+     "123",
+     "113",
+     "105",
+     "114"
+    ],
+    "question": "What is 38 * 3?"
+   },
+   {
+    "expression": "883 + 854",
+    "gold": "C",
+    "id": "calibration-110",
+    "options": [
+     "1746",
+     "1738",
+     "1737",
+     "1739"
+    ],
+    "question": "What is 883 + 854?"
+   },
+   {
+    "expression": "848 + 638",
+    "gold": "B",
+    "id": "calibration-111",
+    "options": [
+     "1477",
+     "1486",
+     "1476",
+     "1496"
+    ],
+    "question": "What is 848 + 638?"
+   },
+   {
+    "expression": "62 * 6",
+    "gold": "D",
+    "id": "calibration-112",
+    "options": [
+     "362",
+     "382",
+     "371",
+     "372"
+    ],
+    "question": "What is 62 * 6?"
+   },
+   {
+    "expression": "73 * 6",
+    "gold": "C",
+    "id": "calibration-113",
+    "options": [
+     "448",
+     "427",
+     "438",
+     "437"
+    ],
+    "question": "What is 73 * 6?"
+   },
+   {
+    "expression": "130 + 311",
+    "gold": "A",
+    "id": "calibration-114",
+    "options": [
+     "441",
+     "440",
+     "431",
+     "430"
+    ],
+    "question": "What is 130 + 311?"
+   },
+   {
+    "expression": "25 * 9",
+    "gold": "C",
+    "id": "calibration-115",
+    "options": [
+     "227",
+     "214",
+     "225",
+     "234"
+    ],
+    "question": "What is 25 * 9?"
+   },
+   {
+    "expression": "76 * 8",
+    "gold": "C",
+    "id": "calibration-116",
+    "options": [
+     "597",
+     "598",
+     "608",
+     "618"
+    ],
+    "question": "What is 76 * 8?"
+   },
+   {
+    "expression": "107 + 125",
+    "gold": "C",
+    "id": "calibration-117",
+    "options": [
+     "223",
+     "234",
+     "232",
+     "221"
+    ],
+    "question": "What is 107 + 125?"
+   },
+   {
+    "expression": "709 + 236",
+    "gold": "B",
+    "id": "calibration-118",
+    "options": [
+     "955",
+     "945",
+     "944",
+     "935"
+    ],
+    "question": "What is 709 + 236?"
+   },
+   {
+    "expression": "627 + 502",
+    "gold": "B",
+    "id": "calibration-119",
+    "options": [
+     "1140",
+     "1129",
+     "1138",
+     "1130"
+    ],
+    "question": "What is 627 + 502?"
+   },
+   {
+    "expression": "384 + 351",
+    "gold": "A",
+    "id": "calibration-120",
+    "options": [
+     "735",
+     "745",
+     "746",
+     "737"
+    ],
+    "question": "What is 384 + 351?"
+   },
+   {
+    "expression": "76 * 4",
+    "gold": "B",
+    "id": "calibration-121",
+    "options": [
+     "313",
+     "304",
+     "294",
+     "306"
+    ],
+    "question": "What is 76 * 4?"
+   },
+   {
+    "expression": "13 * 3",
+    "gold": "B",
+    "id": "calibration-122",
+    "options": [
+     "28",
+     "39",
+     "37",
+     "38"
+    ],
+    "question": "What is 13 * 3?"
+   },
+   {
+    "expression": "768 + 122",
+    "gold": "B",
+    "id": "calibration-123",
+    "options": [
+     "880",
+     "890",
+     "889",
+     "891"
+    ],
+    "question": "What is 768 + 122?"
+   },
+   {
+    "expression": "26 * 4",
+    "gold": "D",
+    "id": "calibration-124",
+    "options": [
+     "113",
+     "103",
+     "94",
+     "104"
+    ],
+    "question": "What is 26 * 4?"
+   },
+   {
+    "expression": "15 * 7",
+    "gold": "C",
+    "id": "calibration-125",
+    "options": [
+     "103",
+     "104",
+     "105",
+     "94"
+    ],
+    "question": "What is 15 * 7?"
+   },
+   {
+    "expression": "108 + 438",
+    "gold": "C",
+    "id": "calibration-126",
+    "options": [
+     "535",
+     "544",
+     "546",
+     "545"
+    ],
+    "question": "What is 108 + 438?"
+   },
+   {
+    "expression": "807 + 690",
+    "gold": "A",
+    "id": "calibration-127",
+    "options": [
+     "1497",
+     "1506",
+     "1508",
+     "1507"
+    ],
+    "question": "What is 807 + 690?"
+   },
+   {
+    "expression": "259 + 206",
+    "gold": "A",
+    "id": "calibration-128",
+    "options": [
+     "465",
+     "463",
+     "476",
+     "474"
+    ],
+    "question": "What is 259 + 206?"
+   },
+   {
+    "expression": "68 * 3",
+    "gold": "B",
+    "id": "calibration-129",
+    "options": [
+     "203",
+     "204",
+     "206",
+     "194"
+    ],
+    "question": "What is 68 * 3?"
+   },
+   {
+    "expression": "453 + 898",
+    "gold": "A",
+    "id": "calibration-130",
+    "options": [
+     "1351",
+     "1352",
+     "1361",
+     "1340"
+    ],
+    "question": "What is 453 + 898?"
+   },
+   {
+    "expression": "474 + 222",
+    "gold": "A",
+    "id": "calibration-131",
+    "options": [
+     "696",
+     "687",
+     "707",
+     "694"
+    ],
+    "question": "What is 474 + 222?"
+   },
+   {
+    "expression": "346 + 169",
+    "gold": "D",
+    "id": "calibration-132",
+    "options": [
+     "506",
+     "505",
+     "526",
+     "515"
+    ],
+    "question": "What is 346 + 169?"
+   },
+   {
+    "expression": "55 * 8",
+    "gold": "C",
+    "id": "calibration-133",
+    "options": [
+     "449",
+     "450",
+     "440",
+     "451"
+    ],
+    "question": "What is 55 * 8?"
+   },
+   {
+    "expression": "272 + 761",
+    "gold": "B",
+    "id": "calibration-134",
+    "options": [
+     "1034",
+     "1033",
+     "1022",
+     "1035"
+    ],
+    "question": "What is 272 + 761?"
+   },
+   {
+    "expression": "403 + 352",
+    "gold": "B",
+    "id": "calibration-135",
+    "options": [
+     "744",
+     "755",
+     "764",
+     "756"
+    ],
+    "question": "What is 403 + 352?"
+   },
+   {
+    "expression": "95 * 7",
+    "gold": "B",
+    "id": "calibration-136",
+    "options": [
+     "666",
+     "665",
+     "655",
+     "674"
+    ],
+    "question": "What is 95 * 7?"
+   },
+   {
+    "expression": "602 + 668",
+    "gold": "D",
+    "id": "calibration-137",
+    "options": [
+     "1269",
+     "1272",
+     "1260",
+     "1270"
+    ],
+    "question": "What is 602 + 668?"
+   },
+   {
+    "expression": "845 + 887",
+    "gold": "C",
+    "id": "calibration-138",
+    "options": [
+     "1742",
+     "1731",
+     "1732",
+     "1723"
+    ],
+    "question": "What is 845 + 887?"
+   },
+   {
+    "expression": "276 + 639",
+    "gold": "D",
+    "id": "calibration-139",
+    "options": [
+     "914",
+     "924",
+     "917",
+     "915"
+    ],
+    "question": "What is 276 + 639?"
+   },
+   {
+    "expression": "795 + 638",
+    "gold": "B",
+    "id": "calibration-140",
+    "options": [
+     "1443",
+     "1433",
+     "1423",
+     "1432"
+    ],
+    "question": "What is 795 + 638?"
+   },
+   {
+    "expression": "32 * 3",
+    "gold": "A",
+    "id": "calibration-141",
+    "options": [
+     "96",
+     "98",
+     "86",
+     "107"
+    ],
+    "question": "What is 32 * 3?"
+   },
+   {
+    "expression": "336 + 440",
+    "gold": "B",
+    "id": "calibration-142",
+    "options": [
+     "787",
+     "776",
+     "786",
+     "785"
+    ],
+    "question": "What is 336 + 440?"
+   },
+   {
+    "expression": "62 * 3",
+    "gold": "D",
+    "id": "calibration-143",
+    "options": [
+     "187",
+     "196",
+     "184",
+     "186"
+    ],
+    "question": "What is 62 * 3?"
+   },
+   {
+    "expression": "466 + 291",
+    "gold": "B",
+    "id": "calibration-144",
+    "options": [
+     "746",
+     "757",
+     "759",
+     "747"
+    ],
+    "question": "What is 466 + 291?"
+   },
+   {
+    "expression": "240 + 887",
+    "gold": "B",
+    "id": "calibration-145",
+    "options": [
+     "1137",
+     "1127",
+     "1129",
+     "1117"
+    ],
+    "question": "What is 240 + 887?"
+   },
+   {
+    "expression": "247 + 149",
+    "gold": "D",
+    "id": "calibration-146",
+    "options": [
+     "387",
+     "405",
+     "386",
+     "396"
+    ],
+    "question": "What is 247 + 149?"
+   },
+   {
+    "expression": "801 + 300",
+    "gold": "B",
+    "id": "calibration-147",
+    "options": [
+     "1110",
+     "1101",
+     "1100",
+     "1090"
+    ],
+    "question": "What is 801 + 300?"
+   },
+   {
+    "expression": "79 * 9",
+    "gold": "A",
+    "id": "calibration-148",
+    "options": [
+     "711",
+     "722",
+     "713",
+     "700"
+    ],
+    "question": "What is 79 * 9?"
+   },
+   {
+    "expression": "98 * 3",
+    "gold": "B",
+    "id": "calibration-149",
+    "options": [
+     "293",
+     "294",
+     "292",
+     "283"
+    ],
+    "question": "What is 98 * 3?"
+   },
+   {
+    "expression": "94 * 4",
+    "gold": "C",
+    "id": "calibration-150",
+    "options": [
+     "366",
+     "365",
+     "376",
+     "385"
+    ],
+    "question": "What is 94 * 4?"
+   },
+   {
+    "expression": "92 * 6",
+    "gold": "A",
+    "id": "calibration-151",
+    "options": [
+     "552",
+     "551",
+     "563",
+     "554"
+    ],
+    "question": "What is 92 * 6?"
+   },
+   {
+    "expression": "15 * 6",
+    "gold": "D",
+    "id": "calibration-152",
+    "options": [
+     "89",
+     "80",
+     "88",
+     "90"
+    ],
+    "question": "What is 15 * 6?"
+   },
+   {
+    "expression": "144 + 388",
+    "gold": "D",
+    "id": "calibration-153",
+    "options": [
+     "534",
+     "543",
+     "530",
+     "532"
+    ],
+    "question": "What is 144 + 388?"
+   },
+   {
+    "expression": "59 * 4",
+    "gold": "C",
+    "id": "calibration-154",
+    "options": [
+     "245",
+     "227",
+     "236",
+     "234"
+    ],
+    "question": "What is 59 * 4?"
+   },
+   {
+    "expression": "663 + 406",
+    "gold": "D",
+    "id": "calibration-155",
+    "options": [
+     "1068",
+     "1071",
+     "1070",
+     "1069"
+    ],
+    "question": "What is 663 + 406?"
+   },
+   {
+    "expression": "61 * 5",
+    "gold": "B",
+    "id": "calibration-156",
+    "options": [
+     "304",
+     "305",
+     "307",
+     "303"
+    ],
+    "question": "What is 61 * 5?"
+   },
+   {
+    "expression": "17 * 3",
+    "gold": "A",
+    "id": "calibration-157",
+    "options": [
+     "51",
+     "41",
+     "60",
+     "49"
+    ],
+    "question": "What is 17 * 3?"
+   },
+   {
+    "expression": "453 + 125",
+    "gold": "C",
+    "id": "calibration-158",
+    "options": [
+     "567",
+     "577",
+     "578",
+     "588"
+    ],
+    "question": "What is 453 + 125?"
+   },
+   {
+    "expression": "45 * 4",
+    "gold": "D",
+    "id": "calibration-159",
+    "options": [
+     "169",
+     "190",
+     "171",
+     "180"
+    ],
+    "question": "What is 45 * 4?"
+   },
+   {
+    "expression": "846 + 138",
+    "gold": "C",
+    "id": "calibration-160",
+    "options": [
+     "994",
+     "993",
+     "984",
+     "974"
+    ],
+    "question": "What is 846 + 138?"
+   },
+   {
+    "expression": "708 + 499",
+    "gold": "C",
+    "id": "calibration-161",
+    "options": [
+     "1196",
+     "1198",
+     "1207",
+     "1208"
+    ],
+    "question": "What is 708 + 499?"
+   },
+   {
+    "expression": "109 + 658",
+    "gold": "D",
+    "id": "calibration-162",
+    "options": [
+     "756",
+     "766",
+     "776",
+     "767"
+    ],
+    "question": "What is 109 + 658?"
+   },
+   {
+    "expression": "90 * 8",
+    "gold": "B",
+    "id": "calibration-163",
+    "options": [
+     "730",
+     "720",
+     "710",
+     "731"
+    ],
+    "question": "What is 90 * 8?"
+   },
+   {
+    "expression": "505 + 870",
+    "gold": "C",
+    "id": "calibration-164",
+    "options": [
+     "1374",
+     "1365",
+     "1375",
+     "1376"
+    ],
+    "question": "What is 505 + 870?"
+   },
+   {
+    "expression": "87 * 4",
+    "gold": "D",
+    "id": "calibration-165",
+    "options": [
+     "357",
+     "347",
+     "339",
+     "348"
+    ],
+    "question": "What is 87 * 4?"
+   },
+   {
+    "expression": "12 * 3",
+    "gold": "D",
+    "id": "calibration-166",
+    "options": [
+     "37",
+     "45",
+     "25",
+     "36"
+    ],
+    "question": "What is 12 * 3?"
+   },
+   {
+    "expression": "56 * 4",
+    "gold": "A",
+    "id": "calibration-167",
+    "options": [
+     "224",
+     "215",
+     "234",
+     "225"
+    ],
+    "question": "What is 56 * 4?"
+   },
+   {
+    "expression": "20 * 7",
+    "gold": "C",
+    "id": "calibration-168",
+    "options": [
+     "138",
+     "131",
+     "140",
+     "130"
+    ],
+    "question": "What is 20 * 7?"
+   },
+   {
+    "expression": "477 + 421",
+    "gold": "A",
+    "id": "calibration-169",
+    "options": [
+     "898",
+     "900",
+     "899",
+     "896"
+    ],
+    "question": "What is 477 + 421?"
+   },
+   {
+    "expression": "91 * 7",
+    "gold": "C",
+    "id": "calibration-170",
+    "options": [
+     "648",
+     "628",
+     "637",
+     "627"
+    ],
+    "question": "What is 91 * 7?"
+   },
+   {
+    "expression": "84 * 3",
+    "gold": "A",
+    "id": "calibration-171",
+    "options": [
+     "252",
+     "241",
+     "261",
+     "262"
+    ],
+    "question": "What is 84 * 3?"
+   },
+   {
+    "expression": "591 + 165",
+    "gold": "D",
+    "id": "calibration-172",
+    "options": [
+     "767",
+     "747",
+     "766",
+     "756"
+    ],
+    "question": "What is 591 + 165?"
+   },
+   {
+    "expression": "649 + 219",
+    "gold": "A",
+    "id": "calibration-173",
+    "options": [
+     "868",
+     "858",
+     "879",
+     "866"
+    ],
+    "question": "What is 649 + 219?"
+   },
+   {
+    "expression": "527 + 774",
+    "gold": "C",
+    "id": "calibration-174",
+    "options": [
+     "1291",
+     "1312",
+     "1301",
+     "1290"
+    ],
+    "question": "What is 527 + 774?"
+   },
+   {
+    "expression": "45 * 7",
+    "gold": "A",
+    "id": "calibration-175",
+    "options": [
+     "315",
+     "304",
+     "306",
+     "326"
+    ],
+    "question": "What is 45 * 7?"
+   },
+   {
+    "expression": "14 * 3",
+    "gold": "C",
+    "id": "calibration-176",
+    "options": [
+     "31",
+     "44",
+     "42",
+     "53"
+    ],
+    "question": "What is 14 * 3?"
+   },
+   {
+    "expression": "257 + 845",
+    "gold": "D",
+    "id": "calibration-177",
+    "options": [
+     "1111",
+     "1104",
+     "1091",
+     "1102"
+    ],
+    "question": "What is 257 + 845?"
+   },
+   {
+    "expression": "517 + 287",
+    "gold": "C",
+    "id": "calibration-178",
+    "options": [
+     "794",
+     "814",
+     "804",
+     "805"
+    ],
+    "question": "What is 517 + 287?"
+   },
+   {
+    "expression": "31 * 9",
+    "gold": "A",
+    "id": "calibration-179",
+    "options": [
+     "279",
+     "269",
+     "289",
+     "270"
+    ],
+    "question": "What is 31 * 9?"
+   },
+   {
+    "expression": "109 + 567",
+    "gold": "A",
+    "id": "calibration-180",
+    "options": [
+     "676",
+     "675",
+     "666",
+     "677"
+    ],
+    "question": "What is 109 + 567?"
+   },
+   {
+    "expression": "680 + 119",
+    "gold": "A",
+    "id": "calibration-181",
+    "options": [
+     "799",
+     "801",
+     "788",
+     "798"
+    ],
+    "question": "What is 680 + 119?"
+   },
+   {
+    "expression": "354 + 894",
+    "gold": "A",
+    "id": "calibration-182",
+    "options": [
+     "1248",
+     "1239",
+     "1247",
+     "1246"
+    ],
+    "question": "What is 354 + 894?"
+   },
+   {
+    "expression": "890 + 669",
+    "gold": "B",
+    "id": "calibration-183",
+    "options": [
+     "1560",
+     "1559",
+     "1558",
+     "1548"
+    ],
+    "question": "What is 890 + 669?"
+   },
+   {
+    "expression": "36 * 3",
+    "gold": "A",
+    "id": "calibration-184",
+    "options": [
+     "108",
+     "106",
+     "97",
+     "109"
+    ],
+    "question": "What is 36 * 3?"
+   },
+   {
+    "expression": "333 + 230",
+    "gold": "A",
+    "id": "calibration-185",
+    "options": [
+     "563",
+     "564",
+     "552",
+     "554"
+    ],
+    "question": "What is 333 + 230?"
+   },
+   {
+    "expression": "280 + 741",
+    "gold": "C",
+    "id": "calibration-186",
+    "options": [
+     "1020",
+     "1032",
+     "1021",
+     "1012"
+    ],
+    "question": "What is 280 + 741?"
+   },
+   {
+    "expression": "66 * 4",
+    "gold": "C",
+    "id": "calibration-187",
+    "options": [
+     "266",
+     "262",
+     "264",
+     "275"
+    ],
+    "question": "What is 66 * 4?"
+   },
+   {
+    "expression": "44 * 3",
+    "gold": "D",
+    "id": "calibration-188",
+    "options": [
+     "133",
+     "122",
+     "134",
+     "132"
+    ],
+    "question": "What is 44 * 3?"
+   },
+   {
+    "expression": "528 + 118",
+    "gold": "C",
+    "id": "calibration-189",
+    "options": [
+     "648",
+     "656",
+     "646",
+     "637"
+    ],
+    "question": "What is 528 + 118?"
+   },
+   {
+    "expression": "23 * 7",
+    "gold": "C",
+    "id": "calibration-190",
+    "options": [
+     "151",
+     "162",
+     "161",
+     "152"
+    ],
+    "question": "What is 23 * 7?"
+   },
+   {
+    "expression": "30 * 6",
+    "gold": "B",
+    "id": "calibration-191",
+    "options": [
+     "189",
+     "180",
+     "179",
+     "191"
+    ],
+    "question": "What is 30 * 6?"
+   },
+   {
+    "expression": "19 * 7",
+    "gold": "C",
+    "id": "calibration-192",
+    "options": [
+     "131",
+     "143",
+     "133",
+     "123"
+    ],
+    "question": "What is 19 * 7?"
+   },
+   {
+    "expression": "680 + 893",
+    "gold": "A",
+    "id": "calibration-193",
+    "options": [
+     "1573",
+     "1575",
+     "1562",
+     "1582"
+    ],
+    "question": "What is 680 + 893?"
+   },
+   {
+    "expression": "719 + 102",
+    "gold": "C",
+    "id": "calibration-194",
+    "options": [
+     "832",
+     "812",
+     "821",
+     "822"
+    ],
+    "question": "What is 719 + 102?"
+   },
+   {
+    "expression": "96 * 6",
+    "gold": "C",
+    "id": "calibration-195",
+    "options": [
+     "574",
+     "575",
+     "576",
+     "566"
+    ],
+    "question": "What is 96 * 6?"
+   },
+   {
+    "expression": "54 * 9",
+    "gold": "C",
+    "id": "calibration-196",
+    "options": [
+     "485",
+     "496",
+     "486",
+     "476"
+    ],
+    "question": "What is 54 * 9?"
+   },
+   {
+    "expression": "58 * 3",
+    "gold": "D",
+    "id": "calibration-197",
+    "options": [
+     "175",
+     "172",
+     "183",
+     "174"
+    ],
+    "question": "What is 58 * 3?"
+   },
+   {
+    "expression": "777 + 283",
+    "gold": "A",
+    "id": "calibration-198",
+    "options": [
+     "1060",
+     "1050",
+     "1059",
+     "1061"
+    ],
+    "question": "What is 777 + 283?"
+   },
+   {
+    "expression": "810 + 680",
+    "gold": "D",
+    "id": "calibration-199",
+    "options": [
+     "1480",
+     "1481",
+     "1491",
+     "1490"
+    ],
+    "question": "What is 810 + 680?"
+   }
+  ],
+  "heldout": [
+   {
+    "expression": "92 * 8",
+    "gold": "B",
+    "id": "heldout-000",
+    "options": [
+     "726",
+     "736",
+     "727",
+     "725"
+    ],
+    "question": "What is 92 * 8?"
+   },
+   {
+    "expression": "41 * 3",
+    "gold": "A",
+    "id": "heldout-001",
+    "options": [
+     "123",
+     "134",
+     "124",
+     "132"
+    ],
+    "question": "What is 41 * 3?"
+   },
+   {
+    "expression": "23 * 3",
+    "gold": "A",
+    "id": "heldout-002",
+    "options": [
+     "69",
+     "59",
+     "80",
+     "71"
+    ],
+    "question": "What is 23 * 3?"
+   },
+   {
+    "expression": "141 + 173",
+    "gold": "A",
+    "id": "heldout-003",
+    "options": [
+     "314",
+     "315",
+     "304",
+     "316"
+    ],
+    "question": "What is 141 + 173?"
+   },
+   {
+    "expression": "347 + 831",
+    "gold": "A",
+    "id": "heldout-004",
+    "options": [
+     "1178",
+     "1179",
+     "1177",
+     "1176"
+    ],
+    "question": "What is 347 + 831?"
+   },
+   {
+    "expression": "361 + 466",
+    "gold": "D",
+    "id": "heldout-005",
+    "options": [
+     "816",
+     "817",
+     "836",
+     "827"
+    ],
+    "question": "What is 361 + 466?"
+   },
+   {
+    "expression": "66 * 6",
+    "gold": "B",
+    "id": "heldout-006",
+    "options": [
+     "394",
+     "396",
+     "387",
+     "406"
+    ],
+    "question": "What is 66 * 6?"
+   },
+   {
+    "expression": "76 * 9",
+    "gold": "C",
+    "id": "heldout-007",
+    "options": [
+     "695",
+     "694",
+     "684",
+     "693"
+    ],
+    "question": "What is 76 * 9?"
+   },
+   {
+    "expression": "29 * 6",
+    "gold": "B",
+    "id": "heldout-008",
+    "options": [
+     "183",
+     "174",
+     "184",
+     "172"
+    ],
+    "question": "What is 29 * 6?"
+   },
+   {
+    "expression": "151 + 596",
+    "gold": "A",
+    "id": "heldout-009",
+    "options": [
+     "747",
+     "758",
+     "757",
+     "756"
+    ],
+    "question": "What is 151 + 596?"
+   },
+   {
+    "expression": "59 * 3",
+    "gold": "A",
+    "id": "heldout-010",
+    "options": [
+     "177",
+     "166",
+     "186",
+     "178"
+    ],
+    "question": "What is 59 * 3?"
+   },
+   {
+    "expression": "46 * 3",
+    "gold": "A",
+    "id": "heldout-011",
+    "options": [
+     "138",
+     "127",
+     "148",
+     "140"
+    ],
+    "question": "What is 46 * 3?"
+   },
+   {
+    "expression": "86 * 8",
+    "gold": "C",
+    "id": "heldout-012",
+    "options": [
+     "678",
+     "686",
+     "688",
+     "690"
+    ],
+    "question": "What is 86 * 8?"
+   },
+   {
+    "expression": "34 * 4",
+    "gold": "A",
+    "id": "heldout-013",
+    "options": [
+     "136",
+     "125",
+     "147",
+     "127"
+    ],
+    "question": "What is 34 * 4?"
+   },
+   {
+    "expression": "785 + 659",
+    "gold": "D",
+    "id": "heldout-014",
+    "options": [
+     "1443",
+     "1453",
+     "1433",
+     "1444"
+    ],
+    "question": "What is 785 + 659?"
+   },
+   {
+    "expression": "147 + 116",
+    "gold": "A",
+    "id": "heldout-015",
+    "options": [
+     "263",
+     "265",
+     "252",
+     "261"
+    ],
+    "question": "What is 147 + 116?"
+   },
+   {
+    "expression": "39 * 9",
+    "gold": "C",
+    "id": "heldout-016",
+    "options": [
+     "350",
+     "341",
+     "351",
+     "340"
+    ],
+    "question": "What is 39 * 9?"
+   },
+   {
+    "expression": "62 * 7",
+    "gold": "D",
+    "id": "heldout-017",
+    "options": [
+     "432",
+     "425",
+     "424",
+     "434"
+    ],
+    "question": "What is 62 * 7?"
+   },
+   {
+    "expression": "280 + 407",
+    "gold": "A",
+    "id": "heldout-018",
+    "options": [
+     "687",
+     "689",
+     "686",
+     "697"
+    ],
+    "question": "What is 280 + 407?"
+   },
+   {
+    "expression": "21 * 3",
+    "gold": "C",
+    "id": "heldout-019",
+    "options": [
+     "74",
+     "65",
+     "63",
+     "53"
+    ],
+    "question": "What is 21 * 3?"
+   },
+   {
+    "expression": "487 + 312",
+    "gold": "C",
+    "id": "heldout-020",
+    "options": [
+     "797",
+     "790",
+     "799",
+     "800"
+    ],
+    "question": "What is 487 + 312?"
+   },
+   {
+    "expression": "251 + 251",
+    "gold": "A",
+    "id": "heldout-021",
+    "options": [
+     "502",
+     "492",
+     "503",
+     "493"
+    ],
+    "question": "What is 251 + 251?"
+   },
+   {
+    "expression": "118 + 579",
+    "gold": "B",
+    "id": "heldout-022",
+    "options": [
+     "707",
+     "697",
+     "696",
+     "688"
+    ],
+    "question": "What is 118 + 579?"
+   },
+   {
+    "expression": "799 + 187",
+    "gold": "C",
+    "id": "heldout-023",
+    "options": [
+     "977",
+     "997",
+     "986",
+     "976"
+    ],
+    "question": "What is 799 + 187?"
+   },
+   {
+    "expression": "331 + 527",
+    "gold": "A",
+    "id": "heldout-024",
+    "options": [
+     "858",
+     "847",
+     "860",
+     "848"
+    ],
+    "question": "What is 331 + 527?"
+   },
+   {
+    "expression": "27 * 3",
+    "gold": "A",
+    "id": "heldout-025",
+    "options": [
+     "81",
+     "71",
+     "83",
+     "70"
+    ],
+    "question": "What is 27 * 3?"
+   },
+   {
+    "expression": "96 * 9",
+    "gold": "A",
+    "id": "heldout-026",
+    "options": [
+     "864",
+     "874",
+     "854",
+     "866"
+    ],
+    "question": "What is 96 * 9?"
+   },
+   {
+    "expression": "840 + 151",
+    "gold": "C",
+    "id": "heldout-027",
+    "options": [
+     "992",
+     "981",
+     "991",
+     "982"
+    ],
+    "question": "What is 840 + 151?"
+   },
+   {
+    "expression": "150 + 895",
+    "gold": "D",
+    "id": "heldout-028",
+    "options": [
+     "1034",
+     "1054",
+     "1047",
+     "1045"
+    ],
+    "question": "What is 150 + 895?"
+   },
+   {
+    "expression": "30 * 7",
+    "gold": "B",
+    "id": "heldout-029",
+    "options": [
+     "212",
+     "210",
+     "221",
+     "201"
+    ],
+    "question": "What is 30 * 7?"
+   },
+   {
+    "expression": "133 + 581",
+    "gold": "A",
+    "id": "heldout-030",
+    "options": [
+     "714",
+     "724",
+     "716",
+     "705"
+    ],
+    "question": "What is 133 + 581?"
+   },
+   {
+    "expression": "253 + 506",
+    "gold": "A",
+    "id": "heldout-031",
+    "options": [
+     "759",
+     "758",
+     "770",
+     "761"
+    ],
+    "question": "What is 253 + 506?"
+   },
+   {
+    "expression": "84 * 7",
+    "gold": "A",
+    "id": "heldout-032",
+    "options": [
+     "588",
+     "578",
+     "577",
+     "589"
+    ],
+    "question": "What is 84 * 7?"
+   },
+   {
+    "expression": "646 + 452",
+    "gold": "B",
+    "id": "heldout-033",
+    "options": [
+     "1100",
+     "1098",
+     "1089",
+     "1109"
+    ],
+    "question": "What is 646 + 452?"
+   },
+   {
+    "expression": "496 + 811",
+    "gold": "A",
+    "id": "heldout-034",
+    "options": [
+     "1307",
+     "1306",
+     "1298",
+     "1316"
+    ],
+    "question": "What is 496 + 811?"
+   },
+   {
+    "expression": "146 + 854",
+    "gold": "A",
+    "id": "heldout-035",
+    "options": [
+     "1000",
+     "990",
+     "1011",
+     "989"
+    ],
+    "question": "What is 146 + 854?"
+   },
+   {
+    "expression": "23 * 5",
+    "gold": "B",
+    "id": "heldout-036",
+    "options": [
+     "113",
+     "115",
+     "106",
+     "126"
+    ],
+    "question": "What is 23 * 5?"
+   },
+   {
+    "expression": "49 * 8",
+    "gold": "C",
+    "id": "heldout-037",
+    "options": [
+     "383",
+     "402",
+     "392",
+     "401"
+    ],
+    "question": "What is 49 * 8?"
+   },
+   {
+    "expression": "42 * 9",
+    "gold": "C",
+    "id": "heldout-038",
+    "options": [
+     "376",
+     "377",
+     "378",
+     "389"
+    ],
+    "question": "What is 42 * 9?"
+   },
+   {
+    "expression": "26 * 9",
+    "gold": "D",
+    "id": "heldout-039",
+    "options": [
+     "225",
+     "232",
+     "224",
+     "234"
+    ],
+    "question": "What is 26 * 9?"
+   },
+   {
+    "expression": "293 + 169",
+    "gold": "B",
+    "id": "heldout-040",
+    "options": [
+     "452",
+     "462",
+     "471",
+     "464"
+    ],
+    "question": "What is 293 + 169?"
+   },
+   {
+    "expression": "186 + 732",
+    "gold": "C",
+    "id": "heldout-041",
+    "options": [
+     "920",
+     "927",
+     "918",
+     "929"
+    ],
+    "question": "What is 186 + 732?"
+   },
+   {
+    "expression": "764 + 660",
+    "gold": "D",
+    "id": "heldout-042",
+    "options": [
+     "1426",
+     "1433",
+     "1422",
+     "1424"
+    ],
+    "question": "What is 764 + 660?"
+   },
+   {
+    "expression": "67 * 6",
+    "gold": "A",
+    "id": "heldout-043",
+    "options": [
+     "402",
+     "401",
+     "403",
+     "392"
+    ],
+    "question": "What is 67 * 6?"
+   },
+   {
+    "expression": "91 * 3",
+    "gold": "C",
+    "id": "heldout-044",
+    "options": [
+     "274",
+     "262",
+     "273",
+     "264"
+    ],
+    "question": "What is 91 * 3?"
+   },
+   {
+    "expression": "57 * 7",
+    "gold": "B",
+    "id": "heldout-045",
+    "options": [
+     "398",
+     "399",
+     "390",
+     "389"
+    ],
+    "question": "What is 57 * 7?"
+   },
+   {
+    "expression": "835 + 710",
+    "gold": "B",
+    "id": "heldout-046",
+    "options": [
+     "1536",
+     "1545",
+     "1543",
+     "1534"
+    ],
+    "question": "What is 835 + 710?"
+   },
+   {
+    "expression": "60 * 3",
+    "gold": "A",
+    "id": "heldout-047",
+    "options": [
+     "180",
+     "190",
+     "181",
+     "189"
+    ],
+    "question": "What is 60 * 3?"
+   },
+   {
+    "expression": "16 * 7",
+    "gold": "C",
+    "id": "heldout-048",
+    "options": [
+     "110",
+     "103",
+     "112",
+     "123"
+    ],
+    "question": "What is 16 * 7?"
+   },
+   {
+    "expression": "81 * 7",
+    "gold": "D",
+    "id": "heldout-049",
+    "options": [
+     "577",
+     "558",
+     "578",
+     "567"
+    ],
+    "question": "What is 81 * 7?"
+   },
+   {
+    "expression": "210 + 356",
+    "gold": "C",
+    "id": "heldout-050",
+    "options": [
+     "577",
+     "557",
+     "566",
+     "576"
+    ],
+    "question": "What is 210 + 356?"
+   },
+   {
+    "expression": "320 + 124",
+    "gold": "D",
+    "id": "heldout-051",
+    "options": [
+     "455",
+     "454",
+     "446",
+     "444"
+    ],
+    "question": "What is 320 + 124?"
+   },
+   {
+    "expression": "104 + 248",
+    "gold": "D",
+    "id": "heldout-052",
+    "options": [
+     "353",
+     "342",
+     "362",
+     "352"
+    ],
+    "question": "What is 104 + 248?"
+   },
+   {
+    "expression": "87 * 6",
+    "gold": "C",
+    "id": "heldout-053",
+    "options": [
+     "533",
+     "521",
+     "522",
+     "524"
+    ],
+    "question": "What is 87 * 6?"
+   },
+   {
+    "expression": "537 + 507",
+    "gold": "B",
+    "id": "heldout-054",
+    "options": [
+     "1046",
+     "1044",
+     "1053",
+     "1055"
+    ],
+    "question": "What is 537 + 507?"
+   },
+   {
+    "expression": "77 * 5",
+    "gold": "D",
+    "id": "heldout-055",
+    "options": [
+     "386",
+     "375",
+     "374",
+     "385"
+    ],
+    "question": "What is 77 * 5?"
+   },
+   {
+    "expression": "62 * 5",
+    "gold": "C",
+    "id": "heldout-056",
+    "options": [
+     "321",
+     "311",
+     "310",
+     "309"
+    ],
+    "question": "What is 62 * 5?"
+   },
+   {
+    "expression": "76 * 6",
+    "gold": "D",
+    "id": "heldout-057",
+    "options": [
+     "466",
+     "457",
+     "458",
+     "456"
+    ],
+    "question": "What is 76 * 6?"
+   },
+   {
+    "expression": "49 * 6",
+    "gold": "D",
+    "id": "heldout-058",
+    "options": [
+     "304",
+     "292",
+     "303",
+     "294"
+    ],
+    "question": "What is 49 * 6?"
+   },
+   {
+    "expression": "371 + 255",
+    "gold": "D",
+    "id": "heldout-059",
+    "options": [
+     "636",
+     "624",
+     "615",
+     "626"
+    ],
+    "question": "What is 371 + 255?"
+   },
+   {
+    "expression": "108 + 397",
+    "gold": "D",
+    "id": "heldout-060",
+    "options": [
+     "504",
+     "514",
+     "515",
+     "505"
+    ],
+    "question": "What is 108 + 397?"
+   },
+   {
+    "expression": "371 + 540",
+    "gold": "B",
+    "id": "heldout-061",
+    "options": [
+     "920",
+     "911",
+     "913",
+     "912"
+    ],
+    "question": "What is 371 + 540?"
+   },
+   {
+    "expression": "46 * 6",
+    "gold": "C",
+    "id": "heldout-062",
+    "options": [
+     "287",
+     "265",
+     "276",
+     "277"
+    ],
+    "question": "What is 46 * 6?"
+   },
+   {
+    "expression": "612 + 860",
+    "gold": "A",
+    "id": "heldout-063",
+    "options": [
+     "1472",
+     "1474",
+     "1481",
+     "1473"
+    ],
+    "question": "What is 612 + 860?"
+   },
+   {
+    "expression": "427 + 743",
+    "gold": "C",
+    "id": "heldout-064",
+    "options": [
+     "1179",
+     "1181",
+     "1170",
+     "1161"
+    ],
+    "question": "What is 427 + 743?"
+   },
+   {
+    "expression": "455 + 841",
+    "gold": "C",
+    "id": "heldout-065",
+    "options": [
+     "1306",
+     "1298",
+     "1296",
+     "1287"
+    ],
+    "question": "What is 455 + 841?"
+   },
+   {
+    "expression": "30 * 5",
+    "gold": "D",
+    "id": "heldout-066",
+    "options": [
+     "161",
+     "152",
+     "141",
+     "150"
+    ],
+    "question": "What is 30 * 5?"
+   },
+   {
+    "expression": "68 * 8",
+    "gold": "B",
+    "id": "heldout-067",
+    "options": [
+     "545",
+     "544",
+     "555",
+     "543"
+    ],
+    "question": "What is 68 * 8?"
+   },
+   {
+    "expression": "411 + 356",
+    "gold": "C",
+    "id": "heldout-068",
+    "options": [
+     "768",
+     "758",
+     "767",
+     "777"
+    ],
+    "question": "What is 411 + 356?"
+   },
+   {
+    "expression": "146 + 358",
+    "gold": "B",
+    "id": "heldout-069",
+    "options": [
+     "503",
+     "504",
+     "515",
+     "513"
+    ],
+    "question": "What is 146 + 358?"
+   },
+   {
+    "expression": "20 * 8",
+    "gold": "B",
+    "id": "heldout-070",
+    "options": [
+     "171",
+     "160",
+     "170",
+     "149"
+    ],
+    "question": "What is 20 * 8?"
+   },
+   {
+    "expression": "576 + 686",
+    "gold": "B",
+    "id": "heldout-071",
+    "options": [
+     "1260",
+     "1262",
+     "1271",
+     "1252"
+    ],
+    "question": "What is 576 + 686?"
+   },
+   {
+    "expression": "14 * 8",
+    "gold": "A",
+    "id": "heldout-072",
+    "options": [
+     "112",
+     "121",
+     "101",
+     "114"
+    ],
+    "question": "What is 14 * 8?"
+   },
+   {
+    "expression": "83 * 5",
+    "gold": "C",
+    "id": "heldout-073",
+    "options": [
+     "404",
+     "424",
+     "415",
+     "416"
+    ],
+    "question": "What is 83 * 5?"
+   },
+   {
+    "expression": "12 * 4",
+    "gold": "D",
+    "id": "heldout-074",
+    "options": [
+     "39",
+     "49",
+     "46",
+     "48"
+    ],
+    "question": "What is 12 * 4?"
+   },
+   {
+    "expression": "55 * 3",
+    "gold": "C",
+    "id": "heldout-075",
+    "options": [
+     "176",
+     "155",
+     "165",
+     "174"
+    ],
+    "question": "What is 55 * 3?"
+   },
+   {
+    "expression": "686 + 506",
+    "gold": "A",
+    "id": "heldout-076",
+    "options": [
+     "1192",
+     "1181",
+     "1203",
+     "1183"
+    ],
+    "question": "What is 686 + 506?"
+   },
+   {
+    "expression": "69 * 9",
+    "gold": "A",
+    "id": "heldout-077",
+    "options": [
+     "621",
+     "620",
+     "622",
+     "610"
+    ],
+    "question": "What is 69 * 9?"
+   },
+   {
+    "expression": "36 * 6",
+    "gold": "C",
+    "id": "heldout-078",
+    "options": [
+     "215",
+     "214",
+     "216",
+     "225"
+    ],
+    "question": "What is 36 * 6?"
+   },
+   {
+    "expression": "585 + 644",
+    "gold": "D",
+    "id": "heldout-079",
+    "options": [
+     "1238",
+     "1230",
+     "1220",
+     "1229"
+    ],
+    "question": "What is 585 + 644?"
+   },
+   {
+    "expression": "82 * 3",
+    "gold": "B",
+    "id": "heldout-080",
+    "options": [
+     "235",
+     "246",
+     "247",
+     "248"
+    ],
+    "question": "What is 82 * 3?"
+   },
+   {
+    "expression": "781 + 290",
+    "gold": "B",
+    "id": "heldout-081",
+    "options": [
+     "1062",
+     "1071",
+     "1082",
+     "1080"
+    ],
+    "question": "What is 781 + 290?"
+   },
+   {
+    "expression": "711 + 800",
+    "gold": "D",
+    "id": "heldout-082",
+    "options": [
+     "1502",
+     "1500",
+     "1521",
+     "1511"
+    ],
+    "question": "What is 711 + 800?"
+   },
+   {
+    "expression": "43 * 5",
+    "gold": "A",
+    "id": "heldout-083",
+    "options": [
+     "215",
+     "225",
+     "214",
+     "204"
+    ],
+    "question": "What is 43 * 5?"
+   },
+   {
+    "expression": "88 * 9",
+    "gold": "A",
+    "id": "heldout-084",
+    "options": [
+     "792",
+     "794",
+     "802",
+     "793"
+    ],
+    "question": "What is 88 * 9?"
+   },
+   {
+    "expression": "594 + 445",
+    "gold": "D",
+    "id": "heldout-085",
+    "options": [
+     "1050",
+     "1049",
+     "1048",
+     "1039"
+    ],
+    "question": "What is 594 + 445?"
+   },
+   {
+    "expression": "87 * 9",
+    "gold": "B",
+    "id": "heldout-086",
+    "options": [
+     "773",
+     "783",
+     "785",
+     "794"
+    ],
+    "question": "What is 87 * 9?"
+   },
+   {
+    "expression": "69 * 8",
+    "gold": "C",
+    "id": "heldout-087",
+    "options": [
+     "550",
+     "561",
+     "552",
+     "563"
+    ],
+    "question": "What is 69 * 8?"
+   },
+   {
+    "expression": "198 + 664",
+    "gold": "A",
+    "id": "heldout-088",
+    "options": [
+     "862",
+     "863",
+     "853",
+     "872"
+    ],
+    "question": "What is 198 + 664?"
+   },
+   {
+    "expression": "61 * 9",
+    "gold": "B",
+    "id": "heldout-089",
+    "options": [
+     "559",
+     "549",
+     "538",
+     "540"
+    ],
+    "question": "What is 61 * 9?"
+   },
+   {
+    "expression": "212 + 293",
+    "gold": "A",
+    "id": "heldout-090",
+    "options": [
+     "505",
+     "503",
+     "515",
+     "496"
+    ],
+    "question": "What is 212 + 293?"
+   },
+   {
+    "expression": "50 * 8",
+    "gold": "A",
+    "id": "heldout-091",
+    "options": [
+     "400",
+     "390",
+     "399",
+     "391"
+    ],
+    "question": "What is 50 * 8?"
+   },
+   {
+    "expression": "121 + 610",
+    "gold": "A",
+    "id": "heldout-092",
+    "options": [
+     "731",
+     "733",
+     "732",
+     "721"
+    ],
+    "question": "What is 121 + 610?"
+   },
+   {
+    "expression": "26 * 6",
+    "gold": "A",
+    "id": "heldout-093",
+    "options": [
+     "156",
+     "165",
+     "167",
+     "166"
+    ],
+    "question": "What is 26 * 6?"
+   },
+   {
+    "expression": "70 * 3",
+    "gold": "B",
+    "id": "heldout-094",
+    "options": [
+     "201",
+     "210",
+     "219",
+     "220"
+    ],
+    "question": "What is 70 * 3?"
+   },
+   {
+    "expression": "861 + 370",
+    "gold": "B",
+    "id": "heldout-095",
+    "options": [
+     "1242",
+     "1231",
+     "1232",
+     "1229"
+    ],
+    "question": "What is 861 + 370?"
+   },
+   {
+    "expression": "44 * 7",
+    "gold": "D",
+    "id": "heldout-096",
+    "options": [
+     "319",
+     "310",
+     "297",
+     "308"
+    ],
+    "question": "What is 44 * 7?"
+   },
+   {
+    "expression": "52 * 4",
+    "gold": "D",
+    "id": "heldout-097",
+    "options": [
+     "209",
+     "210",
+     "198",
+     "208"
+    ],
+    "question": "What is 52 * 4?"
+   },
+   {
+    "expression": "53 * 8",
+    "gold": "A",
+    "id": "heldout-098",
+    "options": [
+     "424",
+     "425",
+     "435",
+     "426"
+    ],
+    "question": "What is 53 * 8?"
+   },
+   {
+    "expression": "16 * 3",
+    "gold": "B",
+    "id": "heldout-099",
+    "options": [
+     "37",
+     "48",
+     "57",
+     "47"
+    ],
+    "question": "What is 16 * 3?"
+   },
+   {
+    "expression": "836 + 581",
+    "gold": "B",
+    "id": "heldout-100",
+    "options": [
+     "1407",
+     "1417",
+     "1415",
+     "1428"
+    ],
+    "question": "What is 836 + 581?"
+   },
+   {
+    "expression": "265 + 766",
+    "gold": "A",
+    "id": "heldout-101",
+    "options": [
+     "1031",
+     "1029",
+     "1040",
+     "1033"
+    ],
+    "question": "What is 265 + 766?"
+   },
+   {
+    "expression": "200 + 611",
+    "gold": "D",
+    "id": "heldout-102",
+    "options": [
+     "810",
+     "822",
+     "821",
+     "811"
+    ],
+    "question": "What is 200 + 611?"
+   },
+   {
+    "expression": "215 + 427",
+    "gold": "C",
+    "id": "heldout-103",
+    "options": [
+     "651",
+     "641",
+     "642",
+     "653"
+    ],
+    "question": "What is 215 + 427?"
+   },
+   {
+    "expression": "238 + 820",
+    "gold": "D",
+    "id": "heldout-104",
+    "options": [
+     "1056",
+     "1067",
+     "1049",
+     "1058"
+    ],
+    "question": "What is 238 + 820?"
+   },
+   {
+    "expression": "688 + 756",
+    "gold": "D",
+    "id": "heldout-105",
+    "options": [
+     "1434",
+     "1454",
+     "1435",
+     "1444"
+    ],
+    "question": "What is 688 + 756?"
+   },
+   {
+    "expression": "434 + 107",
+    "gold": "C",
+    "id": "heldout-106",
+    "options": [
+     "550",
+     "530",
+     "541",
+     "531"
+    ],
+    "question": "What is 434 + 107?"
+   },
+   {
+    "expression": "39 * 6",
+    "gold": "D",
+    "id": "heldout-107",
+    "options": [
+     "232",
+     "224",
+     "243",
+     "234"
+    ],
+    "question": "What is 39 * 6?"
+   },
+   {
+    "expression": "454 + 453",
+    "gold": "A",
+    "id": "heldout-108",
+    "options": [
+     "907",
+     "905",
+     "898",
+     "906"
+    ],
+    "question": "What is 454 + 453?"
+   },
+   {
+    "expression": "84 * 9",
+    "gold": "B",
+    "id": "heldout-109",
+    "options": [
+     "745",
+     "756",
+     "765",
+     "757"
+    ],
+    "question": "What is 84 * 9?"
+   },
+   {
+    "expression": "75 * 6",
+    "gold": "C",
+    "id": "heldout-110",
+    "options": [
+     "448",
+     "452",
+     "450",
+     "459"
+    ],
+    "question": "What is 75 * 6?"
+   },
+   {
+    "expression": "28 * 7",
+    "gold": "A",
+    "id": "heldout-111",
+    "options": [
+     "196",
+     "195",
+     "207",
+     "205"
+    ],
+    "question": "What is 28 * 7?"
+   },
+   {
+    "expression": "128 + 499",
+    "gold": "D",
+    "id": "heldout-112",
+    "options": [
+     "637",
+     "638",
+     "629",
+     "627"
+    ],
+    "question": "What is 128 + 499?"
+   },
+   {
+    "expression": "29 * 4",
+    "gold": "C",
+    "id": "heldout-113",
+    "options": [
+     "114",
+     "105",
+     "116",
+     "107"
+    ],
+    "question": "What is 29 * 4?"
+   },
+   {
+    "expression": "896 + 610",
+    "gold": "B",
+    "id": "heldout-114",
+    "options": [
+     "1516",
+     "1506",
+     "1505",
+     "1504"
+    ],
+    "question": "What is 896 + 610?"
+   },
+   {
+    "expression": "472 + 810",
+    "gold": "D",
+    "id": "heldout-115",
+    "options": [
+     "1280",
+     "1281",
+     "1291",
+     "1282"
+    ],
+    "question": "What is 472 + 810?"
+   },
+   {
+    "expression": "571 + 396",
+    "gold": "A",
+    "id": "heldout-116",
+    "options": [
+     "967",
+     "977",
+     "965",
+     "958"
+    ],
+    "question": "What is 571 + 396?"
+   },
+   {
+    "expression": "13 * 9",
+    "gold": "C",
+    "id": "heldout-117",
+    "options": [
+     "116",
+     "127",
+     "117",
+     "126"
+    ],
+    "question": "What is 13 * 9?"
+   },
+   {
+    "expression": "94 * 5",
+    "gold": "C",
+    "id": "heldout-118",
+    "options": [
+     "480",
+     "481",
+     "470",
+     "461"
+    ],
+    "question": "What is 94 * 5?"
+   },
+   {
+    "expression": "785 + 685",
+    "gold": "C",
+    "id": "heldout-119",
+    "options": [
+     "1461",
+     "1472",
+     "1470",
+     "1480"
+    ],
+    "question": "What is 785 + 685?"
+   },
+   {
+    "expression": "81 * 4",
+    "gold": "C",
+    "id": "heldout-120",
+    "options": [
+     "333",
+     "322",
+     "324",
+     "314"
+    ],
+    "question": "What is 81 * 4?"
+   },
+   {
+    "expression": "749 + 497",
+    "gold": "B",
+    "id": "heldout-121",
+    "options": [
+     "1256",
+     "1246",
+     "1236",
+     "1235"
+    ],
+    "question": "What is 749 + 497?"
+   },
+   {
+    "expression": "41 * 9",
+    "gold": "D",
+    "id": "heldout-122",
+    "options": [
+     "370",
+     "367",
+     "379",
+     "369"
+    ],
+    "question": "What is 41 * 9?"
+   },
+   {
+    "expression": "54 * 4",
+    "gold": "B",
+    "id": "heldout-123",
+    "options": [
+     "226",
+     "216",
+     "227",
+     "218"
+    ],
+    "question": "What is 54 * 4?"
+   },
+   {
+    "expression": "26 * 3",
+    "gold": "A",
+    "id": "heldout-124",
+    "options": [
+     "78",
+     "77",
+     "87",
+     "88"
+    ],
+    "question": "What is 26 * 3?"
+   },
+   {
+    "expression": "890 + 678",
+    "gold": "C",
+    "id": "heldout-125",
+    "options": [
+     "1566",
+     "1558",
+     "1568",
+     "1577"
+    ],
+    "question": "What is 890 + 678?"
+   },
+   {
+    "expression": "76 * 7",
+    "gold": "A",
+    "id": "heldout-126",
+    "options": [
+     "532",
+     "541",
+     "533",
+     "543"
+    ],
+    "question": "What is 76 * 7?"
+   },
+   {
+    "expression": "97 * 3",
+    "gold": "B",
+    "id": "heldout-127",
+    "options": [
+     "290",
+     "291",
+     "282",
+     "302"
+    ],
+    "question": "What is 97 * 3?"
+   },
+   {
+    "expression": "663 + 617",
+    "gold": "B",
+    "id": "heldout-128",
+    "options": [
+     "1281",
+     "1280",
+     "1289",
+     "1282"
+    ],
+    "question": "What is 663 + 617?"
+   },
+   {
+    "expression": "228 + 750",
+    "gold": "D",
+    "id": "heldout-129",
+    "options": [
+     "979",
+     "987",
+     "977",
+     "978"
+    ],
+    "question": "What is 228 + 750?"
+   },
+   {
+    "expression": "339 + 236",
+    "gold": "D",
+    "id": "heldout-130",
+    "options": [
+     "584",
+     "566",
+     "564",
+     "575"
+    ],
+    "question": "What is 339 + 236?"
+   },
+   {
+    "expression": "658 + 217",
+    "gold": "D",
+    "id": "heldout-131",
+    "options": [
+     "876",
+     "873",
+     "885",
+     "875"
+    ],
+    "question": "What is 658 + 217?"
+   },
+   {
+    "expression": "21 * 9",
+    "gold": "B",
+    "id": "heldout-132",
+    "options": [
+     "191",
+     "189",
+     "178",
+     "187"
+    ],
+    "question": "What is 21 * 9?"
+   },
+   {
+    "expression": "55 * 5",
+    "gold": "C",
+    "id": "heldout-133",
+    "options": [
+     "265",
+     "277",
+     "275",
+     "285"
+    ],
+    "question": "What is 55 * 5?"
+   },
+   {
+    "expression": "17 * 5",
+    "gold": "C",
+    "id": "heldout-134",
+    "options": [
+     "86",
+     "87",
+     "85",
+     "83"
+    ],
+    "question": "What is 17 * 5?"
+   },
+   {
+    "expression": "319 + 331",
+    "gold": "A",
+    "id": "heldout-135",
+    "options": [
+     "650",
+     "648",
+     "641",
+     "660"
+    ],
+    "question": "What is 319 + 331?"
+   },
+   {
+    "expression": "668 + 338",
+    "gold": "A",
+    "id": "heldout-136",
+    "options": [
+     "1006",
+     "996",
+     "1015",
+     "1005"
+    ],
+    "question": "What is 668 + 338?"
+   },
+   {
+    "expression": "820 + 792",
+    "gold": "D",
+    "id": "heldout-137",
+    "options": [
+     "1622",
+     "1601",
+     "1603",
+     "1612"
+    ],
+    "question": "What is 820 + 792?"
+   },
+   {
+    "expression": "490 + 600",
+    "gold": "C",
+    "id": "heldout-138",
+    "options": [
+     "1080",
+     "1092",
+     "1090",
+     "1079"
+    ],
+    "question": "What is 490 + 600?"
+   },
+   {
+    "expression": "82 * 6",
+    "gold": "D",
+    "id": "heldout-139",
+    "options": [
+     "481",
+     "503",
+     "501",
+     "492"
+    ],
+    "question": "What is 82 * 6?"
+   },
+   {
+    "expression": "517 + 565",
+    "gold": "C",
+    "id": "heldout-140",
+    "options": [
+     "1083",
+     "1071",
+     "1082",
+     "1081"
+    ],
+    "question": "What is 517 + 565?"
+   },
+   {
+    "expression": "466 + 492",
+    "gold": "A",
+    "id": "heldout-141",
+    "options": [
+     "958",
+     "969",
+     "948",
+     "957"
+    ],
+    "question": "What is 466 + 492?"
+   },
+   {
+    "expression": "692 + 247",
+    "gold": "A",
+    "id": "heldout-142",
+    "options": [
+     "939",
+     "929",
+     "950",
+     "930"
+    ],
+    "question": "What is 692 + 247?"
+   },
+   {
+    "expression": "24 * 8",
+    "gold": "C",
+    "id": "heldout-143",
+    "options": [
+     "181",
+     "183",
+     "192",
+     "193"
+    ],
+    "question": "What is 24 * 8?"
+   },
+   {
+    "expression": "687 + 793",
+    "gold": "C",
+    "id": "heldout-144",
+    "options": [
+     "1482",
+     "1490",
+     "1480",
+     "1478"
+    ],
+    "question": "What is 687 + 793?"
+   },
+   {
+    "expression": "603 + 280",
+    "gold": "C",
+    "id": "heldout-145",
+    "options": [
+     "892",
+     "885",
+     "883",
+     "893"
+    ],
+    "question": "What is 603 + 280?"
+   },
+   {
+    "expression": "535 + 300",
+    "gold": "B",
+    "id": "heldout-146",
+    "options": [
+     "826",
+     "835",
+     "824",
+     "837"
+    ],
+    "question": "What is 535 + 300?"
+   },
+   {
+    "expression": "37 * 9",
+    "gold": "A",
+    "id": "heldout-147",
+    "options": [
+     "333",
+     "344",
+     "334",
+     "323"
+    ],
+    "question": "What is 37 * 9?"
+   },
+   {
+    "expression": "339 + 766",
+    "gold": "A",
+    "id": "heldout-148",
+    "options": [
+     "1105",
+     "1094",
+     "1103",
+     "1114"
+    ],
+    "question": "What is 339 + 766?"
+   },
+   {
+    "expression": "20 * 4",
+    "gold": "D",
+    "id": "heldout-149",
+    "options": [
+     "70",
+     "79",
+     "90",
+     "80"
+    ],
+    "question": "What is 20 * 4?"
+   },
+   {
+    "expression": "90 * 3",
+    "gold": "B",
+    "id": "heldout-150",
+    "options": [
+     "280",
+     "270",
+     "259",
+     "271"
+    ],
+    "question": "What is 90 * 3?"
+   },
+   {
+    "expression": "77 * 9",
+    "gold": "C",
+    "id": "heldout-151",
+    "options": [
+     "694",
+     "695",
+     "693",
+     "704"
+    ],
+    "question": "What is 77 * 9?"
+   },
+   {
+    "expression": "693 + 558",
+    "gold": "C",
+    "id": "heldout-152",
+    "options": [
+     "1252",
+     "1250",
+     "1251",
+     "1249"
+    ],
+    "question": "What is 693 + 558?"
+   },
+   {
+    "expression": "85 * 7",
+    "gold": "C",
+    "id": "heldout-153",
+    "options": [
+     "594",
+     "605",
+     "595",
+     "584"
+    ],
+    "question": "What is 85 * 7?"
+   },
+   {
+    "expression": "169 + 387",
+    "gold": "C",
+    "id": "heldout-154",
+    "options": [
+     "566",
+     "565",
+     "556",
+     "567"
+    ],
+    "question": "What is 169 + 387?"
+   },
+   {
+    "expression": "863 + 819",
+    "gold": "D",
+    "id": "heldout-155",
+    "options": [
+     "1684",
+     "1692",
+     "1680",
+     "1682"
+    ],
+    "question": "What is 863 + 819?"
+   },
+   {
+    "expression": "211 + 339",
+    "gold": "B",
+    "id": "heldout-156",
+    "options": [
+     "552",
+     "550",
+     "541",
+     "551"
+    ],
+    "question": "What is 211 + 339?"
+   },
+   {
+    "expression": "89 * 5",
+    "gold": "B",
+    "id": "heldout-157",
+    "options": [
+     "456",
+     "445",
+     "443",
+     "447"
+    ],
+    "question": "What is 89 * 5?"
+   },
+   {
+    "expression": "93 * 5",
+    "gold": "A",
+    "id": "heldout-158",
+    "options": [
+     "465",
+     "463",
+     "467",
+     "475"
+    ],
+    "question": "What is 93 * 5?"
+   },
+   {
+    "expression": "31 * 3",
+    "gold": "A",
+    "id": "heldout-159",
+    "options": [
+     "93",
+     "94",
+     "84",
+     "91"
+    ],
+    "question": "What is 31 * 3?"
+   },
+   {
+    "expression": "90 * 9",
+    "gold": "D",
+    "id": "heldout-160",
+    "options": [
+     "809",
+     "812",
+     "801",
+     "810"
+    ],
+    "question": "What is 90 * 9?"
+   },
+   {
+    "expression": "377 + 741",
+    "gold": "B",
+    "id": "heldout-161",
+    "options": [
+     "1129",
+     "1118",
+     "1120",
+     "1127"
+    ],
+    "question": "What is 377 + 741?"
+   },
+   {
+    "expression": "87 * 5",
+    "gold": "C",
+    "id": "heldout-162",
+    "options": [
+     "425",
+     "436",
+     "435",
+     "437"
+    ],
+    "question": "What is 87 * 5?"
+   },
+   {
+    "expression": "54 * 8",
+    "gold": "B",
+    "id": "heldout-163",
+    "options": [
+     "434",
+     "432",
+     "443",
+     "433"
+    ],
+    "question": "What is 54 * 8?"
+   },
+   {
+    "expression": "817 + 738",
+    "gold": "A",
+    "id": "heldout-164",
+    "options": [
+     "1555",
+     "1565",
+     "1546",
+     "1553"
+    ],
+    "question": "What is 817 + 738?"
+   },
+   {
+    "expression": "184 + 607",
+    "gold": "B",
+    "id": "heldout-165",
+    "options": [
+     "789",
+     "791",
+     "793",
+     "801"
+    ],
+    "question": "What is 184 + 607?"
+   },
+   {
+    "expression": "29 * 7",
+    "gold": "C",
+    "id": "heldout-166",
+    "options": [
+     "201",
+     "212",
+     "203",
+     "205"
+    ],
+    "question": "What is 29 * 7?"
+   },
+   {
+    "expression": "191 + 891",
+    "gold": "A",
+    "id": "heldout-167",
+    "options": [
+     "1082",
+     "1072",
+     "1084",
+     "1081"
+    ],
+    "question": "What is 191 + 891?"
+   },
+   {
+    "expression": "25 * 7",
+    "gold": "C",
+    "id": "heldout-168",
+    "options": [
+     "173",
+     "177",
+     "175",
+     "165"
+    ],
+    "question": "What is 25 * 7?"
+   },
+   {
+    "expression": "88 * 4",
+    "gold": "C",
+    "id": "heldout-169",
+    "options": [
+     "342",
+     "341",
+     "352",
+     "362"
+    ],
+    "question": "What is 88 * 4?"
+   },
+   {
+    "expression": "134 + 590",
+    "gold": "D",
+    "id": "heldout-170",
+    "options": [
+     "714",
+     "733",
+     "734",
+     "724"
+    ],
+    "question": "What is 134 + 590?"
+   },
+   {
+    "expression": "89 * 4",
+    "gold": "A",
+    "id": "heldout-171",
+    "options": [
+     "356",
+     "365",
+     "357",
+     "345"
+    ],
+    "question": "What is 89 * 4?"
+   },
+   {
+    "expression": "56 * 8",
+    "gold": "B",
+    "id": "heldout-172",
+    "options": [
+     "457",
+     "448",
+     "447",
+     "437"
+    ],
+    "question": "What is 56 * 8?"
+   },
+   {
+    "expression": "335 + 397",
+    "gold": "B",
+    "id": "heldout-173",
+    "options": [
+     "730",
+     "732",
+     "742",
+     "723"
+    ],
+    "question": "What is 335 + 397?"
+   },
+   {
+    "expression": "100 + 644",
+    "gold": "B",
+    "id": "heldout-174",
+    "options": [
+     "745",
+     "744",
+     "753",
+     "746"
+    ],
+    "question": "What is 100 + 644?"
+   },
+   {
+    "expression": "690 + 766",
+    "gold": "A",
+    "id": "heldout-175",
+    "options": [
+     "1456",
+     "1455",
+     "1467",
+     "1457"
+    ],
+    "question": "What is 690 + 766?"
+   },
+   {
+    "expression": "325 + 529",
+    "gold": "C",
+    "id": "heldout-176",
+    "options": [
+     "844",
+     "843",
+     "854",
+     "852"
+    ],
+    "question": "What is 325 + 529?"
+   },
+   {
+    "expression": "20 * 9",
+    "gold": "A",
+    "id": "heldout-177",
+    "options": [
+     "180",
+     "189",
+     "191",
+     "171"
+    ],
+    "question": "What is 20 * 9?"
+   },
+   {
+    "expression": "21 * 6",
+    "gold": "A",
+    "id": "heldout-178",
+    "options": [
+     "126",
+     "137",
+     "135",
+     "116"
+    ],
+    "question": "What is 21 * 6?"
+   },
+   {
+    "expression": "71 * 6",
+    "gold": "B",
+    "id": "heldout-179",
+    "options": [
+     "427",
+     "426",
+     "437",
+     "425"
+    ],
+    "question": "What is 71 * 6?"
+   },
+   {
+    "expression": "474 + 742",
+    "gold": "D",
+    "id": "heldout-180",
+    "options": [
+     "1215",
+     "1226",
+     "1206",
+     "1216"
+    ],
+    "question": "What is 474 + 742?"
+   },
+   {
+    "expression": "453 + 220",
+    "gold": "C",
+    "id": "heldout-181",
+    "options": [
+     "672",
+     "683",
+     "673",
+     "662"
+    ],
+    "question": "What is 453 + 220?"
+   },
+   {
+    "expression": "72 * 3",
+    "gold": "D",
+    "id": "heldout-182",
+    "options": [
+     "215",
+     "206",
+     "214",
+     "216"
+    ],
+    "question": "What is 72 * 3?"
+   },
+   {
+    "expression": "63 * 9",
+    "gold": "A",
+    "id": "heldout-183",
+    "options": [
+     "567",
+     "577",
+     "557",
+     "568"
+    ],
+    "question": "What is 63 * 9?"
+   },
+   {
+    "expression": "888 + 297",
+    "gold": "B",
+    "id": "heldout-184",
+    "options": [
+     "1196",
+     "1185",
+     "1183",
+     "1186"
+    ],
+    "question": "What is 888 + 297?"
+   },
+   {
+    "expression": "415 + 149",
+    "gold": "D",
+    "id": "heldout-185",
+    "options": [
+     "565",
+     "554",
+     "553",
+     "564"
+    ],
+    "question": "What is 415 + 149?"
+   },
+   {
+    "expression": "27 * 8",
+    "gold": "B",
+    "id": "heldout-186",
+    "options": [
+     "226",
+     "216",
+     "218",
+     "227"
+    ],
+    "question": "What is 27 * 8?"
+   },
+   {
+    "expression": "48 * 4",
+    "gold": "A",
+    "id": "heldout-187",
+    "options": [
+     "192",
+     "191",
+     "194",
+     "183"
+    ],
+    "question": "What is 48 * 4?"
+   },
+   {
+    "expression": "47 * 6",
+    "gold": "C",
+    "id": "heldout-188",
+    "options": [
+     "272",
+     "273",
+     "282",
+     "293"
+    ],
+    "question": "What is 47 * 6?"
+   },
+   {
+    "expression": "317 + 767",
+    "gold": "D",
+    "id": "heldout-189",
+    "options": [
+     "1094",
+     "1085",
+     "1093",
+     "1084"
+    ],
+    "question": "What is 317 + 767?"
+   },
+   {
+    "expression": "227 + 184",
+    "gold": "C",
+    "id": "heldout-190",
+    "options": [
+     "409",
+     "401",
+     "411",
+     "413"
+    ],
+    "question": "What is 227 + 184?"
+   },
+   {
+    "expression": "749 + 687",
+    "gold": "C",
+    "id": "heldout-191",
+    "options": [
+     "1426",
+     "1435",
+     "1436",
+     "1434"
+    ],
+    "question": "What is 749 + 687?"
+   },
+   {
+    "expression": "50 * 3",
+    "gold": "C",
+    "id": "heldout-192",
+    "options": [
+     "159",
+     "161",
+     "150",
+     "149"
+    ],
+    "question": "What is 50 * 3?"
+   },
+   {
+    "expression": "349 + 810",
+    "gold": "D",
+    "id": "heldout-193",
+    "options": [
+     "1150",
+     "1148",
+     "1160",
+     "1159"
+    ],
+    "question": "What is 349 + 810?"
+   },
+   {
+    "expression": "41 * 8",
+    "gold": "C",
+    "id": "heldout-194",
+    "options": [
+     "326",
+     "338",
+     "328",
+     "318"
+    ],
+    "question": "What is 41 * 8?"
+   },
+   {
+    "expression": "448 + 265",
+    "gold": "C",
+    "id": "heldout-195",
+    "options": [
+     "714",
+     "724",
+     "713",
+     "715"
+    ],
+    "question": "What is 448 + 265?"
+   },
+   {
+    "expression": "47 * 3",
+    "gold": "B",
+    "id": "heldout-196",
+    "options": [
+     "151",
+     "141",
+     "131",
+     "130"
+    ],
+    "question": "What is 47 * 3?"
+   },
+   {
+    "expression": "82 * 4",
+    "gold": "A",
+    "id": "heldout-197",
+    "options": [
+     "328",
+     "329",
+     "339",
+     "338"
+    ],
+    "question": "What is 82 * 4?"
+   },
+   {
+    "expression": "44 * 8",
+    "gold": "B",
+    "id": "heldout-198",
+    "options": [
+     "342",
+     "352",
+     "341",
+     "362"
+    ],
+    "question": "What is 44 * 8?"
+   },
+   {
+    "expression": "404 + 157",
+    "gold": "D",
+    "id": "heldout-199",
+    "options": [
+     "559",
+     "570",
+     "551",
+     "561"
+    ],
+    "question": "What is 404 + 157?"
+   }
+  ],
+  "smoke": [
+   {
+    "expression": "669 + 254",
+    "gold": "C",
+    "id": "smoke-000",
+    "options": [
+     "922",
+     "921",
+     "923",
+     "913"
+    ],
+    "question": "What is 669 + 254?"
+   },
+   {
+    "expression": "41 * 5",
+    "gold": "D",
+    "id": "smoke-001",
+    "options": [
+     "216",
+     "206",
+     "194",
+     "205"
+    ],
+    "question": "What is 41 * 5?"
+   },
+   {
+    "expression": "897 + 378",
+    "gold": "A",
+    "id": "smoke-002",
+    "options": [
+     "1275",
+     "1285",
+     "1266",
+     "1284"
+    ],
+    "question": "What is 897 + 378?"
+   },
+   {
+    "expression": "234 + 367",
+    "gold": "A",
+    "id": "smoke-003",
+    "options": [
+     "601",
+     "600",
+     "603",
+     "612"
+    ],
+    "question": "What is 234 + 367?"
+   },
+   {
+    "expression": "42 * 8",
+    "gold": "C",
+    "id": "smoke-004",
+    "options": [
+     "334",
+     "346",
+     "336",
+     "325"
+    ],
+    "question": "What is 42 * 8?"
+   },
+   {
+    "expression": "768 + 859",
+    "gold": "A",
+    "id": "smoke-005",
+    "options": [
+     "1627",
+     "1617",
+     "1629",
+     "1638"
+    ],
+    "question": "What is 768 + 859?"
+   },
+   {
+    "expression": "835 + 517",
+    "gold": "B",
+    "id": "smoke-006",
+    "options": [
+     "1350",
+     "1352",
+     "1342",
+     "1353"
+    ],
+    "question": "What is 835 + 517?"
+   },
+   {
+    "expression": "30 * 8",
+    "gold": "A",
+    "id": "smoke-007",
+    "options": [
+     "240",
+     "242",
+     "251",
+     "250"
+    ],
+    "question": "What is 30 * 8?"
+   }
+  ]
+ },
+ "train": {
+  "101": [
+   {
+    "corrupt_at_p075": false,
+    "expression": "36 * 7",
+    "gold": "B",
+    "id": "train101-000",
+    "options": [
+     "241",
+     "252",
+     "261",
+     "253"
+    ],
+    "question": "What is 36 * 7?",
+    "wrong_letter": "A",
+    "z_correct": "36 * 7 = 252. Answer: B",
+    "z_wrong": "36 * 7 = 241. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "74 * 8",
+    "gold": "D",
+    "id": "train101-001",
+    "options": [
+     "593",
+     "601",
+     "590",
+     "592"
+    ],
+    "question": "What is 74 * 8?",
+    "wrong_letter": "C",
+    "z_correct": "74 * 8 = 592. Answer: D",
+    "z_wrong": "74 * 8 = 590. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "555 + 888",
+    "gold": "B",
+    "id": "train101-002",
+    "options": [
+     "1444",
+     "1443",
+     "1453",
+     "1441"
+    ],
+    "question": "What is 555 + 888?",
+    "wrong_letter": "D",
+    "z_correct": "555 + 888 = 1443. Answer: B",
+    "z_wrong": "555 + 888 = 1441. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "63 * 6",
+    "gold": "B",
+    "id": "train101-003",
+    "options": [
+     "368",
+     "378",
+     "376",
+     "380"
+    ],
+    "question": "What is 63 * 6?",
+    "wrong_letter": "C",
+    "z_correct": "63 * 6 = 378. Answer: B",
+    "z_wrong": "63 * 6 = 376. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "739 + 796",
+    "gold": "C",
+    "id": "train101-004",
+    "options": [
+     "1534",
+     "1536",
+     "1535",
+     "1537"
+    ],
+    "question": "What is 739 + 796?",
+    "wrong_letter": "A",
+    "z_correct": "739 + 796 = 1535. Answer: C",
+    "z_wrong": "739 + 796 = 1534. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "862 + 784",
+    "gold": "B",
+    "id": "train101-005",
+    "options": [
+     "1655",
+     "1646",
+     "1635",
+     "1648"
+    ],
+    "question": "What is 862 + 784?",
+    "wrong_letter": "D",
+    "z_correct": "862 + 784 = 1646. Answer: B",
+    "z_wrong": "862 + 784 = 1648. Answer: D"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "122 + 479",
+    "gold": "C",
+    "id": "train101-006",
+    "options": [
+     "590",
+     "600",
+     "601",
+     "602"
+    ],
+    "question": "What is 122 + 479?",
+    "wrong_letter": "A",
+    "z_correct": "122 + 479 = 601. Answer: C",
+    "z_wrong": "122 + 479 = 590. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "167 + 881",
+    "gold": "C",
+    "id": "train101-007",
+    "options": [
+     "1050",
+     "1039",
+     "1048",
+     "1049"
+    ],
+    "question": "What is 167 + 881?",
+    "wrong_letter": "B",
+    "z_correct": "167 + 881 = 1048. Answer: C",
+    "z_wrong": "167 + 881 = 1039. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "80 * 8",
+    "gold": "B",
+    "id": "train101-008",
+    "options": [
+     "651",
+     "640",
+     "630",
+     "649"
+    ],
+    "question": "What is 80 * 8?",
+    "wrong_letter": "A",
+    "z_correct": "80 * 8 = 640. Answer: B",
+    "z_wrong": "80 * 8 = 651. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "37 * 8",
+    "gold": "D",
+    "id": "train101-009",
+    "options": [
+     "305",
+     "306",
+     "287",
+     "296"
+    ],
+    "question": "What is 37 * 8?",
+    "wrong_letter": "A",
+    "z_correct": "37 * 8 = 296. Answer: D",
+    "z_wrong": "37 * 8 = 305. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "169 + 161",
+    "gold": "C",
+    "id": "train101-010",
+    "options": [
+     "340",
+     "341",
+     "330",
+     "331"
+    ],
+    "question": "What is 169 + 161?",
+    "wrong_letter": "B",
+    "z_correct": "169 + 161 = 330. Answer: C",
+    "z_wrong": "169 + 161 = 341. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "435 + 192",
+    "gold": "C",
+    "id": "train101-011",
+    "options": [
+     "618",
+     "626",
+     "627",
+     "638"
+    ],
+    "question": "What is 435 + 192?",
+    "wrong_letter": "D",
+    "z_correct": "435 + 192 = 627. Answer: C",
+    "z_wrong": "435 + 192 = 638. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "426 + 350",
+    "gold": "D",
+    "id": "train101-012",
+    "options": [
+     "775",
+     "766",
+     "767",
+     "776"
+    ],
+    "question": "What is 426 + 350?",
+    "wrong_letter": "C",
+    "z_correct": "426 + 350 = 776. Answer: D",
+    "z_wrong": "426 + 350 = 767. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "70 * 8",
+    "gold": "A",
+    "id": "train101-013",
+    "options": [
+     "560",
+     "549",
+     "561",
+     "571"
+    ],
+    "question": "What is 70 * 8?",
+    "wrong_letter": "D",
+    "z_correct": "70 * 8 = 560. Answer: A",
+    "z_wrong": "70 * 8 = 571. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "473 + 512",
+    "gold": "D",
+    "id": "train101-014",
+    "options": [
+     "987",
+     "974",
+     "983",
+     "985"
+    ],
+    "question": "What is 473 + 512?",
+    "wrong_letter": "C",
+    "z_correct": "473 + 512 = 985. Answer: D",
+    "z_wrong": "473 + 512 = 983. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "58 * 7",
+    "gold": "A",
+    "id": "train101-015",
+    "options": [
+     "406",
+     "416",
+     "404",
+     "397"
+    ],
+    "question": "What is 58 * 7?",
+    "wrong_letter": "D",
+    "z_correct": "58 * 7 = 406. Answer: A",
+    "z_wrong": "58 * 7 = 397. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "408 + 852",
+    "gold": "A",
+    "id": "train101-016",
+    "options": [
+     "1260",
+     "1258",
+     "1262",
+     "1259"
+    ],
+    "question": "What is 408 + 852?",
+    "wrong_letter": "C",
+    "z_correct": "408 + 852 = 1260. Answer: A",
+    "z_wrong": "408 + 852 = 1262. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "827 + 309",
+    "gold": "D",
+    "id": "train101-017",
+    "options": [
+     "1147",
+     "1145",
+     "1125",
+     "1136"
+    ],
+    "question": "What is 827 + 309?",
+    "wrong_letter": "A",
+    "z_correct": "827 + 309 = 1136. Answer: D",
+    "z_wrong": "827 + 309 = 1147. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "90 * 4",
+    "gold": "B",
+    "id": "train101-018",
+    "options": [
+     "369",
+     "360",
+     "370",
+     "349"
+    ],
+    "question": "What is 90 * 4?",
+    "wrong_letter": "D",
+    "z_correct": "90 * 4 = 360. Answer: B",
+    "z_wrong": "90 * 4 = 349. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "91 * 9",
+    "gold": "A",
+    "id": "train101-019",
+    "options": [
+     "819",
+     "820",
+     "809",
+     "828"
+    ],
+    "question": "What is 91 * 9?",
+    "wrong_letter": "C",
+    "z_correct": "91 * 9 = 819. Answer: A",
+    "z_wrong": "91 * 9 = 809. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "106 + 344",
+    "gold": "B",
+    "id": "train101-020",
+    "options": [
+     "440",
+     "450",
+     "448",
+     "451"
+    ],
+    "question": "What is 106 + 344?",
+    "wrong_letter": "C",
+    "z_correct": "106 + 344 = 450. Answer: B",
+    "z_wrong": "106 + 344 = 448. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "34 * 8",
+    "gold": "C",
+    "id": "train101-021",
+    "options": [
+     "281",
+     "270",
+     "272",
+     "283"
+    ],
+    "question": "What is 34 * 8?",
+    "wrong_letter": "A",
+    "z_correct": "34 * 8 = 272. Answer: C",
+    "z_wrong": "34 * 8 = 281. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "77 * 4",
+    "gold": "B",
+    "id": "train101-022",
+    "options": [
+     "298",
+     "308",
+     "297",
+     "318"
+    ],
+    "question": "What is 77 * 4?",
+    "wrong_letter": "D",
+    "z_correct": "77 * 4 = 308. Answer: B",
+    "z_wrong": "77 * 4 = 318. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "73 * 4",
+    "gold": "B",
+    "id": "train101-023",
+    "options": [
+     "282",
+     "292",
+     "303",
+     "281"
+    ],
+    "question": "What is 73 * 4?",
+    "wrong_letter": "A",
+    "z_correct": "73 * 4 = 292. Answer: B",
+    "z_wrong": "73 * 4 = 282. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "50 * 5",
+    "gold": "C",
+    "id": "train101-024",
+    "options": [
+     "241",
+     "248",
+     "250",
+     "252"
+    ],
+    "question": "What is 50 * 5?",
+    "wrong_letter": "A",
+    "z_correct": "50 * 5 = 250. Answer: C",
+    "z_wrong": "50 * 5 = 241. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "42 * 5",
+    "gold": "C",
+    "id": "train101-025",
+    "options": [
+     "208",
+     "219",
+     "210",
+     "212"
+    ],
+    "question": "What is 42 * 5?",
+    "wrong_letter": "D",
+    "z_correct": "42 * 5 = 210. Answer: C",
+    "z_wrong": "42 * 5 = 212. Answer: D"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "268 + 607",
+    "gold": "C",
+    "id": "train101-026",
+    "options": [
+     "884",
+     "873",
+     "875",
+     "886"
+    ],
+    "question": "What is 268 + 607?",
+    "wrong_letter": "B",
+    "z_correct": "268 + 607 = 875. Answer: C",
+    "z_wrong": "268 + 607 = 873. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "139 + 329",
+    "gold": "D",
+    "id": "train101-027",
+    "options": [
+     "478",
+     "479",
+     "467",
+     "468"
+    ],
+    "question": "What is 139 + 329?",
+    "wrong_letter": "A",
+    "z_correct": "139 + 329 = 468. Answer: D",
+    "z_wrong": "139 + 329 = 478. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "778 + 840",
+    "gold": "C",
+    "id": "train101-028",
+    "options": [
+     "1627",
+     "1629",
+     "1618",
+     "1619"
+    ],
+    "question": "What is 778 + 840?",
+    "wrong_letter": "B",
+    "z_correct": "778 + 840 = 1618. Answer: C",
+    "z_wrong": "778 + 840 = 1629. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "23 * 4",
+    "gold": "D",
+    "id": "train101-029",
+    "options": [
+     "93",
+     "101",
+     "81",
+     "92"
+    ],
+    "question": "What is 23 * 4?",
+    "wrong_letter": "C",
+    "z_correct": "23 * 4 = 92. Answer: D",
+    "z_wrong": "23 * 4 = 81. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "337 + 102",
+    "gold": "C",
+    "id": "train101-030",
+    "options": [
+     "441",
+     "430",
+     "439",
+     "448"
+    ],
+    "question": "What is 337 + 102?",
+    "wrong_letter": "D",
+    "z_correct": "337 + 102 = 439. Answer: C",
+    "z_wrong": "337 + 102 = 448. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "776 + 863",
+    "gold": "A",
+    "id": "train101-031",
+    "options": [
+     "1639",
+     "1640",
+     "1638",
+     "1648"
+    ],
+    "question": "What is 776 + 863?",
+    "wrong_letter": "B",
+    "z_correct": "776 + 863 = 1639. Answer: A",
+    "z_wrong": "776 + 863 = 1640. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "29 * 9",
+    "gold": "C",
+    "id": "train101-032",
+    "options": [
+     "270",
+     "252",
+     "261",
+     "271"
+    ],
+    "question": "What is 29 * 9?",
+    "wrong_letter": "B",
+    "z_correct": "29 * 9 = 261. Answer: C",
+    "z_wrong": "29 * 9 = 252. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "79 * 3",
+    "gold": "D",
+    "id": "train101-033",
+    "options": [
+     "227",
+     "226",
+     "247",
+     "237"
+    ],
+    "question": "What is 79 * 3?",
+    "wrong_letter": "A",
+    "z_correct": "79 * 3 = 237. Answer: D",
+    "z_wrong": "79 * 3 = 227. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "740 + 481",
+    "gold": "B",
+    "id": "train101-034",
+    "options": [
+     "1212",
+     "1221",
+     "1232",
+     "1220"
+    ],
+    "question": "What is 740 + 481?",
+    "wrong_letter": "C",
+    "z_correct": "740 + 481 = 1221. Answer: B",
+    "z_wrong": "740 + 481 = 1232. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "70 * 5",
+    "gold": "D",
+    "id": "train101-035",
+    "options": [
+     "351",
+     "341",
+     "352",
+     "350"
+    ],
+    "question": "What is 70 * 5?",
+    "wrong_letter": "A",
+    "z_correct": "70 * 5 = 350. Answer: D",
+    "z_wrong": "70 * 5 = 351. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "80 * 7",
+    "gold": "D",
+    "id": "train101-036",
+    "options": [
+     "571",
+     "551",
+     "562",
+     "560"
+    ],
+    "question": "What is 80 * 7?",
+    "wrong_letter": "C",
+    "z_correct": "80 * 7 = 560. Answer: D",
+    "z_wrong": "80 * 7 = 562. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "361 + 833",
+    "gold": "B",
+    "id": "train101-037",
+    "options": [
+     "1185",
+     "1194",
+     "1205",
+     "1204"
+    ],
+    "question": "What is 361 + 833?",
+    "wrong_letter": "C",
+    "z_correct": "361 + 833 = 1194. Answer: B",
+    "z_wrong": "361 + 833 = 1205. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "412 + 288",
+    "gold": "A",
+    "id": "train101-038",
+    "options": [
+     "700",
+     "711",
+     "691",
+     "710"
+    ],
+    "question": "What is 412 + 288?",
+    "wrong_letter": "B",
+    "z_correct": "412 + 288 = 700. Answer: A",
+    "z_wrong": "412 + 288 = 711. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "33 * 5",
+    "gold": "D",
+    "id": "train101-039",
+    "options": [
+     "164",
+     "155",
+     "156",
+     "165"
+    ],
+    "question": "What is 33 * 5?",
+    "wrong_letter": "C",
+    "z_correct": "33 * 5 = 165. Answer: D",
+    "z_wrong": "33 * 5 = 156. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "373 + 335",
+    "gold": "B",
+    "id": "train101-040",
+    "options": [
+     "710",
+     "708",
+     "706",
+     "699"
+    ],
+    "question": "What is 373 + 335?",
+    "wrong_letter": "D",
+    "z_correct": "373 + 335 = 708. Answer: B",
+    "z_wrong": "373 + 335 = 699. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "86 * 5",
+    "gold": "A",
+    "id": "train101-041",
+    "options": [
+     "430",
+     "441",
+     "432",
+     "431"
+    ],
+    "question": "What is 86 * 5?",
+    "wrong_letter": "C",
+    "z_correct": "86 * 5 = 430. Answer: A",
+    "z_wrong": "86 * 5 = 432. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "392 + 628",
+    "gold": "D",
+    "id": "train101-042",
+    "options": [
+     "1011",
+     "1030",
+     "1022",
+     "1020"
+    ],
+    "question": "What is 392 + 628?",
+    "wrong_letter": "C",
+    "z_correct": "392 + 628 = 1020. Answer: D",
+    "z_wrong": "392 + 628 = 1022. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "797 + 505",
+    "gold": "A",
+    "id": "train101-043",
+    "options": [
+     "1302",
+     "1293",
+     "1301",
+     "1291"
+    ],
+    "question": "What is 797 + 505?",
+    "wrong_letter": "D",
+    "z_correct": "797 + 505 = 1302. Answer: A",
+    "z_wrong": "797 + 505 = 1291. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "826 + 730",
+    "gold": "A",
+    "id": "train101-044",
+    "options": [
+     "1556",
+     "1547",
+     "1546",
+     "1557"
+    ],
+    "question": "What is 826 + 730?",
+    "wrong_letter": "C",
+    "z_correct": "826 + 730 = 1556. Answer: A",
+    "z_wrong": "826 + 730 = 1546. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "471 + 276",
+    "gold": "A",
+    "id": "train101-045",
+    "options": [
+     "747",
+     "756",
+     "757",
+     "736"
+    ],
+    "question": "What is 471 + 276?",
+    "wrong_letter": "D",
+    "z_correct": "471 + 276 = 747. Answer: A",
+    "z_wrong": "471 + 276 = 736. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "530 + 784",
+    "gold": "B",
+    "id": "train101-046",
+    "options": [
+     "1303",
+     "1314",
+     "1323",
+     "1315"
+    ],
+    "question": "What is 530 + 784?",
+    "wrong_letter": "A",
+    "z_correct": "530 + 784 = 1314. Answer: B",
+    "z_wrong": "530 + 784 = 1303. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "58 * 5",
+    "gold": "D",
+    "id": "train101-047",
+    "options": [
+     "291",
+     "301",
+     "280",
+     "290"
+    ],
+    "question": "What is 58 * 5?",
+    "wrong_letter": "C",
+    "z_correct": "58 * 5 = 290. Answer: D",
+    "z_wrong": "58 * 5 = 280. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "328 + 381",
+    "gold": "A",
+    "id": "train101-048",
+    "options": [
+     "709",
+     "720",
+     "700",
+     "707"
+    ],
+    "question": "What is 328 + 381?",
+    "wrong_letter": "B",
+    "z_correct": "328 + 381 = 709. Answer: A",
+    "z_wrong": "328 + 381 = 720. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "695 + 205",
+    "gold": "A",
+    "id": "train101-049",
+    "options": [
+     "900",
+     "889",
+     "901",
+     "891"
+    ],
+    "question": "What is 695 + 205?",
+    "wrong_letter": "C",
+    "z_correct": "695 + 205 = 900. Answer: A",
+    "z_wrong": "695 + 205 = 901. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "88 * 5",
+    "gold": "B",
+    "id": "train101-050",
+    "options": [
+     "441",
+     "440",
+     "451",
+     "431"
+    ],
+    "question": "What is 88 * 5?",
+    "wrong_letter": "D",
+    "z_correct": "88 * 5 = 440. Answer: B",
+    "z_wrong": "88 * 5 = 431. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "162 + 124",
+    "gold": "B",
+    "id": "train101-051",
+    "options": [
+     "287",
+     "286",
+     "284",
+     "285"
+    ],
+    "question": "What is 162 + 124?",
+    "wrong_letter": "A",
+    "z_correct": "162 + 124 = 286. Answer: B",
+    "z_wrong": "162 + 124 = 287. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "798 + 416",
+    "gold": "B",
+    "id": "train101-052",
+    "options": [
+     "1213",
+     "1214",
+     "1224",
+     "1204"
+    ],
+    "question": "What is 798 + 416?",
+    "wrong_letter": "D",
+    "z_correct": "798 + 416 = 1214. Answer: B",
+    "z_wrong": "798 + 416 = 1204. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "450 + 876",
+    "gold": "A",
+    "id": "train101-053",
+    "options": [
+     "1326",
+     "1316",
+     "1328",
+     "1336"
+    ],
+    "question": "What is 450 + 876?",
+    "wrong_letter": "D",
+    "z_correct": "450 + 876 = 1326. Answer: A",
+    "z_wrong": "450 + 876 = 1336. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "257 + 120",
+    "gold": "D",
+    "id": "train101-054",
+    "options": [
+     "375",
+     "386",
+     "368",
+     "377"
+    ],
+    "question": "What is 257 + 120?",
+    "wrong_letter": "C",
+    "z_correct": "257 + 120 = 377. Answer: D",
+    "z_wrong": "257 + 120 = 368. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "797 + 261",
+    "gold": "D",
+    "id": "train101-055",
+    "options": [
+     "1048",
+     "1057",
+     "1056",
+     "1058"
+    ],
+    "question": "What is 797 + 261?",
+    "wrong_letter": "A",
+    "z_correct": "797 + 261 = 1058. Answer: D",
+    "z_wrong": "797 + 261 = 1048. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "721 + 850",
+    "gold": "B",
+    "id": "train101-056",
+    "options": [
+     "1573",
+     "1571",
+     "1582",
+     "1560"
+    ],
+    "question": "What is 721 + 850?",
+    "wrong_letter": "A",
+    "z_correct": "721 + 850 = 1571. Answer: B",
+    "z_wrong": "721 + 850 = 1573. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "38 * 4",
+    "gold": "C",
+    "id": "train101-057",
+    "options": [
+     "161",
+     "150",
+     "152",
+     "142"
+    ],
+    "question": "What is 38 * 4?",
+    "wrong_letter": "B",
+    "z_correct": "38 * 4 = 152. Answer: C",
+    "z_wrong": "38 * 4 = 150. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "638 + 727",
+    "gold": "D",
+    "id": "train101-058",
+    "options": [
+     "1366",
+     "1355",
+     "1375",
+     "1365"
+    ],
+    "question": "What is 638 + 727?",
+    "wrong_letter": "A",
+    "z_correct": "638 + 727 = 1365. Answer: D",
+    "z_wrong": "638 + 727 = 1366. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "648 + 767",
+    "gold": "B",
+    "id": "train101-059",
+    "options": [
+     "1424",
+     "1415",
+     "1406",
+     "1414"
+    ],
+    "question": "What is 648 + 767?",
+    "wrong_letter": "A",
+    "z_correct": "648 + 767 = 1415. Answer: B",
+    "z_wrong": "648 + 767 = 1424. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "785 + 561",
+    "gold": "D",
+    "id": "train101-060",
+    "options": [
+     "1337",
+     "1356",
+     "1344",
+     "1346"
+    ],
+    "question": "What is 785 + 561?",
+    "wrong_letter": "A",
+    "z_correct": "785 + 561 = 1346. Answer: D",
+    "z_wrong": "785 + 561 = 1337. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "308 + 441",
+    "gold": "D",
+    "id": "train101-061",
+    "options": [
+     "747",
+     "758",
+     "739",
+     "749"
+    ],
+    "question": "What is 308 + 441?",
+    "wrong_letter": "B",
+    "z_correct": "308 + 441 = 749. Answer: D",
+    "z_wrong": "308 + 441 = 758. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "93 * 4",
+    "gold": "D",
+    "id": "train101-062",
+    "options": [
+     "383",
+     "381",
+     "382",
+     "372"
+    ],
+    "question": "What is 93 * 4?",
+    "wrong_letter": "B",
+    "z_correct": "93 * 4 = 372. Answer: D",
+    "z_wrong": "93 * 4 = 381. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "48 * 8",
+    "gold": "D",
+    "id": "train101-063",
+    "options": [
+     "375",
+     "395",
+     "373",
+     "384"
+    ],
+    "question": "What is 48 * 8?",
+    "wrong_letter": "B",
+    "z_correct": "48 * 8 = 384. Answer: D",
+    "z_wrong": "48 * 8 = 395. Answer: B"
+   }
+  ],
+  "202": [
+   {
+    "corrupt_at_p075": true,
+    "expression": "94 * 6",
+    "gold": "C",
+    "id": "train202-000",
+    "options": [
+     "562",
+     "566",
+     "564",
+     "574"
+    ],
+    "question": "What is 94 * 6?",
+    "wrong_letter": "D",
+    "z_correct": "94 * 6 = 564. Answer: C",
+    "z_wrong": "94 * 6 = 574. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "562 + 136",
+    "gold": "B",
+    "id": "train202-001",
+    "options": [
+     "699",
+     "698",
+     "696",
+     "708"
+    ],
+    "question": "What is 562 + 136?",
+    "wrong_letter": "A",
+    "z_correct": "562 + 136 = 698. Answer: B",
+    "z_wrong": "562 + 136 = 699. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "53 * 6",
+    "gold": "D",
+    "id": "train202-002",
+    "options": [
+     "309",
+     "327",
+     "320",
+     "318"
+    ],
+    "question": "What is 53 * 6?",
+    "wrong_letter": "B",
+    "z_correct": "53 * 6 = 318. Answer: D",
+    "z_wrong": "53 * 6 = 327. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "69 * 6",
+    "gold": "B",
+    "id": "train202-003",
+    "options": [
+     "403",
+     "414",
+     "413",
+     "423"
+    ],
+    "question": "What is 69 * 6?",
+    "wrong_letter": "D",
+    "z_correct": "69 * 6 = 414. Answer: B",
+    "z_wrong": "69 * 6 = 423. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "366 + 111",
+    "gold": "D",
+    "id": "train202-004",
+    "options": [
+     "475",
+     "487",
+     "468",
+     "477"
+    ],
+    "question": "What is 366 + 111?",
+    "wrong_letter": "C",
+    "z_correct": "366 + 111 = 477. Answer: D",
+    "z_wrong": "366 + 111 = 468. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "95 * 4",
+    "gold": "C",
+    "id": "train202-005",
+    "options": [
+     "379",
+     "382",
+     "380",
+     "378"
+    ],
+    "question": "What is 95 * 4?",
+    "wrong_letter": "B",
+    "z_correct": "95 * 4 = 380. Answer: C",
+    "z_wrong": "95 * 4 = 382. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "571 + 884",
+    "gold": "A",
+    "id": "train202-006",
+    "options": [
+     "1455",
+     "1456",
+     "1444",
+     "1453"
+    ],
+    "question": "What is 571 + 884?",
+    "wrong_letter": "C",
+    "z_correct": "571 + 884 = 1455. Answer: A",
+    "z_wrong": "571 + 884 = 1444. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "52 * 3",
+    "gold": "A",
+    "id": "train202-007",
+    "options": [
+     "156",
+     "155",
+     "147",
+     "167"
+    ],
+    "question": "What is 52 * 3?",
+    "wrong_letter": "D",
+    "z_correct": "52 * 3 = 156. Answer: A",
+    "z_wrong": "52 * 3 = 167. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "34 * 5",
+    "gold": "D",
+    "id": "train202-008",
+    "options": [
+     "181",
+     "161",
+     "179",
+     "170"
+    ],
+    "question": "What is 34 * 5?",
+    "wrong_letter": "C",
+    "z_correct": "34 * 5 = 170. Answer: D",
+    "z_wrong": "34 * 5 = 179. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "260 + 752",
+    "gold": "B",
+    "id": "train202-009",
+    "options": [
+     "1023",
+     "1012",
+     "1001",
+     "1002"
+    ],
+    "question": "What is 260 + 752?",
+    "wrong_letter": "C",
+    "z_correct": "260 + 752 = 1012. Answer: B",
+    "z_wrong": "260 + 752 = 1001. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "634 + 797",
+    "gold": "C",
+    "id": "train202-010",
+    "options": [
+     "1429",
+     "1421",
+     "1431",
+     "1433"
+    ],
+    "question": "What is 634 + 797?",
+    "wrong_letter": "B",
+    "z_correct": "634 + 797 = 1431. Answer: C",
+    "z_wrong": "634 + 797 = 1421. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "75 * 4",
+    "gold": "D",
+    "id": "train202-011",
+    "options": [
+     "309",
+     "298",
+     "291",
+     "300"
+    ],
+    "question": "What is 75 * 4?",
+    "wrong_letter": "A",
+    "z_correct": "75 * 4 = 300. Answer: D",
+    "z_wrong": "75 * 4 = 309. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "339 + 184",
+    "gold": "D",
+    "id": "train202-012",
+    "options": [
+     "521",
+     "512",
+     "533",
+     "523"
+    ],
+    "question": "What is 339 + 184?",
+    "wrong_letter": "C",
+    "z_correct": "339 + 184 = 523. Answer: D",
+    "z_wrong": "339 + 184 = 533. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "51 * 4",
+    "gold": "A",
+    "id": "train202-013",
+    "options": [
+     "204",
+     "215",
+     "202",
+     "194"
+    ],
+    "question": "What is 51 * 4?",
+    "wrong_letter": "C",
+    "z_correct": "51 * 4 = 204. Answer: A",
+    "z_wrong": "51 * 4 = 202. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "27 * 5",
+    "gold": "D",
+    "id": "train202-014",
+    "options": [
+     "144",
+     "133",
+     "134",
+     "135"
+    ],
+    "question": "What is 27 * 5?",
+    "wrong_letter": "C",
+    "z_correct": "27 * 5 = 135. Answer: D",
+    "z_wrong": "27 * 5 = 134. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "59 * 7",
+    "gold": "D",
+    "id": "train202-015",
+    "options": [
+     "415",
+     "404",
+     "422",
+     "413"
+    ],
+    "question": "What is 59 * 7?",
+    "wrong_letter": "C",
+    "z_correct": "59 * 7 = 413. Answer: D",
+    "z_wrong": "59 * 7 = 422. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "36 * 9",
+    "gold": "B",
+    "id": "train202-016",
+    "options": [
+     "323",
+     "324",
+     "335",
+     "322"
+    ],
+    "question": "What is 36 * 9?",
+    "wrong_letter": "A",
+    "z_correct": "36 * 9 = 324. Answer: B",
+    "z_wrong": "36 * 9 = 323. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "55 * 9",
+    "gold": "C",
+    "id": "train202-017",
+    "options": [
+     "496",
+     "493",
+     "495",
+     "494"
+    ],
+    "question": "What is 55 * 9?",
+    "wrong_letter": "D",
+    "z_correct": "55 * 9 = 495. Answer: C",
+    "z_wrong": "55 * 9 = 494. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "139 + 408",
+    "gold": "D",
+    "id": "train202-018",
+    "options": [
+     "548",
+     "538",
+     "549",
+     "547"
+    ],
+    "question": "What is 139 + 408?",
+    "wrong_letter": "B",
+    "z_correct": "139 + 408 = 547. Answer: D",
+    "z_wrong": "139 + 408 = 538. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "69 * 5",
+    "gold": "B",
+    "id": "train202-019",
+    "options": [
+     "344",
+     "345",
+     "336",
+     "355"
+    ],
+    "question": "What is 69 * 5?",
+    "wrong_letter": "A",
+    "z_correct": "69 * 5 = 345. Answer: B",
+    "z_wrong": "69 * 5 = 344. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "45 * 9",
+    "gold": "B",
+    "id": "train202-020",
+    "options": [
+     "403",
+     "405",
+     "407",
+     "406"
+    ],
+    "question": "What is 45 * 9?",
+    "wrong_letter": "A",
+    "z_correct": "45 * 9 = 405. Answer: B",
+    "z_wrong": "45 * 9 = 403. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "122 + 742",
+    "gold": "B",
+    "id": "train202-021",
+    "options": [
+     "862",
+     "864",
+     "873",
+     "874"
+    ],
+    "question": "What is 122 + 742?",
+    "wrong_letter": "D",
+    "z_correct": "122 + 742 = 864. Answer: B",
+    "z_wrong": "122 + 742 = 874. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "852 + 320",
+    "gold": "B",
+    "id": "train202-022",
+    "options": [
+     "1170",
+     "1172",
+     "1162",
+     "1182"
+    ],
+    "question": "What is 852 + 320?",
+    "wrong_letter": "A",
+    "z_correct": "852 + 320 = 1172. Answer: B",
+    "z_wrong": "852 + 320 = 1170. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "395 + 270",
+    "gold": "A",
+    "id": "train202-023",
+    "options": [
+     "665",
+     "667",
+     "674",
+     "666"
+    ],
+    "question": "What is 395 + 270?",
+    "wrong_letter": "C",
+    "z_correct": "395 + 270 = 665. Answer: A",
+    "z_wrong": "395 + 270 = 674. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "43 * 6",
+    "gold": "C",
+    "id": "train202-024",
+    "options": [
+     "267",
+     "257",
+     "258",
+     "269"
+    ],
+    "question": "What is 43 * 6?",
+    "wrong_letter": "B",
+    "z_correct": "43 * 6 = 258. Answer: C",
+    "z_wrong": "43 * 6 = 257. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "23 * 6",
+    "gold": "A",
+    "id": "train202-025",
+    "options": [
+     "138",
+     "127",
+     "128",
+     "139"
+    ],
+    "question": "What is 23 * 6?",
+    "wrong_letter": "D",
+    "z_correct": "23 * 6 = 138. Answer: A",
+    "z_wrong": "23 * 6 = 139. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "368 + 122",
+    "gold": "A",
+    "id": "train202-026",
+    "options": [
+     "490",
+     "488",
+     "479",
+     "491"
+    ],
+    "question": "What is 368 + 122?",
+    "wrong_letter": "B",
+    "z_correct": "368 + 122 = 490. Answer: A",
+    "z_wrong": "368 + 122 = 488. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "37 * 7",
+    "gold": "A",
+    "id": "train202-027",
+    "options": [
+     "259",
+     "260",
+     "257",
+     "250"
+    ],
+    "question": "What is 37 * 7?",
+    "wrong_letter": "B",
+    "z_correct": "37 * 7 = 259. Answer: A",
+    "z_wrong": "37 * 7 = 260. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "255 + 114",
+    "gold": "A",
+    "id": "train202-028",
+    "options": [
+     "369",
+     "360",
+     "359",
+     "367"
+    ],
+    "question": "What is 255 + 114?",
+    "wrong_letter": "B",
+    "z_correct": "255 + 114 = 369. Answer: A",
+    "z_wrong": "255 + 114 = 360. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "85 * 4",
+    "gold": "C",
+    "id": "train202-029",
+    "options": [
+     "349",
+     "341",
+     "340",
+     "329"
+    ],
+    "question": "What is 85 * 4?",
+    "wrong_letter": "D",
+    "z_correct": "85 * 4 = 340. Answer: C",
+    "z_wrong": "85 * 4 = 329. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "17 * 7",
+    "gold": "D",
+    "id": "train202-030",
+    "options": [
+     "118",
+     "121",
+     "109",
+     "119"
+    ],
+    "question": "What is 17 * 7?",
+    "wrong_letter": "B",
+    "z_correct": "17 * 7 = 119. Answer: D",
+    "z_wrong": "17 * 7 = 121. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "633 + 842",
+    "gold": "D",
+    "id": "train202-031",
+    "options": [
+     "1465",
+     "1486",
+     "1476",
+     "1475"
+    ],
+    "question": "What is 633 + 842?",
+    "wrong_letter": "C",
+    "z_correct": "633 + 842 = 1475. Answer: D",
+    "z_wrong": "633 + 842 = 1476. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "671 + 521",
+    "gold": "D",
+    "id": "train202-032",
+    "options": [
+     "1190",
+     "1203",
+     "1194",
+     "1192"
+    ],
+    "question": "What is 671 + 521?",
+    "wrong_letter": "B",
+    "z_correct": "671 + 521 = 1192. Answer: D",
+    "z_wrong": "671 + 521 = 1203. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "440 + 519",
+    "gold": "B",
+    "id": "train202-033",
+    "options": [
+     "950",
+     "959",
+     "948",
+     "960"
+    ],
+    "question": "What is 440 + 519?",
+    "wrong_letter": "C",
+    "z_correct": "440 + 519 = 959. Answer: B",
+    "z_wrong": "440 + 519 = 948. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "57 * 5",
+    "gold": "B",
+    "id": "train202-034",
+    "options": [
+     "286",
+     "285",
+     "274",
+     "276"
+    ],
+    "question": "What is 57 * 5?",
+    "wrong_letter": "C",
+    "z_correct": "57 * 5 = 285. Answer: B",
+    "z_wrong": "57 * 5 = 274. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "466 + 771",
+    "gold": "D",
+    "id": "train202-035",
+    "options": [
+     "1239",
+     "1235",
+     "1248",
+     "1237"
+    ],
+    "question": "What is 466 + 771?",
+    "wrong_letter": "A",
+    "z_correct": "466 + 771 = 1237. Answer: D",
+    "z_wrong": "466 + 771 = 1239. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "51 * 6",
+    "gold": "B",
+    "id": "train202-036",
+    "options": [
+     "305",
+     "306",
+     "317",
+     "315"
+    ],
+    "question": "What is 51 * 6?",
+    "wrong_letter": "D",
+    "z_correct": "51 * 6 = 306. Answer: B",
+    "z_wrong": "51 * 6 = 315. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "18 * 6",
+    "gold": "A",
+    "id": "train202-037",
+    "options": [
+     "108",
+     "99",
+     "107",
+     "98"
+    ],
+    "question": "What is 18 * 6?",
+    "wrong_letter": "B",
+    "z_correct": "18 * 6 = 108. Answer: A",
+    "z_wrong": "18 * 6 = 99. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "426 + 696",
+    "gold": "D",
+    "id": "train202-038",
+    "options": [
+     "1113",
+     "1124",
+     "1123",
+     "1122"
+    ],
+    "question": "What is 426 + 696?",
+    "wrong_letter": "B",
+    "z_correct": "426 + 696 = 1122. Answer: D",
+    "z_wrong": "426 + 696 = 1124. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "699 + 217",
+    "gold": "C",
+    "id": "train202-039",
+    "options": [
+     "927",
+     "906",
+     "916",
+     "915"
+    ],
+    "question": "What is 699 + 217?",
+    "wrong_letter": "D",
+    "z_correct": "699 + 217 = 916. Answer: C",
+    "z_wrong": "699 + 217 = 915. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "870 + 762",
+    "gold": "A",
+    "id": "train202-040",
+    "options": [
+     "1632",
+     "1634",
+     "1633",
+     "1630"
+    ],
+    "question": "What is 870 + 762?",
+    "wrong_letter": "B",
+    "z_correct": "870 + 762 = 1632. Answer: A",
+    "z_wrong": "870 + 762 = 1634. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "264 + 678",
+    "gold": "B",
+    "id": "train202-041",
+    "options": [
+     "940",
+     "942",
+     "941",
+     "933"
+    ],
+    "question": "What is 264 + 678?",
+    "wrong_letter": "C",
+    "z_correct": "264 + 678 = 942. Answer: B",
+    "z_wrong": "264 + 678 = 941. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "74 * 6",
+    "gold": "A",
+    "id": "train202-042",
+    "options": [
+     "444",
+     "442",
+     "433",
+     "443"
+    ],
+    "question": "What is 74 * 6?",
+    "wrong_letter": "D",
+    "z_correct": "74 * 6 = 444. Answer: A",
+    "z_wrong": "74 * 6 = 443. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "77 * 7",
+    "gold": "D",
+    "id": "train202-043",
+    "options": [
+     "538",
+     "541",
+     "550",
+     "539"
+    ],
+    "question": "What is 77 * 7?",
+    "wrong_letter": "B",
+    "z_correct": "77 * 7 = 539. Answer: D",
+    "z_wrong": "77 * 7 = 541. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "13 * 8",
+    "gold": "C",
+    "id": "train202-044",
+    "options": [
+     "114",
+     "106",
+     "104",
+     "94"
+    ],
+    "question": "What is 13 * 8?",
+    "wrong_letter": "D",
+    "z_correct": "13 * 8 = 104. Answer: C",
+    "z_wrong": "13 * 8 = 94. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "85 * 6",
+    "gold": "C",
+    "id": "train202-045",
+    "options": [
+     "519",
+     "501",
+     "510",
+     "500"
+    ],
+    "question": "What is 85 * 6?",
+    "wrong_letter": "B",
+    "z_correct": "85 * 6 = 510. Answer: C",
+    "z_wrong": "85 * 6 = 501. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "350 + 572",
+    "gold": "B",
+    "id": "train202-046",
+    "options": [
+     "921",
+     "922",
+     "923",
+     "932"
+    ],
+    "question": "What is 350 + 572?",
+    "wrong_letter": "C",
+    "z_correct": "350 + 572 = 922. Answer: B",
+    "z_wrong": "350 + 572 = 923. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "294 + 368",
+    "gold": "A",
+    "id": "train202-047",
+    "options": [
+     "662",
+     "673",
+     "663",
+     "660"
+    ],
+    "question": "What is 294 + 368?",
+    "wrong_letter": "C",
+    "z_correct": "294 + 368 = 662. Answer: A",
+    "z_wrong": "294 + 368 = 663. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "175 + 725",
+    "gold": "B",
+    "id": "train202-048",
+    "options": [
+     "902",
+     "900",
+     "891",
+     "890"
+    ],
+    "question": "What is 175 + 725?",
+    "wrong_letter": "D",
+    "z_correct": "175 + 725 = 900. Answer: B",
+    "z_wrong": "175 + 725 = 890. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "24 * 3",
+    "gold": "B",
+    "id": "train202-049",
+    "options": [
+     "71",
+     "72",
+     "83",
+     "73"
+    ],
+    "question": "What is 24 * 3?",
+    "wrong_letter": "A",
+    "z_correct": "24 * 3 = 72. Answer: B",
+    "z_wrong": "24 * 3 = 71. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "757 + 889",
+    "gold": "D",
+    "id": "train202-050",
+    "options": [
+     "1644",
+     "1657",
+     "1645",
+     "1646"
+    ],
+    "question": "What is 757 + 889?",
+    "wrong_letter": "A",
+    "z_correct": "757 + 889 = 1646. Answer: D",
+    "z_wrong": "757 + 889 = 1644. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "156 + 734",
+    "gold": "A",
+    "id": "train202-051",
+    "options": [
+     "890",
+     "900",
+     "901",
+     "889"
+    ],
+    "question": "What is 156 + 734?",
+    "wrong_letter": "D",
+    "z_correct": "156 + 734 = 890. Answer: A",
+    "z_wrong": "156 + 734 = 889. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "77 * 8",
+    "gold": "D",
+    "id": "train202-052",
+    "options": [
+     "626",
+     "605",
+     "627",
+     "616"
+    ],
+    "question": "What is 77 * 8?",
+    "wrong_letter": "C",
+    "z_correct": "77 * 8 = 616. Answer: D",
+    "z_wrong": "77 * 8 = 627. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "35 * 3",
+    "gold": "B",
+    "id": "train202-053",
+    "options": [
+     "95",
+     "105",
+     "103",
+     "106"
+    ],
+    "question": "What is 35 * 3?",
+    "wrong_letter": "A",
+    "z_correct": "35 * 3 = 105. Answer: B",
+    "z_wrong": "35 * 3 = 95. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "220 + 819",
+    "gold": "D",
+    "id": "train202-054",
+    "options": [
+     "1040",
+     "1028",
+     "1029",
+     "1039"
+    ],
+    "question": "What is 220 + 819?",
+    "wrong_letter": "C",
+    "z_correct": "220 + 819 = 1039. Answer: D",
+    "z_wrong": "220 + 819 = 1029. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "60 * 6",
+    "gold": "A",
+    "id": "train202-055",
+    "options": [
+     "360",
+     "351",
+     "370",
+     "358"
+    ],
+    "question": "What is 60 * 6?",
+    "wrong_letter": "C",
+    "z_correct": "60 * 6 = 360. Answer: A",
+    "z_wrong": "60 * 6 = 370. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "610 + 430",
+    "gold": "C",
+    "id": "train202-056",
+    "options": [
+     "1030",
+     "1029",
+     "1040",
+     "1041"
+    ],
+    "question": "What is 610 + 430?",
+    "wrong_letter": "B",
+    "z_correct": "610 + 430 = 1040. Answer: C",
+    "z_wrong": "610 + 430 = 1029. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "66 * 8",
+    "gold": "B",
+    "id": "train202-057",
+    "options": [
+     "527",
+     "528",
+     "518",
+     "517"
+    ],
+    "question": "What is 66 * 8?",
+    "wrong_letter": "C",
+    "z_correct": "66 * 8 = 528. Answer: B",
+    "z_wrong": "66 * 8 = 518. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "876 + 801",
+    "gold": "D",
+    "id": "train202-058",
+    "options": [
+     "1666",
+     "1667",
+     "1675",
+     "1677"
+    ],
+    "question": "What is 876 + 801?",
+    "wrong_letter": "B",
+    "z_correct": "876 + 801 = 1677. Answer: D",
+    "z_wrong": "876 + 801 = 1667. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "390 + 584",
+    "gold": "B",
+    "id": "train202-059",
+    "options": [
+     "973",
+     "974",
+     "983",
+     "984"
+    ],
+    "question": "What is 390 + 584?",
+    "wrong_letter": "A",
+    "z_correct": "390 + 584 = 974. Answer: B",
+    "z_wrong": "390 + 584 = 973. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "588 + 840",
+    "gold": "B",
+    "id": "train202-060",
+    "options": [
+     "1429",
+     "1428",
+     "1430",
+     "1438"
+    ],
+    "question": "What is 588 + 840?",
+    "wrong_letter": "D",
+    "z_correct": "588 + 840 = 1428. Answer: B",
+    "z_wrong": "588 + 840 = 1438. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "652 + 433",
+    "gold": "D",
+    "id": "train202-061",
+    "options": [
+     "1095",
+     "1076",
+     "1086",
+     "1085"
+    ],
+    "question": "What is 652 + 433?",
+    "wrong_letter": "C",
+    "z_correct": "652 + 433 = 1085. Answer: D",
+    "z_wrong": "652 + 433 = 1086. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "94 * 7",
+    "gold": "D",
+    "id": "train202-062",
+    "options": [
+     "657",
+     "649",
+     "668",
+     "658"
+    ],
+    "question": "What is 94 * 7?",
+    "wrong_letter": "A",
+    "z_correct": "94 * 7 = 658. Answer: D",
+    "z_wrong": "94 * 7 = 657. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "16 * 5",
+    "gold": "D",
+    "id": "train202-063",
+    "options": [
+     "78",
+     "90",
+     "79",
+     "80"
+    ],
+    "question": "What is 16 * 5?",
+    "wrong_letter": "B",
+    "z_correct": "16 * 5 = 80. Answer: D",
+    "z_wrong": "16 * 5 = 90. Answer: B"
+   }
+  ],
+  "303": [
+   {
+    "corrupt_at_p075": true,
+    "expression": "858 + 299",
+    "gold": "A",
+    "id": "train303-000",
+    "options": [
+     "1157",
+     "1156",
+     "1159",
+     "1147"
+    ],
+    "question": "What is 858 + 299?",
+    "wrong_letter": "C",
+    "z_correct": "858 + 299 = 1157. Answer: A",
+    "z_wrong": "858 + 299 = 1159. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "396 + 104",
+    "gold": "D",
+    "id": "train303-001",
+    "options": [
+     "511",
+     "502",
+     "499",
+     "500"
+    ],
+    "question": "What is 396 + 104?",
+    "wrong_letter": "B",
+    "z_correct": "396 + 104 = 500. Answer: D",
+    "z_wrong": "396 + 104 = 502. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "260 + 312",
+    "gold": "A",
+    "id": "train303-002",
+    "options": [
+     "572",
+     "562",
+     "571",
+     "583"
+    ],
+    "question": "What is 260 + 312?",
+    "wrong_letter": "D",
+    "z_correct": "260 + 312 = 572. Answer: A",
+    "z_wrong": "260 + 312 = 583. Answer: D"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "43 * 9",
+    "gold": "A",
+    "id": "train303-003",
+    "options": [
+     "387",
+     "397",
+     "386",
+     "376"
+    ],
+    "question": "What is 43 * 9?",
+    "wrong_letter": "D",
+    "z_correct": "43 * 9 = 387. Answer: A",
+    "z_wrong": "43 * 9 = 376. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "605 + 272",
+    "gold": "D",
+    "id": "train303-004",
+    "options": [
+     "876",
+     "868",
+     "887",
+     "877"
+    ],
+    "question": "What is 605 + 272?",
+    "wrong_letter": "C",
+    "z_correct": "605 + 272 = 877. Answer: D",
+    "z_wrong": "605 + 272 = 887. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "287 + 484",
+    "gold": "B",
+    "id": "train303-005",
+    "options": [
+     "769",
+     "771",
+     "772",
+     "760"
+    ],
+    "question": "What is 287 + 484?",
+    "wrong_letter": "D",
+    "z_correct": "287 + 484 = 771. Answer: B",
+    "z_wrong": "287 + 484 = 760. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "35 * 8",
+    "gold": "B",
+    "id": "train303-006",
+    "options": [
+     "289",
+     "280",
+     "269",
+     "282"
+    ],
+    "question": "What is 35 * 8?",
+    "wrong_letter": "A",
+    "z_correct": "35 * 8 = 280. Answer: B",
+    "z_wrong": "35 * 8 = 289. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "448 + 376",
+    "gold": "B",
+    "id": "train303-007",
+    "options": [
+     "822",
+     "824",
+     "825",
+     "835"
+    ],
+    "question": "What is 448 + 376?",
+    "wrong_letter": "D",
+    "z_correct": "448 + 376 = 824. Answer: B",
+    "z_wrong": "448 + 376 = 835. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "44 * 4",
+    "gold": "A",
+    "id": "train303-008",
+    "options": [
+     "176",
+     "167",
+     "177",
+     "175"
+    ],
+    "question": "What is 44 * 4?",
+    "wrong_letter": "D",
+    "z_correct": "44 * 4 = 176. Answer: A",
+    "z_wrong": "44 * 4 = 175. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "15 * 4",
+    "gold": "B",
+    "id": "train303-009",
+    "options": [
+     "49",
+     "60",
+     "59",
+     "50"
+    ],
+    "question": "What is 15 * 4?",
+    "wrong_letter": "A",
+    "z_correct": "15 * 4 = 60. Answer: B",
+    "z_wrong": "15 * 4 = 49. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "299 + 142",
+    "gold": "A",
+    "id": "train303-010",
+    "options": [
+     "441",
+     "432",
+     "452",
+     "440"
+    ],
+    "question": "What is 299 + 142?",
+    "wrong_letter": "B",
+    "z_correct": "299 + 142 = 441. Answer: A",
+    "z_wrong": "299 + 142 = 432. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "782 + 855",
+    "gold": "A",
+    "id": "train303-011",
+    "options": [
+     "1637",
+     "1638",
+     "1636",
+     "1646"
+    ],
+    "question": "What is 782 + 855?",
+    "wrong_letter": "D",
+    "z_correct": "782 + 855 = 1637. Answer: A",
+    "z_wrong": "782 + 855 = 1646. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "55 * 7",
+    "gold": "D",
+    "id": "train303-012",
+    "options": [
+     "376",
+     "387",
+     "375",
+     "385"
+    ],
+    "question": "What is 55 * 7?",
+    "wrong_letter": "B",
+    "z_correct": "55 * 7 = 385. Answer: D",
+    "z_wrong": "55 * 7 = 387. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "436 + 822",
+    "gold": "C",
+    "id": "train303-013",
+    "options": [
+     "1268",
+     "1260",
+     "1258",
+     "1256"
+    ],
+    "question": "What is 436 + 822?",
+    "wrong_letter": "A",
+    "z_correct": "436 + 822 = 1258. Answer: C",
+    "z_wrong": "436 + 822 = 1268. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "410 + 239",
+    "gold": "B",
+    "id": "train303-014",
+    "options": [
+     "659",
+     "649",
+     "658",
+     "651"
+    ],
+    "question": "What is 410 + 239?",
+    "wrong_letter": "A",
+    "z_correct": "410 + 239 = 649. Answer: B",
+    "z_wrong": "410 + 239 = 659. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "78 * 4",
+    "gold": "C",
+    "id": "train303-015",
+    "options": [
+     "321",
+     "302",
+     "312",
+     "301"
+    ],
+    "question": "What is 78 * 4?",
+    "wrong_letter": "B",
+    "z_correct": "78 * 4 = 312. Answer: C",
+    "z_wrong": "78 * 4 = 302. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "682 + 783",
+    "gold": "D",
+    "id": "train303-016",
+    "options": [
+     "1466",
+     "1467",
+     "1454",
+     "1465"
+    ],
+    "question": "What is 682 + 783?",
+    "wrong_letter": "A",
+    "z_correct": "682 + 783 = 1465. Answer: D",
+    "z_wrong": "682 + 783 = 1466. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "180 + 514",
+    "gold": "C",
+    "id": "train303-017",
+    "options": [
+     "683",
+     "696",
+     "694",
+     "695"
+    ],
+    "question": "What is 180 + 514?",
+    "wrong_letter": "B",
+    "z_correct": "180 + 514 = 694. Answer: C",
+    "z_wrong": "180 + 514 = 696. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "705 + 249",
+    "gold": "D",
+    "id": "train303-018",
+    "options": [
+     "952",
+     "965",
+     "964",
+     "954"
+    ],
+    "question": "What is 705 + 249?",
+    "wrong_letter": "A",
+    "z_correct": "705 + 249 = 954. Answer: D",
+    "z_wrong": "705 + 249 = 952. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "739 + 725",
+    "gold": "C",
+    "id": "train303-019",
+    "options": [
+     "1475",
+     "1463",
+     "1464",
+     "1466"
+    ],
+    "question": "What is 739 + 725?",
+    "wrong_letter": "D",
+    "z_correct": "739 + 725 = 1464. Answer: C",
+    "z_wrong": "739 + 725 = 1466. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "431 + 838",
+    "gold": "C",
+    "id": "train303-020",
+    "options": [
+     "1270",
+     "1278",
+     "1269",
+     "1268"
+    ],
+    "question": "What is 431 + 838?",
+    "wrong_letter": "D",
+    "z_correct": "431 + 838 = 1269. Answer: C",
+    "z_wrong": "431 + 838 = 1268. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "60 * 7",
+    "gold": "A",
+    "id": "train303-021",
+    "options": [
+     "420",
+     "419",
+     "421",
+     "409"
+    ],
+    "question": "What is 60 * 7?",
+    "wrong_letter": "B",
+    "z_correct": "60 * 7 = 420. Answer: A",
+    "z_wrong": "60 * 7 = 419. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "87 * 8",
+    "gold": "B",
+    "id": "train303-022",
+    "options": [
+     "705",
+     "696",
+     "685",
+     "698"
+    ],
+    "question": "What is 87 * 8?",
+    "wrong_letter": "C",
+    "z_correct": "87 * 8 = 696. Answer: B",
+    "z_wrong": "87 * 8 = 685. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "590 + 208",
+    "gold": "D",
+    "id": "train303-023",
+    "options": [
+     "800",
+     "797",
+     "789",
+     "798"
+    ],
+    "question": "What is 590 + 208?",
+    "wrong_letter": "B",
+    "z_correct": "590 + 208 = 798. Answer: D",
+    "z_wrong": "590 + 208 = 797. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "800 + 623",
+    "gold": "A",
+    "id": "train303-024",
+    "options": [
+     "1423",
+     "1421",
+     "1424",
+     "1412"
+    ],
+    "question": "What is 800 + 623?",
+    "wrong_letter": "C",
+    "z_correct": "800 + 623 = 1423. Answer: A",
+    "z_wrong": "800 + 623 = 1424. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "720 + 592",
+    "gold": "A",
+    "id": "train303-025",
+    "options": [
+     "1312",
+     "1311",
+     "1302",
+     "1322"
+    ],
+    "question": "What is 720 + 592?",
+    "wrong_letter": "C",
+    "z_correct": "720 + 592 = 1312. Answer: A",
+    "z_wrong": "720 + 592 = 1302. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "96 * 4",
+    "gold": "D",
+    "id": "train303-026",
+    "options": [
+     "386",
+     "385",
+     "373",
+     "384"
+    ],
+    "question": "What is 96 * 4?",
+    "wrong_letter": "C",
+    "z_correct": "96 * 4 = 384. Answer: D",
+    "z_wrong": "96 * 4 = 373. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "253 + 381",
+    "gold": "B",
+    "id": "train303-027",
+    "options": [
+     "625",
+     "634",
+     "623",
+     "644"
+    ],
+    "question": "What is 253 + 381?",
+    "wrong_letter": "D",
+    "z_correct": "253 + 381 = 634. Answer: B",
+    "z_wrong": "253 + 381 = 644. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "552 + 118",
+    "gold": "D",
+    "id": "train303-028",
+    "options": [
+     "680",
+     "659",
+     "660",
+     "670"
+    ],
+    "question": "What is 552 + 118?",
+    "wrong_letter": "B",
+    "z_correct": "552 + 118 = 670. Answer: D",
+    "z_wrong": "552 + 118 = 659. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "181 + 188",
+    "gold": "C",
+    "id": "train303-029",
+    "options": [
+     "367",
+     "358",
+     "369",
+     "371"
+    ],
+    "question": "What is 181 + 188?",
+    "wrong_letter": "A",
+    "z_correct": "181 + 188 = 369. Answer: C",
+    "z_wrong": "181 + 188 = 367. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "87 * 7",
+    "gold": "C",
+    "id": "train303-030",
+    "options": [
+     "620",
+     "607",
+     "609",
+     "608"
+    ],
+    "question": "What is 87 * 7?",
+    "wrong_letter": "A",
+    "z_correct": "87 * 7 = 609. Answer: C",
+    "z_wrong": "87 * 7 = 620. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "104 + 462",
+    "gold": "D",
+    "id": "train303-031",
+    "options": [
+     "556",
+     "575",
+     "555",
+     "566"
+    ],
+    "question": "What is 104 + 462?",
+    "wrong_letter": "C",
+    "z_correct": "104 + 462 = 566. Answer: D",
+    "z_wrong": "104 + 462 = 555. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "18 * 9",
+    "gold": "C",
+    "id": "train303-032",
+    "options": [
+     "152",
+     "163",
+     "162",
+     "161"
+    ],
+    "question": "What is 18 * 9?",
+    "wrong_letter": "D",
+    "z_correct": "18 * 9 = 162. Answer: C",
+    "z_wrong": "18 * 9 = 161. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "21 * 8",
+    "gold": "C",
+    "id": "train303-033",
+    "options": [
+     "179",
+     "166",
+     "168",
+     "178"
+    ],
+    "question": "What is 21 * 8?",
+    "wrong_letter": "D",
+    "z_correct": "21 * 8 = 168. Answer: C",
+    "z_wrong": "21 * 8 = 178. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "95 * 8",
+    "gold": "A",
+    "id": "train303-034",
+    "options": [
+     "760",
+     "769",
+     "759",
+     "750"
+    ],
+    "question": "What is 95 * 8?",
+    "wrong_letter": "B",
+    "z_correct": "95 * 8 = 760. Answer: A",
+    "z_wrong": "95 * 8 = 769. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "565 + 677",
+    "gold": "C",
+    "id": "train303-035",
+    "options": [
+     "1241",
+     "1243",
+     "1242",
+     "1232"
+    ],
+    "question": "What is 565 + 677?",
+    "wrong_letter": "D",
+    "z_correct": "565 + 677 = 1242. Answer: C",
+    "z_wrong": "565 + 677 = 1232. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "31 * 7",
+    "gold": "C",
+    "id": "train303-036",
+    "options": [
+     "218",
+     "207",
+     "217",
+     "226"
+    ],
+    "question": "What is 31 * 7?",
+    "wrong_letter": "A",
+    "z_correct": "31 * 7 = 217. Answer: C",
+    "z_wrong": "31 * 7 = 218. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "34 * 6",
+    "gold": "D",
+    "id": "train303-037",
+    "options": [
+     "202",
+     "214",
+     "205",
+     "204"
+    ],
+    "question": "What is 34 * 6?",
+    "wrong_letter": "C",
+    "z_correct": "34 * 6 = 204. Answer: D",
+    "z_wrong": "34 * 6 = 205. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "844 + 800",
+    "gold": "A",
+    "id": "train303-038",
+    "options": [
+     "1644",
+     "1643",
+     "1646",
+     "1642"
+    ],
+    "question": "What is 844 + 800?",
+    "wrong_letter": "C",
+    "z_correct": "844 + 800 = 1644. Answer: A",
+    "z_wrong": "844 + 800 = 1646. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "138 + 676",
+    "gold": "C",
+    "id": "train303-039",
+    "options": [
+     "823",
+     "812",
+     "814",
+     "805"
+    ],
+    "question": "What is 138 + 676?",
+    "wrong_letter": "A",
+    "z_correct": "138 + 676 = 814. Answer: C",
+    "z_wrong": "138 + 676 = 823. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "630 + 894",
+    "gold": "C",
+    "id": "train303-040",
+    "options": [
+     "1534",
+     "1533",
+     "1524",
+     "1535"
+    ],
+    "question": "What is 630 + 894?",
+    "wrong_letter": "D",
+    "z_correct": "630 + 894 = 1524. Answer: C",
+    "z_wrong": "630 + 894 = 1535. Answer: D"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "219 + 721",
+    "gold": "B",
+    "id": "train303-041",
+    "options": [
+     "931",
+     "940",
+     "950",
+     "938"
+    ],
+    "question": "What is 219 + 721?",
+    "wrong_letter": "C",
+    "z_correct": "219 + 721 = 940. Answer: B",
+    "z_wrong": "219 + 721 = 950. Answer: C"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "68 * 7",
+    "gold": "A",
+    "id": "train303-042",
+    "options": [
+     "476",
+     "467",
+     "477",
+     "486"
+    ],
+    "question": "What is 68 * 7?",
+    "wrong_letter": "C",
+    "z_correct": "68 * 7 = 476. Answer: A",
+    "z_wrong": "68 * 7 = 477. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "783 + 679",
+    "gold": "B",
+    "id": "train303-043",
+    "options": [
+     "1461",
+     "1462",
+     "1453",
+     "1471"
+    ],
+    "question": "What is 783 + 679?",
+    "wrong_letter": "C",
+    "z_correct": "783 + 679 = 1462. Answer: B",
+    "z_wrong": "783 + 679 = 1453. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "14 * 9",
+    "gold": "C",
+    "id": "train303-044",
+    "options": [
+     "127",
+     "124",
+     "126",
+     "116"
+    ],
+    "question": "What is 14 * 9?",
+    "wrong_letter": "A",
+    "z_correct": "14 * 9 = 126. Answer: C",
+    "z_wrong": "14 * 9 = 127. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "110 + 369",
+    "gold": "A",
+    "id": "train303-045",
+    "options": [
+     "479",
+     "489",
+     "478",
+     "469"
+    ],
+    "question": "What is 110 + 369?",
+    "wrong_letter": "B",
+    "z_correct": "110 + 369 = 479. Answer: A",
+    "z_wrong": "110 + 369 = 489. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "792 + 290",
+    "gold": "D",
+    "id": "train303-046",
+    "options": [
+     "1073",
+     "1091",
+     "1080",
+     "1082"
+    ],
+    "question": "What is 792 + 290?",
+    "wrong_letter": "A",
+    "z_correct": "792 + 290 = 1082. Answer: D",
+    "z_wrong": "792 + 290 = 1073. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "759 + 822",
+    "gold": "C",
+    "id": "train303-047",
+    "options": [
+     "1580",
+     "1582",
+     "1581",
+     "1591"
+    ],
+    "question": "What is 759 + 822?",
+    "wrong_letter": "B",
+    "z_correct": "759 + 822 = 1581. Answer: C",
+    "z_wrong": "759 + 822 = 1582. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "19 * 9",
+    "gold": "C",
+    "id": "train303-048",
+    "options": [
+     "169",
+     "161",
+     "171",
+     "162"
+    ],
+    "question": "What is 19 * 9?",
+    "wrong_letter": "A",
+    "z_correct": "19 * 9 = 171. Answer: C",
+    "z_wrong": "19 * 9 = 169. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "536 + 127",
+    "gold": "C",
+    "id": "train303-049",
+    "options": [
+     "674",
+     "653",
+     "663",
+     "654"
+    ],
+    "question": "What is 536 + 127?",
+    "wrong_letter": "D",
+    "z_correct": "536 + 127 = 663. Answer: C",
+    "z_wrong": "536 + 127 = 654. Answer: D"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "200 + 423",
+    "gold": "D",
+    "id": "train303-050",
+    "options": [
+     "624",
+     "613",
+     "614",
+     "623"
+    ],
+    "question": "What is 200 + 423?",
+    "wrong_letter": "C",
+    "z_correct": "200 + 423 = 623. Answer: D",
+    "z_wrong": "200 + 423 = 614. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "35 * 7",
+    "gold": "C",
+    "id": "train303-051",
+    "options": [
+     "247",
+     "255",
+     "245",
+     "234"
+    ],
+    "question": "What is 35 * 7?",
+    "wrong_letter": "D",
+    "z_correct": "35 * 7 = 245. Answer: C",
+    "z_wrong": "35 * 7 = 234. Answer: D"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "469 + 150",
+    "gold": "D",
+    "id": "train303-052",
+    "options": [
+     "629",
+     "620",
+     "610",
+     "619"
+    ],
+    "question": "What is 469 + 150?",
+    "wrong_letter": "C",
+    "z_correct": "469 + 150 = 619. Answer: D",
+    "z_wrong": "469 + 150 = 610. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "47 * 8",
+    "gold": "A",
+    "id": "train303-053",
+    "options": [
+     "376",
+     "387",
+     "378",
+     "385"
+    ],
+    "question": "What is 47 * 8?",
+    "wrong_letter": "B",
+    "z_correct": "47 * 8 = 376. Answer: A",
+    "z_wrong": "47 * 8 = 387. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "57 * 9",
+    "gold": "A",
+    "id": "train303-054",
+    "options": [
+     "513",
+     "523",
+     "522",
+     "515"
+    ],
+    "question": "What is 57 * 9?",
+    "wrong_letter": "C",
+    "z_correct": "57 * 9 = 513. Answer: A",
+    "z_wrong": "57 * 9 = 522. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "93 * 9",
+    "gold": "D",
+    "id": "train303-055",
+    "options": [
+     "827",
+     "826",
+     "835",
+     "837"
+    ],
+    "question": "What is 93 * 9?",
+    "wrong_letter": "C",
+    "z_correct": "93 * 9 = 837. Answer: D",
+    "z_wrong": "93 * 9 = 835. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "143 + 489",
+    "gold": "D",
+    "id": "train303-056",
+    "options": [
+     "621",
+     "630",
+     "641",
+     "632"
+    ],
+    "question": "What is 143 + 489?",
+    "wrong_letter": "A",
+    "z_correct": "143 + 489 = 632. Answer: D",
+    "z_wrong": "143 + 489 = 621. Answer: A"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "308 + 520",
+    "gold": "D",
+    "id": "train303-057",
+    "options": [
+     "827",
+     "830",
+     "826",
+     "828"
+    ],
+    "question": "What is 308 + 520?",
+    "wrong_letter": "B",
+    "z_correct": "308 + 520 = 828. Answer: D",
+    "z_wrong": "308 + 520 = 830. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "61 * 7",
+    "gold": "D",
+    "id": "train303-058",
+    "options": [
+     "429",
+     "426",
+     "418",
+     "427"
+    ],
+    "question": "What is 61 * 7?",
+    "wrong_letter": "A",
+    "z_correct": "61 * 7 = 427. Answer: D",
+    "z_wrong": "61 * 7 = 429. Answer: A"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "54 * 5",
+    "gold": "D",
+    "id": "train303-059",
+    "options": [
+     "271",
+     "280",
+     "260",
+     "270"
+    ],
+    "question": "What is 54 * 5?",
+    "wrong_letter": "B",
+    "z_correct": "54 * 5 = 270. Answer: D",
+    "z_wrong": "54 * 5 = 280. Answer: B"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "208 + 635",
+    "gold": "A",
+    "id": "train303-060",
+    "options": [
+     "843",
+     "834",
+     "854",
+     "852"
+    ],
+    "question": "What is 208 + 635?",
+    "wrong_letter": "B",
+    "z_correct": "208 + 635 = 843. Answer: A",
+    "z_wrong": "208 + 635 = 834. Answer: B"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "81 * 8",
+    "gold": "C",
+    "id": "train303-061",
+    "options": [
+     "657",
+     "659",
+     "648",
+     "639"
+    ],
+    "question": "What is 81 * 8?",
+    "wrong_letter": "D",
+    "z_correct": "81 * 8 = 648. Answer: C",
+    "z_wrong": "81 * 8 = 639. Answer: D"
+   },
+   {
+    "corrupt_at_p075": false,
+    "expression": "859 + 137",
+    "gold": "D",
+    "id": "train303-062",
+    "options": [
+     "997",
+     "987",
+     "998",
+     "996"
+    ],
+    "question": "What is 859 + 137?",
+    "wrong_letter": "C",
+    "z_correct": "859 + 137 = 996. Answer: D",
+    "z_wrong": "859 + 137 = 998. Answer: C"
+   },
+   {
+    "corrupt_at_p075": true,
+    "expression": "613 + 182",
+    "gold": "D",
+    "id": "train303-063",
+    "options": [
+     "806",
+     "797",
+     "796",
+     "795"
+    ],
+    "question": "What is 613 + 182?",
+    "wrong_letter": "C",
+    "z_correct": "613 + 182 = 795. Answer: D",
+    "z_wrong": "613 + 182 = 796. Answer: C"
+   }
+  ]
+ },
+ "train_seeds": [
+  101,
+  202,
+  303
+ ],
+ "wrong_fraction": 0.75
+}
