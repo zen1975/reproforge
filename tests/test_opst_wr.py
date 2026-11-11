@@ -122,12 +122,23 @@ def test_frozen_files_match_preregistration():
         assert hashlib.sha256((ROOT / rel).read_bytes()).hexdigest() == digest, rel
 
 
+def _close(a, b):
+    if isinstance(b, dict):
+        return all(_close(a[k], v) for k, v in b.items())
+    if isinstance(b, list):
+        return len(a) == len(b) and all(_close(x, y) for x, y in zip(a, b))
+    if isinstance(b, float):
+        return a == pytest.approx(b, rel=1e-12, abs=1e-15)
+    return a == b
+
+
 def test_committed_c6_result_reaggregates_from_cells():
     cells_dir = STUDY / "evidence" / "opst_wr_qwen0.5b_v1_cells"
     committed = json.loads((STUDY / "evidence" / "opst_wr_qwen0.5b_v1.result.json").read_text())
     cells = [json.loads(p.read_text()) for p in sorted(cells_dir.glob("*.json"))]
     result = agg.aggregate(cells)
-    assert all(committed[k] == v for k, v in result.items())
+    # Python 3.12 changed float sum(); compare numbers with a tolerance.
+    assert _close(committed, result)
     assert committed["verdict"] == "INCONCLUSIVE"
     for name, digest in committed["cell_files"].items():
         assert "sha256:" + hashlib.sha256((cells_dir / name).read_bytes()).hexdigest() == digest
