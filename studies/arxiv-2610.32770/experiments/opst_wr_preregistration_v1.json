@@ -1,0 +1,32 @@
+{
+  "evaluation_id": "opst-wrong-answer-robustness-qwen0.5b-v1",
+  "claim_id": "C6-wrong-answer-robustness-analogue",
+  "registered_on": "2026-11-12",
+  "frozen_files_sha256": {
+    "studies/arxiv-2610.32770/experiments/run_opst_wr_analogue.py": "9b228f0a99a37fe7abf08877607f10a80a1a86fcbc39e46d005977714c37e2bd",
+    "studies/arxiv-2610.32770/experiments/opst_wr_config_v1.json": "6a11390d6d58a3f483abbe51af9bd18f19d5ad162f1c3ed0e77afe1cac2ba7d8",
+    "studies/arxiv-2610.32770/experiments/aggregate_opst_wr.py": "e7677d40181f9c30f7d9e39281534fc15ec2820dcdc37a695e8f510cbc8baaa8",
+    "studies/arxiv-2610.32770/fixtures/opst_wr_v1.json": "214498743eff288e8a0b003b94141a5d24d6503cb2c7ce49f6e9dc4ac0bfb0a2"
+  },
+  "cells": "method {sft, opst} x p {0.0, 0.75} x seed {101, 202, 303}; one GitHub Actions dispatch (mode=frozen) of .github/workflows/opst-wr-analogue.yml",
+  "primary_metric": "mean over the 200 held-out questions of log P(gold letter), renormalised over the four letters, for the evaluated model (OPST: EMA teacher without z; SFT: student)",
+  "drop": "drop_method(seed) = metric(p=0.0) - metric(p=0.75)",
+  "guards_inconclusive_if_any_fails": [
+    "base-model held-out metric identical across all 12 cells (determinism)",
+    "base-model held-out accuracy in [0.30, 0.90]",
+    "SFT manipulation bites: mean drop_sft >= 0.02 nats and drop_sft > 0 in >= 2 of 3 seeds",
+    "OPST active: mean over seeds of |train-question gold metric after - before| for OPST at p=0.0 >= 0.02 nats"
+  ],
+  "pass": "all guards hold, drop_opst < drop_sft in >= 2 of 3 seeds, and mean drop_sft - mean drop_opst > 0",
+  "fail": "all guards hold and the PASS condition does not",
+  "secondary_reported_not_judged": [
+    "held-out accuracy per cell",
+    "OPST at p=0.75 vs base model (paper: OPST stays above base, SFT falls below)",
+    "OPST vs SFT at p=0.0"
+  ],
+  "single_run": "The first frozen dispatch is the result of this version. A FAIL or INCONCLUSIVE is reported as such; any change requires a new evaluation id and new held-out questions.",
+  "disclosures": [
+    "Before registration, one calibration dispatch (run 43065140792) scored the base model on the separate 200-question calibration split only: accuracy 0.42, mean gold log-prob -1.2787. It was made with runner sha256 d56701443e144cf04e0a1ba68217a7a0938498022243430c95f24c59ecaa0c9f; the only later runner change replaces the null resolved-revision field with the pinned revision string. The held-out split has not been scored by any model.",
+    "Smoke runs used a tiny random-init model on the 8-question smoke split and the first 8 training rows of seed 101."
+  ]
+}

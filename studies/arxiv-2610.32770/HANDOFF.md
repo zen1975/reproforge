@@ -23,8 +23,8 @@
 
 Pick one; both use a small instruction model such as `Qwen/Qwen2.5-0.5B-Instruct` with a pinned revision, the GKD-consistent objective, an EMA teacher, and LoRA on CPU.
 
-1. **Wrong-answer robustness contrast (paper Table 4c analogue).** Same generated sample set; replace p in {0, 0.75} of candidate answers with wrong ones; compare SFT-on-z vs OPST-conditioning on a held-out set the generator never saw. Directly tests the "condition, don't imitate" mechanism.
-2. **Placebo privileged-information contrast (Table 4b analogue).** Teacher conditioned on full z vs z from another problem on the same topic vs none. Tests whether gains are sample-specific.
+1. **Wrong-answer robustness contrast (paper Table 5c analogue) — chosen 2026-11-12, pre-registered as `opst-wrong-answer-robustness-qwen0.5b-v1` (C6); see `experiments/opst_wr_preregistration_v1.json`.** Same generated sample set; replace p in {0, 0.75} of candidate answers with wrong ones; compare SFT-on-z vs OPST-conditioning on a held-out set the generator never saw. Directly tests the "condition, don't imitate" mechanism.
+2. **Placebo privileged-information contrast (paper placebo-PI ablation; not chosen).** Teacher conditioned on full z vs z from another problem on the same topic vs none. Tests whether gains are sample-specific.
 
 Every value the paper does not publish (lr, optimizer, steps, batch, G, T_gen, T_low, max length, LoRA rank, topics) must be recorded as a ReproForge choice in a config file, never as a paper value. Do not use the commented-out lines in the TeX source.
 

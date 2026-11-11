@@ -257,7 +257,6 @@ def train_cell(args, config, fixture) -> dict:
     random.seed(seed)
     torch.manual_seed(seed)
     model, tok = load(cfg(config, "model_id"), cfg(config, "model_revision"), args.smoke)
-    resolved_revision = getattr(model.config, "_commit_hash", None)
 
     rows = fixture["train"][str(seed)]
     heldout = fixture["splits"]["smoke" if args.smoke else "heldout"]
@@ -322,7 +321,8 @@ def train_cell(args, config, fixture) -> dict:
         "method": args.method,
         "p": args.p,
         "seed": seed,
-        "resolved_model_revision": resolved_revision,
+        "model_id": "tiny-random-qwen2" if args.smoke else cfg(config, "model_id"),
+        "model_revision": None if args.smoke else cfg(config, "model_revision"),
         "evaluated_model": evaluated,
         "gradient_steps": steps,
         "ema_updates": ema_updates,
@@ -339,7 +339,8 @@ def calibrate(config, fixture) -> dict:
     model, tok = load(cfg(config, "model_id"), cfg(config, "model_revision"), False)
     return {
         "mode": "calibrate",
-        "resolved_model_revision": getattr(model.config, "_commit_hash", None),
+        "model_id": cfg(config, "model_id"),
+        "model_revision": cfg(config, "model_revision"),
         "calibration": evaluate(model, tok, fixture["splits"]["calibration"]),
     }
 

@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -113,3 +114,9 @@ def test_aggregate_rejects_incomplete_or_mixed_runs():
     smoke[0]["mode"] = "smoke"
     with pytest.raises(ValueError):
         agg.aggregate(smoke)
+
+
+def test_frozen_files_match_preregistration():
+    prereg = json.loads((EXP / "opst_wr_preregistration_v1.json").read_text())
+    for rel, digest in prereg["frozen_files_sha256"].items():
+        assert hashlib.sha256((ROOT / rel).read_bytes()).hexdigest() == digest, rel
