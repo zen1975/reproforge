@@ -120,3 +120,14 @@ def test_frozen_files_match_preregistration():
     prereg = json.loads((EXP / "opst_wr_preregistration_v1.json").read_text())
     for rel, digest in prereg["frozen_files_sha256"].items():
         assert hashlib.sha256((ROOT / rel).read_bytes()).hexdigest() == digest, rel
+
+
+def test_committed_c6_result_reaggregates_from_cells():
+    cells_dir = STUDY / "evidence" / "opst_wr_qwen0.5b_v1_cells"
+    committed = json.loads((STUDY / "evidence" / "opst_wr_qwen0.5b_v1.result.json").read_text())
+    cells = [json.loads(p.read_text()) for p in sorted(cells_dir.glob("*.json"))]
+    result = agg.aggregate(cells)
+    assert all(committed[k] == v for k, v in result.items())
+    assert committed["verdict"] == "INCONCLUSIVE"
+    for name, digest in committed["cell_files"].items():
+        assert "sha256:" + hashlib.sha256((cells_dir / name).read_bytes()).hexdigest() == digest

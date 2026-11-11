@@ -28,4 +28,38 @@ EMA updates once per gradient step (10 over 2x5 steps), carries across rounds, m
 
 ## Not established
 
-No self-improvement, SFT comparison, wrong-answer robustness or benchmark number from the paper is reproduced. reproduction_status remains PARTIAL.
+No self-improvement, SFT comparison or benchmark number from the paper is reproduced, and the wrong-answer robustness analogue (C6) is INCONCLUSIVE. reproduction_status remains PARTIAL.
+
+## C6 — wrong-answer robustness analogue (2026-11-12): INCONCLUSIVE
+
+Frozen `opst-wrong-answer-robustness-qwen0.5b-v1`, pre-registered in `fc59acd` (`experiments/opst_wr_preregistration_v1.json`) and dispatched once as GitHub Actions run 43065895170 (12 cells + aggregate, all jobs succeeded). Qwen2.5-0.5B-Instruct (pinned `c89bee90…`), LoRA, one round of 32 steps on 64 synthetic arithmetic questions per seed, p ∈ {0, 0.75}, 3 seeds. Every value the paper does not publish is a ReproForge choice listed in `experiments/opst_wr_config_v1.json`. The aggregate re-computed from the downloaded cells is identical to the CI aggregate.
+
+Held-out (200 questions, never scored before this run), mean over 3 seeds; base model accuracy 0.415, mean gold log-prob −1.242:
+
+| Cell | Mean gold log-prob | Accuracy |
+|---|---|---|
+| SFT, p=0 | −1.275 | 0.455 |
+| SFT, p=0.75 | −1.263 | 0.413 |
+| OPST (EMA teacher), p=0 | −1.261 | 0.410 |
+| OPST (EMA teacher), p=0.75 | −1.282 | 0.418 |
+
+Drop p=0→0.75: SFT −0.013 nats (per seed −0.014, −0.049, +0.024), OPST +0.021 nats (−0.007, +0.063, +0.006). OPST dropped less in 1 of 3 seeds.
+
+Guards (any failure ⇒ INCONCLUSIVE):
+
+| Guard | Result |
+|---|---|
+| Base accuracy in [0.30, 0.90] | holds (0.415) |
+| SFT degraded by corruption (mean drop ≥ 0.02) | **fails** (−0.013) |
+| OPST moved on its training questions (≥ 0.02) | **fails** (0.006) |
+| Base evaluation identical across cells (6 decimals) | **fails**: values differ by ~5e-7 across runners (float32 CPU nondeterminism). The pre-registered tolerance was too strict; this alone would not have changed the outcome because the two guards above also fail. |
+
+Verdict: **INCONCLUSIVE**. The corruption did not measurably hurt SFT, so this run cannot say whether OPST is more robust. No conclusion in either direction is drawn.
+
+Post-hoc observations (not part of the verdict, recorded to inform a new version):
+
+- SFT memorised z (train loss → 0.000 at p=0, 0.08 at p=0.75), yet the held-out letter metric barely moved and even the training questions' gold metric fell (−0.01 to −0.18). Training used the `Solution:` prompt and target format, while evaluation scores a letter after `Answer:`; the learned behaviour appears not to transfer to the evaluation format.
+- OPST's per-token divergence was small from the start (0.01–0.04) and the EMA teacher (β=0.05, 32 updates) moved little. One seed (202) at p=0.75 lowered the training questions' gold metric by 0.12, which suggests the teacher conditioned on a wrong z can pass it on, but one seed is not evidence.
+- Sampled rollouts are often off-format prose at temperature 1.0.
+
+A follow-up must use a new evaluation id and new held-out questions (for example, evaluating in the training format, more steps, or a manipulation check calibrated on a separate split before registration).

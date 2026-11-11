@@ -1,0 +1,97 @@
+{
+  "base_heldout": {
+    "accuracy": 0.415,
+    "mean_gold_logprob": -1.2419986531809217
+  },
+  "cell_files": {
+    "opst_wr_opst_p0.0_seed101.json": "sha256:4f7c51fef4d10c64ccc6a9d1beb1aa501e23917e017433cee9419f5c56e66045",
+    "opst_wr_opst_p0.0_seed202.json": "sha256:68016ba49ef2fdc9b455433da14e60d916b3fecb887405b094d9b7d82ef46f72",
+    "opst_wr_opst_p0.0_seed303.json": "sha256:70be5ac5b6c6975f6924f5b248896e917d39fae2e3d190d22acdb235f80a1cde",
+    "opst_wr_opst_p0.75_seed101.json": "sha256:ab2035132cbdccecb689a11df0d2d71fed9eee2b3cf33e1f22fa014213fc8ab0",
+    "opst_wr_opst_p0.75_seed202.json": "sha256:07d8c197244d723d0e664258edf809004c85a2a3188ffcce8262df2a01c4c191",
+    "opst_wr_opst_p0.75_seed303.json": "sha256:a9db644f33e65aef5626cdc84c5797b5ac43bed9d326d55e5f13056a0d1b6398",
+    "opst_wr_sft_p0.0_seed101.json": "sha256:403c8e6561c70ba190bdd2a81ce60074b18399fd09f763a9b93e9edf56f910a8",
+    "opst_wr_sft_p0.0_seed202.json": "sha256:50b5bfd7f3673e2e00e290e83c09734a6a8d2a5ac905156cf02e54caf6215752",
+    "opst_wr_sft_p0.0_seed303.json": "sha256:066b7c80275609d5e1bca0006822493f2b3ab32a7fee63f1c8826619d9bd61c3",
+    "opst_wr_sft_p0.75_seed101.json": "sha256:58b57d3f31d87daf8eabcd3961ef159972a401f01df987fb9b464c39bf02de15",
+    "opst_wr_sft_p0.75_seed202.json": "sha256:a941e98781bee4295004b3e1639ab2795cbf120dd859ab16eb891779bc99c85f",
+    "opst_wr_sft_p0.75_seed303.json": "sha256:8201cb738f76cc81f5bbc7bf02056181e586b08f9817ed468654d0edc3ff9d3b"
+  },
+  "claim_id": "C6-wrong-answer-robustness-analogue",
+  "environment": {
+    "peft": "0.21.2",
+    "python": "3.12.16",
+    "torch": "2.14.1+cpu",
+    "torch_threads": 2,
+    "transformers": "5.18.0"
+  },
+  "evaluation_id": "opst-wrong-answer-robustness-qwen0.5b-v1",
+  "guards": {
+    "base_accuracy_in_range": true,
+    "base_eval_identical_across_cells": false,
+    "opst_active": false,
+    "sft_manipulation_bites": false
+  },
+  "hashes": {
+    "config_sha256": "6a11390d6d58a3f483abbe51af9bd18f19d5ad162f1c3ed0e77afe1cac2ba7d8",
+    "fixture_sha256": "214498743eff288e8a0b003b94141a5d24d6503cb2c7ce49f6e9dc4ac0bfb0a2",
+    "mechanism_sha256": "58458b5b2d3889f776de720cbdb9b379fa81a572b3813034f1a46f0e9737e180",
+    "runner_sha256": "9b228f0a99a37fe7abf08877607f10a80a1a86fcbc39e46d005977714c37e2bd"
+  },
+  "heldout_table": {
+    "opst_p0.0": {
+      "accuracy": 0.41,
+      "mean_gold_logprob": -1.2606842029649918
+    },
+    "opst_p0.75": {
+      "accuracy": 0.4183333333333333,
+      "mean_gold_logprob": -1.2815708564718704
+    },
+    "sft_p0.0": {
+      "accuracy": 0.455,
+      "mean_gold_logprob": -1.2754746211166872
+    },
+    "sft_p0.75": {
+      "accuracy": 0.41333333333333333,
+      "mean_gold_logprob": -1.2626018009985105
+    }
+  },
+  "mean_drop_difference_sft_minus_opst": -0.03375947362505549,
+  "mean_drop_opst": 0.02088665350687872,
+  "mean_drop_sft": -0.012872820118176772,
+  "not_paper_evidence": "Qwen2.5-0.5B LoRA on synthetic arithmetic, one round, 32 steps. Tests the direction of the Table 5c mechanism only; no MMLU, Gemma 4 or paper-scale number is reproduced.",
+  "per_seed": [
+    {
+      "drop_opst": -0.006858908931841157,
+      "drop_sft": -0.014415855641858766,
+      "opst_drop_smaller": false,
+      "opst_p0_train_gold_shift": 0.0014283085225268444,
+      "seed": 101
+    },
+    {
+      "drop_opst": 0.06320900748388492,
+      "drop_sft": -0.04857065912891989,
+      "opst_drop_smaller": false,
+      "opst_p0_train_gold_shift": 0.0075768953095316505,
+      "seed": 202
+    },
+    {
+      "drop_opst": 0.006309861968592401,
+      "drop_sft": 0.02436805441624834,
+      "opst_drop_smaller": true,
+      "opst_p0_train_gold_shift": 0.007656809992771629,
+      "seed": 303
+    }
+  ],
+  "seeds_opst_drop_smaller": 1,
+  "thresholds": {
+    "base_accuracy_range": [
+      0.3,
+      0.9
+    ],
+    "manipulation_min_mean_drop_nats": 0.02,
+    "opst_activity_min_train_gold_shift_nats": 0.02
+  },
+  "verdict": "INCONCLUSIVE",
+  "workflow_run": 43065895170
+}

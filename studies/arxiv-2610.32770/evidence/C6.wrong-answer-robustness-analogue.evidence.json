@@ -1,0 +1,26 @@
+{
+  "artifact_hashes": {
+    "config_sha256": "6a11390d6d58a3f483abbe51af9bd18f19d5ad162f1c3ed0e77afe1cac2ba7d8",
+    "fixture_sha256": "214498743eff288e8a0b003b94141a5d24d6503cb2c7ce49f6e9dc4ac0bfb0a2",
+    "mechanism_sha256": "58458b5b2d3889f776de720cbdb9b379fa81a572b3813034f1a46f0e9737e180",
+    "result_sha256": "68a20b5126b91569d632ac94b42b2e941174ab683b1a46d05e7bf009ca255e14",
+    "runner_sha256": "9b228f0a99a37fe7abf08877607f10a80a1a86fcbc39e46d005977714c37e2bd"
+  },
+  "claim_id": "C6-wrong-answer-robustness-analogue",
+  "metrics": {
+    "base_heldout_accuracy": 0.415,
+    "guards": {
+      "base_accuracy_in_range": true,
+      "base_eval_identical_across_cells": false,
+      "opst_active": false,
+      "sft_manipulation_bites": false
+    },
+    "mean_drop_opst": 0.02088665350687872,
+    "mean_drop_sft": -0.012872820118176772,
+    "seeds_opst_drop_smaller": 1
+  },
+  "notes": "Pre-registered guards failed: SFT was not degraded by 75% wrong answers on the held-out letter metric (mean drop -0.013 nats), OPST barely moved on its own training questions (mean shift 0.006 nats < 0.02), and base evaluation differed across runners by ~5e-7 (pre-registered 1e-6 rounding was too strict; does not affect the verdict). No robustness claim in either direction.",
+  "run_id": "opst-wrong-answer-robustness-qwen0.5b-v1",
+  "verdict": "INCONCLUSIVE",
+  "workflow_run": 43065895170
+}

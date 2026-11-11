@@ -2,8 +2,8 @@ study_id: arxiv-2610.32770
 lifecycle: MECHANISM_VERIFIED
 reproduction_status: PARTIAL
 free_light_phase_complete: false
-current_boundary: "Pre-registered mechanism run opst-mechanism-v1 passed C1-C4 (standard library, deterministic). Finding: the printed skewed-JSD mixture weighting contradicts the paper's stated limits and H(alpha) bound; the GKD-consistent form satisfies them. Selection boundary: the consensus gate keeps zero-consensus samples and a consistently reproduced wrong answer passes both filters. No model, benchmark or paper-level result has been run."
-next_step: "Pre-register and run one CPU small-model analogue on GitHub Actions (wrong-answer robustness or placebo-PI contrast, see HANDOFF.md) under a new evaluation id, with all unpublished values labeled as ReproForge choices."
+current_boundary: "Pre-registered mechanism run opst-mechanism-v1 passed C1-C4 (standard library, deterministic). Finding: the printed skewed-JSD mixture weighting contradicts the paper's stated limits and H(alpha) bound; the GKD-consistent form satisfies them. Selection boundary: the consensus gate keeps zero-consensus samples and a consistently reproduced wrong answer passes both filters. Wrong-answer robustness analogue opst-wrong-answer-robustness-qwen0.5b-v1 (Qwen2.5-0.5B LoRA, Actions run 43065895170) is INCONCLUSIVE: pre-registered guards failed because 75% wrong answers did not degrade SFT on the held-out letter metric and OPST barely moved. No paper-level result has been run."
+next_step: "Decide whether to register a v2 wrong-answer analogue under a new evaluation id with new held-out questions (evaluation in the training format, more steps, manipulation check calibrated on a separate split), or close the lightweight phase as HEAVY_COMPUTE_READY with C6 inconclusive."
 handoff:
   path: studies/arxiv-2610.32770/HANDOFF.md
   ready: false
@@ -14,8 +14,12 @@ frozen_evaluations:
   - "opst-objective-semantics-v1"
   - "opst-sample-selection-v1"
   - "opst-ema-loss-semantics-v1"
+  - "opst-wrong-answer-robustness-qwen0.5b-v1"
 entrypoints:
   - "studies/arxiv-2610.32770/experiments/opst_mechanism.py"
   - "studies/arxiv-2610.32770/experiments/run_opst_mechanism.py"
   - "tests/test_opst_mechanism.py"
-updated_at: "2026-10-27"
+  - "studies/arxiv-2610.32770/experiments/run_opst_wr_analogue.py"
+  - "studies/arxiv-2610.32770/experiments/aggregate_opst_wr.py"
+  - "tests/test_opst_wr.py"
+updated_at: "2026-11-12"

@@ -13,13 +13,20 @@
 - Mechanism claims C1-C4 pre-registered (`b6035ac`), run once as `opst-mechanism-v1`, all PASS.
 - Finding: the printed skewed-JSD mixture weighting contradicts the paper's own stated limits and bound; the GKD-consistent form satisfies them (`report.md`).
 
+## C6 result (2026-11-12)
+
+- `opst-wrong-answer-robustness-qwen0.5b-v1` ran once (Actions run 43065895170): **INCONCLUSIVE**. SFT was not degraded by 75% wrong answers on the held-out letter metric, and OPST barely moved; see `report.md`. Evidence: `evidence/opst_wr_qwen0.5b_v1.result.json`, `evidence/opst_wr_qwen0.5b_v1_cells/`, `evidence/C6.wrong-answer-robustness-analogue.evidence.json`. Do not re-run or retune under this id.
+
 ## Frozen evaluations
 
 - `opst-objective-semantics-v1`, `opst-sample-selection-v1` (`fixtures/opst_selection_v1.json`), `opst-ema-loss-semantics-v1`
+- `opst-wrong-answer-robustness-qwen0.5b-v1` (`fixtures/opst_wr_v1.json`; held-out split now observed)
 - Result: `evidence/opst_mechanism_v1.result.json`; Evidence: `evidence/C1..C4.*.evidence.json`
 - `tests/test_opst_mechanism.py` fails if the implementation or fixture drifts from the committed evidence hashes.
 
 ## Next lightweight work (GitHub Actions CPU, new evaluation id, pre-register first)
+
+Option 1 below has been run once as v1 (INCONCLUSIVE). A v2 needs new held-out questions and should fix the format mismatch between training (`Solution:` + z) and evaluation (letter after `Answer:`) and check on the calibration split, before registration, that SFT on wrong answers degrades the metric.
 
 Pick one; both use a small instruction model such as `Qwen/Qwen2.5-0.5B-Instruct` with a pinned revision, the GKD-consistent objective, an EMA teacher, and LoRA on CPU.
 
